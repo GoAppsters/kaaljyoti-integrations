@@ -443,19 +443,14 @@ export abstract class KjElement extends ElementBase {
     const key: MessageKey = ERROR_MESSAGES.has(code) ? (code as MessageKey) : 'generic_error';
     // `forbidden_origin` is the one error the page owner can fix, and only if
     // we tell them which origin to add. A failed fetch with a publishable key
-    // and no proxy is most often the same mistake seen through a browser
-    // that would not show us the answer (an API that withholds CORS from an
-    // unlisted origin, or an embed on someone else's host — a Wix Embed HTML
-    // element runs on `https://<id>.filesusr.com`), so it names the origin as
-    // well.
-    const config = getConfig();
-    const direct = code === 'network_error' && Boolean(config.key) && !config.proxyAll;
-    const message: MessageKey = direct ? 'network_error_origin' : key;
-    const vars =
-      message === 'forbidden_origin' || message === 'network_error_origin'
-        ? { origin: location.origin }
-        : undefined;
-    return stateHtml({ kind: 'error', part: 'error', code, body: this.t(message, vars) });
+    // and no proxy is most often the same mistake, seen through a browser
+    // that would not show us the answer, so it names the origin as well (on
+    // a Wix Embed HTML element that is `https://<id>.filesusr.com`).
+    const { key: apiKey, proxyAll } = getConfig();
+    const vars = { origin: location.origin };
+    let body = this.t(key, vars);
+    if (key === 'network_error' && apiKey && !proxyAll) body += ' ' + this.t('origin_hint', vars);
+    return stateHtml({ kind: 'error', part: 'error', code, body });
   }
 
   /** The shape the loading skeleton takes. */

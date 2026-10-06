@@ -51,8 +51,7 @@ const EN = {
   plan_required: 'This plan does not include this request.',
   invalid_key: 'The key on this page is missing, wrong or revoked.',
   network_error: 'Could not reach Kaal Jyoti.',
-  network_error_origin:
-    "Could not reach Kaal Jyoti. If this site is new, check that your key's allowed origins include {origin}.",
+  origin_hint: 'Is {origin} on the key?',
   generic_error: 'Something went wrong.',
 
   // Birth form.
@@ -241,8 +240,7 @@ const HI: Record<MessageKey, string> = {
   plan_required: 'इस योजना में यह अनुरोध शामिल नहीं है।',
   invalid_key: 'इस पृष्ठ की कुंजी अनुपस्थित, गलत या निरस्त है।',
   network_error: 'काल ज्योति तक नहीं पहुँच सके।',
-  network_error_origin:
-    'काल ज्योति तक नहीं पहुँच सके। यदि यह साइट नई है, तो देखें कि कुंजी के अनुमत origins में {origin} है।',
+  origin_hint: 'क्या {origin} कुंजी में है?',
   generic_error: 'कुछ गड़बड़ हो गई।',
 
   name: 'नाम',
@@ -389,7 +387,7 @@ const HI: Record<MessageKey, string> = {
  * A chrome label, with `{name}` placeholders filled in.
  *
  * `forbidden_origin` says which origin to add, because it is the one error a
- * site owner can actually fix, and `network_error_origin` names it too; `in_house` takes a number, `varshphal` a year,
+ * site owner can actually fix, and `origin_hint` names it after `network_error`; `in_house` takes a number, `varshphal` a year,
  * and `house_lord_heading` two ordinals and two names.
  */
 export function t(lang: Lang, key: MessageKey, vars?: Record<string, string>): string {

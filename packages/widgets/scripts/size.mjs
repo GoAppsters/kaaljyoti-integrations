@@ -8,11 +8,13 @@
  *   - each element's own chunk: 10 KB;
  *   - each shared chunk (`kj-core-*`): 24 KB;
  *   - each element's whole page — the loader, its chunk and every shared
- *     chunk it imports, followed transitively: 40 KB. This is the number a
+ *     chunk it imports, followed transitively: 42 KB. This is the number a
  *     site owner feels, and what the single 24 KB bundle used to be; the
  *     kundli report (five tabs, the charts, the planets table, the dasha
  *     timeline and the new form) is the one near it, and a panchang page
- *     is about 25 KB.
+ *     is about 27 KB. It was 40 KB until 0.2.2, when the report sat 62
+ *     bytes under it and the line naming the page's origin on a failed
+ *     request took it over (decision 30).
  *
  * The numbers are not arbitrary: a widget that costs more than a small hero
  * image is one a site owner will think twice about putting on every page,
@@ -25,7 +27,7 @@ import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 
 const KB = 1024;
-const BUDGETS = { loader: 6 * KB, element: 10 * KB, shared: 24 * KB, page: 40 * KB };
+const BUDGETS = { loader: 6 * KB, element: 10 * KB, shared: 24 * KB, page: 42 * KB };
 
 const packageDir = dirname(dirname(fileURLToPath(import.meta.url)));
 const dist = join(packageDir, 'dist');

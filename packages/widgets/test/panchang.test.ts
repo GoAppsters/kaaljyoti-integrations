@@ -365,6 +365,6 @@ describe('<kj-panchang> when the API cannot be reached', () => {
     const element = await mount({ city: 'delhi' });
     await settled();
     expect(markup(element)).toContain('Could not reach Kaal Jyoti.');
-    expect(markup(element)).not.toContain('allowed origins');
+    expect(markup(element)).not.toContain('on the key');
   });
 });
