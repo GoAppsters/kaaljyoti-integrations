@@ -18,13 +18,6 @@ optional adapter for the `httpx.Client` you may already have. Fully typed
 pip install kaaljyoti
 ```
 
-The PyPI listing arrives with the first tag; until then install from the
-repository:
-
-```sh
-pip install 'git+https://github.com/goappsters/kaaljyoti-integrations.git#subdirectory=packages/sdk-python'
-```
-
 To send requests through httpx instead of `urllib`:
 
 ```sh

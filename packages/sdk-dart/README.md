@@ -12,27 +12,11 @@ no code generation in your project, no `freezed`.
 
 ## 1. Install
 
-Published to pub.dev:
-
 ```sh
 dart pub add kaaljyoti
 ```
 
-Until then it is a path or git dependency in your `pubspec.yaml`:
-
-```yaml
-dependencies:
-  kaaljyoti:
-    path: ../kaaljyoti-integrations/packages/sdk-dart
-```
-
-```yaml
-dependencies:
-  kaaljyoti:
-    git:
-      url: https://github.com/goappsters/kaaljyoti-integrations.git
-      path: packages/sdk-dart
-```
+For Flutter, `flutter pub add kaaljyoti`.
 
 `example/main.dart` is the quick start below, runnable, and `CHANGELOG.md`
 records what each version changed.

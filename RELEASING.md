@@ -93,6 +93,9 @@ For a release of one package:
    git push origin sdk-python-v0.1.1
    ```
 
+   Push **at most three tags in one push**: GitHub starts no workflow for
+   the tags of a push that carries more than three. Push them one by one.
+
 8. Approve the run in the `release` environment (below), and watch it
    finish.
 9. Check the result where users get it: install the package from its
