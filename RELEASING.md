@@ -104,13 +104,18 @@ Do not delete or move the tag, and do not re-publish over the version.
 
 ## Repository protection (GitHub settings)
 
-- **`main`** — a branch ruleset: no force pushes, no deletion, and the CI
-  workflow must pass.
-- **Release tags** (`*-v*`) — a tag ruleset: only the owner may create,
-  update or delete them.
-- **A `release` environment** with the owner as required reviewer. Every
-  publishing job runs in it, so a pushed tag waits for the owner's approval
-  before anything is published.
+- **`main`** — a branch ruleset: no force pushes, no deletion. CI runs on
+  every push to `main`; a release is tagged only on a commit whose CI passed
+  (requiring it in the ruleset would refuse the push itself, since `main` is
+  merged locally).
+- **Release tags** (`*-v*`) — two tag rulesets: only an admin may create
+  one, and nobody may move or delete one.
+- **The `kaaljyoti-php` mirror** — `main` cannot be deleted, and its version
+  tags (`v*`) cannot be moved or deleted. Its `main` takes force pushes: the
+  first mirror push replaces the repository's initial commit.
+- **A `release` environment** with the owner as required reviewer, open to
+  release tags (`*-v*`) only. Every publishing job runs in it, so a pushed
+  tag waits for the owner's approval before anything is published.
 - **Secrets** (repository secrets, scoped to the `release` environment):
   `NPM_TOKEN`, `CLOUDFLARE_API_TOKEN` (R2 edit on `kaaljyoti-cdn` only),
   `SVN_USERNAME` / `SVN_PASSWORD` (the WordPress.org `goappsters` account),
