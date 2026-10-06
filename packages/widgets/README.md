@@ -870,4 +870,4 @@ element at once; `KJWidgets.load('kj-chart')` loads one.
   chart SVG the API generated.
 
 MIT licensed. Issues and pull requests:
-[kaaljyoti-integrations](https://github.com/amitverm/kaaljyoti-integrations).
+[kaaljyoti-integrations](https://github.com/goappsters/kaaljyoti-integrations).

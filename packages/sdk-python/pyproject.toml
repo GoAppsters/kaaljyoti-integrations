@@ -27,7 +27,7 @@ dev = ["pytest>=8", "mypy>=1.11", "ruff>=0.6", "httpx>=0.27", "build>=1.2"]
 
 [project.urls]
 Homepage = "https://kaaljyoti.com/api/docs"
-Repository = "https://github.com/amitverm/kaaljyoti-integrations"
+Repository = "https://github.com/goappsters/kaaljyoti-integrations"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/kaaljyoti"]

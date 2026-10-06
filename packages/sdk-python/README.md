@@ -22,7 +22,7 @@ The PyPI listing arrives with the first tag; until then install from the
 repository:
 
 ```sh
-pip install 'git+https://github.com/amitverm/kaaljyoti-integrations.git#subdirectory=packages/sdk-python'
+pip install 'git+https://github.com/goappsters/kaaljyoti-integrations.git#subdirectory=packages/sdk-python'
 ```
 
 To send requests through httpx instead of `urllib`:
@@ -838,4 +838,4 @@ Generated from OpenAPI document version **0.15.2**
 `pnpm --filter sdk-python run gen` regenerates `src/kaaljyoti/generated/`, and CI fails when the generated code and the snapshot disagree.
 
 MIT licensed. Issues and pull requests:
-[kaaljyoti-integrations](https://github.com/amitverm/kaaljyoti-integrations).
+[kaaljyoti-integrations](https://github.com/goappsters/kaaljyoti-integrations).

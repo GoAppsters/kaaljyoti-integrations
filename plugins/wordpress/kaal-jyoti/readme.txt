@@ -126,6 +126,8 @@ Google Privacy Policy: https://policies.google.com/privacy
 
 The widget scripts in `assets/widgets/` are minified. Their human-readable source — the TypeScript and CSS of the web components, and the build that turns them into those files — ships with the plugin in `widgets-src/`, MIT licensed; `widgets-src/README.txt` says how to rebuild the files. The block editor scripts (`blocks/*/index.js`, `assets/blocks-kit.js`), `assets/admin.js` and the PHP are not minified.
 
+The whole plugin, the widgets and their tests are developed in the open at https://github.com/goappsters/kaaljyoti-integrations.
+
 == Installation ==
 
 1. Install and activate the plugin.

@@ -30,7 +30,7 @@ dependencies:
 dependencies:
   kaaljyoti:
     git:
-      url: https://github.com/amitverm/kaaljyoti-integrations.git
+      url: https://github.com/goappsters/kaaljyoti-integrations.git
       path: packages/sdk-dart
 ```
 
@@ -741,4 +741,4 @@ Generated from OpenAPI document version **0.15.2**
 `pnpm --filter sdk-dart run gen` regenerates `lib/src/generated/`, and CI fails when the generated code and the snapshot disagree.
 
 MIT licensed. Issues and pull requests:
-[kaaljyoti-integrations](https://github.com/amitverm/kaaljyoti-integrations).
+[kaaljyoti-integrations](https://github.com/goappsters/kaaljyoti-integrations).

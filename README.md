@@ -26,3 +26,7 @@ cd packages/sdk-python && .venv/bin/pytest # the Python package (python -m venv 
 ```
 
 Design notes live in [`docs/`](docs/). Licence: MIT.
+
+## Releasing
+
+Each package releases on its own tag; see [RELEASING.md](RELEASING.md).

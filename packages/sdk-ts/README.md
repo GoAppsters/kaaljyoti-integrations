@@ -675,4 +675,4 @@ Generated from OpenAPI document version **0.15.2**. `pnpm gen` regenerates
 fails when the two disagree.
 
 MIT licensed. Issues and pull requests:
-[kaaljyoti-integrations](https://github.com/amitverm/kaaljyoti-integrations).
+[kaaljyoti-integrations](https://github.com/goappsters/kaaljyoti-integrations).

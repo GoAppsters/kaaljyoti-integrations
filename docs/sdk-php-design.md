@@ -1,6 +1,6 @@
 # `kaaljyoti/sdk` (PHP) — design decisions
 
-**Date:** 22 September 2026 · **Status:** settled before code · **Scope:** Tier 2, the PHP SDK. The WordPress plugin's server-side mode and any Laravel integration build on it. Packagist lists it through the read-only mirror `amitverm/kaaljyoti-php`, pushed by CI from `packages/sdk-php` on every `sdk-php-v*` tag (distribution plan §5).
+**Date:** 22 September 2026 · **Status:** settled before code · **Scope:** Tier 2, the PHP SDK. The WordPress plugin's server-side mode and any Laravel integration build on it. Packagist lists it through the read-only mirror `goappsters/kaaljyoti-php`, pushed by CI from `packages/sdk-php` on every `sdk-php-v*` tag (distribution plan §5).
 
 ## What it is
 
@@ -58,7 +58,7 @@ packages/sdk-php/
 
 9. **Tests.** PHPUnit 11 with a `RecordingHttpClient`; contract test walks `openapi/openapi.json` (every operation reachable, right verb and path, `key` never in a secret-key URL); fixtures round-trip through `fromArray`/`toArray`; smoke against staging with `KJ_SMOKE=1` and `KJ_API_KEY` (publishable keys add `Origin`). PHPStan at level 9 on `src/` must be clean; `php -l` on every file.
 
-10. **Versioning and the mirror.** `0.1.0`, tag `sdk-php-v0.1.0`; the mirror workflow (`.github/workflows/mirror-php.yml`) runs `git subtree split --prefix=packages/sdk-php` and force-pushes the result to `amitverm/kaaljyoti-php` with the same tag, using a deploy key secret (`PHP_MIRROR_DEPLOY_KEY`, owner-gated). `composer.json` at the package root is what Packagist reads from the mirror.
+10. **Versioning and the mirror.** `0.1.0`, tag `sdk-php-v0.1.0`; the mirror workflow (`.github/workflows/mirror-php.yml`) runs `git subtree split --prefix=packages/sdk-php` and force-pushes the result to `goappsters/kaaljyoti-php` with the same tag, using a deploy key secret (`PHP_MIRROR_DEPLOY_KEY`, owner-gated). `composer.json` at the package root is what Packagist reads from the mirror.
 
 ## Out of scope for 0.1.0
 
