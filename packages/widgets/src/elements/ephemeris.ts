@@ -194,7 +194,6 @@ export class KjEphemeris extends KjElement {
     const { date: _date, ...where } = place;
     const body = { ...where, month: this.month, system: this.system };
     const answer = await call<EphemerisDocument>(this, '/ephemeris/month', body);
-    this.notePlan(answer.plan);
     const doc = answer.data;
     return (this.system === 'tropical' ? doc.sayan : doc.nirayan) ?? doc.nirayan ?? doc.sayan ?? {};
   }

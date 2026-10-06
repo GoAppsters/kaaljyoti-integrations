@@ -206,7 +206,7 @@ describe('presets', () => {
 
 describe('the card', () => {
   it('wraps every widget in a card with a body and a footer', async () => {
-    const element = mount();
+    const element = mount({ 'powered-by': 'shown' });
     await settle();
     const card = element.shadowRoot?.querySelector('article.kj-card[part="card"]');
     expect(card?.querySelector('[part="body"]')?.textContent).toContain('ok');

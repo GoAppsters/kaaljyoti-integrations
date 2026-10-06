@@ -241,7 +241,6 @@ export class KjHoroscope extends KjElement {
     body.options = reportOptions(this);
 
     const answer = await memo(cacheKey(PATH, body), () => request<HoroscopeDocument>(PATH, body));
-    this.notePlan(answer.plan);
     const meta = answer.meta as { timezone?: AnswerZone } | null;
     return { doc: answer.data, zone: meta?.timezone ?? { name: zone || DEFAULT_ZONE }, period };
   }

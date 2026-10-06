@@ -768,10 +768,10 @@ beside a value or a heading).
 
 ### Powered by
 
-A "Powered by Kaal Jyoti" link is rendered by default. `powered-by="hidden"`
-(or `data-powered-by="hidden"` on the script) is honoured once a response has
-reported a `growth`, `scale` or `enterprise` plan; on `free` and `starter` the
-link stays.
+A "Powered by Kaal Jyoti" link is opt-in, on every plan: it is rendered only
+where `powered-by="shown"` is on the element or `data-powered-by="shown"` on
+the script, and an element's `powered-by="hidden"` leaves it out under a
+script that shows it.
 
 ## 5. Events
 

@@ -25,11 +25,6 @@ class KjTest extends KjElement {
     return html`<p class="kj-value">${this.getAttribute('city')} ${this.t('tithi')}</p>`;
   }
 
-  /** `notePlan` is protected; the plan normally arrives with a response. */
-  setPlan(plan: string | null): void {
-    this.notePlan(plan);
-  }
-
   get markup(): string {
     return this.shadowRoot?.innerHTML ?? '';
   }
@@ -159,49 +154,34 @@ describe('attribute changes', () => {
 });
 
 describe('powered by', () => {
-  it('is shown by default', async () => {
+  it('is left out by default, on every plan', async () => {
+    const element = mount();
+    await settle();
+    expect(element.markup).not.toContain('Powered by Kaal Jyoti');
+  });
+
+  it('is shown where the element asks for it', async () => {
+    const element = mount({ 'powered-by': 'shown' });
+    await settle();
+    expect(element.markup).toContain('Powered by Kaal Jyoti');
+  });
+
+  it('is shown for every widget when the script tag asks for it', async () => {
+    configure({ poweredBy: 'shown' });
     const element = mount();
     await settle();
     expect(element.markup).toContain('Powered by Kaal Jyoti');
   });
 
-  it('stays on free and starter even when the page asks to hide it', async () => {
+  it('lets an element leave it out when the script tag asks for it', async () => {
+    configure({ poweredBy: 'shown' });
     const element = mount({ 'powered-by': 'hidden' });
-    element.setPlan('starter');
-    await element['load']();
-    expect(element.markup).toContain('Powered by Kaal Jyoti');
-  });
-
-  it('is hidden once a paid plan has answered', async () => {
-    const element = mount({ 'powered-by': 'hidden' });
-    element.setPlan('growth');
-    await element['load']();
+    await settle();
     expect(element.markup).not.toContain('Powered by Kaal Jyoti');
-  });
-
-  it('honours data-powered-by from the script tag the same way', async () => {
-    configure({ poweredBy: 'hidden' });
-    const element = mount();
-    element.setPlan('enterprise');
-    await element['load']();
-    expect(element.markup).not.toContain('Powered by Kaal Jyoti');
-  });
-
-  it('in opt-in mode (the WordPress plugin) is hidden on every plan unless shown is asked', async () => {
-    configure({ creditOptIn: true, poweredBy: 'hidden' });
-    const free = mount();
-    free.setPlan('free');
-    await free['load']();
-    expect(free.markup).not.toContain('Powered by Kaal Jyoti');
-
-    const optedIn = mount({ 'powered-by': 'shown' });
-    optedIn.setPlan('free');
-    await optedIn['load']();
-    expect(optedIn.markup).toContain('Powered by Kaal Jyoti');
   });
 
   it('translates the footer', async () => {
-    const element = mount({ lang: 'hi' });
+    const element = mount({ lang: 'hi', 'powered-by': 'shown' });
     await settle();
     expect(element.markup).toContain('काल ज्योति');
   });

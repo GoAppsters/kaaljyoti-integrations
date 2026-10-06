@@ -122,7 +122,6 @@ export class KjTransits extends KjElement {
       ...where,
       at: thisMinute(),
     });
-    this.notePlan(answer.plan);
     this.zone = (answer.meta as { timezone?: AnswerZone } | null)?.timezone ?? null;
     return answer.data;
   }

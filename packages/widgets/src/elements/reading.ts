@@ -320,7 +320,6 @@ export class KjReading extends KjElement {
       if (year) body.year = year;
     }
     const answer = await memo(cacheKey(path, body), () => request<ReadingDocument>(path, body));
-    this.notePlan(answer.plan);
     this.zone = (answer.meta as { timezone?: AnswerZone } | null)?.timezone ?? null;
     return answer.data;
   }

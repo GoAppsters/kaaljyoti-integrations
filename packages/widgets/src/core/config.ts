@@ -80,16 +80,12 @@ export interface KjConfig {
   /** Origin only; the client adds `/v1`. */
   baseUrl: string;
   lang: Lang;
-  /** `hidden` is a request, not a guarantee — see decision 9. */
-  poweredBy: 'shown' | 'hidden';
   /**
-   * The "Powered by" credit is opt-in: shown only when `poweredBy` (or an
-   * element's `powered-by`) is `shown`, and hidden otherwise on every plan.
-   * The WordPress plugin sets it (`data-credit="opt-in"`), because the
-   * WordPress.org guidelines allow a credit link only with the site owner's
-   * explicit permission, and no plan gate in plugin code.
+   * The "Powered by Kaal Jyoti" line, opt-in on every plan (decision 31):
+   * `shown` adds it, the default `hidden` leaves it out. An element's
+   * `powered-by` wins.
    */
-  creditOptIn?: boolean;
+  poweredBy: 'shown' | 'hidden';
   /** The default for elements without a `theme` attribute. */
   theme: KjTheme;
   /**
@@ -154,7 +150,7 @@ export interface KjConfig {
 const DEFAULTS: KjConfig = {
   baseUrl: DEFAULT_BASE_URL,
   lang: 'en',
-  poweredBy: 'shown',
+  poweredBy: 'hidden',
   theme: 'auto',
   placeProvider: 'auto',
   photonUrl: PHOTON_URL,
@@ -190,7 +186,6 @@ export function configure(partial: Partial<KjConfig>): KjConfig {
   if (partial.baseUrl !== undefined) current.baseUrl = normaliseBaseUrl(partial.baseUrl);
   if (partial.lang !== undefined) current.lang = partial.lang;
   if (partial.poweredBy !== undefined) current.poweredBy = partial.poweredBy;
-  if (partial.creditOptIn !== undefined) current.creditOptIn = partial.creditOptIn;
   // A typo is not a reason to paint a dark card on a light page.
   if (partial.theme !== undefined) current.theme = parseTheme(partial.theme) ?? 'auto';
   if (partial.googleMapsKey !== undefined) current.googleMapsKey = partial.googleMapsKey;
@@ -342,7 +337,6 @@ export function readDatasetConfig(dataset: Record<string, string | undefined>): 
   if (lang) partial.lang = lang;
   if (script.dataset.poweredBy === 'hidden') partial.poweredBy = 'hidden';
   if (script.dataset.poweredBy === 'shown') partial.poweredBy = 'shown';
-  if (script.dataset.credit === 'opt-in') partial.creditOptIn = true;
   const theme = parseTheme(script.dataset.theme);
   if (theme) partial.theme = theme;
   const googleMapsKey = script.dataset.googleMapsKey;

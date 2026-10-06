@@ -110,7 +110,6 @@ export class KjMuhurta extends KjElement {
 
   protected override async fetchData(): Promise<MuhurtaDocument> {
     const response = await fetchMuhurta(this);
-    this.notePlan(response.plan);
     this.now = placeNow(response.meta);
     // After sunset (and before the next sunrise) the night's table is the one
     // a visitor wants first.

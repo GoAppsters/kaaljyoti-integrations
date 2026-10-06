@@ -640,7 +640,6 @@ export class KjMatchForm extends KjElement {
         request<Ashtakoot>(MATCH_PATH, body),
       );
       if (run !== this.submitRun) return;
-      this.notePlan(answer.plan);
       this.result = answer.data;
       this.resultState = 'ready';
       this.refreshResult();

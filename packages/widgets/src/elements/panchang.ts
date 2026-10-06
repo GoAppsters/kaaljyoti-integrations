@@ -196,7 +196,6 @@ export class KjPanchang extends KjElement {
   protected override async fetchData(): Promise<PanchangDocument> {
     const response = await fetchPanchang(this);
     // The plan decides whether `powered-by="hidden"` is honoured (decision 9).
-    this.notePlan(response.plan);
     this.now = placeNow(response.meta);
     return response.data;
   }

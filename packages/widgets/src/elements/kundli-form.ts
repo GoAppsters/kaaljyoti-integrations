@@ -561,7 +561,6 @@ export class KjKundliForm extends KjElement {
     memo(cacheKey(path, body), () => request<unknown>(path, body)).then(
       (answer) => {
         if (run !== this.submitRun) return;
-        this.notePlan(answer.plan);
         const zone = (answer.meta as { timezone?: Slice<unknown>['zone'] } | null)?.timezone;
         this.slices.set(name, { state: 'ready', data: answer.data, zone: zone ?? null });
         this.refreshResult();

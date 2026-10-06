@@ -146,7 +146,7 @@ final class Blocks {
 			'poweredBy'        => array(
 				self::option( '', __( 'Site default', 'kaal-jyoti' ) ),
 				self::option( 'shown', __( 'Shown', 'kaal-jyoti' ) ),
-				self::option( 'hidden', __( 'Hidden (needs a growth plan)', 'kaal-jyoti' ) ),
+				self::option( 'hidden', __( 'Hidden', 'kaal-jyoti' ) ),
 			),
 			'styles'           => array(
 				self::option( '', __( 'Default (north)', 'kaal-jyoti' ) ),

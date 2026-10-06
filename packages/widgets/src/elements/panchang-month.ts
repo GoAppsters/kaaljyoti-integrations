@@ -241,7 +241,6 @@ export class KjPanchangMonth extends KjElement {
     const { date: _date, ...where } = place;
     const body = { ...where, month: this.month };
     const answer = await call<MonthDocument>(this, '/panchang/month', body);
-    this.notePlan(answer.plan);
     const today = todayAt(this.zone);
     const days = answer.data.days ?? [];
     // Today when it is in the month; else keep a pick from this month, else none.

@@ -168,7 +168,6 @@ export class KjChart extends KjElement {
     const answer = await memo(cacheKey(`${CHART_PATH}#svg`, body), () =>
       request<string>(CHART_PATH, body, { accept: 'image/svg+xml' }),
     );
-    this.notePlan(answer.plan);
     return answer.data;
   }
 

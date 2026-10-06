@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.2.3
+
+- **Changed:** the "Powered by Kaal Jyoti" line is opt-in on every plan. It shows only where a page
+  asks for it — `data-powered-by="shown"` on the script tag, or `powered-by="shown"` on an element —
+  and is left out otherwise. It used to show by default, and `hidden` was honoured only on the
+  Growth plan and above. `data-credit="opt-in"` is no longer needed and is ignored.
+- The npm package's repository URL names `GoAppsters/kaaljyoti-integrations` as GitHub spells it,
+  which npm's provenance check requires. (0.2.2 was published to the CDN only, for that reason.)
+
 ## 0.2.2
 
 - When a request with a publishable key cannot reach the API, the widget names the page's origin:

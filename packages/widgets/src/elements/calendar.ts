@@ -129,7 +129,6 @@ export class KjCalendar extends KjElement {
   protected override async fetchData(): Promise<CalendarData> {
     const place = withDefaultPlace(this);
     const day = await fetchPanchang(place);
-    this.notePlan(day.plan);
     const body = panchangBody(place);
     const date = day.data.at?.slice(0, 10) ?? body?.date ?? '';
     // The masa at sunrise, as the day is reckoned; noon if there is no sunrise.

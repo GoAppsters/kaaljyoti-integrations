@@ -368,7 +368,6 @@ export abstract class KjBirthCalc extends KjElement {
     call<unknown>(this, path, body, options.init).then(
       (answer) => {
         if (run !== this.calcRun) return;
-        this.notePlan(answer.plan);
         const zone = (answer.meta as { timezone?: AnswerZone } | null)?.timezone ?? null;
         this.slices.set(name, { state: 'ready', data: answer.data, zone });
         this.refreshResult();

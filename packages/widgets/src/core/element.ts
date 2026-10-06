@@ -54,7 +54,6 @@ const REPAINT_ONLY = new Set([
 ]);
 
 /** Plans that may switch the footer off (design decision 9). */
-const PAID_PLANS = new Set(['growth', 'scale', 'enterprise']);
 
 /** The error codes we have a translated line for; everything else is generic. */
 const ERROR_MESSAGES = new Set<string>([
@@ -170,9 +169,6 @@ export abstract class KjElement extends ElementBase {
   protected data: unknown = null;
 
   protected failure: KjError | null = null;
-
-  /** `X-KJ-Plan` from the last answer — the input to the footer rule. */
-  private plan: string | null = null;
 
   private connected = false;
   private loadQueued = false;
@@ -347,24 +343,13 @@ export abstract class KjElement extends ElementBase {
   /** The ready-state markup. Loading and error states are the base's. */
   protected abstract render(): string;
 
-  /** Remember the plan the gateway reported, for the footer rule. */
-  protected notePlan(plan: string | null): void {
-    if (plan) this.plan = plan;
-  }
-
   /**
-   * Whether the footer is rendered.
-   *
-   * `powered-by="hidden"` is honoured only once an answer has said the
-   * account is on a paid plan — decision 9. Before the first answer the link
-   * shows, which is also the honest default for a widget that never loads.
+   * Whether the "Powered by Kaal Jyoti" line is rendered: only where the site
+   * owner asked for it, with `powered-by="shown"` on the element or
+   * `data-powered-by="shown"` on the script tag, on every plan (decision 31).
    */
   protected get showsPoweredBy(): boolean {
-    const asked = this.getAttribute('powered-by') ?? getConfig().poweredBy;
-    // Opt-in mode (the WordPress plugin): only an explicit "shown" shows it.
-    if (getConfig().creditOptIn) return asked === 'shown';
-    if (asked !== 'hidden') return true;
-    return !PAID_PLANS.has(this.plan ?? '');
+    return (this.getAttribute('powered-by') ?? getConfig().poweredBy) === 'shown';
   }
 
   /** The powered-by link, or nothing. @see showsPoweredBy */

@@ -201,7 +201,7 @@ final class Assets {
 		}
 
 		$attributes = sprintf(
-			' data-key="%s" data-lang="%s" data-powered-by="%s" data-credit="opt-in"',
+			' data-key="%s" data-lang="%s" data-powered-by="%s"',
 			esc_attr( (string) Settings::get( 'publishable_key' ) ),
 			esc_attr( (string) Settings::get( 'language' ) ),
 			esc_attr( (string) Settings::get( 'powered_by' ) )
