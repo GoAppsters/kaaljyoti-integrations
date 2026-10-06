@@ -1,0 +1,7 @@
+dist/
+pnpm-lock.yaml
+packages/widgets/test/fixtures/
+# `openapi-typescript` output, byte-compared by `pnpm gen:check`; running
+# prettier over it would make the check fail on formatting rather than on the
+# API having changed.
+packages/sdk-ts/src/generated/

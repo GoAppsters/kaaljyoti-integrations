@@ -1,0 +1,185 @@
+/* `<kj-panchang-month>`: the calendar grid and the day under it. */
+
+.kj-cal {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 3px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.kj-cal-dow {
+  padding: 0.25em 0;
+  font-size: 0.75em;
+  font-weight: 650;
+  text-align: center;
+  color: var(--kj-muted);
+}
+
+.kj-cal-blank {
+  min-height: 3.5em;
+}
+
+.kj-cal > li {
+  display: grid;
+  min-width: 0;
+}
+
+.kj-cal-day {
+  display: grid;
+  width: 100%;
+  align-content: start;
+  gap: 0.125em;
+  min-width: 0;
+  min-height: 3.75em;
+  padding: 0.3125em 0.25em;
+  font: inherit;
+  font-size: 0.8125em;
+  line-height: 1.25;
+  color: var(--kj-text);
+  text-align: left;
+  background: transparent;
+  border: 1px solid var(--kj-border);
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.kj-cal-day:hover {
+  border-color: var(--kj-accent);
+}
+
+.kj-cal-day[aria-pressed='true'] {
+  background: var(--kj-tint);
+  border-color: var(--kj-accent);
+  box-shadow: inset 0 0 0 1px var(--kj-accent);
+}
+
+.kj-cal-num {
+  font-size: 1.1875em;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.kj-cal-day[data-today] .kj-cal-num {
+  display: inline-grid;
+  place-items: center;
+  width: 1.6em;
+  height: 1.6em;
+  color: var(--kj-on-accent);
+  background: var(--kj-accent);
+  border-radius: 999px;
+}
+
+.kj-cal-tithi,
+.kj-cal-nak {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.kj-cal-nak,
+.kj-cal-long {
+  display: none;
+}
+
+.kj-cal-short {
+  overflow: visible;
+  font-size: 0.9375em;
+  letter-spacing: -0.02em;
+}
+
+/* In a narrow calendar the mark is the coloured top edge alone. */
+.kj-cal-mark {
+  display: none;
+}
+
+@container (min-width: 30em) {
+  .kj-cal-mark {
+    display: block;
+  }
+}
+
+.kj-cal-mark {
+  font-size: 0.875em;
+  font-weight: 650;
+  color: var(--kj-accent);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.kj-cal-day[data-mark='purnima'] {
+  border-top: 3px solid var(--kj-accent-2);
+}
+
+.kj-cal-day[data-mark='amavasya'] {
+  border-top: 3px solid var(--kj-muted);
+}
+
+.kj-cal-day[data-mark='ekadashi'] {
+  border-top: 3px solid var(--kj-accent);
+}
+
+@container (min-width: 36em) {
+  .kj-cal-day {
+    min-height: 5.25em;
+    padding: 0.375em 0.4375em;
+  }
+
+  .kj-cal-short {
+    display: none;
+  }
+
+  .kj-cal-mark {
+    display: block;
+  }
+
+  .kj-cal-long,
+  .kj-cal-nak {
+    display: block;
+  }
+
+  .kj-cal-nak {
+    color: var(--kj-muted);
+  }
+
+  .kj-cal-dow {
+    font-size: 0.8125em;
+  }
+}
+
+.kj-day-detail {
+  margin-top: 1em;
+  padding-top: 1em;
+  border-top: 1px solid var(--kj-border);
+}
+
+.kj-day-title {
+  margin: 0 0 0.75em;
+  font-family: var(--kj-font-heading, var(--kj-p-heading));
+  font-size: 1.125em;
+  font-weight: 650;
+}
+
+.kj-card:lang(hi) .kj-day-title {
+  font-family: var(--kj-font-heading, var(--kj-p-deva));
+}
+
+/* The key to the coloured edges, under the grid. */
+.kj-cal-key {
+  display: inline-block;
+  width: 1.25em;
+  height: 3px;
+  margin: 0 0.25em 0.2em 0.5em;
+  vertical-align: middle;
+  background: var(--kj-accent);
+}
+
+.kj-cal-key[data-mark='purnima'] {
+  background: var(--kj-accent-2);
+}
+
+.kj-cal-key[data-mark='amavasya'] {
+  background: var(--kj-muted);
+}

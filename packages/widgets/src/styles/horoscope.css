@@ -1,0 +1,107 @@
+/*
+ * `<kj-horoscope>`'s sign picker. Its chunk's sheet (`static styles`).
+ */
+
+.kj-signs {
+  /* Three across on a phone, four in a column, six (two rows) when wide. */
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.5em;
+  margin: 0 0 1em;
+}
+
+@container (min-width: 30em) {
+  .kj-signs {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+@container (min-width: 46em) {
+  .kj-signs {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+  }
+}
+
+.kj-sign-btn {
+  position: relative;
+  display: grid;
+  gap: 0.375em;
+  justify-items: center;
+  align-content: start;
+  min-width: 0;
+  min-height: 44px;
+  padding: 0.75em 0.25em 0.625em;
+  font: inherit;
+  font-size: 0.875em;
+  line-height: 1.3;
+  color: var(--kj-text);
+  background: transparent;
+  border: 1px solid var(--kj-border);
+  border-radius: calc(var(--kj-radius, 12px) * 0.67);
+  cursor: pointer;
+  transition:
+    border-color 0.15s,
+    box-shadow 0.15s;
+}
+
+/*
+ * The icon is the card's hero: about 48px three across on a phone, 56px
+ * four across, 62px six across (at the 15px base; it scales with it).
+ */
+.kj-sign-btn .kj-zi-l {
+  width: 3.75em;
+  height: 3.75em;
+}
+
+@container (min-width: 30em) {
+  .kj-sign-btn {
+    padding: 0.875em 0.25em 0.75em;
+  }
+
+  .kj-sign-btn .kj-zi-l {
+    width: 4.25em;
+    height: 4.25em;
+  }
+}
+
+@container (min-width: 46em) {
+  .kj-sign-btn .kj-zi-l {
+    width: 4.75em;
+    height: 4.75em;
+  }
+}
+
+.kj-sign-name {
+  max-width: 100%;
+  overflow-wrap: anywhere;
+}
+
+.kj-sign-btn:hover {
+  background: var(--kj-tint);
+  border-color: var(--kj-accent);
+}
+
+/* Chosen: an accent ring and the name in the accent, the icon untouched. */
+.kj-sign-btn[aria-pressed='true'] {
+  font-weight: 650;
+  color: var(--kj-accent);
+  background: color-mix(in srgb, var(--kj-accent) 12%, transparent);
+  border-color: var(--kj-accent);
+  box-shadow: inset 0 0 0 1px var(--kj-accent);
+}
+
+/* The seal is the Hindi name: on a Hindi page it is not printed twice. */
+.kj-card[lang='hi'] .kj-sign-btn:has([data-theme='devanagari']) .kj-sign-name {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .kj-sign-btn {
+    transition: none;
+  }
+}

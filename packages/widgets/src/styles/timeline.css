@@ -1,0 +1,186 @@
+/*
+ * The day timeline and the windows beside it: `<kj-panchang>` and
+ * `<kj-muhurta>` only, so it is their chunk's sheet (`static styles`), not
+ * the shared one every widget downloads.
+ */
+
+/* ------------------------------------------------------------------ */
+/* The day timeline                                                    */
+/* ------------------------------------------------------------------ */
+
+.kj-timeline {
+  margin: 0;
+}
+
+.kj-tl-bar {
+  position: relative;
+  display: grid;
+  gap: 3px;
+  margin-top: 1.375em;
+}
+
+.kj-tl-lane {
+  position: relative;
+  height: 0.875em;
+  overflow: hidden;
+  background: color-mix(in srgb, var(--kj-accent-2) 24%, transparent);
+  border-radius: 999px;
+}
+
+.kj-tl-night {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  background: color-mix(in srgb, var(--kj-text) 20%, transparent);
+}
+
+.kj-tl-seg {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  border-right: 1px solid color-mix(in srgb, var(--kj-bg) 60%, transparent);
+}
+
+.kj-tl-good {
+  background: var(--kj-good);
+}
+
+.kj-tl-bad {
+  background: var(--kj-bad);
+}
+
+.kj-tl-neutral {
+  background: color-mix(in srgb, var(--kj-text) 10%, transparent);
+}
+
+.kj-tl-tick {
+  position: absolute;
+  top: -3px;
+  bottom: -3px;
+  width: 2px;
+  margin-left: -1px;
+  background: var(--kj-text);
+  opacity: 0.45;
+}
+
+.kj-tl-now {
+  position: absolute;
+  top: -5px;
+  bottom: -5px;
+  width: 2px;
+  margin-left: -1px;
+  background: var(--kj-accent);
+}
+
+.kj-tl-now-label {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  padding-bottom: 1px;
+  font-size: 0.75em;
+  font-weight: 700;
+  color: var(--kj-accent);
+  white-space: nowrap;
+  transform: translateX(-50%);
+}
+
+.kj-tl-scale {
+  position: relative;
+  height: 1.5em;
+  margin-top: 0.375em;
+  font-size: 0.8125em;
+  color: var(--kj-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.kj-tl-at {
+  position: absolute;
+  top: 0;
+  white-space: nowrap;
+}
+
+.kj-tl-start {
+  left: 0;
+}
+
+.kj-tl-end {
+  right: 0;
+}
+
+.kj-tl-mid {
+  transform: translateX(-50%);
+}
+
+.kj-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25em 1.125em;
+  margin: 0.25em 0 0;
+  font-size: 0.8125em;
+  color: var(--kj-muted);
+}
+
+.kj-key::before {
+  content: '';
+  display: inline-block;
+  width: 0.75em;
+  height: 0.75em;
+  margin-right: 0.375em;
+  vertical-align: -0.05em;
+  background: var(--kj-key);
+  border-radius: 3px;
+}
+
+.kj-key-good {
+  --kj-key: var(--kj-good);
+}
+
+.kj-key-bad {
+  --kj-key: var(--kj-bad);
+}
+
+.kj-key-night {
+  --kj-key: color-mix(in srgb, var(--kj-text) 20%, transparent);
+}
+
+/* The windows as text, beside the bar. */
+.kj-wlist {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 15em), 1fr));
+  gap: 0 1.25em;
+  margin: 0.75em 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.kj-wlist li {
+  display: flex;
+  gap: 0.75em;
+  align-items: baseline;
+  justify-content: space-between;
+  padding: 0.4375em 0;
+  border-bottom: 1px dashed var(--kj-border);
+}
+
+.kj-wlist .kj-time {
+  font-weight: 600;
+}
+
+.kj-dot::before {
+  content: '';
+  display: inline-block;
+  width: 0.5em;
+  height: 0.5em;
+  margin-right: 0.5em;
+  vertical-align: 0.1em;
+  background: var(--kj-dot, var(--kj-muted));
+  border-radius: 50%;
+}
+
+.kj-dot-good {
+  --kj-dot: var(--kj-good);
+}
+
+.kj-dot-bad {
+  --kj-dot: var(--kj-bad);
+}

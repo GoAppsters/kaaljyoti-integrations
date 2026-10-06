@@ -1,0 +1,77 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "kaal-jyoti/ephemeris",
+  "title": "Kaal Jyoti Ephemeris",
+  "category": "widgets",
+  "icon": "editor-table",
+  "description": "A month of daily planet longitudes at 00:00 UT, with sign changes, retrograde stations and the month's ingresses; sidereal or tropical. One call per month, 20 credits. With a secret key stored (Settings → Kaal Jyoti → Connection), this site caches each month. The preview in this editor calls the Kaal Jyoti API, exactly as the published page will.",
+  "keywords": ["ephemeris", "panchang", "longitudes", "ingress", "retrograde", "jyotish"],
+  "textdomain": "kaal-jyoti",
+  "supports": {
+    "html": false,
+    "align": ["wide", "full"],
+    "spacing": {
+      "margin": true
+    }
+  },
+  "attributes": {
+    "city": {
+      "type": "string",
+      "default": ""
+    },
+    "lat": {
+      "type": "string",
+      "default": ""
+    },
+    "lon": {
+      "type": "string",
+      "default": ""
+    },
+    "timezone": {
+      "type": "string",
+      "default": ""
+    },
+    "place": {
+      "type": "string",
+      "default": ""
+    },
+    "month": {
+      "type": "string",
+      "default": ""
+    },
+    "system": {
+      "type": "string",
+      "default": ""
+    },
+    "lang": {
+      "type": "string",
+      "default": ""
+    },
+    "powered-by": {
+      "type": "string",
+      "default": ""
+    },
+    "theme": {
+      "type": "string",
+      "default": ""
+    },
+    "preset": {
+      "type": "string",
+      "default": ""
+    },
+    "font": {
+      "type": "string",
+      "default": ""
+    },
+    "heading": {
+      "type": "string",
+      "default": ""
+    },
+    "sign-icons": {
+      "type": "string",
+      "default": ""
+    }
+  },
+  "editorScript": "file:./index.js"
+}

@@ -1,0 +1,13 @@
+{
+  "name": "wordpress-plugin",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "pnpm hooks for the WordPress plugin so the workspace build covers it",
+  "scripts": {
+    "build": "node tool/build.mjs"
+  },
+  "devDependencies": {
+    "@kaaljyoti/widgets": "workspace:*"
+  }
+}

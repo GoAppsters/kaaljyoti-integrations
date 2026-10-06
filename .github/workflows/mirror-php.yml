@@ -1,0 +1,39 @@
+# Push packages/sdk-php to the read-only Packagist mirror on every sdk-php-v* tag.
+#
+# Packagist wants composer.json at the root of the repository it watches, so
+# the PHP SDK's subtree is split out (the Laravel/Symfony pattern) and pushed
+# to amitverm/kaaljyoti-php with the same tag. Nobody edits the mirror.
+#
+# Owner-gated: PHP_MIRROR_DEPLOY_KEY is a deploy key with write access on the
+# mirror repository. Until it exists the steps are skipped (`secrets` cannot be
+# read in `if:`, so the job's env says whether it is set).
+name: mirror-php
+
+on:
+  push:
+    tags: ['sdk-php-v*']
+
+jobs:
+  mirror:
+    runs-on: ubuntu-latest
+    env:
+      HAS_DEPLOY_KEY: ${{ secrets.PHP_MIRROR_DEPLOY_KEY != '' }}
+    steps:
+      - uses: actions/checkout@v4
+        if: ${{ env.HAS_DEPLOY_KEY == 'true' }}
+        with:
+          fetch-depth: 0
+      - uses: webfactory/ssh-agent@v0.9.0
+        if: ${{ env.HAS_DEPLOY_KEY == 'true' }}
+        with:
+          ssh-private-key: ${{ secrets.PHP_MIRROR_DEPLOY_KEY }}
+      - name: split and push
+        if: ${{ env.HAS_DEPLOY_KEY == 'true' }}
+        run: |
+          git config user.name "kaaljyoti-ci"
+          git config user.email "ci@kaaljyoti.com"
+          split=$(git subtree split --prefix=packages/sdk-php HEAD)
+          version=${GITHUB_REF_NAME#sdk-php-}
+          git push --force git@github.com:amitverm/kaaljyoti-php.git "$split:refs/heads/main"
+          git tag -f "$version" "$split"
+          git push --force git@github.com:amitverm/kaaljyoti-php.git "refs/tags/$version"

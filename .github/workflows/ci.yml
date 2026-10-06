@@ -1,0 +1,68 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - uses: dart-lang/setup-dart@v1
+        with:
+          sdk: stable
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+          extensions: curl, json, mbstring
+          tools: composer
+      - run: pnpm install --frozen-lockfile
+      # Before gen:check: the Python generator formats with the `ruff` this
+      # puts on PATH (there is no .venv in CI).
+      - name: python dev dependencies
+        run: python -m pip install -e 'packages/sdk-python[dev]'
+      - run: pnpm lint
+      - run: pnpm gen:check
+      - run: pnpm typecheck
+      - run: pnpm test
+      - run: pnpm build
+      - name: size budget
+        run: pnpm --filter @kaaljyoti/widgets run size
+      - name: dart
+        working-directory: packages/sdk-dart
+        run: |
+          dart pub get
+          dart analyze --fatal-infos
+          dart format --output=none --set-exit-if-changed .
+          dart test
+      - name: php
+        working-directory: packages/sdk-php
+        run: |
+          composer install --no-interaction --no-progress
+          composer lint
+          composer stan
+          composer test
+      - name: wordpress plugin
+        working-directory: plugins/wordpress
+        run: |
+          pnpm --filter wordpress-plugin run build
+          composer install --no-interaction --no-progress
+          composer lint
+          composer phpcs
+          composer test
+      - name: python
+        working-directory: packages/sdk-python
+        run: |
+          ruff check . && ruff format --check .
+          mypy
+          pytest

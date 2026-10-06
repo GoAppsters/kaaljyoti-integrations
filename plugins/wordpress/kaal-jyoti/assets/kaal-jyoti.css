@@ -1,0 +1,307 @@
+/**
+ * The plugin's own stylesheet.
+ *
+ * The widget bundle styles itself inside a shadow root and takes its colours
+ * from the same `--kj-*` custom properties, so this file only has to dress
+ * what the plugin itself puts on the page: the server-rendered container and
+ * the admin-only notice.
+ *
+ * The container honours the bundle's three themes:
+ *
+ *   * **auto** (no `data-theme`) — inherit the page: the text colour is the
+ *     page's, the background is transparent, lines and muted text are the
+ *     text colour faded, and the accent picks its light or dark variant;
+ *   * **light** — Kaal Jyoti's own light palette;
+ *   * **dark** — Kaal Jyoti's own dark palette.
+ *
+ * Every palette rule has the specificity of one class — `.kj-server`, with the
+ * theme inside `:where()` — so the order below decides between them, and a
+ * site's overrides (Settings → Kaal Jyoti → Appearance, printed after this
+ * file as `kj-panchang, …, .kj-server { --kj-…: … }`) beat all of them. The
+ * palette is declared on the container itself because an inlined chart SVG
+ * reads the same variables: the renderer scopes the SVG's own defaults to
+ * `:where(.kj-server-chart)`, which has no specificity at all, so the values
+ * here always win and the SVG's only fill in what nobody declared.
+ */
+
+/* ---- auto: inherit the page ------------------------------------------- */
+
+.kj-server {
+  --kj-bg: transparent;
+  --kj-text: currentColor;
+  --kj-line: color-mix(in srgb, currentColor 35%, transparent);
+  --kj-muted: color-mix(in srgb, currentColor 65%, transparent);
+  --kj-planet: currentColor;
+  --kj-planet-moon: currentColor;
+  --kj-retro: var(--kj-muted);
+  --kj-lagna: #7a1f2b;
+  --kj-accent: var(--kj-lagna);
+  --kj-planet-sun: #b4540a;
+  --kj-planet-mars: #c62828;
+  --kj-planet-mercury: #2e7d32;
+  --kj-planet-jupiter: #e07b00;
+  --kj-planet-venus: #d81b8c;
+  --kj-planet-saturn: #2049b0;
+  --kj-planet-rahu: #6b675c;
+  --kj-planet-ketu: #5d4037;
+  --kj-good: #2e7d32;
+  --kj-bad: #c62828;
+}
+
+@supports not (color: color-mix(in srgb, red 50%, transparent)) {
+  .kj-server {
+    --kj-line: rgba(127, 127, 127, 0.45);
+    --kj-muted: currentColor;
+  }
+}
+
+/*
+ * The hues, as the bundle has them: light values first, the dark ones under
+ * the reader's preference where light-dark() is missing, and light-dark()
+ * where it exists, which follows the page's own color-scheme.
+ */
+@media (prefers-color-scheme: dark) {
+  .kj-server {
+    --kj-lagna: #e8b04a;
+    --kj-planet-sun: #f0a24a;
+    --kj-planet-mars: #ef6a5a;
+    --kj-planet-mercury: #7fd08a;
+    --kj-planet-jupiter: #f2b04a;
+    --kj-planet-venus: #f47ec0;
+    --kj-planet-saturn: #7fa3f0;
+    --kj-planet-rahu: #a8a29a;
+    --kj-planet-ketu: #c9a48c;
+    --kj-good: #7fd08a;
+    --kj-bad: #ef6a5a;
+  }
+}
+
+@supports (color: light-dark(#000, #fff)) {
+  .kj-server {
+    --kj-lagna: light-dark(#7a1f2b, #e8b04a);
+    --kj-planet-sun: light-dark(#b4540a, #f0a24a);
+    --kj-planet-mars: light-dark(#c62828, #ef6a5a);
+    --kj-planet-mercury: light-dark(#2e7d32, #7fd08a);
+    --kj-planet-jupiter: light-dark(#e07b00, #f2b04a);
+    --kj-planet-venus: light-dark(#d81b8c, #f47ec0);
+    --kj-planet-saturn: light-dark(#2049b0, #7fa3f0);
+    --kj-planet-rahu: light-dark(#6b675c, #a8a29a);
+    --kj-planet-ketu: light-dark(#5d4037, #c9a48c);
+    --kj-good: light-dark(#2e7d32, #7fd08a);
+    --kj-bad: light-dark(#c62828, #ef6a5a);
+  }
+}
+
+/* ---- light: Kaal Jyoti's own palette ------------------------------------ */
+
+.kj-server:where([data-theme='light']) {
+  color-scheme: light;
+  --kj-bg: #fcfaf4;
+  --kj-text: #221f18;
+  --kj-line: #221f18;
+  --kj-muted: #56503f;
+  --kj-planet: #221f18;
+  --kj-planet-moon: #221f18;
+  --kj-retro: #56503f;
+  --kj-lagna: #7a1f2b;
+  --kj-accent: var(--kj-lagna);
+  --kj-planet-sun: #b4540a;
+  --kj-planet-mars: #c62828;
+  --kj-planet-mercury: #2e7d32;
+  --kj-planet-jupiter: #e07b00;
+  --kj-planet-venus: #d81b8c;
+  --kj-planet-saturn: #2049b0;
+  --kj-planet-rahu: #6b675c;
+  --kj-planet-ketu: #5d4037;
+  --kj-good: #2e7d32;
+  --kj-bad: #c62828;
+}
+
+/* ---- dark --------------------------------------------------------------- */
+
+.kj-server:where([data-theme='dark']) {
+  color-scheme: dark;
+  --kj-bg: #1b1815;
+  --kj-text: #f3ede0;
+  --kj-line: #f3ede0;
+  --kj-muted: #bdb4a2;
+  --kj-planet: #f3ede0;
+  --kj-planet-moon: #f3ede0;
+  --kj-retro: #bdb4a2;
+  --kj-lagna: #e8b04a;
+  --kj-accent: var(--kj-lagna);
+  --kj-planet-sun: #f0a24a;
+  --kj-planet-mars: #ef6a5a;
+  --kj-planet-mercury: #7fd08a;
+  --kj-planet-jupiter: #f2b04a;
+  --kj-planet-venus: #f47ec0;
+  --kj-planet-saturn: #7fa3f0;
+  --kj-planet-rahu: #a8a29a;
+  --kj-planet-ketu: #c9a48c;
+  --kj-good: #7fd08a;
+  --kj-bad: #ef6a5a;
+}
+
+/* ---- the container ------------------------------------------------------ */
+
+.kj-server {
+  background: var(--kj-surface, var(--kj-bg));
+  border: 1px solid rgba(127, 127, 127, 0.3);
+  border: 1px solid color-mix(in srgb, var(--kj-line) 25%, transparent);
+  border-radius: var(--kj-radius, 10px);
+  color: var(--kj-text);
+  font-family: var(--kj-font, inherit);
+  margin: 0 0 1.5em;
+  padding: 1em 1.15em;
+}
+
+.kj-server :is(h1, h2, h3, .kj-heading) {
+  color: var(--kj-accent);
+  font-family: inherit;
+  margin: 0 0 0.35em;
+}
+
+.kj-server .kj-place,
+.kj-server .kj-date,
+.kj-server .kj-label,
+.kj-server .kj-caption {
+  color: var(--kj-muted);
+}
+
+.kj-server .kj-rows {
+  display: grid;
+  gap: 0.25em 1em;
+  grid-template-columns: max-content 1fr;
+  margin: 0;
+}
+
+.kj-server .kj-value {
+  color: var(--kj-text);
+  margin: 0;
+}
+
+.kj-server .kj-windows {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5em;
+  list-style: none;
+  margin: 0.75em 0 0;
+  padding: 0;
+}
+
+.kj-server .kj-window {
+  border: 1px solid var(--kj-line);
+  border-radius: var(--kj-radius, 10px);
+  padding: 0.35em 0.6em;
+}
+
+.kj-server .kj-window[data-quality='good'] {
+  border-color: var(--kj-good);
+}
+
+.kj-server .kj-window[data-quality='bad'] {
+  border-color: var(--kj-bad);
+}
+
+.kj-server .kj-chart svg {
+  display: block;
+  height: auto;
+  max-width: 100%;
+}
+
+.kj-server .kj-retro {
+  color: var(--kj-muted);
+  font-weight: normal;
+}
+
+.kj-server .kj-text {
+  margin: 0.35em 0;
+}
+
+/* A horoscope: the summary, then one ruled block per life area. */
+.kj-server .kj-areas {
+  list-style: none;
+  margin: 0.5em 0 0;
+  padding: 0;
+}
+
+.kj-server .kj-area {
+  border-top: 1px solid color-mix(in srgb, var(--kj-line) 25%, transparent);
+  margin: 0.6em 0 0;
+  padding: 0.6em 0 0;
+}
+
+.kj-server .kj-area-head {
+  margin: 0;
+}
+
+.kj-server .kj-area .kj-label {
+  color: var(--kj-text);
+  margin-right: 0.4em;
+}
+
+/* A level is a word in a pill, never a number; needs care is warm, not red. */
+.kj-server .kj-level {
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  display: inline-block;
+  font-size: 0.75em;
+  font-weight: 600;
+  line-height: 1.5;
+  padding: 0 0.45em;
+  white-space: nowrap;
+}
+
+.kj-server .kj-level-favourable {
+  color: var(--kj-good);
+}
+
+.kj-server .kj-level-mixed {
+  color: var(--kj-muted);
+}
+
+.kj-server .kj-level-care {
+  color: var(--kj-care, var(--kj-planet-sun));
+}
+
+/* `show_basis`: the transits, folded away under the areas. */
+.kj-server .kj-basis {
+  margin: 0.85em 0 0;
+}
+
+.kj-server .kj-basis summary {
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.kj-server .kj-transits {
+  font-size: 0.9em;
+  margin: 0.4em 0 0;
+  padding-left: 1.25em;
+}
+
+.kj-server .kj-transit .kj-span {
+  color: var(--kj-muted);
+}
+
+.kj-server .kj-disclaimer {
+  color: var(--kj-muted);
+  margin: 1em 0 0;
+}
+
+.kj-server .kj-powered-by {
+  color: var(--kj-muted);
+  font-size: 0.8em;
+  margin: 0.75em 0 0;
+}
+
+.kj-server .kj-powered-by a {
+  color: inherit;
+}
+
+.kj-notice {
+  border-left: 4px solid var(--kj-bad, #b3261e);
+  color: var(--kj-muted, inherit);
+  margin: 0 0 1.5em;
+  padding: 0.5em 0.85em;
+}

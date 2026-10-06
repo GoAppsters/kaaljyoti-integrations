@@ -1,0 +1,29 @@
+/* `<kj-ephemeris>`: sign changes, retrograde cells, and the month's events. */
+
+.kj-change {
+  font-weight: 700;
+}
+
+.kj-cell-retro {
+  color: var(--kj-retro);
+}
+
+.kj-events {
+  display: grid;
+  gap: 0.375em;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 0.9375em;
+}
+
+.kj-events li {
+  display: flex;
+  gap: 0.75em;
+  align-items: baseline;
+}
+
+.kj-events .kj-time {
+  min-width: 4.5em;
+  color: var(--kj-muted);
+}

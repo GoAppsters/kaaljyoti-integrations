@@ -1,0 +1,73 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "kaal-jyoti/panchang-month",
+  "title": "Kaal Jyoti Panchang Month",
+  "category": "widgets",
+  "icon": "calendar",
+  "description": "A month of panchang as a calendar grid: the tithi at sunrise and the nakshatra for each day, Purnima, Amavasya and Ekadashi marked, and a day's full panchang on a click. One call per month shown, 20 credits. With a secret key stored (Settings → Kaal Jyoti → Connection), this site caches each month. The preview in this editor calls the Kaal Jyoti API, exactly as the published page will.",
+  "keywords": ["panchang", "calendar", "month", "tithi", "ekadashi", "purnima", "jyotish"],
+  "textdomain": "kaal-jyoti",
+  "supports": {
+    "html": false,
+    "align": ["wide", "full"],
+    "spacing": {
+      "margin": true
+    }
+  },
+  "attributes": {
+    "city": {
+      "type": "string",
+      "default": ""
+    },
+    "lat": {
+      "type": "string",
+      "default": ""
+    },
+    "lon": {
+      "type": "string",
+      "default": ""
+    },
+    "timezone": {
+      "type": "string",
+      "default": ""
+    },
+    "place": {
+      "type": "string",
+      "default": ""
+    },
+    "month": {
+      "type": "string",
+      "default": ""
+    },
+    "masa": {
+      "type": "string",
+      "default": ""
+    },
+    "lang": {
+      "type": "string",
+      "default": ""
+    },
+    "powered-by": {
+      "type": "string",
+      "default": ""
+    },
+    "theme": {
+      "type": "string",
+      "default": ""
+    },
+    "preset": {
+      "type": "string",
+      "default": ""
+    },
+    "font": {
+      "type": "string",
+      "default": ""
+    },
+    "heading": {
+      "type": "string",
+      "default": ""
+    }
+  },
+  "editorScript": "file:./index.js"
+}

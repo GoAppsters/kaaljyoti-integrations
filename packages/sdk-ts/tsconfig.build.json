@@ -1,0 +1,18 @@
+{
+  // Declarations only, and only for `src` — `test/` and `scripts/` are in the
+  // checking tsconfig because they must typecheck, and out of this one
+  // because they must not be published.
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "noEmit": false,
+    "declaration": true,
+    "emitDeclarationOnly": true,
+    // The emitted declarations keep the workspace's `./errors.ts` specifiers,
+    // which is fine: in a `.d.ts`, TypeScript resolves one to the sibling
+    // `errors.d.ts` under both `bundler` and `nodenext`, and the runtime
+    // never sees them — `dist/index.js` is a single bundled file.
+    "rootDir": "src",
+    "outDir": "dist/types"
+  },
+  "include": ["src/**/*.ts"]
+}

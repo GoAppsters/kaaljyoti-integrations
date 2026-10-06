@@ -1,0 +1,69 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "kaal-jyoti/calendar",
+  "title": "Kaal Jyoti Hindu Calendar",
+  "category": "widgets",
+  "icon": "calendar-alt",
+  "description": "A date in the Hindu calendar: Vikram Samvat, the masa in both reckonings, paksha, the tithi at sunrise, vara and nakshatra. Two calls per date; the preview in this editor calls the Kaal Jyoti API, exactly as the published page will.",
+  "keywords": ["calendar", "vikram samvat", "masa", "tithi", "hindu date", "jyotish"],
+  "textdomain": "kaal-jyoti",
+  "supports": {
+    "html": false,
+    "align": ["wide", "full"],
+    "spacing": {
+      "margin": true
+    }
+  },
+  "attributes": {
+    "city": {
+      "type": "string",
+      "default": ""
+    },
+    "lat": {
+      "type": "string",
+      "default": ""
+    },
+    "lon": {
+      "type": "string",
+      "default": ""
+    },
+    "timezone": {
+      "type": "string",
+      "default": ""
+    },
+    "place": {
+      "type": "string",
+      "default": ""
+    },
+    "date": {
+      "type": "string",
+      "default": ""
+    },
+    "lang": {
+      "type": "string",
+      "default": ""
+    },
+    "powered-by": {
+      "type": "string",
+      "default": ""
+    },
+    "theme": {
+      "type": "string",
+      "default": ""
+    },
+    "preset": {
+      "type": "string",
+      "default": ""
+    },
+    "font": {
+      "type": "string",
+      "default": ""
+    },
+    "heading": {
+      "type": "string",
+      "default": ""
+    }
+  },
+  "editorScript": "file:./index.js"
+}

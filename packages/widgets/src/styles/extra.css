@@ -1,0 +1,139 @@
+/*
+ * The stage-2 widgets' own rules (docs/widgets-design.md, decision 24),
+ * adopted after `base.css` by the widgets that need them. Everything here
+ * reads the same `--kj-*` tokens as the base sheet and lays out by the card's
+ * own width (`container-type` is on `.kj-card`), never the viewport's.
+ */
+
+.kj-stepper {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25em;
+  max-width: 100%;
+}
+
+.kj-step {
+  display: inline-grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  font: inherit;
+  font-size: 1.375em;
+  line-height: 1;
+  color: var(--kj-accent);
+  background: var(--kj-tint);
+  border: 1px solid var(--kj-border);
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.kj-step:hover {
+  border-color: var(--kj-accent);
+}
+
+.kj-step[disabled] {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.kj-step-label {
+  min-width: 8em;
+  padding: 0 0.5em;
+  font-weight: 650;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+}
+
+.kj-select-inline {
+  width: auto;
+  min-width: 12em;
+  max-width: 100%;
+}
+
+/* A big answer: "Manglik", "Sade sati is running". */
+.kj-verdict-box {
+  display: grid;
+  gap: 0.25em;
+  margin: 0 0 1.125em;
+  padding: 0.875em 1em;
+  background: var(--kj-tint);
+  border: 1px solid var(--kj-border);
+  border-left: 4px solid var(--kj-verdict-c, var(--kj-accent));
+  border-radius: calc(var(--kj-radius, 12px) * 0.5);
+}
+
+.kj-verdict-box[data-tone='good'] {
+  --kj-verdict-c: var(--kj-good);
+}
+
+.kj-verdict-box[data-tone='care'] {
+  --kj-verdict-c: var(--kj-care);
+}
+
+.kj-verdict-box p {
+  margin: 0;
+}
+
+.kj-verdict-title {
+  font-family: var(--kj-font-heading, var(--kj-p-heading));
+  font-size: 1.25em;
+  font-weight: 650;
+  line-height: 1.3;
+}
+
+.kj-card:lang(hi) .kj-verdict-title {
+  font-family: var(--kj-font-heading, var(--kj-p-deva));
+}
+
+.kj-center {
+  text-align: center;
+}
+
+.kj-note {
+  margin: 0.75em 0 0;
+  font-size: 0.875em;
+  color: var(--kj-muted);
+}
+
+.kj-table-compact th,
+.kj-table-compact td {
+  padding: 0.4375em 0.5em;
+}
+
+.kj-table-sticky tbody th,
+.kj-table-sticky thead th:first-child {
+  position: sticky;
+  left: 0;
+  z-index: 1;
+  background: var(--kj-bg);
+}
+
+:host(:not([theme])) .kj-table-sticky tbody th,
+:host([theme='auto']) .kj-table-sticky tbody th,
+:host(:not([theme])) .kj-table-sticky thead th:first-child,
+:host([theme='auto']) .kj-table-sticky thead th:first-child {
+  /*
+   * A transparent card over an unknown page: no colour to paint the stuck
+   * column with, so it scrolls with the rest.
+   */
+  position: static;
+}
+
+/* Prose and long lists stop at a reading width in a wide container. */
+.kj-result > .kj-prose,
+.kj-result .kj-summary,
+.kj-result .kj-items {
+  max-width: 48em;
+}
+
+/* A calculator given its birth by the page has no form above the result. */
+.kj-body > [data-result]:first-child > .kj-result {
+  margin-top: 0;
+  padding-top: 0;
+  border-top: 0;
+}
+
+.kj-table-sticky thead th:first-child {
+  background: linear-gradient(var(--kj-tint), var(--kj-tint)), var(--kj-bg);
+}

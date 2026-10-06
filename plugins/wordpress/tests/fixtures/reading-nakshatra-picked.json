@@ -1,0 +1,40 @@
+{
+  "status": "ok",
+  "data": {
+    "nakshatra": {
+      "entry": {
+        "text": {
+          "en": "Your Moon is in Purva Phalguni, ruled by Venus and presided over by Bhaga, the deity of good fortune and enjoyment. You tend to be charming and affectionate, with a serious core beneath an easygoing surface. This nakshatra also brings comfort, learning, possessions, contentment, warmth in relationships and respect from the learned. You value pleasure and beauty and draw people toward you. The caution is pride and a tendency to want more than you need; a readiness to claim credit can also strain goodwill. Keeping enjoyment in proportion and sharing recognition generously let Purva Phalguni's natural grace and good fortune work for you.",
+          "hi": "आपका चंद्रमा पूर्वाफाल्गुनी नक्षत्र में है, जिसका स्वामी शुक्र है और अधिष्ठाता देवता भग हैं, जो सौभाग्य और आनंद के देवता हैं। आप स्वभाव से आकर्षक और स्नेही होते हैं; सहज बाह्य व्यवहार के भीतर आपकी प्रकृति गंभीर रहती है। साथ ही आप सुखी, विद्यायुक्त, संपत्तिवान, संतुष्ट, संबंधों में स्नेहपूर्ण और विद्वानों से सम्मानित होते हैं। आप सौंदर्य और आनंद को महत्त्व देते हैं और लोग आपकी ओर खिंचे चले आते हैं। सावधानी अभिमान और आवश्यकता से अधिक पाने की इच्छा को लेकर है; श्रेय लेने की तत्परता भी सद्भाव में खटास ला सकती है। आनंद को संतुलित रखना और सम्मान को उदारता से बाँटना पूर्वाफाल्गुनी की स्वाभाविक शोभा और सौभाग्य को आपके पक्ष में रखता है।"
+        }
+      },
+      "nakshatra": {
+        "id": "purva_phalguni",
+        "name": "Purva Phalguni",
+        "names": {
+          "en": "Purva Phalguni",
+          "hi": "पूर्वा फाल्गुनी"
+        }
+      }
+    },
+    "disclaimer": {
+      "en": "These predictions are indicative. For a reading of your own chart, consult an astrologer.",
+      "hi": "ये फलादेश सांकेतिक हैं। अपनी कुंडली के व्यक्तिगत विश्लेषण के लिए किसी ज्योतिषी से परामर्श करें।"
+    }
+  },
+  "meta": {
+    "cached": false,
+    "ayanamsa": {
+      "id": "lahiri"
+    },
+    "timezone": {
+      "name": null,
+      "utc_offset": "+00:00",
+      "source": "given"
+    },
+    "engine": "0.3.0",
+    "compute_ms": 0,
+    "language_fallback": [],
+    "credits": 5
+  }
+}

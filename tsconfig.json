@@ -1,0 +1,11 @@
+{
+  "files": [],
+  "references": [
+    {
+      "path": "packages/widgets"
+    },
+    {
+      "path": "packages/sdk-ts"
+    }
+  ]
+}

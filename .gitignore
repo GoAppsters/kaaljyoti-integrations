@@ -1,0 +1,43 @@
+node_modules/
+dist/
+coverage/
+*.tsbuildinfo
+.DS_Store
+
+# Local environment files. The staging publishable key is public by design
+# but lives in the shell that runs the smoke test, not in the repo.
+.env
+.env.local
+.env.*.local
+
+# Claude Code launch config on this Mac
+.claude/
+
+# Dart build artifacts and the library lockfile (a package does not pin its consumers)
+.dart_tool/
+packages/sdk-dart/pubspec.lock
+packages/sdk-php/vendor/
+packages/sdk-php/composer.lock
+packages/sdk-php/.phpunit.cache/
+packages/sdk-php/.phpunit.result.cache
+
+# WordPress plugin: dev vendor tree, build inputs copied in by tool/build.mjs, the zip
+plugins/wordpress/vendor/
+plugins/wordpress/composer.lock
+plugins/wordpress/.phpunit.result.cache
+plugins/wordpress/kaal-jyoti/vendor/
+plugins/wordpress/kaal-jyoti/assets/widgets/
+plugins/wordpress/kaal-jyoti/widgets-src/
+plugins/wordpress/dist/
+
+# Python package
+packages/sdk-python/.venv/
+packages/sdk-python/dist/
+packages/sdk-python/**/__pycache__/
+packages/sdk-python/.mypy_cache/
+packages/sdk-python/.ruff_cache/
+packages/sdk-python/.pytest_cache/
+packages/sdk-python/src/*.egg-info/
+
+# vitest results cache
+.vitest/

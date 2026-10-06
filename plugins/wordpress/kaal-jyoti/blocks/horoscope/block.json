@@ -1,0 +1,81 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "kaal-jyoti/horoscope",
+  "title": "Kaal Jyoti Horoscope",
+  "category": "widgets",
+  "icon": "star-filled",
+  "description": "The day, week, month or year ahead for a sign: a summary and five life areas (work, money, relationships, health, education), each favourable, mixed or needing care, read from where the grahas actually are, with a sign picker and period tabs. One call per sign and period shown; the preview in this editor calls the Kaal Jyoti API once a sign is chosen, exactly as the published page will.",
+  "keywords": ["horoscope", "rashifal", "gochar", "transit", "sign", "jyotish"],
+  "textdomain": "kaal-jyoti",
+  "supports": {
+    "html": false,
+    "align": ["wide", "full"],
+    "spacing": {
+      "margin": true
+    }
+  },
+  "attributes": {
+    "sign": {
+      "type": "string",
+      "default": ""
+    },
+    "period": {
+      "type": "string",
+      "default": ""
+    },
+    "date": {
+      "type": "string",
+      "default": ""
+    },
+    "timezone": {
+      "type": "string",
+      "default": ""
+    },
+    "show-basis": {
+      "type": "string",
+      "default": ""
+    },
+    "lang": {
+      "type": "string",
+      "default": ""
+    },
+    "disclaimer": {
+      "type": "string",
+      "default": ""
+    },
+    "disclaimer-name": {
+      "type": "string",
+      "default": ""
+    },
+    "disclaimer-url": {
+      "type": "string",
+      "default": ""
+    },
+    "powered-by": {
+      "type": "string",
+      "default": ""
+    },
+    "theme": {
+      "type": "string",
+      "default": ""
+    },
+    "preset": {
+      "type": "string",
+      "default": ""
+    },
+    "font": {
+      "type": "string",
+      "default": ""
+    },
+    "heading": {
+      "type": "string",
+      "default": ""
+    },
+    "sign-icons": {
+      "type": "string",
+      "default": ""
+    }
+  },
+  "editorScript": "file:./index.js"
+}

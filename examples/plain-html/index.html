@@ -1,0 +1,462 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Kaal Jyoti widgets — plain HTML</title>
+    <!--
+      No framework, no build. `pnpm build && pnpm serve`, then open
+      http://localhost:3000.
+
+      Replace kj_pub_YOUR_KEY with a publishable key of your own: create one
+      in the Kaal Jyoti dashboard (https://kaaljyoti.com/api), and add
+      http://localhost:3000 to its allowed origins, which is why
+      scripts/serve.mjs listens on 3000. A publishable key is the only kind a
+      page may carry. Every plan can call everything on this page: a calculation
+      costs 1 credit, a reading (5b, 20–22) 5, and a month of panchang or
+      ephemeris (8, 11) 20; data-base points at staging, so use a staging key
+      or remove data-base for production.
+    -->
+    <script
+      src="/widgets/v1.js"
+      data-key="kj_pub_YOUR_KEY"
+      data-base="https://api-staging.kaaljyoti.com"
+      defer
+    ></script>
+    <style>
+      :root {
+        color-scheme: light;
+        font-family: system-ui, sans-serif;
+      }
+      body {
+        max-width: 56rem;
+        margin: 0 auto;
+        padding: 2rem 1rem 4rem;
+        line-height: 1.5;
+        color: #221f18;
+        background: #fffdf7;
+      }
+      h1 {
+        margin-bottom: 0.25rem;
+      }
+      h2 {
+        margin: 2.5rem 0 0.25rem;
+        font-size: 1.05rem;
+      }
+      p.note {
+        margin: 0 0 0.75rem;
+        color: #56503f;
+        font-size: 0.875rem;
+      }
+      .grid {
+        display: grid;
+        gap: 1rem;
+        grid-template-columns: repeat(auto-fit, minmax(19rem, 1fr));
+      }
+      /* A dark site: its own background and text, and nothing --kj-* at all. */
+      .dark {
+        padding: 1rem;
+        color-scheme: dark;
+        color: #ece6d8;
+        background: #12100e;
+        border-radius: 16px;
+      }
+      .dark .label {
+        margin: 0 0 0.375rem;
+        font-size: 0.8125rem;
+        opacity: 0.7;
+      }
+      button {
+        font: inherit;
+        padding: 0.375rem 0.875rem;
+        border: 1px solid #221f18;
+        border-radius: 6px;
+        background: #fff;
+        cursor: pointer;
+      }
+      .toc {
+        font-size: 0.875rem;
+        line-height: 1.8;
+      }
+      .restyled {
+        font-family: Georgia, 'Times New Roman', serif;
+      }
+      .restyled kj-calendar {
+        --kj-accent: #0f766e;
+      }
+      pre#events {
+        min-height: 6rem;
+        padding: 0.75rem;
+        overflow: auto;
+        font-size: 0.8125rem;
+        background: #f3efe3;
+        border-radius: 8px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Kaal Jyoti widgets</h1>
+    <p class="note">
+      One script tag — a small loader that fetches each element's code the first time the page has
+      one — twenty-two elements, staging API. This page is also the manual QA page; each widget has
+      an anchor (<code>#kj-dasha</code>, <code>#panchang</code>, …).
+    </p>
+    <nav class="toc" aria-label="Widgets on this page">
+      <a href="#panchang">panchang</a> · <a href="#muhurta">muhurta</a> ·
+      <a href="#kundli">chart and kundli</a> · <a href="#match">match</a> ·
+      <a href="#horoscope">horoscope</a> · <a href="#reading">readings</a> ·
+      <a href="#kj-panchang-month">panchang-month</a> · <a href="#kj-calendar">calendar</a> ·
+      <a href="#kj-transits">transits</a> · <a href="#kj-ephemeris">ephemeris</a> ·
+      <a href="#kj-moon-sign">moon-sign</a> · <a href="#kj-lagna">lagna</a> ·
+      <a href="#kj-manglik">manglik</a> · <a href="#kj-sade-sati">sade-sati</a> ·
+      <a href="#kj-dasha">dasha</a> · <a href="#kj-vargas">vargas</a> · <a href="#kj-kp">kp</a> ·
+      <a href="#kj-strength">strength</a> · <a href="#kj-life-areas">life-areas</a> ·
+      <a href="#kj-varshphal">varshphal</a> ·
+      <a href="#kj-vimshottari-reading">vimshottari-reading</a> · <a href="#styling">styling</a>
+    </nav>
+
+    <h2 id="panchang">1 · Panchang</h2>
+    <p class="note">The same day in both languages; each card is one call.</p>
+    <div class="grid">
+      <kj-panchang city="delhi"></kj-panchang>
+      <kj-panchang city="varanasi" lang="hi"></kj-panchang>
+    </div>
+
+    <h2 id="muhurta">2 · Muhurta</h2>
+    <p class="note">
+      The choghadiya and the windows: its own call (<code>/v1/panchang/muhurta</code>), not shared
+      with the Delhi panchang above.
+    </p>
+    <kj-muhurta city="delhi"></kj-muhurta>
+
+    <h2 id="themed">3 · Themed</h2>
+    <p class="note">
+      <code>theme="auto"</code> (the default) inherits the page; <code>light</code> and
+      <code>dark</code> are cards. The dark block below sets only its own background and text colour
+      — no <code>--kj-*</code> properties.
+    </p>
+    <div class="dark grid">
+      <div>
+        <p class="label"><code>no theme attribute (auto)</code></p>
+        <kj-panchang city="jaipur" show="header tithi nakshatra windows"></kj-panchang>
+      </div>
+      <div>
+        <p class="label"><code>theme="dark"</code></p>
+        <kj-panchang city="jaipur" theme="dark" show="header tithi nakshatra windows"></kj-panchang>
+      </div>
+      <div>
+        <p class="label"><code>theme="light"</code></p>
+        <kj-panchang
+          city="jaipur"
+          theme="light"
+          show="header tithi nakshatra windows"
+        ></kj-panchang>
+      </div>
+    </div>
+
+    <h2 id="presets">3a · Presets</h2>
+    <p class="note">
+      <code>preset</code> (or <code>data-preset</code> on the script): the four looks of the PDF
+      reports — <code>classic</code> (the default), <code>modern</code>, <code>minimal</code>,
+      <code>traditional</code>. The theme still decides light, dark or auto.
+    </p>
+    <div class="grid">
+      <kj-panchang
+        city="delhi"
+        preset="modern"
+        theme="light"
+        show="header tithi nakshatra yoga karana"
+      ></kj-panchang>
+      <kj-panchang
+        city="delhi"
+        preset="minimal"
+        theme="light"
+        show="header tithi nakshatra yoga karana"
+      ></kj-panchang>
+      <kj-panchang
+        city="delhi"
+        preset="traditional"
+        theme="light"
+        lang="hi"
+        show="header tithi nakshatra yoga karana"
+      ></kj-panchang>
+    </div>
+
+    <h2 id="kundli">4 · Chart and the kundli report</h2>
+    <p class="note">
+      The chart has its own North / South / Circular switch. The form's place is one search box; the
+      report under it has tabs (Overview, Charts, Planets, Dasha, Life areas and, with
+      <code>readings</code>, Readings), each loaded the first time it is opened. The last entry is
+      remembered on this device (<code>remember="off"</code> to stop that).
+    </p>
+    <div class="grid">
+      <kj-chart
+        datetime="1990-05-14T10:30:00"
+        timezone="Asia/Kolkata"
+        lat="28.6139"
+        lon="77.209"
+        style="north"
+        size="360"
+      ></kj-chart>
+      <kj-kundli-form readings></kj-kundli-form>
+    </div>
+
+    <h2 id="place-search">4a · Place search: Photon, Google or Kaal Jyoti</h2>
+    <p class="note">
+      Type a village into the place box. Without a Google Maps key the first form searches Photon
+      (OpenStreetMap, free, no key; the list credits OpenStreetMap), and falls back to Kaal Jyoti's
+      own index if Photon fails or takes over 4 seconds. Open this page as
+      <code>/?gmaps=AIza…</code> with a key of yours (Places API (New) and Maps JavaScript API
+      enabled, referrer <code>http://localhost:3000/*</code>) to search Google Places instead. A
+      Photon or Google pick sends no timezone, so the API derives it. No key is committed here.
+    </p>
+    <kj-kundli-form id="google-form" tabs="overview" time-format="24"></kj-kundli-form>
+    <p class="note">
+      <code>place-provider="kaaljyoti"</code>: only Kaal Jyoti's own index (towns of 1,000+ people,
+      one call per search), for a site that wants no third-party call.
+    </p>
+    <kj-kundli-form place-provider="kaaljyoti" tabs="overview"></kj-kundli-form>
+
+    <h2 id="match">5 · Ashtakoot</h2>
+    <p class="note">
+      Two birth forms and the guna milan between them: three calls per submit (the match and one
+      kundli per person), none for an identical resubmit.
+    </p>
+    <kj-match-form></kj-match-form>
+
+    <h2 id="horoscope">5a · Horoscope and readings</h2>
+    <p class="note">
+      A sign picker and period tabs (one call per sign, period and day) drawing a summary and five
+      life areas with a level each, and a lagna and a nakshatra reading — one preset, one from a
+      picker. Every answer ends with the disclaimer line; the nakshatra one names an astrologer.
+    </p>
+    <div class="grid">
+      <kj-horoscope sign="aries"></kj-horoscope>
+      <div>
+        <kj-reading type="lagna" sign="leo"></kj-reading>
+        <kj-reading
+          type="nakshatra"
+          disclaimer-name="Acharya Amit Verma"
+          disclaimer-url="https://kaaljyoti.com"
+        ></kj-reading>
+      </div>
+    </div>
+
+    <h2 id="reading">5b · Personal readings</h2>
+    <p class="note">
+      One birth (14 May 1990, 10:30, New Delhi), one call per report at 5 credits each — and one
+      kundli report of three parts, priced as three (15 credits). On every plan; a key that has used
+      up its month's credits says so in each one's place.
+    </p>
+    <kj-reading
+      type="house_lords"
+      datetime="1990-05-14T10:30:00"
+      timezone="Asia/Kolkata"
+      lat="28.6139"
+      lon="77.209"
+    ></kj-reading>
+    <div class="grid">
+      <kj-reading
+        type="grahas"
+        datetime="1990-05-14T10:30:00"
+        timezone="Asia/Kolkata"
+        lat="28.6139"
+        lon="77.209"
+      ></kj-reading>
+      <kj-reading
+        type="yogas"
+        datetime="1990-05-14T10:30:00"
+        timezone="Asia/Kolkata"
+        lat="28.6139"
+        lon="77.209"
+      ></kj-reading>
+      <kj-reading
+        type="vimshottari"
+        datetime="1990-05-14T10:30:00"
+        timezone="Asia/Kolkata"
+        lat="28.6139"
+        lon="77.209"
+      ></kj-reading>
+      <kj-reading
+        type="varshphal"
+        year="2026"
+        datetime="1990-05-14T10:30:00"
+        timezone="Asia/Kolkata"
+        lat="28.6139"
+        lon="77.209"
+      ></kj-reading>
+    </div>
+    <kj-reading
+      type="kundli"
+      parts="lagna,nakshatra,yogas"
+      datetime="1990-05-14T10:30:00"
+      timezone="Asia/Kolkata"
+      lat="28.6139"
+      lon="77.209"
+    ></kj-reading>
+    <kj-reading
+      type="life_areas"
+      datetime="1990-05-14T10:30:00"
+      timezone="Asia/Kolkata"
+      lat="28.6139"
+      lon="77.209"
+    ></kj-reading>
+
+    <h2 id="kj-panchang-month">8 · Monthly panchang</h2>
+    <p class="note">
+      <code>/v1/panchang/month</code> is a heavy route (20 credits, ten a minute): the widget calls
+      it with the publishable key, or through the site's proxy (<code>data-proxy</code> on the
+      script, or <code>proxy</code> here) when there is one, which can cache the month.
+    </p>
+    <kj-panchang-month city="delhi"></kj-panchang-month>
+
+    <h2 id="kj-calendar">9 · Hindu calendar converter</h2>
+    <p class="note">A date to Vikram Samvat, masa (both reckonings), paksha and tithi: 2 calls.</p>
+    <kj-calendar city="delhi"></kj-calendar>
+
+    <h2 id="kj-transits">10 · Planets today</h2>
+    <p class="note">A chart of this minute and a table: 2 calls.</p>
+    <kj-transits city="delhi"></kj-transits>
+
+    <h2 id="kj-ephemeris">11 · Ephemeris</h2>
+    <p class="note">Heavy like the monthly panchang: 20 credits a month shown.</p>
+    <kj-ephemeris city="delhi"></kj-ephemeris>
+
+    <h2 id="kj-moon-sign">12 · Moon sign and nakshatra</h2>
+    <p class="note">
+      The compact birth form: after a submit it folds into one line with "Edit details". The entry
+      is remembered for every calculator on the device.
+    </p>
+    <kj-moon-sign city="delhi"></kj-moon-sign>
+
+    <h2 id="kj-lagna">13 · Lagna</h2>
+    <p class="note">The birth given as attributes: no form, the result at once.</p>
+    <kj-lagna
+      datetime="1990-05-14T10:30:00"
+      lat="28.6139"
+      lon="77.209"
+      timezone="Asia/Kolkata"
+      place="New Delhi"
+      name="Asha"
+    ></kj-lagna>
+
+    <h2 id="kj-manglik">14 · Manglik and doshas</h2>
+    <kj-manglik city="delhi"></kj-manglik>
+
+    <h2 id="kj-sade-sati">15 · Sade sati</h2>
+    <p class="note">One call per calendar year shown.</p>
+    <kj-sade-sati
+      datetime="1990-05-14T10:30:00"
+      lat="28.6139"
+      lon="77.209"
+      timezone="Asia/Kolkata"
+      place="New Delhi"
+    ></kj-sade-sati>
+
+    <h2 id="kj-dasha">16 · Dasha</h2>
+    <p class="note">Vimshottari to three levels in one call; Yogini is one more.</p>
+    <kj-dasha
+      datetime="1990-05-14T10:30:00"
+      lat="28.6139"
+      lon="77.209"
+      timezone="Asia/Kolkata"
+      place="New Delhi"
+    ></kj-dasha>
+
+    <h2 id="kj-vargas">17 · Divisional charts</h2>
+    <kj-vargas
+      datetime="1990-05-14T10:30:00"
+      lat="28.6139"
+      lon="77.209"
+      timezone="Asia/Kolkata"
+      place="New Delhi"
+    ></kj-vargas>
+
+    <h2 id="kj-kp">18 · KP</h2>
+    <kj-kp
+      datetime="1990-05-14T10:30:00"
+      lat="28.6139"
+      lon="77.209"
+      timezone="Asia/Kolkata"
+      place="New Delhi"
+    ></kj-kp>
+
+    <h2 id="kj-strength">19 · Shadbala and Ashtakavarga</h2>
+    <kj-strength
+      datetime="1990-05-14T10:30:00"
+      lat="28.6139"
+      lon="77.209"
+      timezone="Asia/Kolkata"
+      place="New Delhi"
+    ></kj-strength>
+
+    <h2 id="kj-life-areas">20 · Life areas</h2>
+    <p class="note">A written reading: 5 credits, on every plan.</p>
+    <kj-life-areas city="delhi"></kj-life-areas>
+
+    <h2 id="kj-varshphal">21 · Varshphal</h2>
+    <kj-varshphal
+      datetime="1990-05-14T10:30:00"
+      lat="28.6139"
+      lon="77.209"
+      timezone="Asia/Kolkata"
+      place="New Delhi"
+    ></kj-varshphal>
+
+    <h2 id="kj-vimshottari-reading">22 · Vimshottari reading</h2>
+    <kj-vimshottari-reading
+      datetime="1990-05-14T10:30:00"
+      lat="28.6139"
+      lon="77.209"
+      timezone="Asia/Kolkata"
+      place="New Delhi"
+    ></kj-vimshottari-reading>
+
+    <h2 id="styling">23 · Restyled by a site</h2>
+    <p class="note">
+      A serif site, its own accent only (<code>--kj-accent</code>), and
+      <code>font="inherit"</code>: the tints, borders and the text on the accent follow.
+    </p>
+    <div class="restyled">
+      <kj-calendar city="mumbai" font="inherit" preset="minimal"></kj-calendar>
+    </div>
+
+    <h2 id="events">24 · Events</h2>
+    <p class="note">
+      <code>kj-ready</code>, <code>kj-error</code> and <code>kj-submit</code> bubble to the
+      document.
+    </p>
+    <pre id="events"></pre>
+
+    <h2 id="language">25 · Language</h2>
+    <p class="note">
+      Flips every widget. Only the chart refetches (it is drawn in one language); the rest re-render
+      from data already loaded.
+    </p>
+    <button id="lang" type="button">Switch to Hindi</button>
+
+    <script>
+      const gmaps = new URLSearchParams(location.search).get('gmaps');
+      if (gmaps) document.getElementById('google-form').setAttribute('google-maps-key', gmaps);
+
+      const log = document.getElementById('events');
+      for (const type of ['kj-ready', 'kj-error', 'kj-submit']) {
+        document.addEventListener(type, (event) => {
+          const tag = event.target.tagName.toLowerCase();
+          const code = event.detail && event.detail.code ? event.detail.code : 'ok';
+          log.textContent += `${tag} ${type} ${code}\n`;
+        });
+      }
+
+      const button = document.getElementById('lang');
+      let lang = 'en';
+      button.addEventListener('click', () => {
+        lang = lang === 'en' ? 'hi' : 'en';
+        for (const el of document.querySelectorAll('*')) {
+          if (el.tagName.startsWith('KJ-')) el.setAttribute('lang', lang);
+        }
+        button.textContent = lang === 'en' ? 'Switch to Hindi' : 'अंग्रेज़ी में देखें';
+      });
+    </script>
+  </body>
+</html>

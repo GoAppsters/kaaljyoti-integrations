@@ -1,0 +1,55 @@
+{
+  "name": "@kaaljyoti/widgets",
+  "author": "GoAppsters (https://goappsters.in)",
+  "version": "0.2.0",
+  "description": "Web components for the Kaal Jyoti API: panchang, muhurta, kundli chart, birth and match forms, a horoscope by sign and lagna, nakshatra, house-lords, grahas, yogas, Vimshottari, varshphal and life-areas readings, from a publishable key.",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/amitverm/kaaljyoti-integrations.git",
+    "directory": "packages/widgets"
+  },
+  "homepage": "https://kaaljyoti.com/api/docs/widgets",
+  "type": "module",
+  "sideEffects": false,
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/types/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/types/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./v1.js": "./dist/v1.js"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "typecheck": "tsc --noEmit -p tsconfig.json",
+    "test": "vitest run",
+    "size": "node scripts/size.mjs",
+    "smoke": "KJ_SMOKE=1 vitest run test/smoke.test.ts"
+  },
+  "devDependencies": {
+    "esbuild": "^0.27.0",
+    "happy-dom": "^20.0.0",
+    "typescript": "^6.0.3",
+    "vitest": "^5.0.1"
+  },
+  "keywords": [
+    "astrology",
+    "panchang",
+    "kundli",
+    "horoscope",
+    "vedic",
+    "web-components",
+    "kaaljyoti"
+  ]
+}

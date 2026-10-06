@@ -1,0 +1,16 @@
+name: kaaljyoti
+description: Typed Dart client for the Kaal Jyoti API - kundli, panchang, dasha, transits and matching.
+version: 0.1.0
+repository: https://github.com/amitverm/kaaljyoti-integrations/tree/main/packages/sdk-dart
+homepage: https://kaaljyoti.com/api/docs
+topics: [astrology, vedic, kundli, panchang, jyotish]
+
+environment:
+  sdk: '>=3.6.0 <4.0.0'
+
+dependencies:
+  http: ^1.2.1
+
+dev_dependencies:
+  lints: ^5.0.0
+  test: ^1.25.0

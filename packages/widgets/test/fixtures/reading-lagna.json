@@ -1,0 +1,40 @@
+{
+  "status": "ok",
+  "data": {
+    "lagna": {
+      "entry": {
+        "text": {
+          "en": "With Cancer rising, the Moon is the lord of your lagna, and the sign is movable and watery. You tend to be warm, sociable and quick to make friends, with a sensitive mind and good practical sense. Home and property matter to you, and this lagna tends to bring comfort, a well-kept house and steady means. Water, travel and pleasant food often appeal. Your moods tend to follow the Moon, so steadiness takes conscious effort, and you may lean heavily on your partner's opinions; keeping your own judgement in balance helps. Straight dealing, even when a roundabout path looks easier, keeps your relationships sound.",
+          "hi": "कर्क लग्न होने पर आपके लग्न के स्वामी चंद्रमा हैं; यह चर और जल तत्त्व की राशि है। आप स्नेहशील, मिलनसार और शीघ्र मित्रता करने वाले होते हैं, तथा आपका मन संवेदनशील और व्यावहारिक बुद्धि से युक्त होता है। गृह और संपत्ति आपके लिए महत्त्वपूर्ण होते हैं, और यह लग्न प्रायः सुख, सुंदर निवास और स्थिर साधन प्रदान करता है। जल, यात्रा और रुचिकर भोजन आपको आकर्षित करते हैं। चंद्रमा के समान आपका मन भी घटता-बढ़ता है, इसलिए स्थिरता के लिए सचेत प्रयास आवश्यक है; जीवनसाथी की राय के साथ अपने विवेक को भी महत्त्व दें। सरल और सीधा व्यवहार, भले ही घुमावदार मार्ग सुगम लगे, आपके संबंधों को सुदृढ़ रखता है।"
+        }
+      },
+      "sign": {
+        "id": "cancer",
+        "name": "Cancer",
+        "names": {
+          "en": "Cancer",
+          "hi": "कर्क"
+        }
+      }
+    },
+    "disclaimer": {
+      "en": "These predictions are indicative. For a reading of your own chart, consult an astrologer.",
+      "hi": "ये फलादेश सांकेतिक हैं। अपनी कुंडली के व्यक्तिगत विश्लेषण के लिए किसी ज्योतिषी से परामर्श करें।"
+    }
+  },
+  "meta": {
+    "cached": true,
+    "ayanamsa": {
+      "id": "lahiri"
+    },
+    "timezone": {
+      "name": "Asia/Kolkata",
+      "utc_offset": "+05:30",
+      "source": "given"
+    },
+    "engine": "0.14.2",
+    "compute_ms": 0,
+    "language_fallback": [],
+    "credits": 5
+  }
+}

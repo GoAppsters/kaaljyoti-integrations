@@ -1,0 +1,40 @@
+{
+  "status": "ok",
+  "data": {
+    "lagna": {
+      "entry": {
+        "text": {
+          "en": "With Leo rising, the Sun is the lord of your lagna, and the sign is fixed and fiery. You tend to be strong-willed, courageous and firm once you have decided, with a natural dignity that others notice. You prefer to lead rather than follow, and you have the energy to overcome opposition. Open spaces, hills and forests refresh you, and you often share a close bond with your mother. The caution is pride and a temper that flares over small matters; a moment's patience keeps your authority intact. Your close circle may be small but loyal. The eyes and the digestion deserve care.",
+          "hi": "सिंह लग्न होने पर आपके लग्न के स्वामी सूर्य हैं; यह स्थिर और अग्नि तत्त्व की राशि है। आप दृढ़ संकल्प वाले, साहसी और निर्णय पर अडिग रहने वाले होते हैं, और आपकी स्वाभाविक गरिमा दूसरों को प्रभावित करती है। आप अनुसरण करने के स्थान पर नेतृत्व करना पसंद करते हैं और विरोध पर विजय पाने की शक्ति रखते हैं। खुले स्थान, पर्वत और वन आपको नई ऊर्जा देते हैं, और माता के प्रति आपकी विशेष निष्ठा रहती है। सावधानी यह है कि अहंकार और छोटी बातों पर क्रोध आपकी प्रतिष्ठा को हानि पहुँचा सकता है; क्षणभर का धैर्य आपके अधिकार को सुरक्षित रखता है। आपका निकट परिवार छोटा किंतु निष्ठावान हो सकता है। नेत्र और पाचन के स्वास्थ्य का ध्यान रखें।"
+        }
+      },
+      "sign": {
+        "id": "leo",
+        "name": "Leo",
+        "names": {
+          "en": "Leo",
+          "hi": "सिंह"
+        }
+      }
+    },
+    "disclaimer": {
+      "en": "These predictions are indicative. For a reading of your own chart, consult an astrologer.",
+      "hi": "ये फलादेश सांकेतिक हैं। अपनी कुंडली के व्यक्तिगत विश्लेषण के लिए किसी ज्योतिषी से परामर्श करें।"
+    }
+  },
+  "meta": {
+    "cached": false,
+    "ayanamsa": {
+      "id": "lahiri"
+    },
+    "timezone": {
+      "name": null,
+      "utc_offset": "+00:00",
+      "source": "given"
+    },
+    "engine": "0.3.0",
+    "compute_ms": 0,
+    "language_fallback": [],
+    "credits": 5
+  }
+}

@@ -1,0 +1,13 @@
+# Every shell over the Kaal Jyoti API lives here (distribution plan §5).
+packages:
+  - 'packages/*'
+  - 'plugins/*'
+
+allowBuilds:
+  esbuild: true
+  workerd: set this to true or false
+
+minimumReleaseAgeExclude:
+  - '@vitest/mocker@5.0.1'
+  - '@vitest/spy@5.0.1'
+  - vitest@5.0.1

@@ -1,0 +1,117 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "kaal-jyoti/reading",
+  "title": "Kaal Jyoti Reading",
+  "category": "widgets",
+  "icon": "book-alt",
+  "description": "A written reading for a lagna or for the Moon's nakshatra (preset, picked by the visitor, or computed from a birth), or a personal reading of a birth: the house lords, the grahas, the yogas, the Vimshottari dashas, the varshphal or the life areas, or several of them as one kundli report. One call per reading; the preview in this editor calls the Kaal Jyoti API once a sign, a nakshatra or a birth is set, exactly as the published page will.",
+  "keywords": [
+    "reading",
+    "lagna",
+    "ascendant",
+    "nakshatra",
+    "house lords",
+    "bhavesha",
+    "yogas",
+    "dasha",
+    "varshphal",
+    "phaladesh",
+    "jyotish"
+  ],
+  "textdomain": "kaal-jyoti",
+  "supports": {
+    "html": false,
+    "align": ["wide", "full"],
+    "spacing": {
+      "margin": true
+    }
+  },
+  "attributes": {
+    "type": {
+      "type": "string",
+      "default": ""
+    },
+    "sign": {
+      "type": "string",
+      "default": ""
+    },
+    "nakshatra": {
+      "type": "string",
+      "default": ""
+    },
+    "year": {
+      "type": "string",
+      "default": ""
+    },
+    "parts": {
+      "type": "string",
+      "default": ""
+    },
+    "datetime": {
+      "type": "string",
+      "default": ""
+    },
+    "timezone": {
+      "type": "string",
+      "default": ""
+    },
+    "lat": {
+      "type": "string",
+      "default": ""
+    },
+    "lon": {
+      "type": "string",
+      "default": ""
+    },
+    "place": {
+      "type": "string",
+      "default": ""
+    },
+    "city": {
+      "type": "string",
+      "default": ""
+    },
+    "lang": {
+      "type": "string",
+      "default": ""
+    },
+    "disclaimer": {
+      "type": "string",
+      "default": ""
+    },
+    "disclaimer-name": {
+      "type": "string",
+      "default": ""
+    },
+    "disclaimer-url": {
+      "type": "string",
+      "default": ""
+    },
+    "powered-by": {
+      "type": "string",
+      "default": ""
+    },
+    "theme": {
+      "type": "string",
+      "default": ""
+    },
+    "preset": {
+      "type": "string",
+      "default": ""
+    },
+    "font": {
+      "type": "string",
+      "default": ""
+    },
+    "heading": {
+      "type": "string",
+      "default": ""
+    },
+    "sign-icons": {
+      "type": "string",
+      "default": ""
+    }
+  },
+  "editorScript": "file:./index.js"
+}

@@ -1,0 +1,177 @@
+/*
+ * The zodiac sign icons (`core/signs.ts`, design decision 29). Adopted by the
+ * icons' own chunk, so only a page that shows a sign carries these rules;
+ * the placeholder's size is in `base.css`, so nothing moves when they land.
+ *
+ * Tokens, overridable from the page like every `--kj-*` (declared on
+ * `:host`): for each element (fire, earth, air, water) the tile's ground
+ * `--kj-sign-<element>-bg`, the soft inner circle `--kj-sign-<element>-circle`
+ * and the symbol's stroke `--kj-sign-<element>-ink`; and for the `glyph`
+ * theme `--kj-sign-glyph` (the accent) and its ring `--kj-sign-ring`.
+ *
+ * `classic` and `modern` take the base palette; `traditional` leans to
+ * saffron and gold; `minimal` is one ink with no tint. Dark grounds get
+ * deep tiles and light strokes.
+ */
+
+:host {
+  --kj-sign-fire-bg: #faece7;
+  --kj-sign-fire-circle: #f5c4b3;
+  --kj-sign-fire-ink: #993c1d;
+  --kj-sign-earth-bg: #eaf3de;
+  --kj-sign-earth-circle: #c0dd97;
+  --kj-sign-earth-ink: #3b6d11;
+  --kj-sign-air-bg: #faeeda;
+  --kj-sign-air-circle: #fac775;
+  --kj-sign-air-ink: #854f0b;
+  --kj-sign-water-bg: #e6f1fb;
+  --kj-sign-water-circle: #b5d4f4;
+  --kj-sign-water-ink: #185fa5;
+  --kj-sign-glyph: var(--kj-accent);
+  --kj-sign-ring: color-mix(in srgb, var(--kj-sign-glyph) 45%, transparent);
+}
+
+:host([preset='traditional']) {
+  --kj-sign-fire-bg: #fdebd3;
+  --kj-sign-fire-circle: #f6bd84;
+  --kj-sign-fire-ink: #96360a;
+  --kj-sign-earth-bg: #f5efd5;
+  --kj-sign-earth-circle: #dcc982;
+  --kj-sign-earth-ink: #5a5210;
+  --kj-sign-air-bg: #fcf1d2;
+  --kj-sign-air-circle: #f0c75e;
+  --kj-sign-air-ink: #7e5306;
+  --kj-sign-water-bg: #f1eedf;
+  --kj-sign-water-circle: #cfd6bf;
+  --kj-sign-water-ink: #2c5868;
+}
+
+/*
+ * Dark: `theme="dark"`, or `auto` on a page the element found to be dark.
+ * Not `minimal`, whose one ink follows the text in every mode.
+ */
+:host([theme='dark']:not([preset='minimal'])),
+:host(:not([theme='light']):not([theme='dark'])[data-scheme='dark']:not([preset='minimal'])) {
+  --kj-sign-fire-bg: #3a1d14;
+  --kj-sign-fire-circle: #6b2e1a;
+  --kj-sign-fire-ink: #f7ad92;
+  --kj-sign-earth-bg: #1e2a12;
+  --kj-sign-earth-circle: #3a5a1c;
+  --kj-sign-earth-ink: #b0dc80;
+  --kj-sign-air-bg: #33240d;
+  --kj-sign-air-circle: #6a4810;
+  --kj-sign-air-ink: #f7c870;
+  --kj-sign-water-bg: #0f2236;
+  --kj-sign-water-circle: #1d4670;
+  --kj-sign-water-ink: #93c5f2;
+}
+
+:host([theme='dark'][preset='traditional']),
+:host(:not([theme='light']):not([theme='dark'])[data-scheme='dark'][preset='traditional']) {
+  --kj-sign-fire-bg: #3b1f0e;
+  --kj-sign-fire-circle: #7a3a12;
+  --kj-sign-fire-ink: #f8b673;
+  --kj-sign-earth-bg: #2c2810;
+  --kj-sign-earth-circle: #5a5220;
+  --kj-sign-earth-ink: #e0cf80;
+  --kj-sign-air-bg: #352708;
+  --kj-sign-air-circle: #7a5610;
+  --kj-sign-air-ink: #f4c95e;
+  --kj-sign-water-bg: #18282c;
+  --kj-sign-water-circle: #2e4e58;
+  --kj-sign-water-ink: #a2ccd4;
+}
+
+/* minimal: one ink, no tint; a hairline ring stands in for the circle. */
+:host([preset='minimal']) {
+  --kj-sign-fire-bg: transparent;
+  --kj-sign-fire-circle: transparent;
+  --kj-sign-fire-ink: var(--kj-text);
+  --kj-sign-earth-bg: transparent;
+  --kj-sign-earth-circle: transparent;
+  --kj-sign-earth-ink: var(--kj-text);
+  --kj-sign-air-bg: transparent;
+  --kj-sign-air-circle: transparent;
+  --kj-sign-air-ink: var(--kj-text);
+  --kj-sign-water-bg: transparent;
+  --kj-sign-water-circle: transparent;
+  --kj-sign-water-ink: var(--kj-text);
+  --kj-sign-glyph: var(--kj-text);
+}
+
+:host([preset='minimal']) .kj-zi .zf {
+  stroke: var(--kj-border);
+  stroke-width: 1;
+}
+
+.kj-zi[data-el='fire'] {
+  --zb: var(--kj-sign-fire-bg);
+  --zf: var(--kj-sign-fire-circle);
+  --zk: var(--kj-sign-fire-ink);
+}
+
+.kj-zi[data-el='earth'] {
+  --zb: var(--kj-sign-earth-bg);
+  --zf: var(--kj-sign-earth-circle);
+  --zk: var(--kj-sign-earth-ink);
+}
+
+.kj-zi[data-el='air'] {
+  --zb: var(--kj-sign-air-bg);
+  --zf: var(--kj-sign-air-circle);
+  --zk: var(--kj-sign-air-ink);
+}
+
+.kj-zi[data-el='water'] {
+  --zb: var(--kj-sign-water-bg);
+  --zf: var(--kj-sign-water-circle);
+  --zk: var(--kj-sign-water-ink);
+}
+
+.kj-zi {
+  --zg: var(--kj-sign-glyph);
+  --zr: var(--kj-sign-ring);
+}
+
+.kj-zi > svg,
+.kj-zi > img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.kj-zi > img {
+  object-fit: contain;
+  /* A broken image's alt text must not spill out of the square. */
+  overflow: hidden;
+  font-size: 0.5em;
+}
+
+.kj-zi .zb {
+  fill: var(--zb);
+}
+
+.kj-zi .zf {
+  fill: var(--zf);
+}
+
+.kj-zi .zk,
+.kj-zi .zo {
+  stroke: var(--zk);
+}
+
+.kj-zi .zg {
+  stroke: var(--zg);
+}
+
+.kj-zi .zr {
+  stroke: var(--zr);
+}
+
+/* The chart SVG's own `text { … }` rule lands in the same root; this beats it. */
+.kj-zi .zt {
+  fill: var(--zk);
+  stroke: none;
+  font-family: var(--kj-p-deva);
+  font-weight: 600;
+}

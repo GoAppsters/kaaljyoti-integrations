@@ -1,0 +1,93 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "kaal-jyoti/life-areas",
+  "title": "Kaal Jyoti Life Areas",
+  "category": "widgets",
+  "icon": "excerpt-view",
+  "description": "A birth form that answers with the life-areas report: a summary and eleven areas of life read from the chart. One call per submit, 5 credits.",
+  "keywords": ["life areas", "report", "prediction", "reading", "jyotish"],
+  "textdomain": "kaal-jyoti",
+  "supports": {
+    "html": false,
+    "align": ["wide", "full"],
+    "spacing": {
+      "margin": true
+    }
+  },
+  "attributes": {
+    "datetime": {
+      "type": "string",
+      "default": ""
+    },
+    "timezone": {
+      "type": "string",
+      "default": ""
+    },
+    "lat": {
+      "type": "string",
+      "default": ""
+    },
+    "lon": {
+      "type": "string",
+      "default": ""
+    },
+    "city": {
+      "type": "string",
+      "default": ""
+    },
+    "place": {
+      "type": "string",
+      "default": ""
+    },
+    "name": {
+      "type": "string",
+      "default": ""
+    },
+    "time-format": {
+      "type": "string",
+      "default": ""
+    },
+    "remember": {
+      "type": "string",
+      "default": ""
+    },
+    "lang": {
+      "type": "string",
+      "default": ""
+    },
+    "disclaimer": {
+      "type": "string",
+      "default": ""
+    },
+    "disclaimer-name": {
+      "type": "string",
+      "default": ""
+    },
+    "disclaimer-url": {
+      "type": "string",
+      "default": ""
+    },
+    "powered-by": {
+      "type": "string",
+      "default": ""
+    },
+    "theme": {
+      "type": "string",
+      "default": ""
+    },
+    "preset": {
+      "type": "string",
+      "default": ""
+    },
+    "font": {
+      "type": "string",
+      "default": ""
+    },
+    "heading": {
+      "type": "string",
+      "default": ""
+    }
+  },
+  "editorScript": "file:./index.js"
+}

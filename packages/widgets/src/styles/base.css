@@ -1,0 +1,1577 @@
+/*
+ * The shared shadow stylesheet: the design system (docs/widgets-design.md,
+ * "Design system") and every widget's layout.
+ *
+ * Tokens. Every `--kj-*` default is declared on `:host`, not `:root`. A
+ * custom property set on `:host` is the weakest declaration there is: any
+ * rule in the page that matches the element itself — `kj-panchang { --kj-bg:
+ * #111 }` — beats it, because the outer scope wins for the host element. That
+ * is what makes the whole theme overridable without a single `!important`, in
+ * every mode and preset below, and it is also what makes an inlined chart SVG
+ * pick up the page's colours: the SVG scopes its own defaults to `:root`,
+ * which does not match inside a shadow tree, so these are the ones it finds.
+ *
+ * Two axes. The *preset* (`classic` by default, `modern`, `minimal`,
+ * `traditional` — after the PDF templates) sets private `--kj-p-*` values:
+ * the accent family, the grounds and inks each theme picks from, and the
+ * heading face. The *theme* (`auto` by default, `light`, `dark`) turns those
+ * into the public tokens. `--kj-surface` is never declared, so the card's
+ * background stays `--kj-bg` and a page that sets only `--kj-bg` still
+ * colours the whole widget.
+ *
+ * Class names that the API's chart SVG also uses (`kj-chart`, `kj-planet`,
+ * `kj-lagna`, `kj-sign`, `kj-retro`, `kj-bg`, `kj-frame`, `kj-house`, …) are
+ * never put on HTML here: the SVG's own <style> lands in this shadow root and
+ * would restyle them.
+ */
+
+/* ------------------------------------------------------------------ */
+/* Presets                                                             */
+/* ------------------------------------------------------------------ */
+
+:host {
+  /* Never let the browser anchor the page's scroll inside a widget: a
+     repaint replaces that markup and the page would jump. */
+  overflow-anchor: none;
+  /* classic — cream, maroon, gold; serif heads (classic.typ) */
+  --kj-p-accent: #7a1f2b;
+  --kj-p-accent-dk: #e8b04a;
+  --kj-p-accent2: #b08d57;
+  --kj-p-accent2-dk: #d9bd8a;
+  --kj-p-ground: #fcfaf4;
+  --kj-p-ground-dk: #1b1815;
+  --kj-p-ink: #1e1b16;
+  --kj-p-ink-dk: #f3ede0;
+  --kj-p-muted: #5b5446;
+  --kj-p-muted-dk: #bdb4a2;
+  --kj-p-gold: #b08d57;
+  --kj-p-serif:
+    'Noto Serif', Georgia, 'Times New Roman', 'Noto Serif Devanagari', 'Noto Sans Devanagari', serif;
+  --kj-p-sans:
+    system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+    'Noto Sans Devanagari', 'Mukta', sans-serif;
+  --kj-p-deva:
+    'Noto Sans Devanagari', 'Mukta', 'Kohinoor Devanagari', 'Nirmala UI', 'Mangal', system-ui,
+    sans-serif;
+  --kj-p-heading: var(--kj-p-serif);
+
+  display: block;
+  box-sizing: border-box;
+  min-width: 0;
+  /*
+   * 15px, or the page's own size up to 18px: a page set in 20px text gets a
+   * widget that does not look like a footnote beside it, and a theme's
+   * `html { font-size: 62.5% }` still cannot shrink one below 15px.
+   */
+  font-size: var(--kj-size, clamp(15px, 1em, 18px));
+  --kj-accent: var(--kj-lagna);
+  --kj-tint: color-mix(in srgb, var(--kj-accent) 7%, transparent);
+  --kj-border: color-mix(in srgb, var(--kj-text) 14%, transparent);
+  --kj-field: color-mix(in srgb, var(--kj-text) 3%, transparent);
+  --kj-care: var(--kj-planet-sun);
+}
+
+/* modern — teal and amber on white; sans; a solid header band (modern.typ) */
+:host([preset='modern']) {
+  --kj-p-accent: #1b5e7a;
+  --kj-p-accent-dk: #6cc0e0;
+  --kj-p-accent2: #e0a63a;
+  --kj-p-accent2-dk: #f0c26a;
+  --kj-p-ground: #ffffff;
+  --kj-p-ground-dk: #14181c;
+  --kj-p-ink: #1b1f24;
+  --kj-p-ink-dk: #e8edf2;
+  --kj-p-muted: #4f5a66;
+  --kj-p-muted-dk: #a9b4bf;
+  --kj-p-heading: var(--kj-p-sans);
+}
+
+/* minimal — ink on white, hairlines only (minimal.typ) */
+:host([preset='minimal']) {
+  --kj-p-accent: #222222;
+  --kj-p-accent-dk: #f2f2f2;
+  --kj-p-accent2: #777777;
+  --kj-p-accent2-dk: #999999;
+  --kj-p-ground: #ffffff;
+  --kj-p-ground-dk: #121212;
+  --kj-p-ink: #111111;
+  --kj-p-ink-dk: #eeeeee;
+  --kj-p-muted: #555555;
+  --kj-p-muted-dk: #aaaaaa;
+  --kj-p-heading: var(--kj-p-sans);
+}
+
+/* traditional — maroon, saffron and gold; ornate rule (traditional.typ) */
+:host([preset='traditional']) {
+  --kj-p-accent: #7a1424;
+  --kj-p-accent-dk: #f0b25a;
+  --kj-p-accent2: #d9780f;
+  --kj-p-accent2-dk: #f3a14a;
+  --kj-p-gold: #c49a2c;
+  --kj-p-ground: #fffbf2;
+  --kj-p-ground-dk: #1d1410;
+  --kj-p-ink: #2a1a12;
+  --kj-p-ink-dk: #f5e9d8;
+  --kj-p-muted: #6b5443;
+  --kj-p-muted-dk: #c9b49c;
+  --kj-p-heading: var(--kj-p-serif);
+}
+
+/* ------------------------------------------------------------------ */
+/* Themes                                                              */
+/* ------------------------------------------------------------------ */
+
+:host([theme='light']) {
+  color-scheme: light;
+  --kj-bg: var(--kj-p-ground);
+  --kj-text: var(--kj-p-ink);
+  --kj-line: var(--kj-p-ink);
+  --kj-lagna: var(--kj-p-accent);
+  --kj-accent-2: var(--kj-p-accent2);
+  --kj-on-accent: #ffffff;
+  --kj-muted: var(--kj-p-muted);
+  --kj-planet: var(--kj-p-ink);
+  --kj-retro: var(--kj-p-muted);
+  --kj-planet-sun: #b4540a;
+  --kj-planet-moon: var(--kj-p-ink);
+  --kj-planet-mars: #c62828;
+  --kj-planet-mercury: #2e7d32;
+  --kj-planet-jupiter: #b86200;
+  --kj-planet-venus: #c2187e;
+  --kj-planet-saturn: #2049b0;
+  --kj-planet-rahu: #5f5b52;
+  --kj-planet-ketu: #5d4037;
+  --kj-good: #2e7d32;
+  --kj-bad: #c62828;
+  --kj-shadow: 0 1px 2px rgb(30 20 10 / 6%), 0 6px 24px rgb(30 20 10 / 7%);
+}
+
+:host([theme='dark']) {
+  color-scheme: dark;
+  --kj-bg: var(--kj-p-ground-dk);
+  --kj-text: var(--kj-p-ink-dk);
+  --kj-line: var(--kj-p-ink-dk);
+  --kj-lagna: var(--kj-p-accent-dk);
+  --kj-accent-2: var(--kj-p-accent2-dk);
+  --kj-on-accent: #1b1815;
+  --kj-muted: var(--kj-p-muted-dk);
+  --kj-planet: var(--kj-p-ink-dk);
+  --kj-retro: var(--kj-p-muted-dk);
+  --kj-planet-sun: #f0a24a;
+  --kj-planet-moon: var(--kj-p-ink-dk);
+  --kj-planet-mars: #ef6a5a;
+  --kj-planet-mercury: #7fd08a;
+  --kj-planet-jupiter: #f2b04a;
+  --kj-planet-venus: #f47ec0;
+  --kj-planet-saturn: #7fa3f0;
+  --kj-planet-rahu: #a8a29a;
+  --kj-planet-ketu: #c9a48c;
+  --kj-good: #7fd08a;
+  --kj-bad: #ef6a5a;
+  --kj-shadow: 0 1px 2px rgb(0 0 0 / 30%), 0 6px 24px rgb(0 0 0 / 25%);
+}
+
+/*
+ * `auto`: the page's text colour and background show through. Neutral
+ * colours derive from `currentColor`; the hues (accent, graha, good/bad) take
+ * the light values, then the dark ones under `prefers-color-scheme: dark`,
+ * then `light-dark()` where it exists, which follows the page's own
+ * `color-scheme` rather than the visitor's OS setting.
+ */
+:host(:not([theme])),
+:host([theme='auto']) {
+  --kj-bg: transparent;
+  --kj-text: currentColor;
+  --kj-line: color-mix(in srgb, currentColor 40%, transparent);
+  --kj-muted: color-mix(in srgb, currentColor 70%, transparent);
+  --kj-planet: currentColor;
+  --kj-retro: var(--kj-muted);
+  --kj-planet-moon: currentColor;
+  --kj-lagna: var(--kj-p-accent);
+  --kj-accent-2: var(--kj-p-accent2);
+  --kj-on-accent: #ffffff;
+  --kj-planet-sun: #b4540a;
+  --kj-planet-mars: #c62828;
+  --kj-planet-mercury: #2e7d32;
+  --kj-planet-jupiter: #b86200;
+  --kj-planet-venus: #c2187e;
+  --kj-planet-saturn: #2049b0;
+  --kj-planet-rahu: #5f5b52;
+  --kj-planet-ketu: #5d4037;
+  --kj-good: #2e7d32;
+  --kj-bad: #c62828;
+  --kj-shadow: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  :host(:not([theme])),
+  :host([theme='auto']) {
+    --kj-lagna: var(--kj-p-accent-dk);
+    --kj-accent-2: var(--kj-p-accent2-dk);
+    --kj-on-accent: #1b1815;
+    --kj-planet-sun: #f0a24a;
+    --kj-planet-mars: #ef6a5a;
+    --kj-planet-mercury: #7fd08a;
+    --kj-planet-jupiter: #f2b04a;
+    --kj-planet-venus: #f47ec0;
+    --kj-planet-saturn: #7fa3f0;
+    --kj-planet-rahu: #a8a29a;
+    --kj-planet-ketu: #c9a48c;
+    --kj-good: #7fd08a;
+    --kj-bad: #ef6a5a;
+  }
+}
+
+@supports (color: light-dark(#000, #fff)) {
+  :host(:not([theme])),
+  :host([theme='auto']) {
+    --kj-lagna: light-dark(var(--kj-p-accent), var(--kj-p-accent-dk));
+    --kj-accent-2: light-dark(var(--kj-p-accent2), var(--kj-p-accent2-dk));
+    --kj-on-accent: light-dark(#ffffff, #1b1815);
+    --kj-planet-sun: light-dark(#b4540a, #f0a24a);
+    --kj-planet-mars: light-dark(#c62828, #ef6a5a);
+    --kj-planet-mercury: light-dark(#2e7d32, #7fd08a);
+    --kj-planet-jupiter: light-dark(#b86200, #f2b04a);
+    --kj-planet-venus: light-dark(#c2187e, #f47ec0);
+    --kj-planet-saturn: light-dark(#2049b0, #7fa3f0);
+    --kj-planet-rahu: light-dark(#5f5b52, #a8a29a);
+    --kj-planet-ketu: light-dark(#5d4037, #c9a48c);
+    --kj-good: light-dark(#2e7d32, #7fd08a);
+    --kj-bad: light-dark(#c62828, #ef6a5a);
+  }
+}
+
+/*
+ * `auto` on a page whose own colours are known: the element reads the text
+ * colour it inherits (light text means a dark page) and says so in
+ * `data-scheme`, which beats both the visitor's OS setting and a page that
+ * never declared `color-scheme`. A dark site with a transparent widget gets
+ * the dark hues whatever the OS says, and a light one the light hues.
+ */
+:host(:not([theme])[data-scheme='dark']),
+:host([theme='auto'][data-scheme='dark']) {
+  --kj-lagna: var(--kj-p-accent-dk);
+  --kj-accent-2: var(--kj-p-accent2-dk);
+  --kj-on-accent: #1b1815;
+  --kj-planet-sun: #f0a24a;
+  --kj-planet-mars: #ef6a5a;
+  --kj-planet-mercury: #7fd08a;
+  --kj-planet-jupiter: #f2b04a;
+  --kj-planet-venus: #f47ec0;
+  --kj-planet-saturn: #7fa3f0;
+  --kj-planet-rahu: #a8a29a;
+  --kj-planet-ketu: #c9a48c;
+  --kj-good: #7fd08a;
+  --kj-bad: #ef6a5a;
+}
+
+:host(:not([theme])[data-scheme='light']),
+:host([theme='auto'][data-scheme='light']) {
+  --kj-lagna: var(--kj-p-accent);
+  --kj-accent-2: var(--kj-p-accent2);
+  --kj-on-accent: #ffffff;
+  --kj-planet-sun: #b4540a;
+  --kj-planet-mars: #c62828;
+  --kj-planet-mercury: #2e7d32;
+  --kj-planet-jupiter: #b86200;
+  --kj-planet-venus: #c2187e;
+  --kj-planet-saturn: #2049b0;
+  --kj-planet-rahu: #5f5b52;
+  --kj-planet-ketu: #5d4037;
+  --kj-good: #2e7d32;
+  --kj-bad: #c62828;
+}
+
+/*
+ * Text on the accent: white or near-black, whichever reads on it. A page that
+ * sets only `--kj-accent` (a pale brand yellow, say) still gets readable
+ * buttons, tabs and badges; a page that sets `--kj-on-accent` itself wins,
+ * as with every token. Engines without relative colours keep the theme's.
+ */
+@supports (color: oklch(from red l c h)) {
+  :host,
+  :host([theme]),
+  :host(:not([theme])) {
+    --kj-on-accent: oklch(from var(--kj-accent) clamp(0, (0.68 - l) * 1000, 1) 0 0);
+  }
+}
+
+:host([hidden]) {
+  display: none;
+}
+
+/* `hidden` wins over a component's own display, inside the card too. */
+.kj-card [hidden] {
+  display: none;
+}
+
+* {
+  box-sizing: inherit;
+}
+
+/* ------------------------------------------------------------------ */
+/* The card: header band, body, footer                                 */
+/* ------------------------------------------------------------------ */
+
+.kj-card {
+  container-type: inline-size;
+  position: relative;
+  color: var(--kj-text);
+  background: var(--kj-surface, var(--kj-bg));
+  border: 1px solid var(--kj-border);
+  border-radius: var(--kj-radius, 12px);
+  box-shadow: var(--kj-shadow);
+  font-family: var(--kj-font, var(--kj-p-sans));
+  font-size: 1em;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  overflow-wrap: break-word;
+  /* A full-width block on a wide page: the card stops growing, centred. */
+  max-width: var(--kj-max-width, 72em);
+  margin-inline: auto;
+}
+
+/*
+ * `font="inherit"` (or `data-font` / `configure({ font })`): the page's own
+ * font. The element puts the page's stack in `--kj-font-inherited`, and the
+ * same stack with the Devanagari faces behind it in `--kj-font-inherited-hi`;
+ * without them (no computed style) the values are invalid, so `font-family`
+ * falls back to inheriting, which is the page's font too.
+ */
+:host([font='inherit']) .kj-card {
+  --kj-p-sans: var(--kj-font-inherited);
+  --kj-p-serif: var(--kj-font-inherited);
+  --kj-p-heading: var(--kj-font-inherited);
+  --kj-p-deva: var(--kj-font-inherited-hi);
+}
+
+/* Devanagari first for Hindi, and room for its matras. */
+.kj-card:lang(hi) {
+  font-family: var(--kj-font, var(--kj-p-deva));
+  line-height: 1.75;
+}
+
+:host([frame='none']) .kj-card {
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+:host([frame='none']) .kj-body {
+  padding: 0;
+}
+
+.kj-head {
+  position: relative;
+  padding: 1em 1.125em 0.8125em;
+  border-bottom: 1px solid var(--kj-border);
+  border-radius: calc(var(--kj-radius, 12px) - 1px) calc(var(--kj-radius, 12px) - 1px) 0 0;
+}
+
+/* The thin accent rule under a classic title. */
+.kj-head::after {
+  content: '';
+  position: absolute;
+  left: 1.125em;
+  bottom: -1px;
+  width: 3.5em;
+  height: 2px;
+  background: var(--kj-accent-2);
+}
+
+.kj-heading {
+  margin: 0;
+  font-family: var(--kj-font-heading, var(--kj-p-heading));
+  font-size: 1.25em;
+  font-weight: 650;
+  line-height: 1.3;
+  color: var(--kj-accent);
+}
+
+.kj-card:lang(hi) .kj-heading {
+  font-family: var(--kj-font-heading, var(--kj-p-deva));
+  line-height: 1.5;
+}
+
+.kj-sub {
+  margin: 0.1875em 0 0;
+  font-size: 0.875em;
+  color: var(--kj-muted);
+}
+
+:host([preset='modern']) .kj-head {
+  background: var(--kj-accent);
+  border-bottom-color: transparent;
+}
+
+:host([preset='modern']) .kj-head::after {
+  display: none;
+}
+
+:host([preset='modern']) .kj-heading {
+  color: var(--kj-on-accent);
+}
+
+:host([preset='modern']) .kj-sub {
+  color: color-mix(in srgb, var(--kj-on-accent) 85%, transparent);
+}
+
+:host([preset='minimal']) .kj-head::after {
+  display: none;
+}
+
+:host([preset='minimal']) .kj-heading {
+  color: var(--kj-text);
+  font-weight: 600;
+}
+
+/* A tinted band, a gold rule across it and a saffron diamond on the rule. */
+:host([preset='traditional']) .kj-head {
+  text-align: center;
+  background: var(--kj-tint);
+  border-bottom-color: transparent;
+}
+
+:host([preset='traditional']) .kj-head::before {
+  content: '';
+  position: absolute;
+  left: 1.125em;
+  right: 1.125em;
+  bottom: 0;
+  height: 1px;
+  background: var(--kj-p-gold);
+}
+
+:host([preset='traditional']) .kj-head::after {
+  left: 50%;
+  bottom: -0.25em;
+  width: 0.5em;
+  height: 0.5em;
+  background: var(--kj-accent-2);
+  transform: translateX(-50%) rotate(45deg);
+}
+
+.kj-body {
+  padding: 1em 1.125em 1.125em;
+}
+
+.kj-foot-slot {
+  display: contents;
+}
+
+.kj-foot {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.375em 1em;
+  align-items: baseline;
+  justify-content: space-between;
+  padding: 0.625em 1.125em 0.75em;
+  border-top: 1px solid var(--kj-border);
+  font-size: 0.8125em;
+  color: var(--kj-muted);
+}
+
+.kj-disclaimer {
+  flex: 1 1 18em;
+  margin: 0;
+}
+
+.kj-powered {
+  margin-left: auto;
+}
+
+.kj-powered a {
+  color: var(--kj-muted);
+  text-decoration: none;
+}
+
+.kj-powered a:hover {
+  color: var(--kj-accent);
+  text-decoration: underline;
+}
+
+/* ------------------------------------------------------------------ */
+/* Type and small utilities                                            */
+/* ------------------------------------------------------------------ */
+
+.kj-section:not(:first-child) {
+  margin-top: 1.375em;
+}
+
+.kj-h3 {
+  margin: 0 0 0.625em;
+  font-size: 1.0625em;
+  font-weight: 650;
+  line-height: 1.35;
+  color: var(--kj-text);
+}
+
+.kj-muted {
+  color: var(--kj-muted);
+}
+
+.kj-row > .kj-h3 {
+  margin: 0;
+}
+
+.kj-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25em 0.75em;
+  align-items: baseline;
+}
+
+.kj-time {
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+/*
+ * A sign's icon (`signIcon()`; drawn by the icons' own chunk, whose sheet
+ * colours it). The size is here so the empty placeholder holds its place
+ * until the drawing lands: inline in a table, `m` beside a value, `l` in the
+ * horoscope's picker.
+ */
+.kj-zi {
+  display: inline-block;
+  flex: none;
+  width: 1.3em;
+  height: 1.3em;
+  margin-right: 0.3em;
+  vertical-align: -0.3em;
+}
+
+.kj-zi-m {
+  width: 2em;
+  height: 2em;
+  margin-right: 0.45em;
+  vertical-align: -0.6em;
+}
+
+.kj-tile-value:has(> .kj-zi-m) {
+  display: flex;
+  align-items: center;
+}
+
+.kj-zi-l {
+  width: 3em;
+  height: 3em;
+  margin: 0;
+}
+
+.kj-sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.kj-good {
+  color: var(--kj-good);
+}
+
+.kj-bad {
+  color: var(--kj-bad);
+}
+
+.kj-mid {
+  color: var(--kj-accent-2);
+}
+
+:focus-visible {
+  outline: 2px solid var(--kj-accent);
+  outline-offset: 2px;
+}
+
+a {
+  color: var(--kj-accent);
+}
+
+/* ------------------------------------------------------------------ */
+/* Tiles                                                               */
+/* ------------------------------------------------------------------ */
+
+.kj-tiles {
+  /* At most four across, at least 8.25em each: 2 on a phone, 4 on a desktop. */
+  --kj-gap: 0.625em;
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(max(min(100%, 8.25em), calc((100% - 3 * var(--kj-gap)) / 4)), 1fr)
+  );
+  gap: var(--kj-gap);
+}
+
+.kj-tile {
+  min-width: 0;
+  padding: 0.6875em 0.875em 0.75em;
+  background: var(--kj-tint);
+  border: 1px solid var(--kj-border);
+  border-radius: calc(var(--kj-radius, 12px) * 0.75);
+}
+
+.kj-tile-label {
+  font-size: 0.8125em;
+  color: var(--kj-muted);
+}
+
+.kj-tile-value {
+  margin-top: 0.125em;
+  font-size: 1.0625em;
+  font-weight: 650;
+  line-height: 1.35;
+}
+
+.kj-tile-sub {
+  margin-top: 0.25em;
+  font-size: 0.8125em;
+  color: var(--kj-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.kj-tone-good {
+  border-left: 3px solid var(--kj-good);
+}
+
+.kj-tone-bad {
+  border-left: 3px solid var(--kj-bad);
+}
+
+:host([preset='minimal']) .kj-tile {
+  background: transparent;
+}
+
+/* ------------------------------------------------------------------ */
+/* Badges, levels, buttons                                             */
+/* ------------------------------------------------------------------ */
+
+.kj-badge,
+.kj-level {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.0625em 0.5625em;
+  font-size: 0.78em;
+  font-weight: 650;
+  line-height: 1.55;
+  white-space: nowrap;
+  vertical-align: 0.08em;
+  border: 1px solid currentColor;
+  border-radius: 999px;
+}
+
+.kj-badge-retro,
+.kj-badge-muted,
+.kj-badge-dignity {
+  color: var(--kj-muted);
+}
+
+.kj-badge-vargottama {
+  color: var(--kj-accent);
+}
+
+.kj-badge-dignity-good,
+.kj-badge-good,
+.kj-level-favourable {
+  color: var(--kj-good);
+}
+
+.kj-badge-dignity-bad,
+.kj-badge-bad {
+  color: var(--kj-bad);
+}
+
+.kj-badge-care,
+.kj-level-care {
+  color: var(--kj-care);
+}
+
+.kj-level-mixed {
+  color: var(--kj-muted);
+}
+
+.kj-badge-current {
+  color: var(--kj-on-accent);
+  background: var(--kj-accent);
+  border-color: var(--kj-accent);
+}
+
+.kj-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5em;
+  min-height: 44px;
+  padding: 0.5em 1.375em;
+  font: inherit;
+  font-weight: 650;
+  color: var(--kj-on-accent);
+  background: var(--kj-accent);
+  border: 1px solid var(--kj-accent);
+  border-radius: calc(var(--kj-radius, 12px) * 0.67);
+  cursor: pointer;
+}
+
+.kj-btn:hover {
+  filter: brightness(1.08);
+}
+
+.kj-btn-quiet {
+  color: var(--kj-accent);
+  background: transparent;
+  border-color: color-mix(in srgb, var(--kj-accent) 45%, transparent);
+}
+
+.kj-link-btn {
+  padding: 0.25em 0;
+  font: inherit;
+  font-size: 0.875em;
+  color: var(--kj-accent);
+  background: none;
+  border: 0;
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+  cursor: pointer;
+}
+
+/* ------------------------------------------------------------------ */
+/* Tabs and segmented controls                                         */
+/* ------------------------------------------------------------------ */
+
+.kj-tabs {
+  display: flex;
+  gap: 0.125em;
+  margin: 0 0 1.125em;
+  overflow-x: auto;
+  border-bottom: 1px solid var(--kj-border);
+  scrollbar-width: none;
+}
+
+.kj-tabs::-webkit-scrollbar {
+  display: none;
+}
+
+.kj-tab {
+  flex: 0 0 auto;
+  min-height: 44px;
+  margin-bottom: -1px;
+  padding: 0.5em 0.875em;
+  font: inherit;
+  font-size: 0.9375em;
+  font-weight: 600;
+  color: var(--kj-muted);
+  white-space: nowrap;
+  background: none;
+  border: 0;
+  border-bottom: 3px solid transparent;
+  border-radius: 6px 6px 0 0;
+  cursor: pointer;
+}
+
+.kj-tab:hover {
+  color: var(--kj-text);
+  background: var(--kj-tint);
+}
+
+.kj-tab[aria-selected='true'] {
+  color: var(--kj-accent);
+  border-bottom-color: var(--kj-accent);
+}
+
+.kj-panel:focus-visible {
+  outline-offset: 4px;
+}
+
+.kj-seg {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 2px;
+  max-width: 100%;
+  padding: 3px;
+  background: var(--kj-tint);
+  border: 1px solid var(--kj-border);
+  border-radius: 999px;
+}
+
+.kj-seg-btn {
+  min-height: 36px;
+  padding: 0.3125em 0.9375em;
+  font: inherit;
+  font-size: 0.875em;
+  color: var(--kj-text);
+  background: transparent;
+  border: 0;
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.kj-seg-btn:hover {
+  background: color-mix(in srgb, var(--kj-accent) 10%, transparent);
+}
+
+.kj-seg-btn[aria-pressed='true'] {
+  font-weight: 650;
+  color: var(--kj-on-accent);
+  background: var(--kj-accent);
+}
+
+.kj-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5em 0.75em;
+  align-items: center;
+  justify-content: center;
+  margin: 0 0 1em;
+}
+
+/* ------------------------------------------------------------------ */
+/* Tables                                                              */
+/* ------------------------------------------------------------------ */
+
+.kj-table-wrap {
+  margin: 0 -1.125em;
+  padding: 0 1.125em;
+  overflow-x: auto;
+}
+
+.kj-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9375em;
+  font-variant-numeric: tabular-nums;
+}
+
+.kj-table th,
+.kj-table td {
+  padding: 0.5625em 0.625em;
+  text-align: left;
+  vertical-align: middle;
+  white-space: nowrap;
+  border-bottom: 1px solid var(--kj-border);
+}
+
+.kj-table thead th {
+  font-size: 0.8667em;
+  font-weight: 600;
+  color: var(--kj-muted);
+  background: var(--kj-tint);
+}
+
+.kj-table tbody th {
+  font-weight: 650;
+}
+
+.kj-table tbody tr:hover {
+  background: var(--kj-tint);
+}
+
+.kj-table .kj-wrap {
+  min-width: 9em;
+  white-space: normal;
+}
+
+.kj-table .kj-num {
+  text-align: right;
+}
+
+.kj-table .kj-badge {
+  margin-left: 0.25em;
+}
+
+:host([preset='modern']) .kj-table thead th {
+  color: var(--kj-on-accent);
+  background: var(--kj-accent);
+}
+
+:host([preset='modern']) .kj-table tbody tr:nth-child(even) {
+  background: var(--kj-tint);
+}
+
+:host([preset='minimal']) .kj-table thead th {
+  background: transparent;
+  border-bottom-color: var(--kj-text);
+}
+
+/* ------------------------------------------------------------------ */
+/* States                                                              */
+/* ------------------------------------------------------------------ */
+
+.kj-state {
+  display: grid;
+  gap: 0.375em;
+  justify-items: center;
+  padding: 1.5em 1em;
+  text-align: center;
+}
+
+.kj-state-icon {
+  line-height: 0;
+  color: var(--kj-accent);
+}
+
+.kj-state-error .kj-state-icon {
+  color: var(--kj-bad);
+}
+
+.kj-state-title {
+  margin: 0;
+  font-size: 1.0625em;
+  font-weight: 650;
+  color: var(--kj-text);
+}
+
+.kj-state-body {
+  max-width: 32em;
+  margin: 0;
+  font-size: 0.9375em;
+  color: var(--kj-text);
+}
+
+.kj-state-owner {
+  margin: 0.375em 0 0;
+  font-size: 0.8125em;
+  color: var(--kj-muted);
+}
+
+.kj-state-plan {
+  background: var(--kj-tint);
+  border: 1px dashed color-mix(in srgb, var(--kj-accent) 40%, transparent);
+  border-radius: calc(var(--kj-radius, 12px) * 0.75);
+}
+
+/* A form's own validation line, above its button. */
+.kj-notice {
+  margin: 0;
+  padding: 0.625em 0.875em;
+  font-size: 0.9375em;
+  color: var(--kj-bad);
+  background: color-mix(in srgb, var(--kj-bad) 8%, transparent);
+  border-radius: calc(var(--kj-radius, 12px) * 0.5);
+}
+
+/* ------------------------------------------------------------------ */
+/* Skeleton                                                            */
+/* ------------------------------------------------------------------ */
+
+.kj-skeleton {
+  --kj-sk1: color-mix(in srgb, var(--kj-text) 6%, transparent);
+  --kj-sk2: color-mix(in srgb, var(--kj-text) 13%, transparent);
+}
+
+.kj-sk {
+  display: block;
+  background: linear-gradient(90deg, var(--kj-sk1) 25%, var(--kj-sk2) 50%, var(--kj-sk1) 75%);
+  background-size: 200% 100%;
+  border-radius: 6px;
+  animation: kj-shimmer 1.4s ease-in-out infinite;
+}
+
+.kj-sk-line {
+  height: 0.875em;
+  margin: 0.75em 0;
+}
+
+.kj-sk-tiles {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 8.25em), 1fr));
+  gap: 0.625em;
+}
+
+.kj-sk-tile {
+  height: 4.5em;
+  border-radius: calc(var(--kj-radius, 12px) * 0.75);
+}
+
+.kj-sk-chart {
+  width: min(100%, 22em);
+  margin: 0 auto;
+  aspect-ratio: 1;
+}
+
+@keyframes kj-shimmer {
+  from {
+    background-position: 100% 0;
+  }
+  to {
+    background-position: -100% 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .kj-sk {
+    animation: none;
+  }
+
+  .kj-ring-fill {
+    transition: none;
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/* Forms                                                               */
+/* ------------------------------------------------------------------ */
+
+.kj-form {
+  display: grid;
+  gap: 0.9375em;
+  min-width: 0;
+}
+
+.kj-intro {
+  margin: 0;
+  color: var(--kj-muted);
+}
+
+.kj-field {
+  display: grid;
+  gap: 0.3125em;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.kj-label,
+.kj-field > legend {
+  padding: 0;
+  font-size: 0.875em;
+  font-weight: 600;
+  color: var(--kj-text);
+}
+
+.kj-opt {
+  font-weight: 400;
+  color: var(--kj-muted);
+}
+
+.kj-input,
+.kj-select {
+  width: 100%;
+  min-height: 44px;
+  padding: 0.5em 0.75em;
+  font: inherit;
+  /* 16px keeps iOS from zooming the page when a field takes the focus. */
+  font-size: max(16px, 1em);
+  line-height: 1.3;
+  color: var(--kj-text);
+  background-color: var(--kj-field);
+  border: 1px solid color-mix(in srgb, var(--kj-text) 26%, transparent);
+  border-radius: calc(var(--kj-radius, 12px) * 0.5);
+}
+
+.kj-select {
+  appearance: none;
+  padding-right: 2em;
+  background-image:
+    linear-gradient(45deg, transparent 50%, currentColor 50%),
+    linear-gradient(135deg, currentColor 50%, transparent 50%);
+  background-position:
+    calc(100% - 1.15em) 55%,
+    calc(100% - 0.8em) 55%;
+  background-size: 0.35em 0.35em;
+  background-repeat: no-repeat;
+}
+
+.kj-input:focus,
+.kj-select:focus {
+  outline: none;
+  border-color: var(--kj-accent);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--kj-accent) 22%, transparent);
+}
+
+.kj-input[aria-invalid='true'],
+.kj-select[aria-invalid='true'] {
+  border-color: var(--kj-bad);
+}
+
+/* A native option list is drawn by the OS; let it follow the colour scheme. */
+.kj-select option {
+  color: CanvasText;
+  background: Canvas;
+}
+
+.kj-trio .kj-select,
+.kj-duo .kj-select {
+  padding-left: 0.625em;
+  padding-right: 1.75em;
+  background-position:
+    calc(100% - 0.95em) 55%,
+    calc(100% - 0.6em) 55%;
+}
+
+.kj-trio {
+  display: grid;
+  grid-template-columns: 1fr 1.3fr 1.1fr;
+  gap: 0.5em;
+}
+
+.kj-duo {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5em;
+}
+
+.kj-field-error {
+  margin: 0;
+  font-size: 0.8125em;
+  font-weight: 600;
+  color: var(--kj-bad);
+}
+
+.kj-help {
+  margin: 0;
+  font-size: 0.8125em;
+  color: var(--kj-muted);
+}
+
+.kj-resolved {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.125em 0.75em;
+  align-items: baseline;
+  padding: 0.5em 0.75em;
+  font-size: 0.875em;
+  background: var(--kj-tint);
+  border-radius: calc(var(--kj-radius, 12px) * 0.5);
+}
+
+.kj-resolved strong {
+  font-weight: 650;
+}
+
+.kj-coords > summary {
+  width: max-content;
+  max-width: 100%;
+  padding: 0.25em 0;
+  font-size: 0.875em;
+  font-weight: 600;
+  color: var(--kj-accent);
+  cursor: pointer;
+}
+
+.kj-coords-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5em 0.625em;
+  margin-top: 0.5em;
+}
+
+.kj-coords-grid .kj-span {
+  grid-column: 1 / -1;
+}
+
+.kj-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5em 1em;
+  align-items: center;
+}
+
+.kj-remembered {
+  margin: 0;
+  font-size: 0.8125em;
+  color: var(--kj-muted);
+}
+
+/* The form after a submit: who and when, on one line, and "Edit details". */
+.kj-collapsed {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5em 1em;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.625em 0.875em;
+  background: var(--kj-tint);
+  border: 1px solid var(--kj-border);
+  border-radius: calc(var(--kj-radius, 12px) * 0.5);
+}
+
+.kj-collapsed:focus {
+  outline: none;
+}
+
+.kj-collapsed:focus-visible {
+  outline: 2px solid var(--kj-accent);
+}
+
+.kj-collapsed-lines {
+  flex: 1 1 16em;
+  min-width: 0;
+}
+
+.kj-collapsed p {
+  margin: 0;
+  font-weight: 600;
+}
+
+.kj-collapsed p + p {
+  margin-top: 0.25em;
+}
+
+.kj-btn-small {
+  min-height: 36px;
+  padding: 0.25em 0.875em;
+  font-size: 0.875em;
+}
+
+@container (min-width: 34em) {
+  .kj-form-grid {
+    grid-template-columns: 1fr 1fr;
+    column-gap: 1em;
+  }
+
+  .kj-form-grid > .kj-span {
+    grid-column: 1 / -1;
+  }
+}
+
+/* The place search: our own suggestion list under the box. */
+.kj-search {
+  position: relative;
+}
+
+.kj-suggest {
+  position: absolute;
+  inset: calc(100% + 4px) 0 auto;
+  z-index: 10;
+  max-height: 20em;
+  margin: 0;
+  padding: 0.25em;
+  overflow-y: auto;
+  list-style: none;
+  font-size: 0.9375em;
+  color: CanvasText;
+  background: Canvas;
+  border: 1px solid var(--kj-border);
+  border-radius: calc(var(--kj-radius, 12px) * 0.5);
+  box-shadow: 0 10px 30px rgb(0 0 0 / 16%);
+}
+
+:host([theme='light']) .kj-suggest,
+:host([theme='dark']) .kj-suggest {
+  color: var(--kj-text);
+  background: var(--kj-bg);
+}
+
+.kj-suggest li {
+  padding: 0.5em 0.625em;
+  border-radius: calc(var(--kj-radius, 12px) * 0.33);
+}
+
+.kj-suggest [data-i]:hover,
+.kj-suggest [aria-selected='true'] {
+  cursor: pointer;
+  background: color-mix(in srgb, var(--kj-accent) 14%, transparent);
+}
+
+/*
+ * Google Maps Platform's text attribution, as its guidelines draw it:
+ * Roboto 400 at 12px, #5e5e5e on a light surface and white on a dark one.
+ */
+.kj-gm {
+  font:
+    400 12px Roboto,
+    sans-serif;
+  color: light-dark(#5e5e5e, #fff);
+  text-align: right;
+}
+
+/* OpenStreetMap's credit under Photon's places: small, and a real link. */
+.kj-osm {
+  font-size: 0.8125em;
+  text-align: right;
+}
+
+.kj-osm a {
+  color: inherit;
+}
+
+/* ------------------------------------------------------------------ */
+/* Charts                                                              */
+/* ------------------------------------------------------------------ */
+
+.kj-chartbox {
+  display: grid;
+  gap: 0.625em;
+  justify-items: center;
+  margin: 0;
+}
+
+.kj-svg {
+  width: 100%;
+  max-width: 26em;
+}
+
+.kj-svg svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/*
+ * The API sets its labels in a monospaced face, and in a corner house of
+ * the north chart a planet with its degree runs into the frame. The card's
+ * own proportional face is about a fifth narrower, and a halo in the chart's
+ * ground keeps a label readable where it crosses a house line.
+ */
+.kj-svg text {
+  font-family: var(--kj-font, var(--kj-p-sans));
+  font-variant-numeric: tabular-nums;
+  paint-order: stroke;
+  stroke: var(--kj-chart-bg, var(--kj-bg));
+  stroke-width: 2.5px;
+  stroke-linejoin: round;
+}
+
+/* The API's drawing, made to sit in the card: a firmer frame in the accent. */
+.kj-svg .kj-frame {
+  stroke: var(--kj-accent);
+  stroke-width: 3px;
+}
+
+.kj-svg .kj-house {
+  stroke: color-mix(in srgb, var(--kj-line) 55%, transparent);
+  stroke-width: 1.25px;
+}
+
+.kj-svg .kj-tint {
+  fill: var(--kj-accent);
+  fill-opacity: 0.1;
+}
+
+.kj-svg .kj-mark {
+  stroke: var(--kj-accent);
+  stroke-width: 2px;
+}
+
+.kj-svg .kj-bg {
+  fill: var(--kj-chart-bg, var(--kj-bg));
+}
+
+.kj-caption {
+  margin: 0;
+  font-size: 0.875em;
+  color: var(--kj-muted);
+  text-align: center;
+}
+
+.kj-slot:empty {
+  display: none;
+}
+
+/* ------------------------------------------------------------------ */
+/* Kundli report                                                       */
+/* ------------------------------------------------------------------ */
+
+.kj-result {
+  margin-top: 1.25em;
+  padding-top: 1.25em;
+  border-top: 1px solid var(--kj-border);
+}
+
+.kj-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.375em;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.kj-chip {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 0.125em 0.375em;
+  align-items: baseline;
+  padding: 0.25em 0.625em;
+  font-size: 0.875em;
+  background: var(--kj-tint);
+  border: 1px solid var(--kj-border);
+  border-radius: 999px;
+}
+
+.kj-chip small {
+  color: var(--kj-muted);
+}
+
+.kj-prose {
+  max-width: 44em;
+  line-height: 1.7;
+}
+
+.kj-card:lang(hi) .kj-prose {
+  line-height: 1.85;
+}
+
+.kj-prose p {
+  margin: 0 0 0.875em;
+}
+
+.kj-prose p:last-child {
+  margin-bottom: 0;
+}
+
+.kj-more {
+  margin-top: 0.5em;
+}
+
+.kj-now-row {
+  background: var(--kj-tint);
+}
+
+.kj-now-row th:first-child {
+  box-shadow: inset 3px 0 0 var(--kj-accent);
+}
+
+/* ------------------------------------------------------------------ */
+/* Horoscope and readings                                              */
+/* ------------------------------------------------------------------ */
+
+.kj-reading-head {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25em 0.75em;
+  align-items: baseline;
+  margin: 0 0 0.75em;
+}
+
+.kj-reading-title {
+  margin: 0;
+  font-family: var(--kj-font-heading, var(--kj-p-heading));
+  font-size: 1.1875em;
+  font-weight: 650;
+  color: var(--kj-accent);
+}
+
+.kj-card:lang(hi) .kj-reading-title {
+  font-family: var(--kj-font-heading, var(--kj-p-deva));
+}
+
+.kj-summary {
+  margin: 0 0 1em;
+  padding: 0.875em 1em;
+  background: var(--kj-tint);
+  border-left: 3px solid var(--kj-accent);
+  border-radius: 0 calc(var(--kj-radius, 12px) * 0.5) calc(var(--kj-radius, 12px) * 0.5) 0;
+}
+
+.kj-summary p {
+  margin: 0.375em 0 0;
+  line-height: 1.7;
+}
+
+.kj-areas {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 19em), 1fr));
+  gap: 0.75em;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.kj-area {
+  padding: 0.875em 1em;
+  border: 1px solid var(--kj-border);
+  border-left: 3px solid var(--kj-level-c, var(--kj-border));
+  border-radius: calc(var(--kj-radius, 12px) * 0.5);
+}
+
+.kj-area[data-level='favourable'] {
+  --kj-level-c: var(--kj-good);
+}
+
+.kj-area[data-level='care'] {
+  --kj-level-c: var(--kj-care);
+}
+
+.kj-area[data-level='mixed'] {
+  --kj-level-c: var(--kj-muted);
+}
+
+.kj-area-head {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25em 0.625em;
+  align-items: baseline;
+  justify-content: space-between;
+  margin: 0 0 0.375em;
+}
+
+.kj-area p {
+  margin: 0;
+  line-height: 1.65;
+}
+
+.kj-items {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.kj-item {
+  padding: 0.875em 0;
+  border-top: 1px solid var(--kj-border);
+}
+
+.kj-item:first-child {
+  padding-top: 0;
+  border-top: 0;
+}
+
+.kj-item-head {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25em 0.625em;
+  align-items: baseline;
+  margin: 0 0 0.375em;
+  font-size: 1.0625em;
+  font-weight: 650;
+  color: var(--kj-text);
+}
+
+.kj-item p {
+  margin: 0 0 0.5em;
+  line-height: 1.7;
+}
+
+.kj-item p:last-child {
+  margin-bottom: 0;
+}
+
+/* The running mahadasha: a bar in the accent down its side. */
+.kj-current {
+  padding-left: 0.875em;
+  border-left: 3px solid var(--kj-accent);
+}
+
+.kj-part + .kj-part {
+  margin-top: 1.5em;
+  padding-top: 1.25em;
+  border-top: 1px solid var(--kj-border);
+}
+
+.kj-fold summary {
+  padding: 0.5em 0;
+  font-weight: 600;
+  color: var(--kj-accent);
+  cursor: pointer;
+}
+
+.kj-list {
+  display: grid;
+  gap: 0.375em;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 0.9375em;
+}
+
+.kj-lead {
+  margin: 0 0 1em;
+  font-size: 1.0625em;
+}

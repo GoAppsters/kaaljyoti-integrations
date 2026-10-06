@@ -1,0 +1,33 @@
+{
+  "name": "kaaljyoti/wordpress-plugin-dev",
+  "description": "Development dependencies for the Kaal Jyoti WordPress plugin (the plugin itself ships without Composer).",
+  "type": "project",
+  "license": "MIT",
+  "require": {
+    "php": ">=8.2"
+  },
+  "require-dev": {
+    "brain/monkey": "^2.6",
+    "dealerdirect/phpcodesniffer-composer-installer": "^1.0",
+    "php-stubs/wordpress-stubs": "^6.6",
+    "phpunit/phpunit": "^11.5",
+    "wp-coding-standards/wpcs": "^3.1"
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "KaalJyoti\\WP\\Tests\\": "tests/"
+    }
+  },
+  "scripts": {
+    "test": "phpunit",
+    "phpcs": "phpcs --standard=phpcs.xml.dist",
+    "phpcbf": "phpcbf --standard=phpcs.xml.dist",
+    "lint": "find kaal-jyoti -name '*.php' -not -path '*/vendor/*' -print0 | xargs -0 -n1 php -l > /dev/null"
+  },
+  "config": {
+    "allow-plugins": {
+      "dealerdirect/phpcodesniffer-composer-installer": true
+    },
+    "sort-packages": true
+  }
+}

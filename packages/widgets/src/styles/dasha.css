@@ -1,0 +1,77 @@
+/* `<kj-dasha>`: the drill-down's row buttons and breadcrumb. */
+
+/* Clickable table rows (the dasha drill-down): the button is the cell. */
+.kj-row-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375em;
+  min-height: 32px;
+  padding: 0;
+  font: inherit;
+  font-weight: inherit;
+  color: inherit;
+  text-align: left;
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+
+.kj-row-btn::after {
+  content: '›';
+  color: var(--kj-accent);
+  font-weight: 700;
+}
+
+.kj-row-btn:hover {
+  text-decoration: underline;
+}
+
+.kj-crumbs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25em 0.375em;
+  align-items: center;
+  margin: 0 0 0.75em;
+  padding: 0;
+  font-size: 0.9375em;
+  list-style: none;
+}
+
+.kj-crumbs li + li::before {
+  content: '›';
+  margin-right: 0.375em;
+  color: var(--kj-muted);
+}
+
+.kj-crumbs [aria-current] {
+  font-weight: 650;
+}
+
+/* The same band as the kundli report's (`report.css`): one stylesheet per chunk, so
+   the rules are written twice rather than costing both pages a shared file. */
+.kj-dasha-bar {
+  display: flex;
+  height: 2em;
+  overflow: hidden;
+  border: 1px solid var(--kj-border);
+  border-radius: calc(var(--kj-radius, 12px) * 0.5);
+}
+
+.kj-dasha-bar span {
+  display: grid;
+  place-items: center;
+  min-width: 0;
+  overflow: hidden;
+  font-size: 0.75em;
+  font-weight: 700;
+  color: #fff;
+  white-space: nowrap;
+  background: var(--kj-seg-c, var(--kj-accent));
+  border-right: 1px solid rgb(255 255 255 / 45%);
+  opacity: 0.8;
+}
+
+.kj-dasha-bar span.kj-is-current {
+  opacity: 1;
+  box-shadow: inset 0 0 0 3px var(--kj-text);
+}

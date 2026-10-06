@@ -1,0 +1,53 @@
+# Release `@kaaljyoti/widgets` on a `widgets-v*` tag.
+#
+# Two destinations, both owner-gated by repository secrets that do not exist
+# yet: npm (NPM_TOKEN, once the @kaaljyoti organisation is claimed) and the
+# CDN bucket kaaljyoti-cdn behind cdn.kaaljyoti.com (CLOUDFLARE_API_TOKEN with
+# Workers R2 Storage: Edit). Until a secret is set the corresponding step is
+# skipped and the run still proves the tag builds. `secrets` cannot be read in
+# `if:`, so the job's env says whether each is set (`HAS_*`, never the value:
+# the secret itself reaches only the step that uses it).
+#
+# The CDN step is scripts/publish-cdn.mjs: every hashed `kj-*.js` chunk first,
+# then the immutable `v<semver>.js`, and the rolling `v1.js` last.
+name: release-widgets
+
+on:
+  push:
+    tags: ['widgets-v*']
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+    env:
+      HAS_NPM_TOKEN: ${{ secrets.NPM_TOKEN != '' }}
+      HAS_CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN != '' }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+          registry-url: https://registry.npmjs.org
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm --filter @kaaljyoti/widgets run test
+      - run: pnpm --filter @kaaljyoti/widgets run build
+      - run: pnpm --filter @kaaljyoti/widgets run size
+      - name: tag matches package version
+        run: |
+          version=$(node -p "require('./packages/widgets/package.json').version")
+          [ "${GITHUB_REF_NAME}" = "widgets-v${version}" ] || { echo "tag ${GITHUB_REF_NAME} != widgets-v${version}"; exit 1; }
+      - name: publish to npm
+        if: ${{ env.HAS_NPM_TOKEN == 'true' }}
+        run: pnpm --filter @kaaljyoti/widgets publish --access public --no-git-checks
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - name: publish to the CDN
+        if: ${{ env.HAS_CLOUDFLARE_API_TOKEN == 'true' }}
+        run: node scripts/publish-cdn.mjs
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}

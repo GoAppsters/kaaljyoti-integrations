@@ -1,0 +1,46 @@
+# Upload plugins/wordpress/kaal-jyoti to wordpress.org SVN on a wordpress-v* tag.
+#
+# Owner-gated: SVN_USERNAME and SVN_PASSWORD are the wordpress.org author
+# account's; until they exist the deploy step is skipped and the tag only
+# proves the plugin builds (`secrets` cannot be read in `if:`, so the job's
+# env says whether they are set, and only the deploy step gets the values). The SVN tag is the version
+# without the `wordpress-v` prefix: `wordpress-v0.1.0` deploys `0.1.0`. The build copies the widget bundle and the PHP SDK in, so the
+# uploaded directory is self-contained.
+name: deploy-wordpress
+
+on:
+  push:
+    tags: ['wordpress-v*']
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    env:
+      HAS_SVN_CREDENTIALS: ${{ secrets.SVN_USERNAME != '' && secrets.SVN_PASSWORD != '' }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm --filter @kaaljyoti/widgets run build
+      - run: pnpm --filter wordpress-plugin run build
+      - name: version from the tag
+        id: version
+        run: |
+          version="${GITHUB_REF_NAME#wordpress-v}"
+          header=$(sed -n 's/^ \* Version: *//p' plugins/wordpress/kaal-jyoti/kaal-jyoti.php)
+          [ "$version" = "$header" ] || { echo "tag ${GITHUB_REF_NAME} != plugin Version ${header}"; exit 1; }
+          echo "version=${version}" >> "$GITHUB_OUTPUT"
+      - uses: 10up/action-wordpress-plugin-deploy@stable
+        if: ${{ env.HAS_SVN_CREDENTIALS == 'true' }}
+        with:
+          generate-zip: true
+        env:
+          SVN_USERNAME: ${{ secrets.SVN_USERNAME }}
+          SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}
+          SLUG: kaal-jyoti
+          BUILD_DIR: plugins/wordpress/kaal-jyoti
+          VERSION: ${{ steps.version.outputs.version }}

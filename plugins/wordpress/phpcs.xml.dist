@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<ruleset name="Kaal Jyoti for WordPress">
+  <description>WordPress coding standard for the plugin's own code; the bundled SDK is PSR-12 and excluded.</description>
+  <file>kaal-jyoti</file>
+  <exclude-pattern>*/vendor/*</exclude-pattern>
+  <exclude-pattern>*/assets/*</exclude-pattern>
+  <arg name="extensions" value="php"/>
+  <arg value="sp"/>
+  <rule ref="WordPress">
+    <exclude name="Universal.Arrays.DisallowShortArraySyntax"/>
+    <exclude name="Generic.Arrays.DisallowShortArraySyntax"/>
+  </rule>
+  <rule ref="WordPress.WP.I18n">
+    <properties>
+      <property name="text_domain" type="array">
+        <element value="kaal-jyoti"/>
+      </property>
+    </properties>
+  </rule>
+  <!--
+    The bundled SDK is PSR-12, so its readonly properties are camelCase:
+    `$request->timeoutSeconds`, `$document->lagnaSign`. Reading one is not a
+    naming choice this plugin gets to make, and only the server-rendering code
+    ever touches them.
+  -->
+  <rule ref="WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase">
+    <exclude-pattern>*/includes/Server/*</exclude-pattern>
+  </rule>
+  <rule ref="WordPress.NamingConventions.PrefixAllGlobals">
+    <properties>
+      <property name="prefixes" type="array">
+        <element value="kaal_jyoti"/>
+        <element value="KaalJyoti"/>
+        <element value="KAAL_JYOTI"/>
+      </property>
+    </properties>
+  </rule>
+  <config name="minimum_supported_wp_version" value="6.5"/>
+  <config name="testVersion" value="8.2-"/>
+</ruleset>

@@ -1,0 +1,130 @@
+/*
+ * `<kj-match-form>`'s own rules: the ring gauge, the two sides and the koota
+ * bars. Its chunk's sheet (`static styles`), not the shared one.
+ */
+
+/* ------------------------------------------------------------------ */
+/* The ring gauge                                                      */
+/* ------------------------------------------------------------------ */
+
+.kj-ring {
+  position: relative;
+  flex: none;
+  width: 8.5em;
+  height: 8.5em;
+}
+
+.kj-ring svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.kj-ring-track {
+  fill: none;
+  stroke: color-mix(in srgb, var(--kj-text) 11%, transparent);
+  stroke-width: 10;
+}
+
+.kj-ring-fill {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 10;
+  stroke-linecap: round;
+  transition: stroke-dashoffset 0.6s ease;
+}
+
+.kj-ring-text {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-content: center;
+  text-align: center;
+  color: var(--kj-text);
+  line-height: 1.15;
+}
+
+.kj-ring-text strong {
+  font-size: 2.125em;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.kj-ring-text small {
+  font-size: 0.8125em;
+  color: var(--kj-muted);
+}
+
+/* ------------------------------------------------------------------ */
+/* Match                                                               */
+/* ------------------------------------------------------------------ */
+
+.kj-pair {
+  display: grid;
+  gap: 1em;
+}
+
+@container (min-width: 46em) {
+  .kj-pair {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.kj-side {
+  min-width: 0;
+  margin: 0;
+  padding: 0.75em 0.75em 0.875em;
+  border: 1px solid var(--kj-border);
+  border-radius: calc(var(--kj-radius, 12px) * 0.75);
+}
+
+.kj-side > legend {
+  padding: 0 0.375em;
+  font-weight: 650;
+  color: var(--kj-accent);
+}
+
+.kj-score {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1em 1.5em;
+  align-items: center;
+}
+
+.kj-score-text {
+  flex: 1 1 14em;
+}
+
+.kj-verdict {
+  margin: 0;
+  font-family: var(--kj-font-heading, var(--kj-p-heading));
+  font-size: 1.375em;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.kj-card:lang(hi) .kj-verdict {
+  font-family: var(--kj-font-heading, var(--kj-p-deva));
+}
+
+.kj-people {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 13em), 1fr));
+  gap: 0.625em;
+}
+
+.kj-bar {
+  display: block;
+  width: 3.5em;
+  height: 0.375em;
+  overflow: hidden;
+  background: color-mix(in srgb, var(--kj-text) 11%, transparent);
+  border-radius: 999px;
+}
+
+.kj-bar > span {
+  display: block;
+  height: 100%;
+  background: currentColor;
+  border-radius: inherit;
+}

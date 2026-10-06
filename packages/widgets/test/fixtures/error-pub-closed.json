@@ -1,0 +1,1 @@
+{"status":"error","error":{"code":"plan_required","message":"publishable keys cannot call this route; use a secret key (kj_live_…) from a server","docs":"https://kaaljyoti.com/api/docs/errors#plan_required"}}

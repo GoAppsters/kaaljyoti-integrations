@@ -1,0 +1,5988 @@
+{
+  "status": "ok",
+  "data": {
+    "days": [
+      {
+        "date": "2026-10-01",
+        "karanas": [
+          {
+            "ends": "2026-10-01T12:36:04.421",
+            "index": 39,
+            "name": {
+              "id": "taitila",
+              "name": "Taitila",
+              "names": {
+                "en": "Taitila",
+                "hi": "तैतिल"
+              }
+            },
+            "starts": null
+          },
+          {
+            "ends": "2026-10-01T23:25:47.546",
+            "index": 40,
+            "name": {
+              "id": "gara",
+              "name": "Gara",
+              "names": {
+                "en": "Gara",
+                "hi": "गर"
+              }
+            },
+            "starts": "2026-10-01T12:36:04.421"
+          },
+          {
+            "ends": "2026-10-02T10:15:58.796",
+            "index": 41,
+            "name": {
+              "id": "vanija",
+              "name": "Vanija",
+              "names": {
+                "en": "Vanija",
+                "hi": "वणिज"
+              }
+            },
+            "starts": "2026-10-01T23:25:47.546"
+          }
+        ],
+        "masa": {
+          "amanta": {
+            "is_adhik": false,
+            "month_index": 5,
+            "month_name": {
+              "id": "bhadrapada",
+              "name": "Bhadrapada",
+              "names": {
+                "en": "Bhadrapada",
+                "hi": "भाद्रपद"
+              }
+            },
+            "samvat_year": 2083,
+            "system": "amanta"
+          },
+          "purnimanta": {
+            "is_adhik": false,
+            "month_index": 6,
+            "month_name": {
+              "id": "ashwina",
+              "name": "Ashwina",
+              "names": {
+                "en": "Ashwina",
+                "hi": "आश्विन"
+              }
+            },
+            "samvat_year": 2083,
+            "system": "purnimanta"
+          }
+        },
+        "nakshatras": [
+          {
+            "ends": "2026-10-02T04:27:38.171",
+            "index": 3,
+            "nakshatra": {
+              "id": "rohini",
+              "name": "Rohini",
+              "names": {
+                "en": "Rohini",
+                "hi": "रोहिणी"
+              }
+            },
+            "starts": null
+          },
+          {
+            "ends": "2026-10-03T02:55:19.421",
+            "index": 4,
+            "nakshatra": {
+              "id": "mrigashira",
+              "name": "Mrigashira",
+              "names": {
+                "en": "Mrigashira",
+                "hi": "मृगशिरा"
+              }
+            },
+            "starts": "2026-10-02T04:27:38.171"
+          }
+        ],
+        "next_sunrise": "2026-10-02T06:18:19.111",
+        "sunrise": "2026-10-01T06:17:47.546",
+        "sunset": "2026-10-01T18:03:34.443",
+        "tithis": [
+          {
+            "ends": "2026-10-01T12:36:04.421",
+            "index": 19,
+            "kshaya": false,
+            "name": {
+              "id": "panchami",
+              "name": "Panchami",
+              "names": {
+                "en": "Panchami",
+                "hi": "पंचमी"
+              }
+            },
+            "paksha": {
+              "id": "krishna",
+              "name": "Krishna",
+              "names": {
+                "en": "Krishna",
+                "hi": "कृष्ण"
+              }
+            },
+            "starts": null,
+            "vriddhi": false
+          },
+          {
+            "ends": "2026-10-02T10:15:56.921",
+            "index": 20,
+            "kshaya": false,
+            "name": {
+              "id": "shashthi",
+              "name": "Shashthi",
+              "names": {
+                "en": "Shashthi",
+                "hi": "षष्ठी"
+              }
+            },
+            "paksha": {
+              "id": "krishna",
+              "name": "Krishna",
+              "names": {
+                "en": "Krishna",
+                "hi": "कृष्ण"
+              }
+            },
+            "starts": "2026-10-01T12:36:04.421",
+            "vriddhi": false
+          }
+        ],
+        "vara": {
+          "id": "guruvara",
+          "name": "Guruvara",
+          "names": {
+            "en": "Guruvara",
+            "hi": "गुरुवार"
+          }
+        },
+        "vara_index": 3,
+        "yogas": [
+          {
+            "ends": "2026-10-01T21:18:43.796",
+            "index": 15,
+            "name": {
+              "id": "siddhi",
+              "name": "Siddhi",
+              "names": {
+                "en": "Siddhi",
+                "hi": "सिद्धि"
+              }
+            },
+            "starts": null
+          },
+          {
+            "ends": "2026-10-02T18:17:49.421",
+            "index": 16,
+            "name": {
+              "id": "vyatipata",
+              "name": "Vyatipata",
+              "names": {
+                "en": "Vyatipata",
+                "hi": "व्यतीपात"
+              }
+            },
+            "starts": "2026-10-01T21:18:43.796"
+          }
+        ]
+      },
+      {
+        "date": "2026-10-02",
+        "karanas": [
+          {
+            "ends": "2026-10-02T10:15:58.486",
+            "index": 41,
+            "name": {
+              "id": "vanija",
+              "name": "Vanija",
+              "names": {
+                "en": "Vanija",
+                "hi": "वणिज"
+              }
+            },
+            "starts": null
+          },
+          {
+            "ends": "2026-10-02T21:07:34.111",
+            "index": 42,
+            "name": {
+              "id": "vishti",
+              "name": "Vishti",
+              "names": {
+                "en": "Vishti",
+                "hi": "विष्टि"
+              }
+            },
+            "starts": "2026-10-02T10:15:58.486"
+          },
+          {
+            "ends": "2026-10-03T08:00:34.111",
+            "index": 43,
+            "name": {
+              "id": "bava",
+              "name": "Bava",
+              "names": {
+                "en": "Bava",
+                "hi": "बव"
+              }
+            },
+            "starts": "2026-10-02T21:07:34.111"
+          }
+        ],
+        "masa": {
+          "amanta": {
+            "is_adhik": false,
+            "month_index": 5,
+            "month_name": {
+              "id": "bhadrapada",
+              "name": "Bhadrapada",
+              "names": {
+                "en": "Bhadrapada",
+                "hi": "भाद्रपद"
+              }
+            },
+            "samvat_year": 2083,
+            "system": "amanta"
+          },
+          "purnimanta": {
+            "is_adhik": false,
+            "month_index": 6,
+            "month_name": {
+              "id": "ashwina",
+              "name": "Ashwina",
+              "names": {
+                "en": "Ashwina",
+                "hi": "आश्विन"
+              }
+            },
+            "samvat_year": 2083,
+            "system": "purnimanta"
+          }
+        },
+        "nakshatras": [
+          {
+            "ends": "2026-10-03T02:55:20.986",
+            "index": 4,
+            "nakshatra": {
+              "id": "mrigashira",
+              "name": "Mrigashira",
+              "names": {
+                "en": "Mrigashira",
+                "hi": "मृगशिरा"
+              }
+            },
+            "starts": null
+          },
+          {
+            "ends": "2026-10-04T01:30:04.111",
+            "index": 5,
+            "nakshatra": {
+              "id": "ardra",
+              "name": "Ardra",
+              "names": {
+                "en": "Ardra",
+                "hi": "आर्द्रा"
+              }
+            },
+            "starts": "2026-10-03T02:55:20.986"
+          }
+        ],
+        "next_sunrise": "2026-10-03T06:18:50.965",
+        "sunrise": "2026-10-02T06:18:19.111",
+        "sunset": "2026-10-02T18:02:24.365",
+        "tithis": [
+          {
+            "ends": "2026-10-02T10:15:58.486",
+            "index": 20,
+            "kshaya": false,
+            "name": {
+              "id": "shashthi",
+              "name": "Shashthi",
+              "names": {
+                "en": "Shashthi",
+                "hi": "षष्ठी"
+              }
+            },
+            "paksha": {
+              "id": "krishna",
+              "name": "Krishna",
+              "names": {
+                "en": "Krishna",
+                "hi": "कृष्ण"
+              }
+            },
+            "starts": null,
+            "vriddhi": false
+          },
+          {
+            "ends": "2026-10-03T08:00:32.236",
+            "index": 21,
+            "kshaya": false,
+            "name": {
+              "id": "saptami",
+              "name": "Saptami",
+              "names": {
+                "en": "Saptami",
+                "hi": "सप्तमी"
+              }
+            },
+            "paksha": {
+              "id": "krishna",
+              "name": "Krishna",
+              "names": {
+                "en": "Krishna",
+                "hi": "कृष्ण"
+              }
+            },
+            "starts": "2026-10-02T10:15:58.486",
+            "vriddhi": false
+          }
+        ],
+        "vara": {
+          "id": "shukravara",
+          "name": "Shukravara",
+          "names": {
+            "en": "Shukravara",
+            "hi": "शुक्रवार"
+          }
+        },
+        "vara_index": 4,
+        "yogas": [
+          {
+            "ends": "2026-10-02T18:17:50.986",
+            "index": 16,
+            "name": {
+              "id": "vyatipata",
+              "name": "Vyatipata",
+              "names": {
+                "en": "Vyatipata",
+                "hi": "व्यतीपात"
+              }
+            },
+            "starts": null
+          },
+          {
+            "ends": "2026-10-03T15:22:05.986",
+            "index": 17,
+            "name": {
+              "id": "variyan",
+              "name": "Variyan",
+              "names": {
+                "en": "Variyan",
+                "hi": "वरीयान"
+              }
+            },
+            "starts": "2026-10-02T18:17:50.986"
+          }
+        ]
+      },
+      {
+        "date": "2026-10-03",
+        "karanas": [
+          {
+            "ends": "2026-10-03T08:00:34.090",
+            "index": 43,
+            "name": {
+              "id": "bava",
+              "name": "Bava",
+              "names": {
+                "en": "Bava",
+                "hi": "बव"
+              }
+            },
+            "starts": null
+          },
+          {
+            "ends": "2026-10-03T18:55:26.590",
+            "index": 44,
+            "name": {
+              "id": "balava",
+              "name": "Balava",
+              "names": {
+                "en": "Balava",
+                "hi": "बालव"
+              }
+            },
+            "starts": "2026-10-03T08:00:34.090"
+          },
+          {
+            "ends": "2026-10-04T05:52:39.715",
+            "index": 45,
+            "name": {
+              "id": "kaulava",
+              "name": "Kaulava",
+              "names": {
+                "en": "Kaulava",
+                "hi": "कौलव"
+              }
+            },
+            "starts": "2026-10-03T18:55:26.590"
+          },
+          {
+            "ends": "2026-10-04T16:52:13.465",
+            "index": 46,
+            "name": {
+              "id": "taitila",
+              "name": "Taitila",
+              "names": {
+                "en": "Taitila",
+                "hi": "तैतिल"
+              }
+            },
+            "starts": "2026-10-04T05:52:39.715"
+          }
+        ],
+        "masa": {
+          "amanta": {
+            "is_adhik": false,
+            "month_index": 5,
+            "month_name": {
+              "id": "bhadrapada",
+              "name": "Bhadrapada",
+              "names": {
+                "en": "Bhadrapada",
+                "hi": "भाद्रपद"
+              }
+            },
+            "samvat_year": 2083,
+            "system": "amanta"
+          },
+          "purnimanta": {
+            "is_adhik": false,
+            "month_index": 6,
+            "month_name": {
+              "id": "ashwina",
+              "name": "Ashwina",
+              "names": {
+                "en": "Ashwina",
+                "hi": "आश्विन"
+              }
+            },
+            "samvat_year": 2083,
+            "system": "purnimanta"
+          }
+        },
+        "nakshatras": [
+          {
+            "ends": "2026-10-04T01:30:05.965",
+            "index": 5,
+            "nakshatra": {
+              "id": "ardra",
+              "name": "Ardra",
+              "names": {
+                "en": "Ardra",
+                "hi": "आर्द्रा"
+              }
+            },
+            "starts": null
+          },
+          {
+            "ends": "2026-10-05T00:14:11.590",
+            "index": 6,
+            "nakshatra": {
+              "id": "punarvasu",
+              "name": "Punarvasu",
+              "names": {
+                "en": "Punarvasu",
+                "hi": "पुनर्वसु"
+              }
+            },
+            "starts": "2026-10-04T01:30:05.965"
+          }
+        ],
+        "next_sunrise": "2026-10-04T06:19:23.122",
+        "sunrise": "2026-10-03T06:18:50.965",
+        "sunset": "2026-10-03T18:01:14.656",
+        "tithis": [
+          {
+            "ends": "2026-10-03T08:00:34.090",
+            "index": 21,
+            "kshaya": false,
+            "name": {
+              "id": "saptami",
+              "name": "Saptami",
+              "names": {
+                "en": "Saptami",
+                "hi": "सप्तमी"
+              }
+            },
+            "paksha": {
+              "id": "krishna",
+              "name": "Krishna",
+              "names": {
+                "en": "Krishna",
+                "hi": "कृष्ण"
+              }
+            },
+            "starts": null,
+            "vriddhi": false
+          },
+          {
+            "ends": "2026-10-04T05:52:37.840",
+            "index": 22,
+            "kshaya": true,
+            "name": {
+              "id": "ashtami",
+              "name": "Ashtami",
+              "names": {
+                "en": "Ashtami",
+                "hi": "अष्टमी"
+              }
+            },
+            "paksha": {
+              "id": "krishna",
+              "name": "Krishna",
+              "names": {
+                "en": "Krishna",
+                "hi": "कृष्ण"
+              }
+            },
+            "starts": "2026-10-03T08:00:34.090",
+            "vriddhi": false
+          },
+          {
+            "ends": "2026-10-05T03:54:32.215",
+            "index": 23,
+            "kshaya": false,
+            "name": {
+              "id": "navami",
+              "name": "Navami",
+              "names": {
+                "en": "Navami",
+                "hi": "नवमी"
+              }
+            },
+            "paksha": {
+              "id": "krishna",
+              "name": "Krishna",
+              "names": {
+                "en": "Krishna",
+                "hi": "कृष्ण"
+              }
+            },
+            "starts": "2026-10-04T05:52:37.840",
+            "vriddhi": false
+          }
+        ],
+        "vara": {
+          "id": "shanivara",
+          "name": "Shanivara",
+          "names": {
+            "en": "Shanivara",
+            "hi": "शनिवार"
+          }
+        },
+        "vara_index": 5,
+        "yogas": [
+          {
+            "ends": "2026-10-03T15:21:39.715",
+            "index": 17,
+            "name": {
+              "id": "variyan",
+              "name": "Variyan",
+              "names": {
+                "en": "Variyan",
+                "hi": "वरीयान"
+              }
+            },
+            "starts": null
+          },
+          {
+            "ends": "2026-10-04T12:32:28.465",
+            "index": 18,
+            "name": {
+              "id": "parigha",
+              "name": "Parigha",
+              "names": {
+                "en": "Parigha",
+                "hi": "परिघ"
+              }
+            },
+            "starts": "2026-10-03T15:21:39.715"
+          }
+        ]
+      },
+      {
+        "date": "2026-10-04",
+        "karanas": [
+          {
+            "ends": "2026-10-04T16:52:11.872",
+            "index": 46,
+            "name": {
+              "id": "taitila",
+              "name": "Taitila",
+              "names": {
+                "en": "Taitila",
+                "hi": "तैतिल"
+              }
+            },
+            "starts": null
+          },
+          {
+            "ends": "2026-10-05T03:54:34.372",
+            "index": 47,
+            "name": {
+              "id": "gara",
+              "name": "Gara",
+              "names": {
+                "en": "Gara",
+                "hi": "गर"
+              }
+            },
+            "starts": "2026-10-04T16:52:11.872"
+          },
+          {
+            "ends": "2026-10-05T14:59:45.622",
+            "index": 48,
+            "name": {
+              "id": "vanija",
+              "name": "Vanija",
+              "names": {
+                "en": "Vanija",
+                "hi": "वणिज"
+              }
+            },
+            "starts": "2026-10-05T03:54:34.372"
+          }
+        ],
+        "masa": {
+          "amanta": {
+            "is_adhik": false,
+            "month_index": 5,
+            "month_name": {
+              "id": "bhadrapada",
+              "name": "Bhadrapada",
+              "names": {
+                "en": "Bhadrapada",
+                "hi": "भाद्रपद"
+              }
+            },
+            "samvat_year": 2083,
+            "system": "amanta"
+          },
+          "purnimanta": {
+            "is_adhik": false,
+            "month_index": 6,
+            "month_name": {
+              "id": "ashwina",
+              "name": "Ashwina",
+              "names": {
+                "en": "Ashwina",
+                "hi": "आश्विन"
+              }
+            },
+            "samvat_year": 2083,
+            "system": "purnimanta"
+          }
+        },
+        "nakshatras": [
+          {
+            "ends": "2026-10-05T00:14:13.747",
+            "index": 6,
+            "nakshatra": {
+              "id": "punarvasu",
+              "name": "Punarvasu",
+              "names": {
+                "en": "Punarvasu",
+                "hi": "पुनर्वसु"
+              }
+            },
+            "starts": null
+          },
+          {
+            "ends": "2026-10-05T23:09:34.372",
+            "index": 7,
+            "nakshatra": {
+              "id": "pushya",
+              "name": "Pushya",
+              "names": {
+                "en": "Pushya",
+                "hi": "पुष्य"
+              }
+            },
+            "starts": "2026-10-05T00:14:13.747"
+          }
+        ],
+        "next_sunrise": "2026-10-05T06:19:55.594",
+        "sunrise": "2026-10-04T06:19:23.122",
+        "sunset": "2026-10-04T18:00:05.344",
+        "tithis": [
+          {
+            "ends": "2026-10-05T03:54:32.497",
+            "index": 23,
+            "kshaya": false,
+            "name": {
+              "id": "navami",
+              "name": "Navami",
+              "names": {
+                "en": "Navami",
+                "hi": "नवमी"
+              }
+            },
+            "paksha": {
+              "id": "krishna",
+              "name": "Krishna",
+              "names": {
+                "en": "Krishna",
+                "hi": "कृष्ण"
+              }
+            },
+            "starts": null,
+            "vriddhi": false
+          },
+          {
+            "ends": "2026-10-06T02:08:09.997",
+            "index": 24,
+            "kshaya": false,
+            "name": {
+              "id": "dashami",
+              "name": "Dashami",
+              "names": {
+                "en": "Dashami",
+                "hi": "दशमी"
+              }
+            },
+            "paksha": {
+              "id": "krishna",
+              "name": "Krishna",
+              "names": {
+                "en": "Krishna",
+                "hi": "कृष्ण"
+              }
+            },
+            "starts": "2026-10-05T03:54:32.497",
+            "vriddhi": false
+          }
+        ],
+        "vara": {
+          "id": "ravivara",
+          "name": "Ravivara",
+          "names": {
+            "en": "Ravivara",
+            "hi": "रविवार"
+          }
+        },
+        "vara_index": 6,
+        "yogas": [
+          {
+            "ends": "2026-10-04T12:32:30.622",
+            "index": 18,
+            "name": {
+              "id": "parigha",
+              "name": "Parigha",
+              "names": {
+                "en": "Parigha",
+                "hi": "परिघ"
+              }
+            },
+            "starts": null
+          },
+          {
+            "ends": "2026-10-05T09:51:45.622",
+            "index": 19,
+            "name": {
+              "id": "shiva",
+              "name": "Shiva",
+              "names": {
+                "en": "Shiva",
+                "hi": "शिव"
+              }
+            },
+            "starts": "2026-10-04T12:32:30.622"
+          }
+        ]
+      },
+      {
+        "date": "2026-10-05",
+        "karanas": [
+          {
+            "ends": "2026-10-05T14:59:46.219",
+            "index": 48,
+            "name": {
+              "id": "vanija",
+              "name": "Vanija",
+              "names": {
+                "en": "Vanija",
+                "hi": "वणिज"
+              }
+            },
+            "starts": null
+          },
+          {
+            "ends": "2026-10-06T02:08:14.344",
+            "index": 49,
+            "name": {
+              "id": "vishti",
+              "name": "Vishti",
+              "names": {
+                "en": "Vishti",
+                "hi": "विष्टि"
+              }
+            },
+            "starts": "2026-10-05T14:59:46.219"
+          },
+          {
+            "ends": "2026-10-06T13:19:59.344",
+            "index": 50,
+            "name": {
+              "id": "bava",
+              "name": "Bava",
+              "names": {
+                "en": "Bava",
+                "hi": "बव"
+              }
+            },
+            "starts": "2026-10-06T02:08:14.344"
+          }
+        ],
+        "masa": {
+          "amanta": {
+            "is_adhik": false,
+            "month_index": 5,
+            "month_name": {
+              "id": "bhadrapada",
+              "name": "Bhadrapada",
+              "names": {
+                "en": "Bhadrapada",
+                "hi": "भाद्रपद"
+              }
+            },
+            "samvat_year": 2083,
+            "system": "amanta"
+          },
+          "purnimanta": {
+            "is_adhik": false,
+            "month_index": 6,
+            "month_name": {
+              "id": "ashwina",
+              "name": "Ashwina",
+              "names": {
+                "en": "Ashwina",
+                "hi": "आश्विन"
+              }
+            },
+            "samvat_year": 2083,
+            "system": "purnimanta"
+          }
+        },
+        "nakshatras": [
+          {
+            "ends": "2026-10-05T23:09:36.844",
+            "index": 7,
+            "nakshatra": {
+              "id": "pushya",
+              "name": "Pushya",
+              "names": {
+                "en": "Pushya",
+                "hi": "पुष्य"
+              }
+            },
+            "starts": null
+          },
+          {
+            "ends": "2026-10-06T22:18:04.969",
+            "index": 8,
+            "nakshatra": {
+              "id": "ashlesha",
+              "name": "Ashlesha",
+              "names": {
+                "en": "Ashlesha",
+                "hi": "आश्लेषा"
+              }
+            },
+            "starts": "2026-10-05T23:09:36.844"
+          }
+        ],
+        "next_sunrise": "2026-10-06T06:20:28.391",
+        "sunrise": "2026-10-05T06:19:55.594",
+        "sunset": "2026-10-05T17:58:56.458",
+        "tithis": [
+          {
+            "ends": "2026-10-06T02:08:12.469",
+            "index": 24,
+            "kshaya": false,
+            "name": {
+              "id": "dashami",
+              "name": "Dashami",
+              "names": {
+                "en": "Dashami",
+                "hi": "दशमी"
+              }
+            },
+            "paksha": {
+              "id": "krishna",
+              "name": "Krishna",
+              "names": {
+                "en": "Krishna",
+                "hi": "कृष्ण"
+              }
+            },
+            "starts": null,
+            "vriddhi": false
+          },
+          {
+            "ends": "2026-10-07T00:35:25.594",
+            "index": 25,
+            "kshaya": false,
+            "name": {
+              "id": "ekadashi",
+              "name": "Ekadashi",
+              "names": {
+                "en": "Ekadashi",
+                "hi": "एकादशी"
+              }
+            },
+            "paksha": {
+              "id": "krishna",
+              "name": "Krishna",
+              "names": {
+                "en": "Krishna",
+                "hi": "कृष्ण"
+              }
+            },
+            "starts": "2026-10-06T02:08:12.469",
+            "vriddhi": false
+          }
+        ],
+        "vara": {
+          "id": "somavara",
+          "name": "Somavara",
+          "names": {
+            "en": "Somavara",
+            "hi": "सोमवार"
+          }
+        },
+        "vara_index": 0,
+        "yogas": [
+          {
+            "ends": "2026-10-05T09:51:48.094",
+            "index": 19,
+            "name": {
+              "id": "shiva",
+              "name": "Shiva",
+              "names": {
+                "en": "Shiva",
+                "hi": "शिव"
+              }
+            },
+            "starts": null
+          },
+          {
+            "ends": "2026-10-06T07:20:53.719",
+            "index": 20,
+            "name": {
+              "id": "siddha",
+              "name": "Siddha",
+              "names": {
+                "en": "Siddha",
+                "hi": "सिद्ध"
+              }
+            },
+            "starts": "2026-10-05T09:51:48.094"
+          }
+        ]
+      },
+      {
+        "date": "2026-10-06",
+        "karanas": [
+          {
+            "ends": "2026-10-06T13:20:00.266",
+            "index": 50,
+            "name": {
+              "id": "bava",
+              "name": "Bava",
+              "names": {
+                "en": "Bava",
+                "hi": "बव"
+              }
+            },
+            "starts": null
+          },
+          {
+            "ends": "2026-10-07T00:35:02.141",
+            "index": 51,
+            "name": {
+              "id": "balava",
+              "name": "Balava",
+              "names": {
+                "en": "Balava",
+                "hi": "बालव"
+              }
+            },
+            "starts": "2026-10-06T13:20:00.266"
+          },
+          {
+            "ends": "2026-10-07T11:54:17.141",
+            "index": 52,
+            "name": {
+              "id": "kaulava",
+              "name": "Kaulava",
+              "names": {
+                "en": "Kaulava",
+                "hi": "कौलव"
+              }
+            },
+            "starts": "2026-10-07T00:35:02.141"
+          }
+        ],
+        "masa": {
+          "amanta": {
+            "is_adhik": false,
+            "month_index": 5,
+            "month_name": {
+              "id": "bhadrapada",
+              "name": "Bhadrapada",
+              "names": {
+                "en": "Bhadrapada",
+                "hi": "भाद्रपद"
+              }
+            },
+            "samvat_year": 2083,
+            "system": "amanta"
+          },
+          "purnimanta": {
+            "is_adhik": false,
+            "month_index": 6,
+            "month_name": {
+              "id": "ashwina",
+              "name": "Ashwina",
+              "names": {
+                "en": "Ashwina",
+                "hi": "आश्विन"
+              }
+            },
+            "samvat_year": 2083,
+            "system": "purnimanta"
+          }
+        },
+        "nakshatras": [
+          {
+            "ends": "2026-10-06T22:18:07.766",
+            "index": 8,
+            "nakshatra": {
+              "id": "ashlesha",
+              "name": "Ashlesha",
+              "names": {
+                "en": "Ashlesha",
+                "hi": "आश्लेषा"
+              }
+            },
+            "starts": null
+          },
+          {
+            "ends": "2026-10-07T21:40:39.641",
+            "index": 9,
+            "nakshatra": {
+              "id": "magha",
+              "name": "Magha",
+              "names": {
+                "en": "Magha",
+                "hi": "मघा"
+              }
+            },
+            "starts": "2026-10-06T22:18:07.766"
+          }
+        ],
+        "next_sunrise": "2026-10-07T06:21:01.523",
+        "sunrise": "2026-10-06T06:20:28.391",
+        "sunset": "2026-10-06T17:57:48.025",
+        "tithis": [
+          {
+            "ends": "2026-10-07T00:35:28.391",
+            "index": 25,
+            "kshaya": false,
+            "name": {
+              "id": "ekadashi",
+              "name": "Ekadashi",
+              "names": {
+                "en": "Ekadashi",
+                "hi": "एकादशी"
+              }
+            },
+            "paksha": {
+              "id": "krishna",
+              "name": "Krishna",
+              "names": {
+                "en": "Krishna",
+                "hi": "कृष्ण"
+              }
+            },
+            "starts": null,
+            "vriddhi": false
+          },
+          {
+            "ends": "2026-10-07T23:17:13.391",
+            "index": 26,
+            "kshaya": false,
+            "name": {
+              "id": "dwadashi",
+              "name": "Dwadashi",
+              "names": {
+                "en": "Dwadashi",
+                "hi": "द्वादशी"
+              }
+            },
+            "paksha": {
+              "id": "krishna",
+              "name": "Krishna",
+              "names": {
+                "en": "Krishna",
+                "hi": "कृष्ण"
+              }
+            },
+            "starts": "2026-10-07T00:35:28.391",
+            "vriddhi": false
+          }
+        ],
+        "vara": {
+          "id": "mangalavara",
+          "name": "Mangalavara",
+          "names": {
+            "en": "Mangalavara",
+            "hi": "मंगलवार"
+          }
+        },
+        "vara_index": 1,
+        "yogas": [
+          {
+            "ends": "2026-10-06T07:20:56.516",
+            "index": 20,
+            "name": {
+              "id": "siddha",
+              "name": "Siddha",
+              "names": {
+                "en": "Siddha",
+                "hi": "सिद्ध"
+              }
+            },
+            "starts": null
+          },
+          {
+            "ends": "2026-10-07T05:00:20.891",
+            "index": 21,
+            "name": {
+              "id": "sadhya",
+              "name": "Sadhya",
+              "names": {
+                "en": "Sadhya",
+                "hi": "साध्य"
+              }
+            },
+            "starts": "2026-10-06T07:20:56.516"
+          },
+          {
+            "ends": "2026-10-08T02:52:24.641",
+            "index": 22,
+            "name": {
+              "id": "shubha",
+              "name": "Shubha",
+              "names": {
+                "en": "Shubha",
+                "hi": "शुभ"
+              }
+            },
+            "starts": "2026-10-07T05:00:20.891"
+          }
+        ]
+      },
+      {
+        "date": "2026-10-07",
+        "karanas": [
+          {
+            "ends": "2026-10-07T11:54:18.398",
+            "index": 52,
+            "name": {
+              "id": "kaulava",
+              "name": "Kaulava",
+              "names": {
+                "en": "Kaulava",
+                "hi": "कौलव"
+              }
+            },
+            "starts": null
+          },
+          {
+            "ends": "2026-10-07T23:17:18.398",
+            "index": 53,
+            "name": {
+              "id": "taitila",
+              "name": "Taitila",
+              "names": {
+                "en": "Taitila",
+                "hi": "तैतिल"
+              }
+            },
+            "starts": "2026-10-07T11:54:18.398"
+          },
+          {
+            "ends": "2026-10-08T10:44:31.523",
+            "index": 54,
+            "name": {
+              "id": "gara",
+              "name": "Gara",
+              "names": {
+                "en": "Gara",
+                "hi": "गर"
+              }
+            },
+            "starts": "2026-10-07T23:17:18.398"
+          }
+        ],
+        "masa": {
+          "amanta": {
+            "is_adhik": false,
+            "month_index": 5,
+            "month_name": {
+              "id": "bhadrapada",
+              "name": "Bhadrapada",
+              "names": {
+                "en": "Bhadrapada",
+                "hi": "भाद्रपद"
+              }
+            },
+            "samvat_year": 2083,
+            "system": "amanta"
+          },
+          "purnimanta": {
+            "is_adhik": false,
+            "month_index": 6,
+            "month_name": {
+              "id": "ashwina",
+              "name": "Ashwina",
+              "names": {
+                "en": "Ashwina",
+                "hi": "आश्विन"
+              }
+            },
+            "samvat_year": 2083,
+            "system": "purnimanta"
+          }
+        },
+        "nakshatras": [
+          {
+            "ends": "2026-10-07T21:40:42.773",
+            "index": 9,
+            "nakshatra": {
+              "id": "magha",
+              "name": "Magha",
+              "names": {
+                "en": "Magha",
+                "hi": "मघा"
+              }
+            },
+            "starts": null
+          },
+          {
+            "ends": "2026-10-08T21:20:35.273",
+            "index": 10,
+            "nakshatra": {
+              "id": "purva_phalguni",
+              "name": "Purva Phalguni",
+              "names": {
+                "en": "Purva Phalguni",
+                "hi": "पूर्वा फाल्गुनी"
+              }
+            },
+            "starts": "2026-10-07T21:40:42.773"
+          }
+        ],
+        "next_sunrise": "2026-10-08T06:21:34.996",
+        "sunrise": "2026-10-07T06:21:01.523",
+        "sunset": "2026-10-07T17:56:40.071",
+        "tithis": [
+          {
+            "ends": "2026-10-07T23:17:16.523",
+            "index": 26,
+            "kshaya": false,
+            "name": {
+              "id": "dwadashi",
+              "name": "Dwadashi",
+              "names": {
+                "en": "Dwadashi",
+                "hi": "द्वादशी"
+              }
+            },
+            "paksha": {
+              "id": "krishna",
+              "name": "Krishna",
+              "names": {
+                "en": "Krishna",
+                "hi": "कृष्ण"
+              }
+            },
+            "starts": null,
+            "vriddhi": false
+          },
+          {
+            "ends": "2026-10-08T22:16:50.273",
+            "index": 27,
+            "kshaya": false,
+            "name": {
+              "id": "trayodashi",
+              "name": "Trayodashi",
+              "names": {
+                "en": "Trayodashi",
+                "hi": "त्रयोदशी"
+              }
+            },
+            "paksha": {
+              "id": "krishna",
+              "name": "Krishna",
+              "names": {
+                "en": "Krishna",
+                "hi": "कृष्ण"
+              }
+            },
+            "starts": "2026-10-07T23:17:16.523",
+            "vriddhi": false
+          }
+        ],
+        "vara": {
+          "id": "budhavara",
+          "name": "Budhavara",
+          "names": {
+            "en": "Budhavara",
+            "hi": "बुधवार"
+          }
+        },
+        "vara_index": 2,
+        "yogas": [
+          {
+            "ends": "2026-10-08T02:52:25.898",
+            "index": 22,
+            "name": {
+              "id": "shubha",
+              "name": "Shubha",
+              "names": {
+                "en": "Shubha",
+                "hi": "शुभ"
+              }
+            },
+            "starts": null
+          },
+          {
+            "ends": "2026-10-09T00:58:33.397",
+            "index": 23,
+            "name": {
+              "id": "shukla",
+              "name": "Shukla",
+              "names": {
+                "en": "Shukla",
+                "hi": "शुक्ल"
+              }
+            },
+            "starts": "2026-10-08T02:52:25.898"
+          }
+        ]
+      },
+      {
+        "date": "2026-10-08",
+        "karanas": [
+          {
+            "ends": "2026-10-08T10:44:33.121",
+            "index": 54,
+            "name": {
+              "id": "gara",
+              "name": "Gara",
+              "names": {
+                "en": "Gara",
+                "hi": "गर"
+              }
+            },
+            "starts": null
+          },
+          {
+            "ends": "2026-10-08T22:16:55.621",
+            "index": 55,
+            "name": {
+              "id": "vanija",
+              "name": "Vanija",
+              "names": {
+                "en": "Vanija",
+                "hi": "वणिज"
+              }
+            },
+            "starts": "2026-10-08T10:44:33.121"
+          },
+          {
+            "ends": "2026-10-09T09:53:59.371",
+            "index": 56,
+            "name": {
+              "id": "vishti",
+              "name": "Vishti",
+              "names": {
+                "en": "Vishti",
+                "hi": "विष्टि"
+              }
+            },
+            "starts": "2026-10-08T22:16:55.621"
+          }
+        ],
+        "masa": {
+          "amanta": {
+            "is_adhik": false,
+            "month_index": 5,
+            "month_name": {
+              "id": "bhadrapada",
+              "name": "Bhadrapada",
+              "names": {
+                "en": "Bhadrapada",
+                "hi": "भाद्रपद"
+              }
+            },
+            "samvat_year": 2083,
+            "system": "amanta"
+          },
+          "purnimanta": {
+            "is_adhik": false,
+            "month_index": 6,
+            "month_name": {
+              "id": "ashwina",
+              "name": "Ashwina",
+              "names": {
+                "en": "Ashwina",
+                "hi": "आश्विन"
+              }
+            },
+            "samvat_year": 2083,
+            "system": "purnimanta"
+          }
+        },
+        "nakshatras": [
+          {
+            "ends": "2026-10-08T21:20:38.746",
+            "index": 10,
+            "nakshatra": {
+              "id": "purva_phalguni",
+              "name": "Purva Phalguni",
+              "names": {
+                "en": "Purva Phalguni",
+                "hi": "पूर्वा फाल्गुनी"
+              }
+            },
+            "starts": null
+          },
+          {
+            "ends": "2026-10-09T21:20:12.496",
+            "index": 11,
+            "nakshatra": {
+              "id": "uttara_phalguni",
+              "name": "Uttara Phalguni",
+              "names": {
+                "en": "Uttara Phalguni",
+                "hi": "उत्तरा फाल्गुनी"
+              }
+            },
+            "starts": "2026-10-08T21:20:38.746"
+          }
+        ],
+        "next_sunrise": "2026-10-09T06:22:08.817",
+        "sunrise": "2026-10-08T06:21:34.996",
+        "sunset": "2026-10-08T17:55:32.623",
+        "tithis": [
+          {
+            "ends": "2026-10-08T22:16:53.746",
+            "index": 27,
+            "kshaya": false,
+            "name": {
+              "id": "trayodashi",
+              "name": "Trayodashi",
+              "names": {
+                "en": "Trayodashi",
+                "hi": "त्रयोदशी"
+              }
+            },
+            "paksha": {
+              "id": "krishna",
+              "name": "Krishna",
+              "names": {
+                "en": "Krishna",
+                "hi": "कृष्ण"
+              }
+            },
+            "starts": null,
+            "vriddhi": false
+          },
+          {
+            "ends": "2026-10-09T21:36:36.871",
+            "index": 28,
+            "kshaya": false,
+            "name": {
+              "id": "chaturdashi",
+              "name": "Chaturdashi",
+              "names": {
+                "en": "Chaturdashi",
+                "hi": "चतुर्दशी"
+              }
+            },
+            "paksha": {
+              "id": "krishna",
+              "name": "Krishna",
+              "names": {
+                "en": "Krishna",
+                "hi": "कृष्ण"
+              }
+            },
+            "starts": "2026-10-08T22:16:53.746",
+            "vriddhi": false
+          }
+        ],
+        "vara": {
+          "id": "guruvara",
+          "name": "Guruvara",
+          "names": {
+            "en": "Guruvara",
+            "hi": "गुरुवार"
+          }
+        },
+        "vara_index": 3,
+        "yogas": [
+          {
+            "ends": "2026-10-09T00:58:36.871",
+            "index": 23,
+            "name": {
+              "id": "shukla",
+              "name": "Shukla",
+              "names": {
+                "en": "Shukla",
+                "hi": "शुक्ल"
+              }
+            },
+            "starts": null
+          },
+          {
+            "ends": "2026-10-09T23:21:08.746",
+            "index": 24,
+            "name": {
+              "id": "brahma",
+              "name": "Brahma",
+              "names": {
+                "en": "Brahma",
+                "hi": "ब्रह्म"
+              }
+            },
+            "starts": "2026-10-09T00:58:36.871"
+          }
+        ]
+      },
+      {
+        "date": "2026-10-09",
+        "karanas": [
+          {
+            "ends": "2026-10-09T09:54:01.317",
+            "index": 56,
+            "name": {
+              "id": "vishti",
+              "name": "Vishti",
+              "names": {
+                "en": "Vishti",
+                "hi": "विष्टि"
+              }
+            },
+            "starts": null
+          },
+          {
+            "ends": "2026-10-09T21:36:42.567",
+            "index": 57,
+            "name": {
+              "id": "shakuni",
+              "name": "Shakuni",
+              "names": {
+                "en": "Shakuni",
+                "hi": "शकुनि"
+              }
+            },
+            "starts": "2026-10-09T09:54:01.317"
+          },
+          {
+            "ends": "2026-10-10T09:25:01.317",
+            "index": 58,
+            "name": {
+              "id": "chatushpada",
+              "name": "Chatushpada",
+              "names": {
+                "en": "Chatushpada",
+                "hi": "चतुष्पद"
+              }
+            },
+            "starts": "2026-10-09T21:36:42.567"
+          }
+        ],
+        "masa": {
+          "amanta": {
+            "is_adhik": false,
+            "month_index": 5,
+            "month_name": {
+              "id": "bhadrapada",
+              "name": "Bhadrapada",
+              "names": {
+                "en": "Bhadrapada",
+                "hi": "भाद्रपद"
+              }
+            },
+            "samvat_year": 2083,
+            "system": "amanta"
+          },
+          "purnimanta": {
+            "is_adhik": false,
+            "month_index": 6,
+            "month_name": {
+              "id": "ashwina",
+              "name": "Ashwina",
+              "names": {
+                "en": "Ashwina",
+                "hi": "आश्विन"
+              }
+            },
+            "samvat_year": 2083,
+            "system": "purnimanta"
+          }
+        },
+        "nakshatras": [
+          {
+            "ends": "2026-10-09T21:20:16.317",
+            "index": 11,
+            "nakshatra": {
+              "id": "uttara_phalguni",
+              "name": "Uttara Phalguni",
+              "names": {
+                "en": "Uttara Phalguni",
+                "hi": "उत्तरा फाल्गुनी"
+              }
+            },
+            "starts": null
+          },
+          {
+            "ends": "2026-10-10T21:43:16.317",
+            "index": 12,
+            "nakshatra": {
+              "id": "hasta",
+              "name": "Hasta",
+              "names": {
+                "en": "Hasta",
+                "hi": "हस्त"
+              }
+            },
+            "starts": "2026-10-09T21:20:16.317"
+          }
+        ],
+        "next_sunrise": "2026-10-10T06:22:42.994",
+        "sunrise": "2026-10-09T06:22:08.817",
+        "sunset": "2026-10-09T17:54:25.705",
+        "tithis": [
+          {
+            "ends": "2026-10-09T21:36:40.692",
+            "index": 28,
+            "kshaya": false,
+            "name": {
+              "id": "chaturdashi",
+              "name": "Chaturdashi",
+              "names": {
+                "en": "Chaturdashi",
+                "hi": "चतुर्दशी"
+              }
+            },
+            "paksha": {
+              "id": "krishna",
+              "name": "Krishna",
+              "names": {
+                "en": "Krishna",
+                "hi": "कृष्ण"
+              }
+            },
+            "starts": null,
+            "vriddhi": false
+          },
+          {
+            "ends": "2026-10-10T21:20:18.192",
+            "index": 29,
+            "kshaya": false,
+            "name": {
+              "id": "amavasya",
+              "name": "Amavasya",
+              "names": {
+                "en": "Amavasya",
+                "hi": "अमावस्या"
+              }
+            },
+            "paksha": {
+              "id": "krishna",
+              "name": "Krishna",
+              "names": {
+                "en": "Krishna",
+                "hi": "कृष्ण"
+              }
+            },
+            "starts": "2026-10-09T21:36:40.692",
+            "vriddhi": false
+          }
+        ],
+        "vara": {
+          "id": "shukravara",
+          "name": "Shukravara",
+          "names": {
+            "en": "Shukravara",
+            "hi": "शुक्रवार"
+          }
+        },
+        "vara_index": 4,
+        "yogas": [
+          {
+            "ends": "2026-10-09T23:21:12.567",
+            "index": 24,
+            "name": {
+              "id": "brahma",
+              "name": "Brahma",
+              "names": {
+                "en": "Brahma",
+                "hi": "ब्रह्म"
+              }
+            },
+            "starts": null
+          },
+          {
+            "ends": "2026-10-10T22:02:29.442",
+            "index": 25,
+            "name": {
+              "id": "indra",
+              "name": "Indra",
+              "names": {
+                "en": "Indra",
+                "hi": "इन्द्र"
+              }
+            },
+            "starts": "2026-10-09T23:21:12.567"
+          }
+        ]
+      },
+      {
+        "date": "2026-10-10",
+        "karanas": [
+          {
+            "ends": "2026-10-10T09:25:03.619",
+            "index": 58,
+            "name": {
+              "id": "chatushpada",
+              "name": "Chatushpada",
+              "names": {
+                "en": "Chatushpada",
+                "hi": "चतुष्पद"
+              }
+            },
+            "starts": null
+          },
+          {
+            "ends": "2026-10-10T21:20:24.244",
+            "index": 59,
+            "name": {
+              "id": "naga",
+              "name": "Naga",
+              "names": {
+                "en": "Naga",
+                "hi": "नाग"
+              }
+            },
+            "starts": "2026-10-10T09:25:03.619"
+          },
+          {
+            "ends": "2026-10-11T09:22:18.619",
+            "index": 0,
+            "name": {
+              "id": "kimstughna",
+              "name": "Kimstughna",
+              "names": {
+                "en": "Kimstughna",
+                "hi": "किंस्तुघ्न"
+              }
+            },
+            "starts": "2026-10-10T21:20:24.244"
+          }
+        ],
+        "masa": {
+          "amanta": {
+            "is_adhik": false,
+            "month_index": 5,
+            "month_name": {
+              "id": "bhadrapada",
+              "name": "Bhadrapada",
+              "names": {
+                "en": "Bhadrapada",
+                "hi": "भाद्रपद"
+              }
+            },
+            "samvat_year": 2083,
+            "system": "amanta"
+          },
+          "purnimanta": {
+            "is_adhik": false,
+            "month_index": 6,
+            "month_name": {
+              "id": "ashwina",
+              "name": "Ashwina",
+              "names": {
+                "en": "Ashwina",
+                "hi": "आश्विन"
+              }
+            },
+            "samvat_year": 2083,
+            "system": "purnimanta"
+          }
+        },
+        "nakshatras": [
+          {
+            "ends": "2026-10-10T21:43:20.494",
+            "index": 12,
+            "nakshatra": {
+              "id": "hasta",
+              "name": "Hasta",
+              "names": {
+                "en": "Hasta",
+                "hi": "हस्त"
+              }
+            },
+            "starts": null
+          },
+          {
+            "ends": "2026-10-11T22:33:03.619",
+            "index": 13,
+            "nakshatra": {
+              "id": "chitra",
+              "name": "Chitra",
+              "names": {
+                "en": "Chitra",
+                "hi": "चित्रा"
+              }
+            },
+            "starts": "2026-10-10T21:43:20.494"
+          }
+        ],
+        "next_sunrise": "2026-10-11T06:23:17.531",
+        "sunrise": "2026-10-10T06:22:42.994",
+        "sunset": "2026-10-10T17:53:19.344",
+        "tithis": [
+          {
+            "ends": "2026-10-10T21:20:22.369",
+            "index": 29,
+            "kshaya": false,
+            "name": {
+              "id": "amavasya",
+              "name": "Amavasya",
+              "names": {
+                "en": "Amavasya",
+                "hi": "अमावस्या"
+              }
+            },
+            "paksha": {
+              "id": "krishna",
+              "name": "Krishna",
+              "names": {
+                "en": "Krishna",
+                "hi": "कृष्ण"
+              }
+            },
+            "starts": null,
+            "vriddhi": false
+          },
+          {
+            "ends": "2026-10-11T21:31:39.244",
+            "index": 0,
+            "kshaya": false,
+            "name": {
+              "id": "pratipada",
+              "name": "Pratipada",
+              "names": {
+                "en": "Pratipada",
+                "hi": "प्रतिपदा"
+              }
+            },
+            "paksha": {
+              "id": "shukla",
+              "name": "Shukla",
+              "names": {
+                "en": "Shukla",
+                "hi": "शुक्ल"
+              }
+            },
+            "starts": "2026-10-10T21:20:22.369",
+            "vriddhi": false
+          }
+        ],
+        "vara": {
+          "id": "shanivara",
+          "name": "Shanivara",
+          "names": {
+            "en": "Shanivara",
+            "hi": "शनिवार"
+          }
+        },
+        "vara_index": 5,
+        "yogas": [
+          {
+            "ends": "2026-10-10T22:02:33.619",
+            "index": 25,
+            "name": {
+              "id": "indra",
+              "name": "Indra",
+              "names": {
+                "en": "Indra",
+                "hi": "इन्द्र"
+              }
+            },
+            "starts": null
+          },
+          {
+            "ends": "2026-10-11T21:05:52.369",
+            "index": 26,
+            "name": {
+              "id": "vaidhriti",
+              "name": "Vaidhriti",
+              "names": {
+                "en": "Vaidhriti",
+                "hi": "वैधृति"
+              }
+            },
+            "starts": "2026-10-10T22:02:33.619"
+          }
+        ]
+      },
+      {
+        "date": "2026-10-11",
+        "karanas": [
+          {
+            "ends": "2026-10-11T09:22:21.281",
+            "index": 0,
+            "name": {
+              "id": "kimstughna",
+              "name": "Kimstughna",
+              "names": {
+                "en": "Kimstughna",
+                "hi": "किंस्तुघ्न"
+              }
+            },
+            "starts": null
+          },
+          {
+            "ends": "2026-10-11T21:31:45.656",
+            "index": 1,
+            "name": {
+              "id": "bava",
+              "name": "Bava",
+              "names": {
+                "en": "Bava",
+                "hi": "बव"
+              }
+            },
+            "starts": "2026-10-11T09:22:21.281"
+          },
+          {
+            "ends": "2026-10-12T09:48:40.031",
+            "index": 2,
+            "name": {
+              "id": "balava",
+              "name": "Balava",
+              "names": {
+                "en": "Balava",
+                "hi": "बालव"
+              }
+            },
+            "starts": "2026-10-11T21:31:45.656"
+          }
+        ],
+        "masa": {
+          "amanta": {
+            "is_adhik": false,
+            "month_index": 6,
+            "month_name": {
+              "id": "ashwina",
+              "name": "Ashwina",
+              "names": {
+                "en": "Ashwina",
+                "hi": "आश्विन"
+              }
+            },
+            "samvat_year": 2083,
+            "system": "amanta"
+          },
+          "purnimanta": {
+            "is_adhik": false,
+            "month_index": 6,
+            "month_name": {
+              "id": "ashwina",
+              "name": "Ashwina",
+              "names": {
+                "en": "Ashwina",
+                "hi": "आश्विन"
+              }
+            },
+            "samvat_year": 2083,
+            "system": "purnimanta"
+          }
+        },
+        "nakshatras": [
+          {
+            "ends": "2026-10-11T22:33:08.156",
+            "index": 13,
+            "nakshatra": {
+              "id": "chitra",
+              "name": "Chitra",
+              "names": {
+                "en": "Chitra",
+                "hi": "चित्रा"
+              }
+            },
+            "starts": null
+          },
+          {
+            "ends": "2026-10-12T23:52:51.281",
+            "index": 14,
+            "nakshatra": {
+              "id": "swati",
+              "name": "Swati",
+              "names": {
+                "en": "Swati",
+                "hi": "स्वाति"
+              }
+            },
+            "starts": "2026-10-11T22:33:08.156"
+          }
+        ],
+        "next_sunrise": "2026-10-12T06:23:52.434",
+        "sunrise": "2026-10-11T06:23:17.531",
+        "sunset": "2026-10-11T17:52:13.563",
+        "tithis": [
+          {
+            "ends": "2026-10-11T21:31:43.781",
+            "index": 0,
+            "kshaya": false,
+            "name": {
+              "id": "pratipada",
+              "name": "Pratipada",
+              "names": {
+                "en": "Pratipada",
+                "hi": "प्रतिपदा"
+              }
+            },
+            "paksha": {
+              "id": "shukla",
+              "name": "Shukla",
+              "names": {
+                "en": "Shukla",
+                "hi": "शुक्ल"
+              }
+            },
+            "starts": null,
+            "vriddhi": false
+          },
+          {
+            "ends": "2026-10-12T22:13:56.906",
+            "index": 1,
+            "kshaya": false,
+            "name": {
+              "id": "dwitiya",
+              "name": "Dwitiya",
+              "names": {
+                "en": "Dwitiya",
+                "hi": "द्वितीया"
+              }
+            },
+            "paksha": {
+              "id": "shukla",
+              "name": "Shukla",
+              "names": {
+                "en": "Shukla",
+                "hi": "शुक्ल"
+              }
+            },
+            "starts": "2026-10-11T21:31:43.781",
+            "vriddhi": false
+          }
+        ],
+        "vara": {
+          "id": "ravivara",
+          "name": "Ravivara",
+          "names": {
+            "en": "Ravivara",
+            "hi": "रविवार"
+          }
+        },
+        "vara_index": 6,
+        "yogas": [
+          {
+            "ends": "2026-10-11T21:05:56.906",
+            "index": 26,
+            "name": {
+              "id": "vaidhriti",
+              "name": "Vaidhriti",
+              "names": {
+                "en": "Vaidhriti",
+                "hi": "वैधृति"
+              }
+            },
+            "starts": null
+          },
+          {
+            "ends": "2026-10-12T20:32:41.906",
+            "index": 0,
+            "name": {
+              "id": "vishkambha",
+              "name": "Vishkambha",
+              "names": {
+                "en": "Vishkambha",
+                "hi": "विष्कम्भ"
+              }
+            },
+            "starts": "2026-10-11T21:05:56.906"
+          }
+        ]
+      },
+      {
+        "date": "2026-10-12",
+        "karanas": [
+          {
+            "ends": "2026-10-12T09:48:43.059",
+            "index": 2,
+            "name": {
+              "id": "balava",
+              "name": "Balava",
+              "names": {
+                "en": "Balava",
+                "hi": "बालव"
+              }
+            },
+            "starts": null
+          },
+          {
+            "ends": "2026-10-12T22:14:03.685",
+            "index": 3,
+            "name": {
+              "id": "kaulava",
+              "name": "Kaulava",
+              "names": {
+                "en": "Kaulava",
+                "hi": "कौलव"
+              }
+            },
+            "starts": "2026-10-12T09:48:43.059"
+          },
+          {
+            "ends": "2026-10-13T10:47:22.435",
+            "index": 4,
+            "name": {
+              "id": "taitila",
+              "name": "Taitila",
+              "names": {
+                "en": "Taitila",
+                "hi": "तैतिल"
+              }
+            },
+            "starts": "2026-10-12T22:14:03.685"
+          }
+        ],
+        "masa": {
+          "amanta": {
+            "is_adhik": false,
+            "month_index": 6,
+            "month_name": {
+              "id": "ashwina",
+              "name": "Ashwina",
+              "names": {
+                "en": "Ashwina",
+                "hi": "आश्विन"
+              }
+            },
+            "samvat_year": 2083,
+            "system": "amanta"
+          },
+          "purnimanta": {
+            "is_adhik": false,
+            "month_index": 6,
+            "month_name": {
+              "id": "ashwina",
+              "name": "Ashwina",
+              "names": {
+                "en": "Ashwina",
+                "hi": "आश्विन"
+              }
+            },
+            "samvat_year": 2083,
+            "system": "purnimanta"
+          }
+        },
+        "nakshatras": [
+          {
+            "ends": "2026-10-12T23:52:28.059",
+            "index": 14,
+            "nakshatra": {
+              "id": "swati",
+              "name": "Swati",
+              "names": {
+                "en": "Swati",
+                "hi": "स्वाति"
+              }
+            },
+            "starts": null
+          },
+          {
+            "ends": "2026-10-14T01:43:07.434",
+            "index": 15,
+            "nakshatra": {
+              "id": "vishakha",
+              "name": "Vishakha",
+              "names": {
+                "en": "Vishakha",
+                "hi": "विशाखा"
+              }
+            },
+            "starts": "2026-10-12T23:52:28.059"
+          }
+        ],
+        "next_sunrise": "2026-10-13T06:24:27.708",
+        "sunrise": "2026-10-12T06:23:52.434",
+        "sunset": "2026-10-12T17:51:08.389",
+        "tithis": [
+          {
+            "ends": "2026-10-12T22:14:01.809",
+            "index": 1,
+            "kshaya": false,
+            "name": {
+              "id": "dwitiya",
+              "name": "Dwitiya",
+              "names": {
+                "en": "Dwitiya",
+                "hi": "द्वितीया"
+              }
+            },
+            "paksha": {
+              "id": "shukla",
+              "name": "Shukla",
+              "names": {
+                "en": "Shukla",
+                "hi": "शुक्ल"
+              }
+            },
+            "starts": null,
+            "vriddhi": false
+          },
+          {
+            "ends": "2026-10-13T23:28:35.559",
+            "index": 2,
+            "kshaya": false,
+            "name": {
+              "id": "tritiya",
+              "name": "Tritiya",
+              "names": {
+                "en": "Tritiya",
+                "hi": "तृतीया"
+              }
+            },
+            "paksha": {
+              "id": "shukla",
+              "name": "Shukla",
+              "names": {
+                "en": "Shukla",
+                "hi": "शुक्ल"
+              }
+            },
+            "starts": "2026-10-12T22:14:01.809",
+            "vriddhi": false
+          }
+        ],
+        "vara": {
+          "id": "somavara",
+          "name": "Somavara",
+          "names": {
+            "en": "Somavara",
+            "hi": "सोमवार"
+          }
+        },
+        "vara_index": 0,
+        "yogas": [
+          {
+            "ends": "2026-10-12T20:32:46.809",
+            "index": 0,
+            "name": {
+              "id": "vishkambha",
+              "name": "Vishkambha",
+              "names": {
+                "en": "Vishkambha",
+                "hi": "विष्कम्भ"
+              }
+            },
+            "starts": null
+          },
+          {
+            "ends": "2026-10-13T20:23:54.309",
+            "index": 1,
+            "name": {
+              "id": "priti",
+              "name": "Priti",
+              "names": {
+                "en": "Priti",
+                "hi": "प्रीति"
+              }
+            },
+            "starts": "2026-10-12T20:32:46.809"
+          }
+        ]
+      },
+      {
+        "date": "2026-10-13",
+        "karanas": [
+          {
+            "ends": "2026-10-13T10:46:57.708",
+            "index": 4,
+            "name": {
+              "id": "taitila",
+              "name": "Taitila",
+              "names": {
+                "en": "Taitila",
+                "hi": "तैतिल"
+              }
+            },
+            "starts": null
+          },
+          {
+            "ends": "2026-10-13T23:28:14.583",
+            "index": 5,
+            "name": {
+              "id": "gara",
+              "name": "Gara",
+              "names": {
+                "en": "Gara",
+                "hi": "गर"
+              }
+            },
+            "starts": "2026-10-13T10:46:57.708"
+          },
+          {
+            "ends": "2026-10-14T12:17:29.583",
+            "index": 6,
+            "name": {
+              "id": "vanija",
+              "name": "Vanija",
+              "names": {
+                "en": "Vanija",
+                "hi": "वणिज"
+              }
+            },
+            "starts": "2026-10-13T23:28:14.583"
+          }
+        ],
+        "masa": {
+          "amanta": {
+            "is_adhik": false,
+            "month_index": 6,
+            "month_name": {
+              "id": "ashwina",
+              "name": "Ashwina",
+              "names": {
+                "en": "Ashwina",
+                "hi": "आश्विन"
+              }
+            },
+            "samvat_year": 2083,
+            "system": "amanta"
+          },
+          "purnimanta": {
+            "is_adhik": false,
+            "month_index": 6,
+            "month_name": {
+              "id": "ashwina",
+              "name": "Ashwina",
+              "names": {
+                "en": "Ashwina",
+                "hi": "आश्विन"
+              }
+            },
+            "samvat_year": 2083,
+            "system": "purnimanta"
+          }
+        },
+        "nakshatras": [
+          {
+            "ends": "2026-10-14T01:43:12.708",
+            "index": 15,
+            "nakshatra": {
+              "id": "vishakha",
+              "name": "Vishakha",
+              "names": {
+                "en": "Vishakha",
+                "hi": "विशाखा"
+              }
+            },
+            "starts": null
+          },
+          {
+            "ends": "2026-10-15T04:03:23.958",
+            "index": 16,
+            "nakshatra": {
+              "id": "anuradha",
+              "name": "Anuradha",
+              "names": {
+                "en": "Anuradha",
+                "hi": "अनुराधा"
+              }
+            },
+            "starts": "2026-10-14T01:43:12.708"
+          }
+        ],
+        "next_sunrise": "2026-10-14T06:25:03.357",
+        "sunrise": "2026-10-13T06:24:27.708",
+        "sunset": "2026-10-13T17:50:03.848",
+        "tithis": [
+          {
+            "ends": "2026-10-13T23:28:40.833",
+            "index": 2,
+            "kshaya": false,
+            "name": {
+              "id": "tritiya",
+              "name": "Tritiya",
+              "names": {
+                "en": "Tritiya",
+                "hi": "तृतीया"
+              }
+            },
+            "paksha": {
+              "id": "shukla",
+              "name": "Shukla",
+              "names": {
+                "en": "Shukla",
+                "hi": "शुक्ल"
+              }
+            },
+            "starts": null,
+            "vriddhi": false
+          },
+          {
+            "ends": "2026-10-15T01:14:10.833",
+            "index": 3,
+            "kshaya": false,
+            "name": {
+              "id": "chaturthi",
+              "name": "Chaturthi",
+              "names": {
+                "en": "Chaturthi",
+                "hi": "चतुर्थी"
+              }
+            },
+            "paksha": {
+              "id": "shukla",
+              "name": "Shukla",
+              "names": {
+                "en": "Shukla",
+                "hi": "शुक्ल"
+              }
+            },
+            "starts": "2026-10-13T23:28:40.833",
+            "vriddhi": false
+          }
+        ],
+        "vara": {
+          "id": "mangalavara",
+          "name": "Mangalavara",
+          "names": {
+            "en": "Mangalavara",
+            "hi": "मंगलवार"
+          }
+        },
+        "vara_index": 1,
+        "yogas": [
+          {
+            "ends": "2026-10-13T20:23:59.583",
+            "index": 1,
+            "name": {
+              "id": "priti",
+              "name": "Priti",
+              "names": {
+                "en": "Priti",
+                "hi": "प्रीति"
+              }
+            },
+            "starts": null
+          },
+          {
+            "ends": "2026-10-14T20:39:29.583",
+            "index": 2,
+            "name": {
+              "id": "ayushman",
+              "name": "Ayushman",
+              "names": {
+                "en": "Ayushman",
+                "hi": "आयुष्मान"
+              }
+            },
+            "starts": "2026-10-13T20:23:59.583"
+          }
+        ]
+      },
+      {
+        "date": "2026-10-14",
+        "karanas": [
+          {
+            "ends": "2026-10-14T12:17:33.357",
+            "index": 6,
+            "name": {
+              "id": "vanija",
+              "name": "Vanija",
+              "names": {
+                "en": "Vanija",
+                "hi": "वणिज"
+              }
+            },
+            "starts": null
+          },
+          {
+            "ends": "2026-10-15T01:13:50.232",
+            "index": 7,
+            "name": {
+              "id": "vishti",
+              "name": "Vishti",
+              "names": {
+                "en": "Vishti",
+                "hi": "विष्टि"
+              }
+            },
+            "starts": "2026-10-14T12:17:33.357"
+          },
+          {
+            "ends": "2026-10-15T14:17:08.982",
+            "index": 8,
+            "name": {
+              "id": "bava",
+              "name": "Bava",
+              "names": {
+                "en": "Bava",
+                "hi": "बव"
+              }
+            },
+            "starts": "2026-10-15T01:13:50.232"
+          }
+        ],
+        "masa": {
+          "amanta": {
+            "is_adhik": false,
+            "month_index": 6,
+            "month_name": {
+              "id": "ashwina",
+              "name": "Ashwina",
+              "names": {
+                "en": "Ashwina",
+                "hi": "आश्विन"
+              }
+            },
+            "samvat_year": 2083,
+            "system": "amanta"
+          },
+          "purnimanta": {
+            "is_adhik": false,
+            "month_index": 6,
+            "month_name": {
+              "id": "ashwina",
+              "name": "Ashwina",
+              "names": {
+                "en": "Ashwina",
+                "hi": "आश्विन"
+              }
+            },
+            "samvat_year": 2083,
+            "system": "purnimanta"
+          }
+        },
+        "nakshatras": [
+          {
+            "ends": "2026-10-15T04:03:29.607",
+            "index": 16,
+            "nakshatra": {
+              "id": "anuradha",
+              "name": "Anuradha",
+              "names": {
+                "en": "Anuradha",
+                "hi": "अनुराधा"
+              }
+            },
+            "starts": null
+          },
+          {
+            "ends": "2026-10-16T06:48:03.357",
+            "index": 17,
+            "nakshatra": {
+              "id": "jyeshtha",
+              "name": "Jyeshtha",
+              "names": {
+                "en": "Jyeshtha",
+                "hi": "ज्येष्ठा"
+              }
+            },
+            "starts": "2026-10-15T04:03:29.607"
+          }
+        ],
+        "next_sunrise": "2026-10-15T06:25:39.386",
+        "sunrise": "2026-10-14T06:25:03.357",
+        "sunset": "2026-10-14T17:48:59.964",
+        "tithis": [
+          {
+            "ends": "2026-10-15T01:14:16.482",
+            "index": 3,
+            "kshaya": false,
+            "name": {
+              "id": "chaturthi",
+              "name": "Chaturthi",
+              "names": {
+                "en": "Chaturthi",
+                "hi": "चतुर्थी"
+              }
+            },
+            "paksha": {
+              "id": "shukla",
+              "name": "Shukla",
+              "names": {
+                "en": "Shukla",
+                "hi": "शुक्ल"
+              }
+            },
+            "starts": null,
+            "vriddhi": false
+          },
+          {
+            "ends": "2026-10-16T03:26:01.482",
+            "index": 4,
+            "kshaya": false,
+            "name": {
+              "id": "panchami",
+              "name": "Panchami",
+              "names": {
+                "en": "Panchami",
+                "hi": "पंचमी"
+              }
+            },
+            "paksha": {
+              "id": "shukla",
+              "name": "Shukla",
+              "names": {
+                "en": "Shukla",
+                "hi": "शुक्ल"
+              }
+            },
+            "starts": "2026-10-15T01:14:16.482",
+            "vriddhi": false
+          }
+        ],
+        "vara": {
+          "id": "budhavara",
+          "name": "Budhavara",
+          "names": {
+            "en": "Budhavara",
+            "hi": "बुधवार"
+          }
+        },
+        "vara_index": 2,
+        "yogas": [
+          {
+            "ends": "2026-10-14T20:39:35.232",
+            "index": 2,
+            "name": {
+              "id": "ayushman",
+              "name": "Ayushman",
+              "names": {
+                "en": "Ayushman",
+                "hi": "आयुष्मान"
+              }
+            },
+            "starts": null
+          },
+          {
+            "ends": "2026-10-15T21:15:14.607",
+            "index": 3,
+            "name": {
+              "id": "saubhagya",
+              "name": "Saubhagya",
+              "names": {
+                "en": "Saubhagya",
+                "hi": "सौभाग्य"
+              }
+            },
+            "starts": "2026-10-14T20:39:35.232"
+          }
+        ]
+      },
+      {
+        "date": "2026-10-15",
+        "karanas": [
+          {
+            "ends": "2026-10-15T14:17:13.136",
+            "index": 8,
+            "name": {
+              "id": "bava",
+              "name": "Bava",
+              "names": {
+                "en": "Bava",
+                "hi": "बव"
+              }
+            },
+            "starts": null
+          },
+          {
+            "ends": "2026-10-16T03:25:41.261",
+            "index": 9,
+            "name": {
+              "id": "balava",
+              "name": "Balava",
+              "names": {
+                "en": "Balava",
+                "hi": "बालव"
+              }
+            },
+            "starts": "2026-10-15T14:17:13.136"
+          },
+          {
+            "ends": "2026-10-16T16:38:50.636",
+            "index": 10,
+            "name": {
+              "id": "kaulava",
+              "name": "Kaulava",
+              "names": {
+                "en": "Kaulava",
+                "hi": "कौलव"
+              }
+            },
+            "starts": "2026-10-16T03:25:41.261"
+          }
+        ],
+        "masa": {
+          "amanta": {
+            "is_adhik": false,
+            "month_index": 6,
+            "month_name": {
+              "id": "ashwina",
+              "name": "Ashwina",
+              "names": {
+                "en": "Ashwina",
+                "hi": "आश्विन"
+              }
+            },
+            "samvat_year": 2083,
+            "system": "amanta"
+          },
+          "purnimanta": {
+            "is_adhik": false,
+            "month_index": 6,
+            "month_name": {
+              "id": "ashwina",
+              "name": "Ashwina",
+              "names": {
+                "en": "Ashwina",
+                "hi": "आश्विन"
+              }
+            },
+            "samvat_year": 2083,
+            "system": "purnimanta"
+          }
+        },
+        "nakshatras": [
+          {
+            "ends": "2026-10-16T06:48:09.386",
+            "index": 17,
+            "nakshatra": {
+              "id": "jyeshtha",
+              "name": "Jyeshtha",
+              "names": {
+                "en": "Jyeshtha",
+                "hi": "ज्येष्ठा"
+              }
+            },
+            "starts": null
+          }
+        ],
+        "next_sunrise": "2026-10-16T06:26:15.800",
+        "sunrise": "2026-10-15T06:25:39.386",
+        "sunset": "2026-10-15T17:47:56.766",
+        "tithis": [
+          {
+            "ends": "2026-10-16T03:26:07.511",
+            "index": 4,
+            "kshaya": false,
+            "name": {
+              "id": "panchami",
+              "name": "Panchami",
+              "names": {
+                "en": "Panchami",
+                "hi": "पंचमी"
+              }
+            },
+            "paksha": {
+              "id": "shukla",
+              "name": "Shukla",
+              "names": {
+                "en": "Shukla",
+                "hi": "शुक्ल"
+              }
+            },
+            "starts": null,
+            "vriddhi": false
+          },
+          {
+            "ends": "2026-10-17T05:55:13.136",
+            "index": 5,
+            "kshaya": false,
+            "name": {
+              "id": "shashthi",
+              "name": "Shashthi",
+              "names": {
+                "en": "Shashthi",
+                "hi": "षष्ठी"
+              }
+            },
+            "paksha": {
+              "id": "shukla",
+              "name": "Shukla",
+              "names": {
+                "en": "Shukla",
+                "hi": "शुक्ल"
+              }
+            },
+            "starts": "2026-10-16T03:26:07.511",
+            "vriddhi": false
+          }
+        ],
+        "vara": {
+          "id": "guruvara",
+          "name": "Guruvara",
+          "names": {
+            "en": "Guruvara",
+            "hi": "गुरुवार"
+          }
+        },
+        "vara_index": 3,
+        "yogas": [
+          {
+            "ends": "2026-10-15T21:15:20.636",
+            "index": 3,
+            "name": {
+              "id": "saubhagya",
+              "name": "Saubhagya",
+              "names": {
+                "en": "Saubhagya",
+                "hi": "सौभाग्य"
+              }
+            },
+            "starts": null
+          },
+          {
+            "ends": "2026-10-16T22:06:00.011",
+            "index": 4,
+            "name": {
+              "id": "shobhana",
+              "name": "Shobhana",
+              "names": {
+                "en": "Shobhana",
+                "hi": "शोभन"
+              }
+            },
+            "starts": "2026-10-15T21:15:20.636"
+          }
+        ]
+      },
+      {
+        "date": "2026-10-16",
+        "karanas": [
+          {
+            "ends": "2026-10-16T16:38:55.175",
+            "index": 10,
+            "name": {
+              "id": "kaulava",
+              "name": "Kaulava",
+              "names": {
+                "en": "Kaulava",
+                "hi": "कौलव"
+              }
+            },
+            "starts": null
+          },
+          {
+            "ends": "2026-10-17T05:54:53.300",
+            "index": 11,
+            "name": {
+              "id": "taitila",
+              "name": "Taitila",
+              "names": {
+                "en": "Taitila",
+                "hi": "तैतिल"
+              }
+            },
+            "starts": "2026-10-16T16:38:55.175"
+          },
+          {
+            "ends": "2026-10-17T19:12:15.800",
+            "index": 12,
+            "name": {
+              "id": "gara",
+              "name": "Gara",
+              "names": {
+                "en": "Gara",
+                "hi": "गर"
+              }
+            },
+            "starts": "2026-10-17T05:54:53.300"
+          }
+        ],
+        "masa": {
+          "amanta": {
+            "is_adhik": false,
+            "month_index": 6,
+            "month_name": {
+              "id": "ashwina",
+              "name": "Ashwina",
+              "names": {
+                "en": "Ashwina",
+                "hi": "आश्विन"
+              }
+            },
+            "samvat_year": 2083,
+            "system": "amanta"
+          },
+          "purnimanta": {
+            "is_adhik": false,
+            "month_index": 6,
+            "month_name": {
+              "id": "ashwina",
+              "name": "Ashwina",
+              "names": {
+                "en": "Ashwina",
+                "hi": "आश्विन"
+              }
+            },
+            "samvat_year": 2083,
+            "system": "purnimanta"
+          }
+        },
+        "nakshatras": [
+          {
+            "ends": "2026-10-16T06:47:49.550",
+            "index": 17,
+            "nakshatra": {
+              "id": "jyeshtha",
+              "name": "Jyeshtha",
+              "names": {
+                "en": "Jyeshtha",
+                "hi": "ज्येष्ठा"
+              }
+            },
+            "starts": null
+          },
+          {
+            "ends": "2026-10-17T09:47:23.300",
+            "index": 18,
+            "nakshatra": {
+              "id": "mula",
+              "name": "Mula",
+              "names": {
+                "en": "Mula",
+                "hi": "मूल"
+              }
+            },
+            "starts": "2026-10-16T06:47:49.550"
+          }
+        ],
+        "next_sunrise": "2026-10-17T06:26:52.602",
+        "sunrise": "2026-10-16T06:26:15.800",
+        "sunset": "2026-10-16T17:46:54.280",
+        "tithis": [
+          {
+            "ends": "2026-10-17T05:54:51.425",
+            "index": 5,
+            "kshaya": false,
+            "name": {
+              "id": "shashthi",
+              "name": "Shashthi",
+              "names": {
+                "en": "Shashthi",
+                "hi": "षष्ठी"
+              }
+            },
+            "paksha": {
+              "id": "shukla",
+              "name": "Shukla",
+              "names": {
+                "en": "Shukla",
+                "hi": "शुक्ल"
+              }
+            },
+            "starts": null,
+            "vriddhi": false
+          },
+          {
+            "ends": "2026-10-18T08:29:06.425",
+            "index": 6,
+            "kshaya": false,
+            "name": {
+              "id": "saptami",
+              "name": "Saptami",
+              "names": {
+                "en": "Saptami",
+                "hi": "सप्तमी"
+              }
+            },
+            "paksha": {
+              "id": "shukla",
+              "name": "Shukla",
+              "names": {
+                "en": "Shukla",
+                "hi": "शुक्ल"
+              }
+            },
+            "starts": "2026-10-17T05:54:51.425",
+            "vriddhi": false
+          }
+        ],
+        "vara": {
+          "id": "shukravara",
+          "name": "Shukravara",
+          "names": {
+            "en": "Shukravara",
+            "hi": "शुक्रवार"
+          }
+        },
+        "vara_index": 4,
+        "yogas": [
+          {
+            "ends": "2026-10-16T22:06:06.425",
+            "index": 4,
+            "name": {
+              "id": "shobhana",
+              "name": "Shobhana",
+              "names": {
+                "en": "Shobhana",
+                "hi": "शोभन"
+              }
+            },
+            "starts": null
+          },
+          {
+            "ends": "2026-10-17T23:02:51.425",
+            "index": 5,
+            "name": {
+              "id": "atiganda",
+              "name": "Atiganda",
+              "names": {
+                "en": "Atiganda",
+                "hi": "अतिगण्ड"
+              }
+            },
+            "starts": "2026-10-16T22:06:06.425"
+          }
+        ]
+      },
+      {
+        "date": "2026-10-17",
+        "karanas": [
+          {
+            "ends": "2026-10-17T19:12:20.727",
+            "index": 12,
+            "name": {
+              "id": "gara",
+              "name": "Gara",
+              "names": {
+                "en": "Gara",
+                "hi": "गर"
+              }
+            },
+            "starts": null
+          },
+          {
+            "ends": "2026-10-18T08:28:46.977",
+            "index": 13,
+            "name": {
+              "id": "vanija",
+              "name": "Vanija",
+              "names": {
+                "en": "Vanija",
+                "hi": "वणिज"
+              }
+            },
+            "starts": "2026-10-17T19:12:20.727"
+          }
+        ],
+        "masa": {
+          "amanta": {
+            "is_adhik": false,
+            "month_index": 6,
+            "month_name": {
+              "id": "ashwina",
+              "name": "Ashwina",
+              "names": {
+                "en": "Ashwina",
+                "hi": "आश्विन"
+              }
+            },
+            "samvat_year": 2083,
+            "system": "amanta"
+          },
+          "purnimanta": {
+            "is_adhik": false,
+            "month_index": 6,
+            "month_name": {
+              "id": "ashwina",
+              "name": "Ashwina",
+              "names": {
+                "en": "Ashwina",
+                "hi": "आश्विन"
+              }
+            },
+            "samvat_year": 2083,
+            "system": "purnimanta"
+          }
+        },
+        "nakshatras": [
+          {
+            "ends": "2026-10-17T09:47:30.102",
+            "index": 18,
+            "nakshatra": {
+              "id": "mula",
+              "name": "Mula",
+              "names": {
+                "en": "Mula",
+                "hi": "मूल"
+              }
+            },
+            "starts": null
+          },
+          {
+            "ends": "2026-10-18T12:49:24.477",
+            "index": 19,
+            "nakshatra": {
+              "id": "purva_ashadha",
+              "name": "Purva Ashadha",
+              "names": {
+                "en": "Purva Ashadha",
+                "hi": "पूर्वाषाढ़ा"
+              }
+            },
+            "starts": "2026-10-17T09:47:30.102"
+          }
+        ],
+        "next_sunrise": "2026-10-18T06:27:29.798",
+        "sunrise": "2026-10-17T06:26:52.602",
+        "sunset": "2026-10-17T17:45:52.534",
+        "tithis": [
+          {
+            "ends": "2026-10-18T08:28:45.102",
+            "index": 6,
+            "kshaya": false,
+            "name": {
+              "id": "saptami",
+              "name": "Saptami",
+              "names": {
+                "en": "Saptami",
+                "hi": "सप्तमी"
+              }
+            },
+            "paksha": {
+              "id": "shukla",
+              "name": "Shukla",
+              "names": {
+                "en": "Shukla",
+                "hi": "शुक्ल"
+              }
+            },
+            "starts": null,
+            "vriddhi": true
+          }
+        ],
+        "vara": {
+          "id": "shanivara",
+          "name": "Shanivara",
+          "names": {
+            "en": "Shanivara",
+            "hi": "शनिवार"
+          }
+        },
+        "vara_index": 5,
+        "yogas": [
+          {
+            "ends": "2026-10-17T23:02:58.227",
+            "index": 5,
+            "name": {
+              "id": "atiganda",
+              "name": "Atiganda",
+              "names": {
+                "en": "Atiganda",
+                "hi": "अतिगण्ड"
+              }
+            },
+            "starts": null
+          },
+          {
+            "ends": "2026-10-18T23:56:26.352",
+            "index": 6,
+            "name": {
+              "id": "sukarma",
+              "name": "Sukarma",
+              "names": {
+                "en": "Sukarma",
+                "hi": "सुकर्मा"
+              }
+            },
+            "starts": "2026-10-17T23:02:58.227"
+          }
+        ]
+      },
+      {
+        "date": "2026-10-18",
+        "karanas": [
+          {
+            "ends": "2026-10-18T08:28:54.173",
+            "index": 13,
+            "name": {
+              "id": "vanija",
+              "name": "Vanija",
+              "names": {
+                "en": "Vanija",
+                "hi": "वणिज"
+              }
+            },
+            "starts": null
+          },
+          {
+            "ends": "2026-10-18T21:42:59.798",
+            "index": 14,
+            "name": {
+              "id": "vishti",
+              "name": "Vishti",
+              "names": {
+                "en": "Vishti",
+                "hi": "विष्टि"
+              }
+            },
+            "starts": "2026-10-18T08:28:54.173"
+          },
+          {
+            "ends": "2026-10-19T10:52:24.173",
+            "index": 15,
+            "name": {
+              "id": "bava",
+              "name": "Bava",
+              "names": {
+                "en": "Bava",
+                "hi": "बव"
+              }
+            },
+            "starts": "2026-10-18T21:42:59.798"
+          }
+        ],
+        "masa": {
+          "amanta": {
+            "is_adhik": false,
+            "month_index": 6,
+            "month_name": {
+              "id": "ashwina",
+              "name": "Ashwina",
+              "names": {
+                "en": "Ashwina",
+                "hi": "आश्विन"
+              }
+            },
+            "samvat_year": 2083,
+            "system": "amanta"
+          },
+          "purnimanta": {
+            "is_adhik": false,
+            "month_index": 6,
+            "month_name": {
+              "id": "ashwina",
+              "name": "Ashwina",
+              "names": {
+                "en": "Ashwina",
+                "hi": "आश्विन"
+              }
+            },
+            "samvat_year": 2083,
+            "system": "purnimanta"
+          }
+        },
+        "nakshatras": [
+          {
+            "ends": "2026-10-18T12:49:31.673",
+            "index": 19,
+            "nakshatra": {
+              "id": "purva_ashadha",
+              "name": "Purva Ashadha",
+              "names": {
+                "en": "Purva Ashadha",
+                "hi": "पूर्वाषाढ़ा"
+              }
+            },
+            "starts": null
+          },
+          {
+            "ends": "2026-10-19T15:39:14.798",
+            "index": 20,
+            "nakshatra": {
+              "id": "uttara_ashadha",
+              "name": "Uttara Ashadha",
+              "names": {
+                "en": "Uttara Ashadha",
+                "hi": "उत्तराषाढ़ा"
+              }
+            },
+            "starts": "2026-10-18T12:49:31.673"
+          }
+        ],
+        "next_sunrise": "2026-10-19T06:28:07.391",
+        "sunrise": "2026-10-18T06:27:29.798",
+        "sunset": "2026-10-18T17:44:51.555",
+        "tithis": [
+          {
+            "ends": "2026-10-18T08:28:54.173",
+            "index": 6,
+            "kshaya": false,
+            "name": {
+              "id": "saptami",
+              "name": "Saptami",
+              "names": {
+                "en": "Saptami",
+                "hi": "सप्तमी"
+              }
+            },
+            "paksha": {
+              "id": "shukla",
+              "name": "Shukla",
+              "names": {
+                "en": "Shukla",
+                "hi": "शुक्ल"
+              }
+            },
+            "starts": null,
+            "vriddhi": true
+          },
+          {
+            "ends": "2026-10-19T10:52:22.298",
+            "index": 7,
+            "kshaya": false,
+            "name": {
+              "id": "ashtami",
+              "name": "Ashtami",
+              "names": {
+                "en": "Ashtami",
+                "hi": "अष्टमी"
+              }
+            },
+            "paksha": {
+              "id": "shukla",
+              "name": "Shukla",
+              "names": {
+                "en": "Shukla",
+                "hi": "शुक्ल"
+              }
+            },
+            "starts": "2026-10-18T08:28:54.173",
+            "vriddhi": false
+          }
+        ],
+        "vara": {
+          "id": "ravivara",
+          "name": "Ravivara",
+          "names": {
+            "en": "Ravivara",
+            "hi": "रविवार"
+          }
+        },
+        "vara_index": 6,
+        "yogas": [
+          {
+            "ends": "2026-10-18T23:56:33.548",
+            "index": 6,
+            "name": {
+              "id": "sukarma",
+              "name": "Sukarma",
+              "names": {
+                "en": "Sukarma",
+                "hi": "सुकर्मा"
+              }
+            },
+            "starts": null
+          },
+          {
+            "ends": "2026-10-20T00:35:29.798",
+            "index": 7,
+            "name": {
+              "id": "dhriti",
+              "name": "Dhriti",
+              "names": {
+                "en": "Dhriti",
+                "hi": "धृति"
+              }
+            },
+            "starts": "2026-10-18T23:56:33.548"
+          }
+        ]
+      },
+      {
+        "date": "2026-10-19",
+        "karanas": [
+          {
+            "ends": "2026-10-19T10:52:29.891",
+            "index": 15,
+            "name": {
+              "id": "bava",
+              "name": "Bava",
+              "names": {
+                "en": "Bava",
+                "hi": "बव"
+              }
+            },
+            "starts": null
+          },
+          {
+            "ends": "2026-10-19T23:55:48.641",
+            "index": 16,
+            "name": {
+              "id": "balava",
+              "name": "Balava",
+              "names": {
+                "en": "Balava",
+                "hi": "बालव"
+              }
+            },
+            "starts": "2026-10-19T10:52:29.891"
+          },
+          {
+            "ends": "2026-10-20T12:51:09.266",
+            "index": 17,
+            "name": {
+              "id": "kaulava",
+              "name": "Kaulava",
+              "names": {
+                "en": "Kaulava",
+                "hi": "कौलव"
+              }
+            },
+            "starts": "2026-10-19T23:55:48.641"
+          }
+        ],
+        "masa": {
+          "amanta": {
+            "is_adhik": false,
+            "month_index": 6,
+            "month_name": {
+              "id": "ashwina",
+              "name": "Ashwina",
+              "names": {
+                "en": "Ashwina",
+                "hi": "आश्विन"
+              }
+            },
+            "samvat_year": 2083,
+            "system": "amanta"
+          },
+          "purnimanta": {
+            "is_adhik": false,
+            "month_index": 6,
+            "month_name": {
+              "id": "ashwina",
+              "name": "Ashwina",
+              "names": {
+                "en": "Ashwina",
+                "hi": "आश्विन"
+              }
+            },
+            "samvat_year": 2083,
+            "system": "purnimanta"
+          }
+        },
+        "nakshatras": [
+          {
+            "ends": "2026-10-19T15:38:54.266",
+            "index": 20,
+            "nakshatra": {
+              "id": "uttara_ashadha",
+              "name": "Uttara Ashadha",
+              "names": {
+                "en": "Uttara Ashadha",
+                "hi": "उत्तराषाढ़ा"
+              }
+            },
+            "starts": null
+          },
+          {
+            "ends": "2026-10-20T18:02:22.391",
+            "index": 21,
+            "nakshatra": {
+              "id": "shravana",
+              "name": "Shravana",
+              "names": {
+                "en": "Shravana",
+                "hi": "श्रवण"
+              }
+            },
+            "starts": "2026-10-19T15:38:54.266"
+          }
+        ],
+        "next_sunrise": "2026-10-20T06:28:45.387",
+        "sunrise": "2026-10-19T06:28:07.391",
+        "sunset": "2026-10-19T17:43:51.371",
+        "tithis": [
+          {
+            "ends": "2026-10-19T10:52:29.891",
+            "index": 7,
+            "kshaya": false,
+            "name": {
+              "id": "ashtami",
+              "name": "Ashtami",
+              "names": {
+                "en": "Ashtami",
+                "hi": "अष्टमी"
+              }
+            },
+            "paksha": {
+              "id": "shukla",
+              "name": "Shukla",
+              "names": {
+                "en": "Shukla",
+                "hi": "शुक्ल"
+              }
+            },
+            "starts": null,
+            "vriddhi": false
+          },
+          {
+            "ends": "2026-10-20T12:51:07.391",
+            "index": 8,
+            "kshaya": false,
+            "name": {
+              "id": "navami",
+              "name": "Navami",
+              "names": {
+                "en": "Navami",
+                "hi": "नवमी"
+              }
+            },
+            "paksha": {
+              "id": "shukla",
+              "name": "Shukla",
+              "names": {
+                "en": "Shukla",
+                "hi": "शुक्ल"
+              }
+            },
+            "starts": "2026-10-19T10:52:29.891",
+            "vriddhi": false
+          }
+        ],
+        "vara": {
+          "id": "somavara",
+          "name": "Somavara",
+          "names": {
+            "en": "Somavara",
+            "hi": "सोमवार"
+          }
+        },
+        "vara_index": 0,
+        "yogas": [
+          {
+            "ends": "2026-10-20T00:35:09.266",
+            "index": 7,
+            "name": {
+              "id": "dhriti",
+              "name": "Dhriti",
+              "names": {
+                "en": "Dhriti",
+                "hi": "धृति"
+              }
+            },
+            "starts": null
+          },
+          {
+            "ends": "2026-10-21T00:50:11.141",
+            "index": 8,
+            "name": {
+              "id": "shula",
+              "name": "Shula",
+              "names": {
+                "en": "Shula",
+                "hi": "शूल"
+              }
+            },
+            "starts": "2026-10-20T00:35:09.266"
+          }
+        ]
+      },
+      {
+        "date": "2026-10-20",
+        "karanas": [
+          {
+            "ends": "2026-10-20T12:51:15.387",
+            "index": 17,
+            "name": {
+              "id": "kaulava",
+              "name": "Kaulava",
+              "names": {
+                "en": "Kaulava",
+                "hi": "कौलव"
+              }
+            },
+            "starts": null
+          },
+          {
+            "ends": "2026-10-21T01:37:13.512",
+            "index": 18,
+            "name": {
+              "id": "taitila",
+              "name": "Taitila",
+              "names": {
+                "en": "Taitila",
+                "hi": "तैतिल"
+              }
+            },
+            "starts": "2026-10-20T12:51:15.387"
+          },
+          {
+            "ends": "2026-10-21T14:12:24.762",
+            "index": 19,
+            "name": {
+              "id": "gara",
+              "name": "Gara",
+              "names": {
+                "en": "Gara",
+                "hi": "गर"
+              }
+            },
+            "starts": "2026-10-21T01:37:13.512"
+          }
+        ],
+        "masa": {
+          "amanta": {
+            "is_adhik": false,
+            "month_index": 6,
+            "month_name": {
+              "id": "ashwina",
+              "name": "Ashwina",
+              "names": {
+                "en": "Ashwina",
+                "hi": "आश्विन"
+              }
+            },
+            "samvat_year": 2083,
+            "system": "amanta"
+          },
+          "purnimanta": {
+            "is_adhik": false,
+            "month_index": 6,
+            "month_name": {
+              "id": "ashwina",
+              "name": "Ashwina",
+              "names": {
+                "en": "Ashwina",
+                "hi": "आश्विन"
+              }
+            },
+            "samvat_year": 2083,
+            "system": "purnimanta"
+          }
+        },
+        "nakshatras": [
+          {
+            "ends": "2026-10-20T18:02:30.387",
+            "index": 21,
+            "nakshatra": {
+              "id": "shravana",
+              "name": "Shravana",
+              "names": {
+                "en": "Shravana",
+                "hi": "श्रवण"
+              }
+            },
+            "starts": null
+          },
+          {
+            "ends": "2026-10-21T19:48:28.512",
+            "index": 22,
+            "nakshatra": {
+              "id": "dhanishta",
+              "name": "Dhanishta",
+              "names": {
+                "en": "Dhanishta",
+                "hi": "धनिष्ठा"
+              }
+            },
+            "starts": "2026-10-20T18:02:30.387"
+          }
+        ],
+        "next_sunrise": "2026-10-21T06:29:23.788",
+        "sunrise": "2026-10-20T06:28:45.387",
+        "sunset": "2026-10-20T17:42:52.012",
+        "tithis": [
+          {
+            "ends": "2026-10-20T12:51:15.387",
+            "index": 8,
+            "kshaya": false,
+            "name": {
+              "id": "navami",
+              "name": "Navami",
+              "names": {
+                "en": "Navami",
+                "hi": "नवमी"
+              }
+            },
+            "paksha": {
+              "id": "shukla",
+              "name": "Shukla",
+              "names": {
+                "en": "Shukla",
+                "hi": "शुक्ल"
+              }
+            },
+            "starts": null,
+            "vriddhi": false
+          },
+          {
+            "ends": "2026-10-21T14:12:22.887",
+            "index": 9,
+            "kshaya": false,
+            "name": {
+              "id": "dashami",
+              "name": "Dashami",
+              "names": {
+                "en": "Dashami",
+                "hi": "दशमी"
+              }
+            },
+            "paksha": {
+              "id": "shukla",
+              "name": "Shukla",
+              "names": {
+                "en": "Shukla",
+                "hi": "शुक्ल"
+              }
+            },
+            "starts": "2026-10-20T12:51:15.387",
+            "vriddhi": false
+          }
+        ],
+        "vara": {
+          "id": "mangalavara",
+          "name": "Mangalavara",
+          "names": {
+            "en": "Mangalavara",
+            "hi": "मंगलवार"
+          }
+        },
+        "vara_index": 1,
+        "yogas": [
+          {
+            "ends": "2026-10-21T00:50:19.137",
+            "index": 8,
+            "name": {
+              "id": "shula",
+              "name": "Shula",
+              "names": {
+                "en": "Shula",
+                "hi": "शूल"
+              }
+            },
+            "starts": null
+          },
+          {
+            "ends": "2026-10-22T00:33:28.512",
+            "index": 9,
+            "name": {
+              "id": "ganda",
+              "name": "Ganda",
+              "names": {
+                "en": "Ganda",
+                "hi": "गण्ड"
+              }
+            },
+            "starts": "2026-10-21T00:50:19.137"
+          }
+        ]
+      },
+      {
+        "date": "2026-10-21",
+        "karanas": [
+          {
+            "ends": "2026-10-21T14:12:31.288",
+            "index": 19,
+            "name": {
+              "id": "gara",
+              "name": "Gara",
+              "names": {
+                "en": "Gara",
+                "hi": "गर"
+              }
+            },
+            "starts": null
+          },
+          {
+            "ends": "2026-10-22T02:36:27.538",
+            "index": 20,
+            "name": {
+              "id": "vanija",
+              "name": "Vanija",
+              "names": {
+                "en": "Vanija",
+                "hi": "वणिज"
+              }
+            },
+            "starts": "2026-10-21T14:12:31.288"
+          },
+          {
+            "ends": "2026-10-22T14:48:40.663",
+            "index": 21,
+            "name": {
+              "id": "vishti",
+              "name": "Vishti",
+              "names": {
+                "en": "Vishti",
+                "hi": "विष्टि"
+              }
+            },
+            "starts": "2026-10-22T02:36:27.538"
+          }
+        ],
+        "masa": {
+          "amanta": {
+            "is_adhik": false,
+            "month_index": 6,
+            "month_name": {
+              "id": "ashwina",
+              "name": "Ashwina",
+              "names": {
+                "en": "Ashwina",
+                "hi": "आश्विन"
+              }
+            },
+            "samvat_year": 2083,
+            "system": "amanta"
+          },
+          "purnimanta": {
+            "is_adhik": false,
+            "month_index": 6,
+            "month_name": {
+              "id": "ashwina",
+              "name": "Ashwina",
+              "names": {
+                "en": "Ashwina",
+                "hi": "आश्विन"
+              }
+            },
+            "samvat_year": 2083,
+            "system": "purnimanta"
+          }
+        },
+        "nakshatras": [
+          {
+            "ends": "2026-10-21T19:48:36.913",
+            "index": 22,
+            "nakshatra": {
+              "id": "dhanishta",
+              "name": "Dhanishta",
+              "names": {
+                "en": "Dhanishta",
+                "hi": "धनिष्ठा"
+              }
+            },
+            "starts": null
+          },
+          {
+            "ends": "2026-10-22T20:49:35.038",
+            "index": 23,
+            "nakshatra": {
+              "id": "shatabhisha",
+              "name": "Shatabhisha",
+              "names": {
+                "en": "Shatabhisha",
+                "hi": "शतभिषा"
+              }
+            },
+            "starts": "2026-10-21T19:48:36.913"
+          }
+        ],
+        "next_sunrise": "2026-10-22T06:30:02.599",
+        "sunrise": "2026-10-21T06:29:23.788",
+        "sunset": "2026-10-21T17:41:53.506",
+        "tithis": [
+          {
+            "ends": "2026-10-21T14:12:31.288",
+            "index": 9,
+            "kshaya": false,
+            "name": {
+              "id": "dashami",
+              "name": "Dashami",
+              "names": {
+                "en": "Dashami",
+                "hi": "दशमी"
+              }
+            },
+            "paksha": {
+              "id": "shukla",
+              "name": "Shukla",
+              "names": {
+                "en": "Shukla",
+                "hi": "शुक्ल"
+              }
+            },
+            "starts": null,
+            "vriddhi": false
+          },
+          {
+            "ends": "2026-10-22T14:48:38.788",
+            "index": 10,
+            "kshaya": false,
+            "name": {
+              "id": "ekadashi",
+              "name": "Ekadashi",
+              "names": {
+                "en": "Ekadashi",
+                "hi": "एकादशी"
+              }
+            },
+            "paksha": {
+              "id": "shukla",
+              "name": "Shukla",
+              "names": {
+                "en": "Shukla",
+                "hi": "शुक्ल"
+              }
+            },
+            "starts": "2026-10-21T14:12:31.288",
+            "vriddhi": false
+          }
+        ],
+        "vara": {
+          "id": "budhavara",
+          "name": "Budhavara",
+          "names": {
+            "en": "Budhavara",
+            "hi": "बुधवार"
+          }
+        },
+        "vara_index": 2,
+        "yogas": [
+          {
+            "ends": "2026-10-22T00:33:08.788",
+            "index": 9,
+            "name": {
+              "id": "ganda",
+              "name": "Ganda",
+              "names": {
+                "en": "Ganda",
+                "hi": "गण्ड"
+              }
+            },
+            "starts": null
+          },
+          {
+            "ends": "2026-10-22T23:40:12.538",
+            "index": 10,
+            "name": {
+              "id": "vriddhi",
+              "name": "Vriddhi",
+              "names": {
+                "en": "Vriddhi",
+                "hi": "वृद्धि"
+              }
+            },
+            "starts": "2026-10-22T00:33:08.788"
+          }
+        ]
+      },
+      {
+        "date": "2026-10-22",
+        "karanas": [
+          {
+            "ends": "2026-10-22T14:48:47.599",
+            "index": 21,
+            "name": {
+              "id": "vishti",
+              "name": "Vishti",
+              "names": {
+                "en": "Vishti",
+                "hi": "विष्टि"
+              }
+            },
+            "starts": null
+          },
+          {
+            "ends": "2026-10-23T02:48:49.474",
+            "index": 22,
+            "name": {
+              "id": "bava",
+              "name": "Bava",
+              "names": {
+                "en": "Bava",
+                "hi": "बव"
+              }
+            },
+            "starts": "2026-10-22T14:48:47.599"
+          },
+          {
+            "ends": "2026-10-23T14:36:40.099",
+            "index": 23,
+            "name": {
+              "id": "balava",
+              "name": "Balava",
+              "names": {
+                "en": "Balava",
+                "hi": "बालव"
+              }
+            },
+            "starts": "2026-10-23T02:48:49.474"
+          }
+        ],
+        "masa": {
+          "amanta": {
+            "is_adhik": false,
+            "month_index": 6,
+            "month_name": {
+              "id": "ashwina",
+              "name": "Ashwina",
+              "names": {
+                "en": "Ashwina",
+                "hi": "आश्विन"
+              }
+            },
+            "samvat_year": 2083,
+            "system": "amanta"
+          },
+          "purnimanta": {
+            "is_adhik": false,
+            "month_index": 6,
+            "month_name": {
+              "id": "ashwina",
+              "name": "Ashwina",
+              "names": {
+                "en": "Ashwina",
+                "hi": "आश्विन"
+              }
+            },
+            "samvat_year": 2083,
+            "system": "purnimanta"
+          }
+        },
+        "nakshatras": [
+          {
+            "ends": "2026-10-22T20:49:15.724",
+            "index": 23,
+            "nakshatra": {
+              "id": "shatabhisha",
+              "name": "Shatabhisha",
+              "names": {
+                "en": "Shatabhisha",
+                "hi": "शतभिषा"
+              }
+            },
+            "starts": null
+          },
+          {
+            "ends": "2026-10-23T21:03:21.349",
+            "index": 24,
+            "nakshatra": {
+              "id": "purva_bhadrapada",
+              "name": "Purva Bhadrapada",
+              "names": {
+                "en": "Purva Bhadrapada",
+                "hi": "पूर्वा भाद्रपद"
+              }
+            },
+            "starts": "2026-10-22T20:49:15.724"
+          }
+        ],
+        "next_sunrise": "2026-10-23T06:30:41.824",
+        "sunrise": "2026-10-22T06:30:02.599",
+        "sunset": "2026-10-22T17:40:55.882",
+        "tithis": [
+          {
+            "ends": "2026-10-22T14:48:47.599",
+            "index": 10,
+            "kshaya": false,
+            "name": {
+              "id": "ekadashi",
+              "name": "Ekadashi",
+              "names": {
+                "en": "Ekadashi",
+                "hi": "एकादशी"
+              }
+            },
+            "paksha": {
+              "id": "shukla",
+              "name": "Shukla",
+              "names": {
+                "en": "Shukla",
+                "hi": "शुक्ल"
+              }
+            },
+            "starts": null,
+            "vriddhi": false
+          },
+          {
+            "ends": "2026-10-23T14:36:38.224",
+            "index": 11,
+            "kshaya": false,
+            "name": {
+              "id": "dwadashi",
+              "name": "Dwadashi",
+              "names": {
+                "en": "Dwadashi",
+                "hi": "द्वादशी"
+              }
+            },
+            "paksha": {
+              "id": "shukla",
+              "name": "Shukla",
+              "names": {
+                "en": "Shukla",
+                "hi": "शुक्ल"
+              }
+            },
+            "starts": "2026-10-22T14:48:47.599",
+            "vriddhi": false
+          }
+        ],
+        "vara": {
+          "id": "guruvara",
+          "name": "Guruvara",
+          "names": {
+            "en": "Guruvara",
+            "hi": "गुरुवार"
+          }
+        },
+        "vara_index": 3,
+        "yogas": [
+          {
+            "ends": "2026-10-22T23:39:53.224",
+            "index": 10,
+            "name": {
+              "id": "vriddhi",
+              "name": "Vriddhi",
+              "names": {
+                "en": "Vriddhi",
+                "hi": "वृद्धि"
+              }
+            },
+            "starts": null
+          },
+          {
+            "ends": "2026-10-23T22:08:58.849",
+            "index": 11,
+            "name": {
+              "id": "dhruva",
+              "name": "Dhruva",
+              "names": {
+                "en": "Dhruva",
+                "hi": "ध्रुव"
+              }
+            },
+            "starts": "2026-10-22T23:39:53.224"
+          }
+        ]
+      },
+      {
+        "date": "2026-10-23",
+        "karanas": [
+          {
+            "ends": "2026-10-23T14:36:47.449",
+            "index": 23,
+            "name": {
+              "id": "balava",
+              "name": "Balava",
+              "names": {
+                "en": "Balava",
+                "hi": "बालव"
+              }
+            },
+            "starts": null
+          },
+          {
+            "ends": "2026-10-24T02:12:54.949",
+            "index": 24,
+            "name": {
+              "id": "kaulava",
+              "name": "Kaulava",
+              "names": {
+                "en": "Kaulava",
+                "hi": "कौलव"
+              }
+            },
+            "starts": "2026-10-23T14:36:47.449"
+          },
+          {
+            "ends": "2026-10-24T13:37:47.449",
+            "index": 25,
+            "name": {
+              "id": "taitila",
+              "name": "Taitila",
+              "names": {
+                "en": "Taitila",
+                "hi": "तैतिल"
+              }
+            },
+            "starts": "2026-10-24T02:12:54.949"
+          }
+        ],
+        "masa": {
+          "amanta": {
+            "is_adhik": false,
+            "month_index": 6,
+            "month_name": {
+              "id": "ashwina",
+              "name": "Ashwina",
+              "names": {
+                "en": "Ashwina",
+                "hi": "आश्विन"
+              }
+            },
+            "samvat_year": 2083,
+            "system": "amanta"
+          },
+          "purnimanta": {
+            "is_adhik": false,
+            "month_index": 6,
+            "month_name": {
+              "id": "ashwina",
+              "name": "Ashwina",
+              "names": {
+                "en": "Ashwina",
+                "hi": "आश्विन"
+              }
+            },
+            "samvat_year": 2083,
+            "system": "purnimanta"
+          }
+        },
+        "nakshatras": [
+          {
+            "ends": "2026-10-23T21:03:30.574",
+            "index": 24,
+            "nakshatra": {
+              "id": "purva_bhadrapada",
+              "name": "Purva Bhadrapada",
+              "names": {
+                "en": "Purva Bhadrapada",
+                "hi": "पूर्वा भाद्रपद"
+              }
+            },
+            "starts": null
+          },
+          {
+            "ends": "2026-10-24T20:32:36.199",
+            "index": 25,
+            "nakshatra": {
+              "id": "uttara_bhadrapada",
+              "name": "Uttara Bhadrapada",
+              "names": {
+                "en": "Uttara Bhadrapada",
+                "hi": "उत्तरा भाद्रपद"
+              }
+            },
+            "starts": "2026-10-23T21:03:30.574"
+          }
+        ],
+        "next_sunrise": "2026-10-24T06:31:21.467",
+        "sunrise": "2026-10-23T06:30:41.824",
+        "sunset": "2026-10-23T17:39:59.170",
+        "tithis": [
+          {
+            "ends": "2026-10-23T14:36:47.449",
+            "index": 11,
+            "kshaya": false,
+            "name": {
+              "id": "dwadashi",
+              "name": "Dwadashi",
+              "names": {
+                "en": "Dwadashi",
+                "hi": "द्वादशी"
+              }
+            },
+            "paksha": {
+              "id": "shukla",
+              "name": "Shukla",
+              "names": {
+                "en": "Shukla",
+                "hi": "शुक्ल"
+              }
+            },
+            "starts": null,
+            "vriddhi": false
+          },
+          {
+            "ends": "2026-10-24T13:37:45.574",
+            "index": 12,
+            "kshaya": false,
+            "name": {
+              "id": "trayodashi",
+              "name": "Trayodashi",
+              "names": {
+                "en": "Trayodashi",
+                "hi": "त्रयोदशी"
+              }
+            },
+            "paksha": {
+              "id": "shukla",
+              "name": "Shukla",
+              "names": {
+                "en": "Shukla",
+                "hi": "शुक्ल"
+              }
+            },
+            "starts": "2026-10-23T14:36:47.449",
+            "vriddhi": false
+          }
+        ],
+        "vara": {
+          "id": "shukravara",
+          "name": "Shukravara",
+          "names": {
+            "en": "Shukravara",
+            "hi": "शुक्रवार"
+          }
+        },
+        "vara_index": 4,
+        "yogas": [
+          {
+            "ends": "2026-10-23T22:08:39.949",
+            "index": 11,
+            "name": {
+              "id": "dhruva",
+              "name": "Dhruva",
+              "names": {
+                "en": "Dhruva",
+                "hi": "ध्रुव"
+              }
+            },
+            "starts": null
+          },
+          {
+            "ends": "2026-10-24T20:01:39.949",
+            "index": 12,
+            "name": {
+              "id": "vyaghata",
+              "name": "Vyaghata",
+              "names": {
+                "en": "Vyaghata",
+                "hi": "व्याघात"
+              }
+            },
+            "starts": "2026-10-23T22:08:39.949"
+          }
+        ]
+      },
+      {
+        "date": "2026-10-24",
+        "karanas": [
+          {
+            "ends": "2026-10-24T13:37:27.092",
+            "index": 25,
+            "name": {
+              "id": "taitila",
+              "name": "Taitila",
+              "names": {
+                "en": "Taitila",
+                "hi": "तैतिल"
+              }
+            },
+            "starts": null
+          },
+          {
+            "ends": "2026-10-25T00:52:00.842",
+            "index": 26,
+            "name": {
+              "id": "gara",
+              "name": "Gara",
+              "names": {
+                "en": "Gara",
+                "hi": "गर"
+              }
+            },
+            "starts": "2026-10-24T13:37:27.092"
+          },
+          {
+            "ends": "2026-10-25T11:56:43.967",
+            "index": 27,
+            "name": {
+              "id": "vanija",
+              "name": "Vanija",
+              "names": {
+                "en": "Vanija",
+                "hi": "वणिज"
+              }
+            },
+            "starts": "2026-10-25T00:52:00.842"
+          }
+        ],
+        "masa": {
+          "amanta": {
+            "is_adhik": false,
+            "month_index": 6,
+            "month_name": {
+              "id": "ashwina",
+              "name": "Ashwina",
+              "names": {
+                "en": "Ashwina",
+                "hi": "आश्विन"
+              }
+            },
+            "samvat_year": 2083,
+            "system": "amanta"
+          },
+          "purnimanta": {
+            "is_adhik": false,
+            "month_index": 6,
+            "month_name": {
+              "id": "ashwina",
+              "name": "Ashwina",
+              "names": {
+                "en": "Ashwina",
+                "hi": "आश्विन"
+              }
+            },
+            "samvat_year": 2083,
+            "system": "purnimanta"
+          }
+        },
+        "nakshatras": [
+          {
+            "ends": "2026-10-24T20:32:45.842",
+            "index": 25,
+            "nakshatra": {
+              "id": "uttara_bhadrapada",
+              "name": "Uttara Bhadrapada",
+              "names": {
+                "en": "Uttara Bhadrapada",
+                "hi": "उत्तरा भाद्रपद"
+              }
+            },
+            "starts": null
+          },
+          {
+            "ends": "2026-10-25T19:22:28.967",
+            "index": 26,
+            "nakshatra": {
+              "id": "revati",
+              "name": "Revati",
+              "names": {
+                "en": "Revati",
+                "hi": "रेवती"
+              }
+            },
+            "starts": "2026-10-24T20:32:45.842"
+          }
+        ],
+        "next_sunrise": "2026-10-25T06:32:01.534",
+        "sunrise": "2026-10-24T06:31:21.467",
+        "sunset": "2026-10-24T17:39:03.401",
+        "tithis": [
+          {
+            "ends": "2026-10-24T13:37:27.092",
+            "index": 12,
+            "kshaya": false,
+            "name": {
+              "id": "trayodashi",
+              "name": "Trayodashi",
+              "names": {
+                "en": "Trayodashi",
+                "hi": "त्रयोदशी"
+              }
+            },
+            "paksha": {
+              "id": "shukla",
+              "name": "Shukla",
+              "names": {
+                "en": "Shukla",
+                "hi": "शुक्ल"
+              }
+            },
+            "starts": null,
+            "vriddhi": false
+          },
+          {
+            "ends": "2026-10-25T11:56:42.092",
+            "index": 13,
+            "kshaya": false,
+            "name": {
+              "id": "chaturdashi",
+              "name": "Chaturdashi",
+              "names": {
+                "en": "Chaturdashi",
+                "hi": "चतुर्दशी"
+              }
+            },
+            "paksha": {
+              "id": "shukla",
+              "name": "Shukla",
+              "names": {
+                "en": "Shukla",
+                "hi": "शुक्ल"
+              }
+            },
+            "starts": "2026-10-24T13:37:27.092",
+            "vriddhi": false
+          }
+        ],
+        "vara": {
+          "id": "shanivara",
+          "name": "Shanivara",
+          "names": {
+            "en": "Shanivara",
+            "hi": "शनिवार"
+          }
+        },
+        "vara_index": 5,
+        "yogas": [
+          {
+            "ends": "2026-10-24T20:01:21.467",
+            "index": 12,
+            "name": {
+              "id": "vyaghata",
+              "name": "Vyaghata",
+              "names": {
+                "en": "Vyaghata",
+                "hi": "व्याघात"
+              }
+            },
+            "starts": null
+          },
+          {
+            "ends": "2026-10-25T17:22:28.967",
+            "index": 13,
+            "name": {
+              "id": "harshana",
+              "name": "Harshana",
+              "names": {
+                "en": "Harshana",
+                "hi": "हर्षण"
+              }
+            },
+            "starts": "2026-10-24T20:01:21.467"
+          }
+        ]
+      },
+      {
+        "date": "2026-10-25",
+        "karanas": [
+          {
+            "ends": "2026-10-25T11:56:52.159",
+            "index": 27,
+            "name": {
+              "id": "vanija",
+              "name": "Vanija",
+              "names": {
+                "en": "Vanija",
+                "hi": "वणिज"
+              }
+            },
+            "starts": null
+          },
+          {
+            "ends": "2026-10-25T22:53:09.034",
+            "index": 28,
+            "name": {
+              "id": "vishti",
+              "name": "Vishti",
+              "names": {
+                "en": "Vishti",
+                "hi": "विष्टि"
+              }
+            },
+            "starts": "2026-10-25T11:56:52.159"
+          },
+          {
+            "ends": "2026-10-26T09:41:55.909",
+            "index": 29,
+            "name": {
+              "id": "bava",
+              "name": "Bava",
+              "names": {
+                "en": "Bava",
+                "hi": "बव"
+              }
+            },
+            "starts": "2026-10-25T22:53:09.034"
+          }
+        ],
+        "masa": {
+          "amanta": {
+            "is_adhik": false,
+            "month_index": 6,
+            "month_name": {
+              "id": "ashwina",
+              "name": "Ashwina",
+              "names": {
+                "en": "Ashwina",
+                "hi": "आश्विन"
+              }
+            },
+            "samvat_year": 2083,
+            "system": "amanta"
+          },
+          "purnimanta": {
+            "is_adhik": false,
+            "month_index": 6,
+            "month_name": {
+              "id": "ashwina",
+              "name": "Ashwina",
+              "names": {
+                "en": "Ashwina",
+                "hi": "आश्विन"
+              }
+            },
+            "samvat_year": 2083,
+            "system": "purnimanta"
+          }
+        },
+        "nakshatras": [
+          {
+            "ends": "2026-10-25T19:22:39.034",
+            "index": 26,
+            "nakshatra": {
+              "id": "revati",
+              "name": "Revati",
+              "names": {
+                "en": "Revati",
+                "hi": "रेवती"
+              }
+            },
+            "starts": null
+          },
+          {
+            "ends": "2026-10-26T17:41:54.034",
+            "index": 0,
+            "nakshatra": {
+              "id": "ashwini",
+              "name": "Ashwini",
+              "names": {
+                "en": "Ashwini",
+                "hi": "अश्विनी"
+              }
+            },
+            "starts": "2026-10-25T19:22:39.034"
+          }
+        ],
+        "next_sunrise": "2026-10-26T06:32:42.029",
+        "sunrise": "2026-10-25T06:32:01.534",
+        "sunset": "2026-10-25T17:38:08.604",
+        "tithis": [
+          {
+            "ends": "2026-10-25T11:56:52.159",
+            "index": 13,
+            "kshaya": false,
+            "name": {
+              "id": "chaturdashi",
+              "name": "Chaturdashi",
+              "names": {
+                "en": "Chaturdashi",
+                "hi": "चतुर्दशी"
+              }
+            },
+            "paksha": {
+              "id": "shukla",
+              "name": "Shukla",
+              "names": {
+                "en": "Shukla",
+                "hi": "शुक्ल"
+              }
+            },
+            "starts": null,
+            "vriddhi": false
+          },
+          {
+            "ends": "2026-10-26T09:41:54.034",
+            "index": 14,
+            "kshaya": false,
+            "name": {
+              "id": "purnima",
+              "name": "Purnima",
+              "names": {
+                "en": "Purnima",
+                "hi": "पूर्णिमा"
+              }
+            },
+            "paksha": {
+              "id": "shukla",
+              "name": "Shukla",
+              "names": {
+                "en": "Shukla",
+                "hi": "शुक्ल"
+              }
+            },
+            "starts": "2026-10-25T11:56:52.159",
+            "vriddhi": false
+          }
+        ],
+        "vara": {
+          "id": "ravivara",
+          "name": "Ravivara",
+          "names": {
+            "en": "Ravivara",
+            "hi": "रविवार"
+          }
+        },
+        "vara_index": 6,
+        "yogas": [
+          {
+            "ends": "2026-10-25T17:22:10.909",
+            "index": 13,
+            "name": {
+              "id": "harshana",
+              "name": "Harshana",
+              "names": {
+                "en": "Harshana",
+                "hi": "हर्षण"
+              }
+            },
+            "starts": null
+          },
+          {
+            "ends": "2026-10-26T14:17:03.409",
+            "index": 14,
+            "name": {
+              "id": "vajra",
+              "name": "Vajra",
+              "names": {
+                "en": "Vajra",
+                "hi": "वज्र"
+              }
+            },
+            "starts": "2026-10-25T17:22:10.909"
+          }
+        ]
+      },
+      {
+        "date": "2026-10-26",
+        "karanas": [
+          {
+            "ends": "2026-10-26T09:42:04.529",
+            "index": 29,
+            "name": {
+              "id": "bava",
+              "name": "Bava",
+              "names": {
+                "en": "Bava",
+                "hi": "बव"
+              }
+            },
+            "starts": null
+          },
+          {
+            "ends": "2026-10-26T20:24:45.779",
+            "index": 30,
+            "name": {
+              "id": "balava",
+              "name": "Balava",
+              "names": {
+                "en": "Balava",
+                "hi": "बालव"
+              }
+            },
+            "starts": "2026-10-26T09:42:04.529"
+          },
+          {
+            "ends": "2026-10-27T07:02:17.654",
+            "index": 31,
+            "name": {
+              "id": "kaulava",
+              "name": "Kaulava",
+              "names": {
+                "en": "Kaulava",
+                "hi": "कौलव"
+              }
+            },
+            "starts": "2026-10-26T20:24:45.779"
+          }
+        ],
+        "masa": {
+          "amanta": {
+            "is_adhik": false,
+            "month_index": 6,
+            "month_name": {
+              "id": "ashwina",
+              "name": "Ashwina",
+              "names": {
+                "en": "Ashwina",
+                "hi": "आश्विन"
+              }
+            },
+            "samvat_year": 2083,
+            "system": "amanta"
+          },
+          "purnimanta": {
+            "is_adhik": false,
+            "month_index": 6,
+            "month_name": {
+              "id": "ashwina",
+              "name": "Ashwina",
+              "names": {
+                "en": "Ashwina",
+                "hi": "आश्विन"
+              }
+            },
+            "samvat_year": 2083,
+            "system": "purnimanta"
+          }
+        },
+        "nakshatras": [
+          {
+            "ends": "2026-10-26T17:41:36.404",
+            "index": 0,
+            "nakshatra": {
+              "id": "ashwini",
+              "name": "Ashwini",
+              "names": {
+                "en": "Ashwini",
+                "hi": "अश्विनी"
+              }
+            },
+            "starts": null
+          },
+          {
+            "ends": "2026-10-27T15:39:45.779",
+            "index": 1,
+            "nakshatra": {
+              "id": "bharani",
+              "name": "Bharani",
+              "names": {
+                "en": "Bharani",
+                "hi": "भरणी"
+              }
+            },
+            "starts": "2026-10-26T17:41:36.404"
+          }
+        ],
+        "next_sunrise": "2026-10-27T06:33:22.958",
+        "sunrise": "2026-10-26T06:32:42.029",
+        "sunset": "2026-10-26T17:37:14.810",
+        "tithis": [
+          {
+            "ends": "2026-10-26T09:42:04.529",
+            "index": 14,
+            "kshaya": false,
+            "name": {
+              "id": "purnima",
+              "name": "Purnima",
+              "names": {
+                "en": "Purnima",
+                "hi": "पूर्णिमा"
+              }
+            },
+            "paksha": {
+              "id": "shukla",
+              "name": "Shukla",
+              "names": {
+                "en": "Shukla",
+                "hi": "शुक्ल"
+              }
+            },
+            "starts": null,
+            "vriddhi": false
+          },
+          {
+            "ends": "2026-10-27T07:02:15.779",
+            "index": 15,
+            "kshaya": false,
+            "name": {
+              "id": "pratipada",
+              "name": "Pratipada",
+              "names": {
+                "en": "Pratipada",
+                "hi": "प्रतिपदा"
+              }
+            },
+            "paksha": {
+              "id": "krishna",
+              "name": "Krishna",
+              "names": {
+                "en": "Krishna",
+                "hi": "कृष्ण"
+              }
+            },
+            "starts": "2026-10-26T09:42:04.529",
+            "vriddhi": false
+          }
+        ],
+        "vara": {
+          "id": "somavara",
+          "name": "Somavara",
+          "names": {
+            "en": "Somavara",
+            "hi": "सोमवार"
+          }
+        },
+        "vara_index": 0,
+        "yogas": [
+          {
+            "ends": "2026-10-26T14:17:13.904",
+            "index": 14,
+            "name": {
+              "id": "vajra",
+              "name": "Vajra",
+              "names": {
+                "en": "Vajra",
+                "hi": "वज्र"
+              }
+            },
+            "starts": null
+          },
+          {
+            "ends": "2026-10-27T10:53:21.404",
+            "index": 15,
+            "name": {
+              "id": "siddhi",
+              "name": "Siddhi",
+              "names": {
+                "en": "Siddhi",
+                "hi": "सिद्धि"
+              }
+            },
+            "starts": "2026-10-26T14:17:13.904"
+          }
+        ]
+      },
+      {
+        "date": "2026-10-27",
+        "karanas": [
+          {
+            "ends": "2026-10-27T07:02:26.708",
+            "index": 31,
+            "name": {
+              "id": "kaulava",
+              "name": "Kaulava",
+              "names": {
+                "en": "Kaulava",
+                "hi": "कौलव"
+              }
+            },
+            "starts": null
+          },
+          {
+            "ends": "2026-10-27T17:36:13.583",
+            "index": 32,
+            "name": {
+              "id": "taitila",
+              "name": "Taitila",
+              "names": {
+                "en": "Taitila",
+                "hi": "तैतिल"
+              }
+            },
+            "starts": "2026-10-27T07:02:26.708"
+          },
+          {
+            "ends": "2026-10-28T04:07:39.833",
+            "index": 33,
+            "name": {
+              "id": "gara",
+              "name": "Gara",
+              "names": {
+                "en": "Gara",
+                "hi": "गर"
+              }
+            },
+            "starts": "2026-10-27T17:36:13.583"
+          },
+          {
+            "ends": "2026-10-28T14:37:41.708",
+            "index": 34,
+            "name": {
+              "id": "vanija",
+              "name": "Vanija",
+              "names": {
+                "en": "Vanija",
+                "hi": "वणिज"
+              }
+            },
+            "starts": "2026-10-28T04:07:39.833"
+          }
+        ],
+        "masa": {
+          "amanta": {
+            "is_adhik": false,
+            "month_index": 6,
+            "month_name": {
+              "id": "ashwina",
+              "name": "Ashwina",
+              "names": {
+                "en": "Ashwina",
+                "hi": "आश्विन"
+              }
+            },
+            "samvat_year": 2083,
+            "system": "amanta"
+          },
+          "purnimanta": {
+            "is_adhik": false,
+            "month_index": 7,
+            "month_name": {
+              "id": "kartika",
+              "name": "Kartika",
+              "names": {
+                "en": "Kartika",
+                "hi": "कार्तिक"
+              }
+            },
+            "samvat_year": 2083,
+            "system": "purnimanta"
+          }
+        },
+        "nakshatras": [
+          {
+            "ends": "2026-10-27T15:39:28.583",
+            "index": 1,
+            "nakshatra": {
+              "id": "bharani",
+              "name": "Bharani",
+              "names": {
+                "en": "Bharani",
+                "hi": "भरणी"
+              }
+            },
+            "starts": null
+          },
+          {
+            "ends": "2026-10-28T13:26:22.958",
+            "index": 2,
+            "nakshatra": {
+              "id": "krittika",
+              "name": "Krittika",
+              "names": {
+                "en": "Krittika",
+                "hi": "कृत्तिका"
+              }
+            },
+            "starts": "2026-10-27T15:39:28.583"
+          }
+        ],
+        "next_sunrise": "2026-10-28T06:34:04.323",
+        "sunrise": "2026-10-27T06:33:22.958",
+        "sunset": "2026-10-27T17:36:22.051",
+        "tithis": [
+          {
+            "ends": "2026-10-27T07:02:26.708",
+            "index": 15,
+            "kshaya": false,
+            "name": {
+              "id": "pratipada",
+              "name": "Pratipada",
+              "names": {
+                "en": "Pratipada",
+                "hi": "प्रतिपदा"
+              }
+            },
+            "paksha": {
+              "id": "krishna",
+              "name": "Krishna",
+              "names": {
+                "en": "Krishna",
+                "hi": "कृष्ण"
+              }
+            },
+            "starts": null,
+            "vriddhi": false
+          },
+          {
+            "ends": "2026-10-28T04:07:37.958",
+            "index": 16,
+            "kshaya": true,
+            "name": {
+              "id": "dwitiya",
+              "name": "Dwitiya",
+              "names": {
+                "en": "Dwitiya",
+                "hi": "द्वितीया"
+              }
+            },
+            "paksha": {
+              "id": "krishna",
+              "name": "Krishna",
+              "names": {
+                "en": "Krishna",
+                "hi": "कृष्ण"
+              }
+            },
+            "starts": "2026-10-27T07:02:26.708",
+            "vriddhi": false
+          },
+          {
+            "ends": "2026-10-29T01:07:39.833",
+            "index": 17,
+            "kshaya": false,
+            "name": {
+              "id": "tritiya",
+              "name": "Tritiya",
+              "names": {
+                "en": "Tritiya",
+                "hi": "तृतीया"
+              }
+            },
+            "paksha": {
+              "id": "krishna",
+              "name": "Krishna",
+              "names": {
+                "en": "Krishna",
+                "hi": "कृष्ण"
+              }
+            },
+            "starts": "2026-10-28T04:07:37.958",
+            "vriddhi": false
+          }
+        ],
+        "vara": {
+          "id": "mangalavara",
+          "name": "Mangalavara",
+          "names": {
+            "en": "Mangalavara",
+            "hi": "मंगलवार"
+          }
+        },
+        "vara_index": 1,
+        "yogas": [
+          {
+            "ends": "2026-10-27T10:53:32.333",
+            "index": 15,
+            "name": {
+              "id": "siddhi",
+              "name": "Siddhi",
+              "names": {
+                "en": "Siddhi",
+                "hi": "सिद्धि"
+              }
+            },
+            "starts": null
+          },
+          {
+            "ends": "2026-10-28T07:18:52.958",
+            "index": 16,
+            "name": {
+              "id": "vyatipata",
+              "name": "Vyatipata",
+              "names": {
+                "en": "Vyatipata",
+                "hi": "व्यतीपात"
+              }
+            },
+            "starts": "2026-10-27T10:53:32.333"
+          }
+        ]
+      },
+      {
+        "date": "2026-10-28",
+        "karanas": [
+          {
+            "ends": "2026-10-28T14:37:49.323",
+            "index": 34,
+            "name": {
+              "id": "vanija",
+              "name": "Vanija",
+              "names": {
+                "en": "Vanija",
+                "hi": "वणिज"
+              }
+            },
+            "starts": null
+          },
+          {
+            "ends": "2026-10-29T01:07:23.073",
+            "index": 35,
+            "name": {
+              "id": "vishti",
+              "name": "Vishti",
+              "names": {
+                "en": "Vishti",
+                "hi": "विष्टि"
+              }
+            },
+            "starts": "2026-10-28T14:37:49.323"
+          },
+          {
+            "ends": "2026-10-29T11:38:21.198",
+            "index": 36,
+            "name": {
+              "id": "bava",
+              "name": "Bava",
+              "names": {
+                "en": "Bava",
+                "hi": "बव"
+              }
+            },
+            "starts": "2026-10-29T01:07:23.073"
+          }
+        ],
+        "masa": {
+          "amanta": {
+            "is_adhik": false,
+            "month_index": 6,
+            "month_name": {
+              "id": "ashwina",
+              "name": "Ashwina",
+              "names": {
+                "en": "Ashwina",
+                "hi": "आश्विन"
+              }
+            },
+            "samvat_year": 2083,
+            "system": "amanta"
+          },
+          "purnimanta": {
+            "is_adhik": false,
+            "month_index": 7,
+            "month_name": {
+              "id": "kartika",
+              "name": "Kartika",
+              "names": {
+                "en": "Kartika",
+                "hi": "कार्तिक"
+              }
+            },
+            "samvat_year": 2083,
+            "system": "purnimanta"
+          }
+        },
+        "nakshatras": [
+          {
+            "ends": "2026-10-28T13:26:34.323",
+            "index": 2,
+            "nakshatra": {
+              "id": "krittika",
+              "name": "Krittika",
+              "names": {
+                "en": "Krittika",
+                "hi": "कृत्तिका"
+              }
+            },
+            "starts": null
+          },
+          {
+            "ends": "2026-10-29T11:12:04.323",
+            "index": 3,
+            "nakshatra": {
+              "id": "rohini",
+              "name": "Rohini",
+              "names": {
+                "en": "Rohini",
+                "hi": "रोहिणी"
+              }
+            },
+            "starts": "2026-10-28T13:26:34.323"
+          }
+        ],
+        "next_sunrise": "2026-10-29T06:34:46.129",
+        "sunrise": "2026-10-28T06:34:04.323",
+        "sunset": "2026-10-28T17:35:30.358",
+        "tithis": [
+          {
+            "ends": "2026-10-29T01:07:21.198",
+            "index": 17,
+            "kshaya": false,
+            "name": {
+              "id": "tritiya",
+              "name": "Tritiya",
+              "names": {
+                "en": "Tritiya",
+                "hi": "तृतीया"
+              }
+            },
+            "paksha": {
+              "id": "krishna",
+              "name": "Krishna",
+              "names": {
+                "en": "Krishna",
+                "hi": "कृष्ण"
+              }
+            },
+            "starts": null,
+            "vriddhi": false
+          },
+          {
+            "ends": "2026-10-29T22:10:39.948",
+            "index": 18,
+            "kshaya": false,
+            "name": {
+              "id": "chaturthi",
+              "name": "Chaturthi",
+              "names": {
+                "en": "Chaturthi",
+                "hi": "चतुर्थी"
+              }
+            },
+            "paksha": {
+              "id": "krishna",
+              "name": "Krishna",
+              "names": {
+                "en": "Krishna",
+                "hi": "कृष्ण"
+              }
+            },
+            "starts": "2026-10-29T01:07:21.198",
+            "vriddhi": false
+          }
+        ],
+        "vara": {
+          "id": "budhavara",
+          "name": "Budhavara",
+          "names": {
+            "en": "Budhavara",
+            "hi": "बुधवार"
+          }
+        },
+        "vara_index": 2,
+        "yogas": [
+          {
+            "ends": "2026-10-28T07:19:04.323",
+            "index": 16,
+            "name": {
+              "id": "vyatipata",
+              "name": "Vyatipata",
+              "names": {
+                "en": "Vyatipata",
+                "hi": "व्यतीपात"
+              }
+            },
+            "starts": null
+          },
+          {
+            "ends": "2026-10-29T03:40:39.948",
+            "index": 17,
+            "name": {
+              "id": "variyan",
+              "name": "Variyan",
+              "names": {
+                "en": "Variyan",
+                "hi": "वरीयान"
+              }
+            },
+            "starts": "2026-10-28T07:19:04.323"
+          },
+          {
+            "ends": "2026-10-30T00:06:28.698",
+            "index": 18,
+            "name": {
+              "id": "parigha",
+              "name": "Parigha",
+              "names": {
+                "en": "Parigha",
+                "hi": "परिघ"
+              }
+            },
+            "starts": "2026-10-29T03:40:39.948"
+          }
+        ]
+      },
+      {
+        "date": "2026-10-29",
+        "karanas": [
+          {
+            "ends": "2026-10-29T11:38:03.004",
+            "index": 36,
+            "name": {
+              "id": "bava",
+              "name": "Bava",
+              "names": {
+                "en": "Bava",
+                "hi": "बव"
+              }
+            },
+            "starts": null
+          },
+          {
+            "ends": "2026-10-29T22:10:53.629",
+            "index": 37,
+            "name": {
+              "id": "balava",
+              "name": "Balava",
+              "names": {
+                "en": "Balava",
+                "hi": "बालव"
+              }
+            },
+            "starts": "2026-10-29T11:38:03.004"
+          },
+          {
+            "ends": "2026-10-30T08:46:33.004",
+            "index": 38,
+            "name": {
+              "id": "kaulava",
+              "name": "Kaulava",
+              "names": {
+                "en": "Kaulava",
+                "hi": "कौलव"
+              }
+            },
+            "starts": "2026-10-29T22:10:53.629"
+          }
+        ],
+        "masa": {
+          "amanta": {
+            "is_adhik": false,
+            "month_index": 6,
+            "month_name": {
+              "id": "ashwina",
+              "name": "Ashwina",
+              "names": {
+                "en": "Ashwina",
+                "hi": "आश्विन"
+              }
+            },
+            "samvat_year": 2083,
+            "system": "amanta"
+          },
+          "purnimanta": {
+            "is_adhik": false,
+            "month_index": 7,
+            "month_name": {
+              "id": "kartika",
+              "name": "Kartika",
+              "names": {
+                "en": "Kartika",
+                "hi": "कार्तिक"
+              }
+            },
+            "samvat_year": 2083,
+            "system": "purnimanta"
+          }
+        },
+        "nakshatras": [
+          {
+            "ends": "2026-10-29T11:11:48.004",
+            "index": 3,
+            "nakshatra": {
+              "id": "rohini",
+              "name": "Rohini",
+              "names": {
+                "en": "Rohini",
+                "hi": "रोहिणी"
+              }
+            },
+            "starts": null
+          },
+          {
+            "ends": "2026-10-30T09:04:48.004",
+            "index": 4,
+            "nakshatra": {
+              "id": "mrigashira",
+              "name": "Mrigashira",
+              "names": {
+                "en": "Mrigashira",
+                "hi": "मृगशिरा"
+              }
+            },
+            "starts": "2026-10-29T11:11:48.004"
+          }
+        ],
+        "next_sunrise": "2026-10-30T06:35:28.375",
+        "sunrise": "2026-10-29T06:34:46.129",
+        "sunset": "2026-10-29T17:34:39.763",
+        "tithis": [
+          {
+            "ends": "2026-10-29T22:10:51.754",
+            "index": 18,
+            "kshaya": false,
+            "name": {
+              "id": "chaturthi",
+              "name": "Chaturthi",
+              "names": {
+                "en": "Chaturthi",
+                "hi": "चतुर्थी"
+              }
+            },
+            "paksha": {
+              "id": "krishna",
+              "name": "Krishna",
+              "names": {
+                "en": "Krishna",
+                "hi": "कृष्ण"
+              }
+            },
+            "starts": null,
+            "vriddhi": false
+          },
+          {
+            "ends": "2026-10-30T19:25:53.629",
+            "index": 19,
+            "kshaya": false,
+            "name": {
+              "id": "panchami",
+              "name": "Panchami",
+              "names": {
+                "en": "Panchami",
+                "hi": "पंचमी"
+              }
+            },
+            "paksha": {
+              "id": "krishna",
+              "name": "Krishna",
+              "names": {
+                "en": "Krishna",
+                "hi": "कृष्ण"
+              }
+            },
+            "starts": "2026-10-29T22:10:51.754",
+            "vriddhi": false
+          }
+        ],
+        "vara": {
+          "id": "guruvara",
+          "name": "Guruvara",
+          "names": {
+            "en": "Guruvara",
+            "hi": "गुरुवार"
+          }
+        },
+        "vara_index": 3,
+        "yogas": [
+          {
+            "ends": "2026-10-30T00:06:38.629",
+            "index": 18,
+            "name": {
+              "id": "parigha",
+              "name": "Parigha",
+              "names": {
+                "en": "Parigha",
+                "hi": "परिघ"
+              }
+            },
+            "starts": null
+          },
+          {
+            "ends": "2026-10-30T20:41:49.879",
+            "index": 19,
+            "name": {
+              "id": "shiva",
+              "name": "Shiva",
+              "names": {
+                "en": "Shiva",
+                "hi": "शिव"
+              }
+            },
+            "starts": "2026-10-30T00:06:38.629"
+          }
+        ]
+      },
+      {
+        "date": "2026-10-30",
+        "karanas": [
+          {
+            "ends": "2026-10-30T08:46:15.250",
+            "index": 38,
+            "name": {
+              "id": "kaulava",
+              "name": "Kaulava",
+              "names": {
+                "en": "Kaulava",
+                "hi": "कौलव"
+              }
+            },
+            "starts": null
+          },
+          {
+            "ends": "2026-10-30T19:25:39.625",
+            "index": 39,
+            "name": {
+              "id": "taitila",
+              "name": "Taitila",
+              "names": {
+                "en": "Taitila",
+                "hi": "तैतिल"
+              }
+            },
+            "starts": "2026-10-30T08:46:15.250"
+          },
+          {
+            "ends": "2026-10-31T06:09:17.125",
+            "index": 40,
+            "name": {
+              "id": "gara",
+              "name": "Gara",
+              "names": {
+                "en": "Gara",
+                "hi": "गर"
+              }
+            },
+            "starts": "2026-10-30T19:25:39.625"
+          },
+          {
+            "ends": "2026-10-31T16:58:04.000",
+            "index": 41,
+            "name": {
+              "id": "vanija",
+              "name": "Vanija",
+              "names": {
+                "en": "Vanija",
+                "hi": "वणिज"
+              }
+            },
+            "starts": "2026-10-31T06:09:17.125"
+          }
+        ],
+        "masa": {
+          "amanta": {
+            "is_adhik": false,
+            "month_index": 6,
+            "month_name": {
+              "id": "ashwina",
+              "name": "Ashwina",
+              "names": {
+                "en": "Ashwina",
+                "hi": "आश्विन"
+              }
+            },
+            "samvat_year": 2083,
+            "system": "amanta"
+          },
+          "purnimanta": {
+            "is_adhik": false,
+            "month_index": 7,
+            "month_name": {
+              "id": "kartika",
+              "name": "Kartika",
+              "names": {
+                "en": "Kartika",
+                "hi": "कार्तिक"
+              }
+            },
+            "samvat_year": 2083,
+            "system": "purnimanta"
+          }
+        },
+        "nakshatras": [
+          {
+            "ends": "2026-10-30T09:05:00.250",
+            "index": 4,
+            "nakshatra": {
+              "id": "mrigashira",
+              "name": "Mrigashira",
+              "names": {
+                "en": "Mrigashira",
+                "hi": "मृगशिरा"
+              }
+            },
+            "starts": null
+          },
+          {
+            "ends": "2026-10-31T07:12:32.125",
+            "index": 5,
+            "nakshatra": {
+              "id": "ardra",
+              "name": "Ardra",
+              "names": {
+                "en": "Ardra",
+                "hi": "आर्द्रा"
+              }
+            },
+            "starts": "2026-10-30T09:05:00.250"
+          }
+        ],
+        "next_sunrise": "2026-10-31T06:36:11.061",
+        "sunrise": "2026-10-30T06:35:28.375",
+        "sunset": "2026-10-30T17:33:50.294",
+        "tithis": [
+          {
+            "ends": "2026-10-30T19:25:37.750",
+            "index": 19,
+            "kshaya": false,
+            "name": {
+              "id": "panchami",
+              "name": "Panchami",
+              "names": {
+                "en": "Panchami",
+                "hi": "पंचमी"
+              }
+            },
+            "paksha": {
+              "id": "krishna",
+              "name": "Krishna",
+              "names": {
+                "en": "Krishna",
+                "hi": "कृष्ण"
+              }
+            },
+            "starts": null,
+            "vriddhi": false
+          },
+          {
+            "ends": "2026-10-31T16:58:00.250",
+            "index": 20,
+            "kshaya": false,
+            "name": {
+              "id": "shashthi",
+              "name": "Shashthi",
+              "names": {
+                "en": "Shashthi",
+                "hi": "षष्ठी"
+              }
+            },
+            "paksha": {
+              "id": "krishna",
+              "name": "Krishna",
+              "names": {
+                "en": "Krishna",
+                "hi": "कृष्ण"
+              }
+            },
+            "starts": "2026-10-30T19:25:37.750",
+            "vriddhi": false
+          }
+        ],
+        "vara": {
+          "id": "shukravara",
+          "name": "Shukravara",
+          "names": {
+            "en": "Shukravara",
+            "hi": "शुक्रवार"
+          }
+        },
+        "vara_index": 4,
+        "yogas": [
+          {
+            "ends": "2026-10-30T20:42:02.125",
+            "index": 19,
+            "name": {
+              "id": "shiva",
+              "name": "Shiva",
+              "names": {
+                "en": "Shiva",
+                "hi": "शिव"
+              }
+            },
+            "starts": null
+          },
+          {
+            "ends": "2026-10-31T17:31:45.250",
+            "index": 20,
+            "name": {
+              "id": "siddha",
+              "name": "Siddha",
+              "names": {
+                "en": "Siddha",
+                "hi": "सिद्ध"
+              }
+            },
+            "starts": "2026-10-30T20:42:02.125"
+          }
+        ]
+      },
+      {
+        "date": "2026-10-31",
+        "karanas": [
+          {
+            "ends": "2026-10-31T16:58:12.936",
+            "index": 41,
+            "name": {
+              "id": "vanija",
+              "name": "Vanija",
+              "names": {
+                "en": "Vanija",
+                "hi": "वणिज"
+              }
+            },
+            "starts": null
+          },
+          {
+            "ends": "2026-11-01T03:52:09.186",
+            "index": 42,
+            "name": {
+              "id": "vishti",
+              "name": "Vishti",
+              "names": {
+                "en": "Vishti",
+                "hi": "विष्टि"
+              }
+            },
+            "starts": "2026-10-31T16:58:12.936"
+          },
+          {
+            "ends": "2026-11-01T14:52:11.061",
+            "index": 43,
+            "name": {
+              "id": "bava",
+              "name": "Bava",
+              "names": {
+                "en": "Bava",
+                "hi": "बव"
+              }
+            },
+            "starts": "2026-11-01T03:52:09.186"
+          }
+        ],
+        "masa": {
+          "amanta": {
+            "is_adhik": false,
+            "month_index": 6,
+            "month_name": {
+              "id": "ashwina",
+              "name": "Ashwina",
+              "names": {
+                "en": "Ashwina",
+                "hi": "आश्विन"
+              }
+            },
+            "samvat_year": 2083,
+            "system": "amanta"
+          },
+          "purnimanta": {
+            "is_adhik": false,
+            "month_index": 7,
+            "month_name": {
+              "id": "kartika",
+              "name": "Kartika",
+              "names": {
+                "en": "Kartika",
+                "hi": "कार्तिक"
+              }
+            },
+            "samvat_year": 2083,
+            "system": "purnimanta"
+          }
+        },
+        "nakshatras": [
+          {
+            "ends": "2026-10-31T07:12:16.686",
+            "index": 5,
+            "nakshatra": {
+              "id": "ardra",
+              "name": "Ardra",
+              "names": {
+                "en": "Ardra",
+                "hi": "आर्द्रा"
+              }
+            },
+            "starts": null
+          },
+          {
+            "ends": "2026-11-01T05:39:57.936",
+            "index": 6,
+            "nakshatra": {
+              "id": "punarvasu",
+              "name": "Punarvasu",
+              "names": {
+                "en": "Punarvasu",
+                "hi": "पुनर्वसु"
+              }
+            },
+            "starts": "2026-10-31T07:12:16.686"
+          },
+          {
+            "ends": "2026-11-02T04:31:05.436",
+            "index": 7,
+            "nakshatra": {
+              "id": "pushya",
+              "name": "Pushya",
+              "names": {
+                "en": "Pushya",
+                "hi": "पुष्य"
+              }
+            },
+            "starts": "2026-11-01T05:39:57.936"
+          }
+        ],
+        "next_sunrise": "2026-11-01T06:36:54.183",
+        "sunrise": "2026-10-31T06:36:11.061",
+        "sunset": "2026-10-31T17:33:01.984",
+        "tithis": [
+          {
+            "ends": "2026-10-31T16:58:12.936",
+            "index": 20,
+            "kshaya": false,
+            "name": {
+              "id": "shashthi",
+              "name": "Shashthi",
+              "names": {
+                "en": "Shashthi",
+                "hi": "षष्ठी"
+              }
+            },
+            "paksha": {
+              "id": "krishna",
+              "name": "Krishna",
+              "names": {
+                "en": "Krishna",
+                "hi": "कृष्ण"
+              }
+            },
+            "starts": null,
+            "vriddhi": false
+          },
+          {
+            "ends": "2026-11-01T14:52:37.311",
+            "index": 21,
+            "kshaya": false,
+            "name": {
+              "id": "saptami",
+              "name": "Saptami",
+              "names": {
+                "en": "Saptami",
+                "hi": "सप्तमी"
+              }
+            },
+            "paksha": {
+              "id": "krishna",
+              "name": "Krishna",
+              "names": {
+                "en": "Krishna",
+                "hi": "कृष्ण"
+              }
+            },
+            "starts": "2026-10-31T16:58:12.936",
+            "vriddhi": false
+          }
+        ],
+        "vara": {
+          "id": "shanivara",
+          "name": "Shanivara",
+          "names": {
+            "en": "Shanivara",
+            "hi": "शनिवार"
+          }
+        },
+        "vara_index": 5,
+        "yogas": [
+          {
+            "ends": "2026-10-31T17:31:57.936",
+            "index": 20,
+            "name": {
+              "id": "siddha",
+              "name": "Siddha",
+              "names": {
+                "en": "Siddha",
+                "hi": "सिद्ध"
+              }
+            },
+            "starts": null
+          },
+          {
+            "ends": "2026-11-01T14:39:29.811",
+            "index": 21,
+            "name": {
+              "id": "sadhya",
+              "name": "Sadhya",
+              "names": {
+                "en": "Sadhya",
+                "hi": "साध्य"
+              }
+            },
+            "starts": "2026-10-31T17:31:57.936"
+          }
+        ]
+      }
+    ],
+    "month": "2026-10"
+  },
+  "meta": {
+    "cached": false,
+    "ayanamsa": {
+      "id": "lahiri"
+    },
+    "timezone": {
+      "name": "Asia/Kolkata",
+      "utc_offset": "+05:30",
+      "source": "given"
+    },
+    "engine": "0.14.2",
+    "compute_ms": 105,
+    "language_fallback": [],
+    "credits": 20
+  }
+}

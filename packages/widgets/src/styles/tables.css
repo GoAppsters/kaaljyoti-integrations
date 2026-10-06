@@ -1,0 +1,530 @@
+/*
+ * Tables that fit their card (the owner's review of stage 3). A table too
+ * wide for its card becomes one small card per row — each cell a line,
+ * "label: value", the label its column's heading (`data-label`, written by
+ * `core/tables.ts`). Each table names the card width below which it stacks,
+ * in ems of the card, by the class `kj-stack-<n>`: a container query on the
+ * card, never the viewport, so a sidebar stacks and a wide column does not.
+ *
+ * A table that is a grid of numbers (the ephemeris, the ashtakavarga) is
+ * worth nothing stacked; it keeps scrolling, with shadows at the edge that
+ * has more and a line under it saying so (`kj-scroll`, `kj-hint-<n>`).
+ */
+
+@container (max-width: 24em) {
+  table.kj-stack-24,
+  .kj-stack-24 tbody,
+  .kj-stack-24 tr,
+  .kj-stack-24 th,
+  .kj-stack-24 td {
+    display: block;
+    width: auto !important;
+  }
+
+  .kj-stack-24 thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+  }
+
+  .kj-stack-24 tbody tr {
+    margin: 0 0 0.625em;
+    padding: 0.25em 0.75em;
+    border: 1px solid var(--kj-border);
+    border-radius: calc(var(--kj-radius, 12px) * 0.5);
+  }
+
+  .kj-stack-24 tbody tr > * {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.25em 1em;
+    padding: 0.375em 0;
+    text-align: right;
+    white-space: normal;
+    border-bottom: 1px dashed var(--kj-border);
+  }
+
+  .kj-stack-24 tbody tr > :last-child {
+    border-bottom: 0;
+  }
+
+  .kj-stack-24 tbody tr > th {
+    position: static;
+    justify-content: flex-start;
+    font-size: 1.0625em;
+    text-align: left;
+    background: none;
+  }
+
+  .kj-stack-24 [data-label]::before {
+    content: attr(data-label);
+    margin-right: auto;
+    font-size: 0.875em;
+    font-weight: 400;
+    color: var(--kj-muted);
+    text-align: left;
+  }
+
+  .kj-stack-24 [data-label='']::before,
+  .kj-stack-24 th[data-label]::before {
+    content: none;
+  }
+
+  .kj-stack-24 [data-label=''] {
+    justify-content: flex-start;
+    text-align: left;
+  }
+}
+
+@container (max-width: 28em) {
+  table.kj-stack-28,
+  .kj-stack-28 tbody,
+  .kj-stack-28 tr,
+  .kj-stack-28 th,
+  .kj-stack-28 td {
+    display: block;
+    width: auto !important;
+  }
+
+  .kj-stack-28 thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+  }
+
+  .kj-stack-28 tbody tr {
+    margin: 0 0 0.625em;
+    padding: 0.25em 0.75em;
+    border: 1px solid var(--kj-border);
+    border-radius: calc(var(--kj-radius, 12px) * 0.5);
+  }
+
+  .kj-stack-28 tbody tr > * {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.25em 1em;
+    padding: 0.375em 0;
+    text-align: right;
+    white-space: normal;
+    border-bottom: 1px dashed var(--kj-border);
+  }
+
+  .kj-stack-28 tbody tr > :last-child {
+    border-bottom: 0;
+  }
+
+  .kj-stack-28 tbody tr > th {
+    position: static;
+    justify-content: flex-start;
+    font-size: 1.0625em;
+    text-align: left;
+    background: none;
+  }
+
+  .kj-stack-28 [data-label]::before {
+    content: attr(data-label);
+    margin-right: auto;
+    font-size: 0.875em;
+    font-weight: 400;
+    color: var(--kj-muted);
+    text-align: left;
+  }
+
+  .kj-stack-28 [data-label='']::before,
+  .kj-stack-28 th[data-label]::before {
+    content: none;
+  }
+
+  .kj-stack-28 [data-label=''] {
+    justify-content: flex-start;
+    text-align: left;
+  }
+}
+
+@container (max-width: 36em) {
+  table.kj-stack-36,
+  .kj-stack-36 tbody,
+  .kj-stack-36 tr,
+  .kj-stack-36 th,
+  .kj-stack-36 td {
+    display: block;
+    width: auto !important;
+  }
+
+  .kj-stack-36 thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+  }
+
+  .kj-stack-36 tbody tr {
+    margin: 0 0 0.625em;
+    padding: 0.25em 0.75em;
+    border: 1px solid var(--kj-border);
+    border-radius: calc(var(--kj-radius, 12px) * 0.5);
+  }
+
+  .kj-stack-36 tbody tr > * {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.25em 1em;
+    padding: 0.375em 0;
+    text-align: right;
+    white-space: normal;
+    border-bottom: 1px dashed var(--kj-border);
+  }
+
+  .kj-stack-36 tbody tr > :last-child {
+    border-bottom: 0;
+  }
+
+  .kj-stack-36 tbody tr > th {
+    position: static;
+    justify-content: flex-start;
+    font-size: 1.0625em;
+    text-align: left;
+    background: none;
+  }
+
+  .kj-stack-36 [data-label]::before {
+    content: attr(data-label);
+    margin-right: auto;
+    font-size: 0.875em;
+    font-weight: 400;
+    color: var(--kj-muted);
+    text-align: left;
+  }
+
+  .kj-stack-36 [data-label='']::before,
+  .kj-stack-36 th[data-label]::before {
+    content: none;
+  }
+
+  .kj-stack-36 [data-label=''] {
+    justify-content: flex-start;
+    text-align: left;
+  }
+}
+
+@container (max-width: 44em) {
+  table.kj-stack-44,
+  .kj-stack-44 tbody,
+  .kj-stack-44 tr,
+  .kj-stack-44 th,
+  .kj-stack-44 td {
+    display: block;
+    width: auto !important;
+  }
+
+  .kj-stack-44 thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+  }
+
+  .kj-stack-44 tbody tr {
+    margin: 0 0 0.625em;
+    padding: 0.25em 0.75em;
+    border: 1px solid var(--kj-border);
+    border-radius: calc(var(--kj-radius, 12px) * 0.5);
+  }
+
+  .kj-stack-44 tbody tr > * {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.25em 1em;
+    padding: 0.375em 0;
+    text-align: right;
+    white-space: normal;
+    border-bottom: 1px dashed var(--kj-border);
+  }
+
+  .kj-stack-44 tbody tr > :last-child {
+    border-bottom: 0;
+  }
+
+  .kj-stack-44 tbody tr > th {
+    position: static;
+    justify-content: flex-start;
+    font-size: 1.0625em;
+    text-align: left;
+    background: none;
+  }
+
+  .kj-stack-44 [data-label]::before {
+    content: attr(data-label);
+    margin-right: auto;
+    font-size: 0.875em;
+    font-weight: 400;
+    color: var(--kj-muted);
+    text-align: left;
+  }
+
+  .kj-stack-44 [data-label='']::before,
+  .kj-stack-44 th[data-label]::before {
+    content: none;
+  }
+
+  .kj-stack-44 [data-label=''] {
+    justify-content: flex-start;
+    text-align: left;
+  }
+}
+
+@container (max-width: 50em) {
+  table.kj-stack-50,
+  .kj-stack-50 tbody,
+  .kj-stack-50 tr,
+  .kj-stack-50 th,
+  .kj-stack-50 td {
+    display: block;
+    width: auto !important;
+  }
+
+  .kj-stack-50 thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+  }
+
+  .kj-stack-50 tbody tr {
+    margin: 0 0 0.625em;
+    padding: 0.25em 0.75em;
+    border: 1px solid var(--kj-border);
+    border-radius: calc(var(--kj-radius, 12px) * 0.5);
+  }
+
+  .kj-stack-50 tbody tr > * {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.25em 1em;
+    padding: 0.375em 0;
+    text-align: right;
+    white-space: normal;
+    border-bottom: 1px dashed var(--kj-border);
+  }
+
+  .kj-stack-50 tbody tr > :last-child {
+    border-bottom: 0;
+  }
+
+  .kj-stack-50 tbody tr > th {
+    position: static;
+    justify-content: flex-start;
+    font-size: 1.0625em;
+    text-align: left;
+    background: none;
+  }
+
+  .kj-stack-50 [data-label]::before {
+    content: attr(data-label);
+    margin-right: auto;
+    font-size: 0.875em;
+    font-weight: 400;
+    color: var(--kj-muted);
+    text-align: left;
+  }
+
+  .kj-stack-50 [data-label='']::before,
+  .kj-stack-50 th[data-label]::before {
+    content: none;
+  }
+
+  .kj-stack-50 [data-label=''] {
+    justify-content: flex-start;
+    text-align: left;
+  }
+}
+
+@container (max-width: 56em) {
+  table.kj-stack-56,
+  .kj-stack-56 tbody,
+  .kj-stack-56 tr,
+  .kj-stack-56 th,
+  .kj-stack-56 td {
+    display: block;
+    width: auto !important;
+  }
+
+  .kj-stack-56 thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+  }
+
+  .kj-stack-56 tbody tr {
+    margin: 0 0 0.625em;
+    padding: 0.25em 0.75em;
+    border: 1px solid var(--kj-border);
+    border-radius: calc(var(--kj-radius, 12px) * 0.5);
+  }
+
+  .kj-stack-56 tbody tr > * {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.25em 1em;
+    padding: 0.375em 0;
+    text-align: right;
+    white-space: normal;
+    border-bottom: 1px dashed var(--kj-border);
+  }
+
+  .kj-stack-56 tbody tr > :last-child {
+    border-bottom: 0;
+  }
+
+  .kj-stack-56 tbody tr > th {
+    position: static;
+    justify-content: flex-start;
+    font-size: 1.0625em;
+    text-align: left;
+    background: none;
+  }
+
+  .kj-stack-56 [data-label]::before {
+    content: attr(data-label);
+    margin-right: auto;
+    font-size: 0.875em;
+    font-weight: 400;
+    color: var(--kj-muted);
+    text-align: left;
+  }
+
+  .kj-stack-56 [data-label='']::before,
+  .kj-stack-56 th[data-label]::before {
+    content: none;
+  }
+
+  .kj-stack-56 [data-label=''] {
+    justify-content: flex-start;
+    text-align: left;
+  }
+}
+
+/* A stacked row in a card with room for two: its lines in two columns. */
+@container (min-width: 30em) and (max-width: 36em) {
+  .kj-stack-36 tbody tr {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 1.5em;
+  }
+
+  .kj-stack-36 tbody tr > th {
+    grid-column: 1 / -1;
+  }
+
+  .kj-stack-36 tbody tr > :nth-last-child(2):nth-child(even) {
+    border-bottom: 0;
+  }
+}
+
+@container (min-width: 30em) and (max-width: 44em) {
+  .kj-stack-44 tbody tr {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 1.5em;
+  }
+
+  .kj-stack-44 tbody tr > th {
+    grid-column: 1 / -1;
+  }
+
+  .kj-stack-44 tbody tr > :nth-last-child(2):nth-child(even) {
+    border-bottom: 0;
+  }
+}
+
+@container (min-width: 30em) and (max-width: 50em) {
+  .kj-stack-50 tbody tr {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 1.5em;
+  }
+
+  .kj-stack-50 tbody tr > th {
+    grid-column: 1 / -1;
+  }
+
+  .kj-stack-50 tbody tr > :nth-last-child(2):nth-child(even) {
+    border-bottom: 0;
+  }
+}
+
+@container (min-width: 30em) and (max-width: 56em) {
+  .kj-stack-56 tbody tr {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 1.5em;
+  }
+
+  .kj-stack-56 tbody tr > th {
+    grid-column: 1 / -1;
+  }
+
+  .kj-stack-56 tbody tr > :nth-last-child(2):nth-child(even) {
+    border-bottom: 0;
+  }
+}
+
+/* The scroll cue: shadows at the edges that have more, over the card's ground. */
+.kj-scroll {
+  background:
+    linear-gradient(to right, var(--kj-bg), transparent) left / 2em 100% no-repeat local,
+    linear-gradient(to left, var(--kj-bg), transparent) right / 2em 100% no-repeat local,
+    radial-gradient(farthest-side at 0 50%, rgb(0 0 0 / 0.2), transparent) left / 0.75em 100%
+      no-repeat scroll,
+    radial-gradient(farthest-side at 100% 50%, rgb(0 0 0 / 0.2), transparent) right / 0.75em 100%
+      no-repeat scroll;
+}
+
+.kj-scroll-hint {
+  display: none;
+  margin: 0.375em 0 0;
+  font-size: 0.8125em;
+  color: var(--kj-muted);
+}
+
+@container (max-width: 44em) {
+  .kj-hint-44 {
+    display: block;
+  }
+}
+
+@container (max-width: 56em) {
+  .kj-hint-56 {
+    display: block;
+  }
+}
+
+/* A grid of small numbers tightens before it scrolls. */
+@container (max-width: 44em) {
+  .kj-compact-44 th,
+  .kj-compact-44 td {
+    padding: 0.375em 0.25em;
+    font-size: 0.875em;
+  }
+}
