@@ -15,12 +15,22 @@ of the others.
 | WordPress plugin `kaal-jyoti`   | `wordpress-v<version>`  | `deploy-wordpress.yml`: builds the plugin and uploads it to WordPress.org SVN                                       | Every WordPress site with the plugin, as an update |
 | Python SDK `kaaljyoti`          | `sdk-python-v<version>` | `publish-python.yml`: tests, builds and publishes to PyPI                                                           | New installs and upgrades                          |
 | PHP SDK `kaaljyoti/sdk`         | `sdk-php-v<version>`    | `mirror-php.yml`: splits `packages/sdk-php` to the `kaaljyoti-php` mirror with tag `v<version>`; Packagist reads it | New installs and upgrades                          |
-| TypeScript SDK `@kaaljyoti/sdk` | `sdk-ts-v<version>`     | _No workflow yet_                                                                                                   | —                                                  |
-| Dart SDK `kaaljyoti`            | `sdk-dart-v<version>`   | _No workflow yet_                                                                                                   | —                                                  |
+| TypeScript SDK `@kaaljyoti/sdk` | `sdk-ts-v<version>`     | `publish-ts.yml`: tests, builds and publishes to npm                                                                | New installs and upgrades                          |
+| Dart SDK `kaaljyoti`            | `sdk-dart-v<version>`   | `publish-dart.yml`: tests and publishes to pub.dev (automated publishing; the first version goes up by hand)        | New installs and upgrades                          |
 
 Each workflow checks that the tag matches the package's version, and skips
 the publishing step until that destination's secret or variable exists, so
 an early tag only proves the build.
+
+## First releases
+
+npm and pub.dev only trust a workflow for a package that already exists, so
+the first version of `@kaaljyoti/sdk`, `@kaaljyoti/widgets` and the Dart
+`kaaljyoti` is published by hand, from a clean checkout of the release tag,
+by the owner. Every later version goes through its workflow. PyPI can trust a
+workflow before the project exists (a "pending publisher"), and Packagist
+reads the mirror, so the Python and PHP SDKs use their workflows from the
+start.
 
 ## The rules
 
@@ -45,14 +55,14 @@ an early tag only proves the build.
 
 Where each version lives — change all of a package's places in one commit:
 
-| Package        | Set the version in                                                                              | Then                                         |
-| -------------- | ----------------------------------------------------------------------------------------------- | -------------------------------------------- |
-| Widgets        | `packages/widgets/package.json`                                                                 | the build stamps it into the bundle          |
-| WordPress      | `kaal-jyoti.php` (the `Version:` header and `KAAL_JYOTI_VERSION`), `readme.txt` (`Stable tag:`) | add the version to `readme.txt`'s changelog  |
-| TypeScript SDK | `packages/sdk-ts/package.json`                                                                  | the build stamps it                          |
-| Python SDK     | `packages/sdk-python/pyproject.toml`                                                            | `pnpm gen`                                   |
-| PHP SDK        | `packages/sdk-php/package.json`                                                                 | `pnpm gen` (writes `Generated/Version.php`)  |
-| Dart SDK       | `packages/sdk-dart/pubspec.yaml`                                                                | `pnpm gen` (writes `generated/version.dart`) |
+| Package                         | Set the version in                                                                              | Then                                                                                                         |
+| ------------------------------- | ----------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------ |
+| Widgets                         | `packages/widgets/package.json`                                                                 | the build stamps it into the bundle                                                                          |
+| WordPress                       | `kaal-jyoti.php` (the `Version:` header and `KAAL_JYOTI_VERSION`), `readme.txt` (`Stable tag:`) | add the version to `readme.txt`'s changelog                                                                  |
+| TypeScript SDK `@kaaljyoti/sdk` | `sdk-ts-v<version>`                                                                             | `publish-ts.yml`: tests, builds and publishes to npm                                                         | New installs and upgrades |
+| Python SDK                      | `packages/sdk-python/pyproject.toml`                                                            | `pnpm gen`                                                                                                   |
+| PHP SDK                         | `packages/sdk-php/package.json`                                                                 | `pnpm gen` (writes `Generated/Version.php`)                                                                  |
+| Dart SDK `kaaljyoti`            | `sdk-dart-v<version>`                                                                           | `publish-dart.yml`: tests and publishes to pub.dev (automated publishing; the first version goes up by hand) | New installs and upgrades |
 
 Every package with a `CHANGELOG.md` gets an entry for the version: what
 changed for someone using it, not the commit list.
@@ -117,8 +127,10 @@ Do not delete or move the tag, and do not re-publish over the version.
   release tags (`*-v*`) only. Every publishing job runs in it, so a pushed
   tag waits for the owner's approval before anything is published.
 - **Secrets** (repository secrets, scoped to the `release` environment):
-  `NPM_TOKEN`, `CLOUDFLARE_API_TOKEN` (R2 edit on `kaaljyoti-cdn` only),
+  `CLOUDFLARE_API_TOKEN` (R2 edit on `kaaljyoti-cdn` only),
   `SVN_USERNAME` / `SVN_PASSWORD` (the WordPress.org `goappsters` account),
   `PHP_MIRROR_DEPLOY_KEY` (a write deploy key on `kaaljyoti-php`), and the
   repository variable `PYPI_PUBLISH=yes` once PyPI trusted publishing is set
-  up.
+  up, and `NPM_TRUSTED_PUBLISHING=yes` once npm trusts the workflows. npm,
+  PyPI and pub.dev need no stored secret: each trusts the publishing
+  workflow's run in the `release` environment.

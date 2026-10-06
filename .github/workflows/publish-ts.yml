@@ -1,0 +1,45 @@
+# Publish the TypeScript SDK `@kaaljyoti/sdk` to npm on an sdk-ts-v* tag.
+#
+# npm trusted publishing: no token. On npmjs.com the package's settings name
+# this repository, this workflow file and the `release` environment, and npm
+# trusts the run's OIDC token (with provenance). A package must exist before
+# it can trust a workflow, so 0.1.0 is published by hand (RELEASING.md).
+# Until the repository variable NPM_TRUSTED_PUBLISHING is "yes" the publish
+# step is skipped and the tag only proves the package builds. The job waits
+# for the owner's approval.
+name: publish-ts
+
+on:
+  push:
+    tags: ['sdk-ts-v*']
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    environment: release
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+          registry-url: https://registry.npmjs.org
+      - name: tag matches package version
+        run: |
+          version=$(node -p "require('./packages/sdk-ts/package.json').version")
+          [ "${GITHUB_REF_NAME}" = "sdk-ts-v${version}" ] || { echo "tag ${GITHUB_REF_NAME} != sdk-ts-v${version}"; exit 1; }
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm --filter @kaaljyoti/sdk run gen:check
+      - run: pnpm --filter @kaaljyoti/sdk run typecheck
+      - run: pnpm --filter @kaaljyoti/sdk run test
+      - run: pnpm --filter @kaaljyoti/sdk run build
+      - name: publish to npm
+        if: ${{ vars.NPM_TRUSTED_PUBLISHING == 'yes' }}
+        working-directory: packages/sdk-ts
+        run: |
+          npm install -g npm@latest
+          npm publish --access public

@@ -1,0 +1,39 @@
+# Publish the Dart SDK `kaaljyoti` to pub.dev on an sdk-dart-v* tag.
+#
+# pub.dev's automated publishing: no secret. On pub.dev, the package's admin
+# page names this repository, the tag pattern `sdk-dart-v{{version}}` and the
+# `release` environment; pub.dev then trusts this workflow's OIDC token. The
+# first version cannot be published this way (the package must exist), so
+# 0.1.0 goes up by hand with `dart pub publish` (RELEASING.md). The job waits
+# for the owner's approval.
+name: publish-dart
+
+on:
+  push:
+    tags: ['sdk-dart-v*']
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    environment: release
+    permissions:
+      contents: read
+      id-token: write
+    defaults:
+      run:
+        working-directory: packages/sdk-dart
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dart-lang/setup-dart@v1
+        with:
+          sdk: stable
+      - name: tag matches package version
+        run: |
+          version=$(sed -n 's/^version: *//p' pubspec.yaml)
+          [ "${GITHUB_REF_NAME}" = "sdk-dart-v${version}" ] || { echo "tag ${GITHUB_REF_NAME} != sdk-dart-v${version}"; exit 1; }
+          grep -q "sdkVersion = '${version}'" lib/src/generated/version.dart || { echo "version.dart is not ${version}: run pnpm gen"; exit 1; }
+      - run: dart pub get
+      - run: dart analyze --fatal-infos
+      - run: dart format --output=none --set-exit-if-changed .
+      - run: dart test
+      - run: dart pub publish --force

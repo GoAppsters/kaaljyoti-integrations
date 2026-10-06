@@ -10,8 +10,8 @@ First release.
 - What each request cost, in credits (`meta.credits`, `result.credits`), and what is left of the
   month for a secret key (`result.creditsRemaining`).
 - Retries a `429` after its `Retry-After`, an engine error and a network failure, and never a
-  request the API would refuse again; one error type, `KaaljyotiException`, carrying the API's error
+  request the API would refuse again; one error type, `KaaljyotiError`, carrying the API's error
   `code`.
 - Wall-clock times kept as the API sends them: never moved into the caller's time zone.
-- Dart 3.6+ and Flutter; one dependency, `package:http`. Works with a publishable key in a Flutter
-  web app.
+- Node 18+, browsers and edge runtimes; ESM with a CommonJS build. Works with a publishable key in a
+  browser.

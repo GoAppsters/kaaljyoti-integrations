@@ -1,0 +1,3 @@
+# Monorepo tooling, not part of the package.
+package.json
+tool/
