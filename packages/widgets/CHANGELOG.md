@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.2.2
+
+- When a request with a publishable key cannot reach the API, the widget
+  names the page's origin: "Could not reach Kaal Jyoti. If this site is new,
+  check that your key's allowed origins include https://…". The usual cause
+  is an origin missing from the key, and on some hosts the page's origin is
+  not the site's own address (a Wix Embed HTML element runs on
+  `https://<id>.filesusr.com`). Requests that all go through the site's proxy
+  keep the plain line.
+
 ## 0.2.1
 
 The first release on npm; `cdn.kaaljyoti.com/widgets/v1.js` moves to it from

@@ -334,3 +334,37 @@ describe('<kj-panchang> with a key that is not publishable', () => {
     expect(fetchMock).not.toHaveBeenCalled();
   });
 });
+
+describe('<kj-panchang> when the API cannot be reached', () => {
+  const failing = () =>
+    vi.stubGlobal('fetch', vi.fn().mockRejectedValue(new TypeError('Failed to fetch')));
+  const settled = async () => {
+    for (let i = 0; i < 20; i++) await settle();
+  };
+
+  it('names the page origin, since an unlisted origin is the usual cause with a publishable key', async () => {
+    failing();
+    const element = await mount({ city: 'delhi' });
+    await settled();
+    expect(markup(element)).toContain('Could not reach Kaal Jyoti.');
+    expect(markup(element)).toContain(location.origin);
+  });
+
+  it('says so in Hindi too', async () => {
+    failing();
+    const element = await mount({ city: 'delhi', lang: 'hi' });
+    await settled();
+    expect(markup(element)).toContain(location.origin);
+    expect(markup(element)).toContain('काल ज्योति तक नहीं पहुँच सके।');
+  });
+
+  it('keeps the plain line when every request goes through the site proxy', async () => {
+    resetConfig();
+    configure({ proxyUrl: '/wp-json/kaaljyoti/v1/proxy', proxyAll: true, lang: 'en' });
+    failing();
+    const element = await mount({ city: 'delhi' });
+    await settled();
+    expect(markup(element)).toContain('Could not reach Kaal Jyoti.');
+    expect(markup(element)).not.toContain('allowed origins');
+  });
+});
