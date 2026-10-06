@@ -612,4 +612,28 @@ describe('the personal reports', () => {
       'https://kaaljyoti.com/api/pricing',
     );
   });
+
+  it("links nowhere with pricing-url off, keeping the reader's line", async () => {
+    vi.stubGlobal(
+      'fetch',
+      vi.fn().mockImplementation(() =>
+        Promise.resolve(
+          new Response(
+            JSON.stringify({
+              status: 'error',
+              error: { code: 'quota_exceeded', message: 'credits used up', docs: 'x' },
+            }),
+            { status: 402, headers: { 'Content-Type': 'application/json' } },
+          ),
+        ),
+      ),
+    );
+    configure({ pricingUrl: 'off' });
+    const element = await mount({ type: 'grahas', ...BIRTH });
+    const root = element.shadowRoot!;
+    expect(root.querySelector('[part~="quota"]')).not.toBeNull();
+    expect(root.querySelector('[part="plan-owner"]')).toBeNull();
+    expect(root.querySelector('a')).toBeNull();
+    expect(root.innerHTML).not.toContain('kaaljyoti.com');
+  });
 });

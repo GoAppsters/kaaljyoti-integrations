@@ -336,13 +336,17 @@ export function isPlanFailure(error: KjError | null | undefined): boolean {
  * The plan-required (or monthly-limit) card: polite for the reader, with one
  * small line for the site owner that links the pricing page.
  */
-export function planStateHtml(error: KjError, lang: Lang, pricingUrl: string): string {
-  const owner = html`<p class="kj-state-owner" part="plan-owner">
-    ${t(lang, 'plan_owner')}
-    <a href="${pricingUrl}" target="_blank" rel="noopener"
-      >${pricingUrl.replace(/^https?:\/\//, '')}</a
-    >
-  </p>`;
+export function planStateHtml(error: KjError, lang: Lang, pricingUrl: string | null): string {
+  const ownerLine = (key: 'plan_owner' | 'quota_owner'): string =>
+    pricingUrl
+      ? html`<p class="kj-state-owner" part="plan-owner">
+          ${t(lang, key)}
+          <a href="${pricingUrl}" target="_blank" rel="noopener"
+            >${pricingUrl.replace(/^https?:\/\//, '')}</a
+          >
+        </p>`
+      : '';
+  const owner = ownerLine('plan_owner');
   if (error.code === 'quota_exceeded') {
     return stateHtml({
       kind: 'plan',
@@ -351,12 +355,7 @@ export function planStateHtml(error: KjError, lang: Lang, pricingUrl: string): s
       title: t(lang, 'quota_title'),
       body: t(lang, 'quota_exceeded'),
       // Credits run out on every plan: a pack is as good an answer as a plan.
-      extra: html`<p class="kj-state-owner" part="plan-owner">
-        ${t(lang, 'quota_owner')}
-        <a href="${pricingUrl}" target="_blank" rel="noopener"
-          >${pricingUrl.replace(/^https?:\/\//, '')}</a
-        >
-      </p>`,
+      extra: ownerLine('quota_owner'),
     });
   }
   if (/publishable keys cannot/i.test(error.message)) {
@@ -394,17 +393,19 @@ export function planStateHtml(error: KjError, lang: Lang, pricingUrl: string): s
  * (decision 23): a polite line for the reader, and one for the site owner
  * with the docs link. Nothing was sent.
  */
-export function proxyStateHtml(lang: Lang, docsUrl: string): string {
+export function proxyStateHtml(lang: Lang, docsUrl: string | null): string {
   return stateHtml({
     kind: 'plan',
     part: 'proxy-required',
     code: 'proxy_required',
     title: t(lang, 'proxy_title'),
     body: t(lang, 'proxy_body'),
-    extra: html`<p class="kj-state-owner" part="proxy-owner">
-      ${t(lang, 'proxy_owner')}
-      <a href="${docsUrl}" target="_blank" rel="noopener">${t(lang, 'proxy_docs')}</a>
-    </p>`,
+    extra: docsUrl
+      ? html`<p class="kj-state-owner" part="proxy-owner">
+          ${t(lang, 'proxy_owner')}
+          <a href="${docsUrl}" target="_blank" rel="noopener">${t(lang, 'proxy_docs')}</a>
+        </p>`
+      : '',
   });
 }
 

@@ -107,8 +107,11 @@ export interface KjConfig {
   remember: boolean;
   /** The birth forms' time fields. */
   timeFormat: TimeFormat;
-  /** The plan-required state's link for the site owner. */
-  pricingUrl: string;
+  /**
+   * The plan-required and monthly-limit states' link for the site owner;
+   * `null` (`off`) leaves the owner's line out, so the card links nowhere.
+   */
+  pricingUrl: string | null;
   /**
    * Where the CDN loader finds the element chunks: its own directory unless
    * the tag says otherwise (`data-chunks`). The ESM build never reads it.
@@ -126,8 +129,8 @@ export interface KjConfig {
    * to publishable keys — for a site that puts no key in the page at all.
    */
   proxyAll: boolean;
-  /** The "needs a server proxy" state's link for the site owner. */
-  proxyDocsUrl: string;
+  /** The "needs a server proxy" state's link for the site owner; `null` (`off`) as above. */
+  proxyDocsUrl: string | null;
   /** The default for elements without a `font` attribute. */
   font: KjFont;
   /**
@@ -198,14 +201,13 @@ export function configure(partial: Partial<KjConfig>): KjConfig {
   if (partial.timeFormat !== undefined) {
     current.timeFormat = parseTimeFormat(String(partial.timeFormat)) ?? '12';
   }
-  if (partial.pricingUrl !== undefined) {
-    current.pricingUrl = safeUrl(partial.pricingUrl) ?? PRICING_URL;
-  }
+  if (partial.pricingUrl !== undefined)
+    current.pricingUrl = ownerLink(partial.pricingUrl, PRICING_URL);
   if (partial.chunkBase !== undefined) current.chunkBase = partial.chunkBase;
   if (partial.proxyUrl !== undefined) current.proxyUrl = safeProxyUrl(partial.proxyUrl);
   if (partial.proxyAll !== undefined) current.proxyAll = partial.proxyAll === true;
   if (partial.proxyDocsUrl !== undefined) {
-    current.proxyDocsUrl = safeUrl(partial.proxyDocsUrl) ?? PROXY_DOCS_URL;
+    current.proxyDocsUrl = ownerLink(partial.proxyDocsUrl, PROXY_DOCS_URL);
   }
   if (partial.font !== undefined) current.font = parseFont(partial.font) ?? 'system';
   if (partial.pdf !== undefined) {
@@ -303,6 +305,20 @@ export function isOff(raw: string | null | undefined): boolean {
   return /^(off|false|no|0)$/i.test(raw?.trim() ?? '');
 }
 
+/**
+ * A site owner's link from an attribute: `off` for none (`null`), a safe
+ * http(s) URL as given, and the fallback for anything else — so a WordPress
+ * site, which may not link kaaljyoti.com from its public pages unasked
+ * (WordPress.org guideline 10), can say `off`.
+ */
+export function ownerLink(
+  value: string | null | undefined,
+  fallback: string | null,
+): string | null {
+  if (value !== null && value !== undefined && isOff(value)) return null;
+  return safeUrl(value) ?? fallback;
+}
+
 /** An `http(s)` URL, or nothing: a pricing link must not be `javascript:`. */
 export function safeUrl(raw: string | null | undefined): string | undefined {
   const value = raw?.trim();
@@ -350,16 +366,14 @@ export function readDatasetConfig(dataset: Record<string, string | undefined>): 
   if (isOff(script.dataset.remember)) partial.remember = false;
   const timeFormat = parseTimeFormat(script.dataset.timeFormat);
   if (timeFormat) partial.timeFormat = timeFormat;
-  const pricingUrl = safeUrl(script.dataset.pricingUrl);
-  if (pricingUrl) partial.pricingUrl = pricingUrl;
+  if (script.dataset.pricingUrl !== undefined) partial.pricingUrl = script.dataset.pricingUrl;
   const chunks = script.dataset.chunks;
   if (chunks) partial.chunkBase = chunks;
   const proxy = safeProxyUrl(script.dataset.proxy);
   if (proxy) partial.proxyUrl = proxy;
   const proxyAll = script.dataset.proxyAll;
   if (proxyAll !== undefined && !isOff(proxyAll)) partial.proxyAll = true;
-  const proxyDocs = safeUrl(script.dataset.proxyDocs);
-  if (proxyDocs) partial.proxyDocsUrl = proxyDocs;
+  if (script.dataset.proxyDocs !== undefined) partial.proxyDocsUrl = script.dataset.proxyDocs;
   const font = parseFont(script.dataset.font);
   if (font) partial.font = font;
   if (script.dataset.pdf) partial.pdf = pdfWords(script.dataset.pdf);

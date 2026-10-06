@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.2.4
+
+- `data-pricing-url="off"` and `data-proxy-docs="off"` (or `pricing-url` / `proxy-docs` on an
+  element) leave the site owner's line out of the monthly-limit, plan and "needs a server
+  connection" cards, so they link nowhere. The WordPress plugin sets both unless the site owner gave
+  a link of their own, so no public page links kaaljyoti.com unasked.
+
 ## 0.2.3
 
 - **Changed:** the "Powered by Kaal Jyoti" line is opt-in on every plan. It shows only where a page

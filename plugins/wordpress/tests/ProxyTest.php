@@ -924,8 +924,8 @@ final class ProxyTest extends TestCase {
 		$tag = Assets::script_attributes( '<script src="v1.js"></script>', Assets::SCRIPT_HANDLE );
 		$this->assertStringNotContainsString( 'data-proxy=', $tag );
 		$this->assertStringNotContainsString( 'data-pdf=', $tag );
-		// The no-proxy card still has somewhere to send the site owner.
-		$this->assertStringContainsString( ' data-proxy-docs="https://kaaljyoti.com/api/docs/wordpress#proxy"', $tag );
+		// The no-proxy card links nowhere unless the site owner set a link.
+		$this->assertStringContainsString( ' data-proxy-docs="off"', $tag );
 	}
 
 	// ---------------------------------------------------------------------

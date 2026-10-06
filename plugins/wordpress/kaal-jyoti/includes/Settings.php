@@ -1305,8 +1305,8 @@ final class Settings {
 					esc_attr( (string) $value ),
 					esc_html(
 						'pricing_url' === $key
-							? __( 'Where the "needs a plan" note sends you, the site owner. Empty is Kaal Jyoti\'s pricing page.', 'kaal-jyoti' )
-							: __( 'Where the "needs a server connection" note sends you. Empty is this plugin\'s guide.', 'kaal-jyoti' )
+							? __( 'Where the "needs a plan" note sends you, the site owner. Empty: the note has no link.', 'kaal-jyoti' )
+							: __( 'Where the "needs a server connection" note sends you. Empty: the note has no link.', 'kaal-jyoti' )
 					)
 				);
 				break;

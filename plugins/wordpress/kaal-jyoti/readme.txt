@@ -215,7 +215,7 @@ Other hosts use their own header (often `X-Forwarded-For` or `X-Real-IP`); your 
 
 = A widget says "Monthly limit reached" =
 
-Your account has used its credits for the month, or has fewer left than the request costs (a month of panchang or ephemeris costs 20, a reading 5). The widget says so politely, with a link for you to the pricing page: buy a credit pack or move to a larger plan, or wait for your account's billing day, when the credits reset.
+Your account has used its credits for the month, or has fewer left than the request costs (a month of panchang or ephemeris costs 20, a reading 5). The widget says so politely (with a link, if you set one under Settings → Kaal Jyoti → Links). Buy a credit pack or move to a larger plan, or wait for your account's billing day, when the credits reset.
 
 = The PDF button or a month stopped loading on a cached page =
 

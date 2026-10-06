@@ -267,14 +267,16 @@ final class ServerSettingsTest extends TestCase {
 
 	/**
 	 * The script tag: 24-hour time, no memory, the theme's font and a
-	 * pricing link when set; nothing for the defaults.
+	 * pricing link when set, and "off" (no link) for the default.
 	 */
 	public function test_the_script_tag_carries_the_form_settings(): void {
 		$tag = Assets::script_attributes( '<script src="v1.js"></script>', Assets::SCRIPT_HANDLE );
 		$this->assertStringNotContainsString( 'data-time-format', $tag );
 		$this->assertStringNotContainsString( 'data-remember', $tag );
 		$this->assertStringNotContainsString( 'data-font', $tag );
-		$this->assertStringNotContainsString( 'data-pricing-url', $tag );
+		// No link of the plugin's own on a public page: the note has none.
+		$this->assertStringContainsString( ' data-pricing-url="off"', $tag );
+		$this->assertStringNotContainsString( 'kaaljyoti.com', $tag );
 
 		$this->given_settings(
 			array(

@@ -238,10 +238,13 @@ final class Assets {
 			$attributes .= sprintf( ' data-sign-icons="%s"', esc_attr( $icons ) );
 		}
 
-		$pricing = Elements::disclaimer_url( (string) Settings::get( 'pricing_url' ) );
-		if ( null !== $pricing ) {
-			$attributes .= sprintf( ' data-pricing-url="%s"', esc_attr( esc_url( $pricing ) ) );
-		}
+		// The "needs a plan" and "needs a server connection" notes link only
+		// where the site owner set a link; otherwise they show their text
+		// alone, so no public page links kaaljyoti.com unasked (guideline 10).
+		$pricing     = Elements::disclaimer_url( (string) Settings::get( 'pricing_url' ) );
+		$attributes .= null !== $pricing
+			? sprintf( ' data-pricing-url="%s"', esc_attr( esc_url( $pricing ) ) )
+			: ' data-pricing-url="off"';
 
 		// The server proxy (widgets decision 23): its URL, with a nonce, only
 		// when a secret key is stored and the proxy is on. The month widgets
@@ -256,8 +259,10 @@ final class Assets {
 				$attributes .= sprintf( ' data-pdf="%s"', esc_attr( implode( ' ', $editions ) ) );
 			}
 		}
-		$docs        = Elements::disclaimer_url( (string) Settings::get( 'proxy_docs_url' ) ) ?? Settings::DOCS_URL . '#proxy';
-		$attributes .= sprintf( ' data-proxy-docs="%s"', esc_attr( esc_url( $docs ) ) );
+		$docs        = Elements::disclaimer_url( (string) Settings::get( 'proxy_docs_url' ) );
+		$attributes .= null !== $docs
+			? sprintf( ' data-proxy-docs="%s"', esc_attr( esc_url( $docs ) ) )
+			: ' data-proxy-docs="off"';
 
 		// Where the loader's element chunks are: next to it, whatever URL a
 		// caching or optimisation plugin later gives the loader itself.

@@ -8,7 +8,7 @@
  * way that is meant to: through the `--kj-*` custom properties on `:host`.
  */
 
-import { getConfig, isOff, parseLang, safeUrl } from './config.ts';
+import { getConfig, isOff, ownerLink, parseLang } from './config.ts';
 import { asKjError, type KjError } from './errors.ts';
 import { html, trusted } from './html.ts';
 import { t, type Lang, type MessageKey } from './i18n.ts';
@@ -385,9 +385,9 @@ export abstract class KjElement extends ElementBase {
     return this.getAttribute('frame') !== 'none';
   }
 
-  /** The pricing page the plan-required state links for the site owner. */
-  protected get pricingUrl(): string {
-    return safeUrl(this.getAttribute('pricing-url')) ?? getConfig().pricingUrl;
+  /** The pricing page the plan-required state links for the site owner, or none. */
+  protected get pricingUrl(): string | null {
+    return ownerLink(this.getAttribute('pricing-url'), getConfig().pricingUrl);
   }
 
   /** The header band, or `''`. */
@@ -421,7 +421,7 @@ export abstract class KjElement extends ElementBase {
       return planStateHtml(failure, this.activeLang, this.pricingUrl);
     }
     if (failure?.code === 'proxy_required') {
-      const docs = safeUrl(this.getAttribute('proxy-docs')) ?? getConfig().proxyDocsUrl;
+      const docs = ownerLink(this.getAttribute('proxy-docs'), getConfig().proxyDocsUrl);
       return proxyStateHtml(this.activeLang, docs);
     }
     const code = failure?.code ?? 'generic_error';
