@@ -55,14 +55,14 @@ start.
 
 Where each version lives — change all of a package's places in one commit:
 
-| Package                         | Set the version in                                                                              | Then                                                                                                         |
-| ------------------------------- | ----------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------ |
-| Widgets                         | `packages/widgets/package.json`                                                                 | the build stamps it into the bundle                                                                          |
-| WordPress                       | `kaal-jyoti.php` (the `Version:` header and `KAAL_JYOTI_VERSION`), `readme.txt` (`Stable tag:`) | add the version to `readme.txt`'s changelog                                                                  |
-| TypeScript SDK `@kaaljyoti/sdk` | `sdk-ts-v<version>`                                                                             | `publish-ts.yml`: tests, builds and publishes to npm                                                         | New installs and upgrades |
-| Python SDK                      | `packages/sdk-python/pyproject.toml`                                                            | `pnpm gen`                                                                                                   |
-| PHP SDK                         | `packages/sdk-php/package.json`                                                                 | `pnpm gen` (writes `Generated/Version.php`)                                                                  |
-| Dart SDK `kaaljyoti`            | `sdk-dart-v<version>`                                                                           | `publish-dart.yml`: tests and publishes to pub.dev (automated publishing; the first version goes up by hand) | New installs and upgrades |
+| Package                         | Set the version in                                                                              | Then                                                 |
+| ------------------------------- | ----------------------------------------------------------------------------------------------- | ---------------------------------------------------- |
+| Widgets                         | `packages/widgets/package.json`                                                                 | the build stamps it into the bundle                  |
+| WordPress                       | `kaal-jyoti.php` (the `Version:` header and `KAAL_JYOTI_VERSION`), `readme.txt` (`Stable tag:`) | add the version to `readme.txt`'s changelog          |
+| TypeScript SDK `@kaaljyoti/sdk` | `packages/sdk-ts/package.json`                                                                  | the build stamps it into the `User-Agent`            |
+| Python SDK                      | `packages/sdk-python/pyproject.toml` and `package.json`                                         | `pnpm gen`                                           |
+| PHP SDK                         | `packages/sdk-php/package.json`                                                                 | `pnpm gen` (writes `Generated/Version.php`)          |
+| Dart SDK `kaaljyoti`            | `packages/sdk-dart/pubspec.yaml` and `packages/sdk-dart/package.json`                           | `pnpm gen` (writes `lib/src/generated/version.dart`) |
 
 Every package with a `CHANGELOG.md` gets an entry for the version: what
 changed for someone using it, not the commit list.

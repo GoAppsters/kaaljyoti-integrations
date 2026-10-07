@@ -7,7 +7,7 @@
 /// The version of this package, from `pubspec.yaml`.
 ///
 /// Sent as `X-KJ-Client: sdk-dart/$sdkVersion`.
-const String sdkVersion = '0.1.0';
+const String sdkVersion = '0.1.1';
 
 /// The `info.version` of the OpenAPI snapshot these models were built from.
 const String openApiVersion = '0.16.0';

@@ -326,7 +326,7 @@ def test_operations_match_the_snapshot() -> None:
             if name is not None:
                 assert hasattr(kaaljyoti, name), name
     assert document["info"]["version"] == OPENAPI_VERSION
-    assert SDK_VERSION == "0.1.0"
+    assert SDK_VERSION == "0.1.1"
     with pytest.raises(KeyError):
         operation("postNothing")
 
