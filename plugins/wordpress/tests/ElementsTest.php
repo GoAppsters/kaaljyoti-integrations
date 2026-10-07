@@ -611,7 +611,9 @@ final class ElementsTest extends TestCase {
 		);
 
 		$this->assertStringContainsString( ' year="2027"', Elements::render( 'reading', $birth + array( 'year' => '2027' ) ) );
-		foreach ( array( '1799', '2401', '26', 'next', '2026.5' ) as $refused ) {
+		// Any four-digit year goes through: the API's supported range decides.
+		$this->assertStringContainsString( ' year="1799"', Elements::render( 'reading', $birth + array( 'year' => '1799' ) ) );
+		foreach ( array( '26', 'next', '2026.5', '12026' ) as $refused ) {
 			$this->assertStringNotContainsString( 'year=', Elements::render( 'reading', $birth + array( 'year' => $refused ) ), $refused );
 		}
 

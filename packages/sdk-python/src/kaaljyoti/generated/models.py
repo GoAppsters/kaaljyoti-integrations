@@ -287,7 +287,7 @@ class AreaSummary:
 
 @dataclass(frozen=True, slots=True)
 class AshtakavargaDocument:
-    """The document the `ashtakavarga` op of the Kaal Jyoti engine 0.15.2 returns, inferred from
+    """The document the `ashtakavarga` op of the Kaal Jyoti engine 0.16.0 returns, inferred from
     real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.
 
     Wire shape: `#/components/schemas/AshtakavargaDocument`.
@@ -481,7 +481,7 @@ class BatchMeta:
 
 @dataclass(frozen=True, slots=True)
 class BhavaBalaDocument:
-    """The document the `bhava_bala` op of the Kaal Jyoti engine 0.15.2 returns, inferred from real
+    """The document the `bhava_bala` op of the Kaal Jyoti engine 0.16.0 returns, inferred from real
     responses by harness/gen_response_schemas.py. Regenerated on every engine tag.
 
     Wire shape: `#/components/schemas/BhavaBalaDocument`.
@@ -564,7 +564,7 @@ class Birth:
     datetime: str
     """The local clock time at the birth place, as a birth certificate gives it: not UTC and not
     your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`,
-    e.g. `1990-05-14T10:30:00`. Year 1800 to 2400.
+    e.g. `1990-05-14T10:30:00`. From 1550-04-01 to 2400-12-31.
     """
     latitude: float
     """Latitude in decimal degrees, north positive, from -89.9 to 89.9, e.g. `28.6139`."""
@@ -677,7 +677,7 @@ class CalculationOptions:
 
 @dataclass(frozen=True, slots=True)
 class ChalitDocument:
-    """The document the `chalit` op of the Kaal Jyoti engine 0.15.2 returns, inferred from real
+    """The document the `chalit` op of the Kaal Jyoti engine 0.16.0 returns, inferred from real
     responses by harness/gen_response_schemas.py. Regenerated on every engine tag.
 
     Wire shape: `#/components/schemas/ChalitDocument`.
@@ -805,7 +805,7 @@ class ChalitRequest:
 
 @dataclass(frozen=True, slots=True)
 class ChartDocument:
-    """The document the `chart` op of the Kaal Jyoti engine 0.15.2 returns, inferred from real
+    """The document the `chart` op of the Kaal Jyoti engine 0.16.0 returns, inferred from real
     responses by harness/gen_response_schemas.py. Regenerated on every engine tag.
 
     Wire shape: `#/components/schemas/ChartDocument`.
@@ -859,7 +859,7 @@ class ChartDocument:
 
 @dataclass(frozen=True, slots=True)
 class CompareDocument:
-    """The document the `compare` op of the Kaal Jyoti engine 0.15.2 returns, inferred from real
+    """The document the `compare` op of the Kaal Jyoti engine 0.16.0 returns, inferred from real
     responses by harness/gen_response_schemas.py. Regenerated on every engine tag.
 
     Wire shape: `#/components/schemas/CompareDocument`.
@@ -1017,7 +1017,7 @@ class CompareDocumentSubjectsItem:
 
 @dataclass(frozen=True, slots=True)
 class DailyPanchangDocument:
-    """The document the `daily_panchang` op of the Kaal Jyoti engine 0.15.2 returns, inferred from
+    """The document the `daily_panchang` op of the Kaal Jyoti engine 0.16.0 returns, inferred from
     real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.
 
     Wire shape: `#/components/schemas/DailyPanchangDocument`.
@@ -1433,7 +1433,7 @@ class DashaCharaSookshma:
 
 @dataclass(frozen=True, slots=True)
 class DashaDocument:
-    """The document the `dasha` op of the Kaal Jyoti engine 0.15.2 returns, inferred from real
+    """The document the `dasha` op of the Kaal Jyoti engine 0.16.0 returns, inferred from real
     responses by harness/gen_response_schemas.py. Regenerated on every engine tag.
 
     Wire shape: `#/components/schemas/DashaDocument`.
@@ -2171,7 +2171,7 @@ class Disclaimer:
 
 @dataclass(frozen=True, slots=True)
 class EphemerisMonthDocument:
-    """The document the `ephemeris_month` op of the Kaal Jyoti engine 0.15.2 returns, inferred from
+    """The document the `ephemeris_month` op of the Kaal Jyoti engine 0.16.0 returns, inferred from
     real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.
 
     Wire shape: `#/components/schemas/EphemerisMonthDocument`.
@@ -2365,7 +2365,7 @@ class EphemerisMonthRequest:
     longitude: float
     """Longitude in decimal degrees, east positive, from -180 to 180, e.g. `77.209`."""
     month: str
-    """The calendar month, `YYYY-MM`, e.g. `2026-09`; one row per day. Year 1800 to 2400."""
+    """The calendar month, `YYYY-MM`, e.g. `2026-09`; one row per day. From 1550-04 to 2400-12."""
     timezone: str | None = None
     """IANA time zone name, e.g. `Asia/Kolkata`. The offset in force there at that date is used, so
     daylight saving and historical changes (India's +06:30 war time) are handled. Give this or
@@ -2481,7 +2481,7 @@ class ErrorDetail:
 
 @dataclass(frozen=True, slots=True)
 class EventsDocument:
-    """The document the `events` op of the Kaal Jyoti engine 0.15.2 returns, inferred from real
+    """The document the `events` op of the Kaal Jyoti engine 0.16.0 returns, inferred from real
     responses by harness/gen_response_schemas.py. Regenerated on every engine tag.
 
     Wire shape: `#/components/schemas/EventsDocument`.
@@ -2667,7 +2667,7 @@ class EventsDocumentEventsItemDetailEvent:
 
 @dataclass(frozen=True, slots=True)
 class GrahaDrishtiDocument:
-    """The document the `graha_drishti` op of the Kaal Jyoti engine 0.15.2 returns, inferred from
+    """The document the `graha_drishti` op of the Kaal Jyoti engine 0.16.0 returns, inferred from
     real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.
 
     Wire shape: `#/components/schemas/GrahaDrishtiDocument`.
@@ -2828,6 +2828,11 @@ class HealthDocument:
     engine: str
     ephemeris: str
     ops: int
+    supported_range: HealthDocumentSupportedRange
+    """The dates the API answers for, from its ephemeris data: calendar dates at the place, whole
+    months; `first_year`/`last_year` bound the whole-year fields (a Varshphal `year`). A date
+    outside is a 400.
+    """
     uptime_s: int
 
     @classmethod
@@ -2838,6 +2843,9 @@ class HealthDocument:
             engine=as_str(data.get("engine")),
             ephemeris=as_str(data.get("ephemeris")),
             ops=as_int(data.get("ops")),
+            supported_range=HealthDocumentSupportedRange.from_dict(
+                as_dict(data.get("supported_range"))
+            ),
             uptime_s=as_int(data.get("uptime_s")),
         )
 
@@ -2848,13 +2856,48 @@ class HealthDocument:
         out["engine"] = self.engine
         out["ephemeris"] = self.ephemeris
         out["ops"] = self.ops
+        out["supported_range"] = self.supported_range.to_dict()
         out["uptime_s"] = self.uptime_s
         return out
 
 
 @dataclass(frozen=True, slots=True)
+class HealthDocumentSupportedRange:
+    """The dates the API answers for, from its ephemeris data: calendar dates at the place, whole
+    months; `first_year`/`last_year` bound the whole-year fields (a Varshphal `year`). A date
+    outside is a 400.
+
+    Wire shape: `HealthDocument.supported_range`.
+    """
+
+    first_date: str
+    last_date: str
+    first_year: int
+    last_year: int
+
+    @classmethod
+    def from_dict(cls, data: Mapping[str, Any]) -> HealthDocumentSupportedRange:
+        """Read the wire shape, as `json.loads` returns it."""
+        return cls(
+            first_date=as_str(data.get("first_date")),
+            last_date=as_str(data.get("last_date")),
+            first_year=as_int(data.get("first_year")),
+            last_year=as_int(data.get("last_year")),
+        )
+
+    def to_dict(self) -> dict[str, Any]:
+        """This value as JSON, with every `None` left out."""
+        out: dict[str, Any] = {}
+        out["first_date"] = self.first_date
+        out["last_date"] = self.last_date
+        out["first_year"] = self.first_year
+        out["last_year"] = self.last_year
+        return out
+
+
+@dataclass(frozen=True, slots=True)
 class HoroscopeDocument:
-    """The document the `horoscope` op of the Kaal Jyoti engine 0.15.2 returns, inferred from real
+    """The document the `horoscope` op of the Kaal Jyoti engine 0.16.0 returns, inferred from real
     responses by harness/gen_response_schemas.py. Regenerated on every engine tag.
 
     Wire shape: `#/components/schemas/HoroscopeDocument`.
@@ -3061,7 +3104,7 @@ class HouseLord:
 
 @dataclass(frozen=True, slots=True)
 class JaiminiAspectsDocument:
-    """The document the `jaimini` op of the Kaal Jyoti engine 0.15.2 returns, inferred from real
+    """The document the `jaimini` op of the Kaal Jyoti engine 0.16.0 returns, inferred from real
     responses by harness/gen_response_schemas.py. Regenerated on every engine tag.
 
     Wire shape: `#/components/schemas/JaiminiAspectsDocument`.
@@ -3129,7 +3172,7 @@ class JaiminiAspectsDocumentAspectsItem:
 
 @dataclass(frozen=True, slots=True)
 class JaiminiKarakamshaDocument:
-    """The document the `jaimini` op of the Kaal Jyoti engine 0.15.2 returns, inferred from real
+    """The document the `jaimini` op of the Kaal Jyoti engine 0.16.0 returns, inferred from real
     responses by harness/gen_response_schemas.py. Regenerated on every engine tag.
 
     Wire shape: `#/components/schemas/JaiminiKarakamshaDocument`.
@@ -3178,7 +3221,7 @@ class JaiminiKarakamshaDocumentKarakamsha:
 
 @dataclass(frozen=True, slots=True)
 class JaiminiKarakasDocument:
-    """The document the `jaimini` op of the Kaal Jyoti engine 0.15.2 returns, inferred from real
+    """The document the `jaimini` op of the Kaal Jyoti engine 0.16.0 returns, inferred from real
     responses by harness/gen_response_schemas.py. Regenerated on every engine tag.
 
     Wire shape: `#/components/schemas/JaiminiKarakasDocument`.
@@ -3205,7 +3248,7 @@ class JaiminiKarakasDocument:
 
 @dataclass(frozen=True, slots=True)
 class JaiminiPadasDocument:
-    """The document the `jaimini` op of the Kaal Jyoti engine 0.15.2 returns, inferred from real
+    """The document the `jaimini` op of the Kaal Jyoti engine 0.16.0 returns, inferred from real
     responses by harness/gen_response_schemas.py. Regenerated on every engine tag.
 
     Wire shape: `#/components/schemas/JaiminiPadasDocument`.
@@ -3383,7 +3426,7 @@ class JaiminiPadasDocumentVargaPadas:
 
 @dataclass(frozen=True, slots=True)
 class KotaDocument:
-    """The document the `kota` op of the Kaal Jyoti engine 0.15.2 returns, inferred from real
+    """The document the `kota` op of the Kaal Jyoti engine 0.16.0 returns, inferred from real
     responses by harness/gen_response_schemas.py. Regenerated on every engine tag.
 
     Wire shape: `#/components/schemas/KotaDocument`.
@@ -3428,7 +3471,7 @@ class KotaDocument:
 
 @dataclass(frozen=True, slots=True)
 class KpDocument:
-    """The document the `kp` op of the Kaal Jyoti engine 0.15.2 returns, inferred from real
+    """The document the `kp` op of the Kaal Jyoti engine 0.16.0 returns, inferred from real
     responses by harness/gen_response_schemas.py. Regenerated on every engine tag.
 
     Wire shape: `#/components/schemas/KpDocument`.
@@ -3772,7 +3815,7 @@ class KundliChartRequest:
 
 @dataclass(frozen=True, slots=True)
 class KundliDocument:
-    """The document the `kundli` op of the Kaal Jyoti engine 0.15.2 returns, inferred from real
+    """The document the `kundli` op of the Kaal Jyoti engine 0.16.0 returns, inferred from real
     responses by harness/gen_response_schemas.py. Regenerated on every engine tag.
 
     Wire shape: `#/components/schemas/KundliDocument`.
@@ -4036,7 +4079,7 @@ class KundliDocumentYogasItem:
 
 @dataclass(frozen=True, slots=True)
 class KundliReportDocument:
-    """The document the `kundli_report` op of the Kaal Jyoti engine 0.15.2 returns, inferred from
+    """The document the `kundli_report` op of the Kaal Jyoti engine 0.16.0 returns, inferred from
     real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.
 
     Wire shape: `#/components/schemas/KundliReportDocument`.
@@ -5523,7 +5566,7 @@ class LifeAreaPeriod:
 
 @dataclass(frozen=True, slots=True)
 class LifeAreasDocument:
-    """The document the `life_areas` op of the Kaal Jyoti engine 0.15.2 returns, inferred from real
+    """The document the `life_areas` op of the Kaal Jyoti engine 0.16.0 returns, inferred from real
     responses by harness/gen_response_schemas.py. Regenerated on every engine tag.
 
     Wire shape: `#/components/schemas/LifeAreasDocument`.
@@ -5841,7 +5884,7 @@ class MahadashaReading:
 
 @dataclass(frozen=True, slots=True)
 class MaitriDocument:
-    """The document the `maitri` op of the Kaal Jyoti engine 0.15.2 returns, inferred from real
+    """The document the `maitri` op of the Kaal Jyoti engine 0.16.0 returns, inferred from real
     responses by harness/gen_response_schemas.py. Regenerated on every engine tag.
 
     Wire shape: `#/components/schemas/MaitriDocument`.
@@ -5901,7 +5944,7 @@ class MaitriRelation:
 
 @dataclass(frozen=True, slots=True)
 class MatchAshtakootDocument:
-    """The document the `match_ashtakoot` op of the Kaal Jyoti engine 0.15.2 returns, inferred from
+    """The document the `match_ashtakoot` op of the Kaal Jyoti engine 0.16.0 returns, inferred from
     real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.
 
     Wire shape: `#/components/schemas/MatchAshtakootDocument`.
@@ -6173,7 +6216,7 @@ class MetaAyanamsa:
 
 @dataclass(frozen=True, slots=True)
 class MuhurtaDocument:
-    """The document the `muhurta` op of the Kaal Jyoti engine 0.15.2 returns, inferred from real
+    """The document the `muhurta` op of the Kaal Jyoti engine 0.16.0 returns, inferred from real
     responses by harness/gen_response_schemas.py. Regenerated on every engine tag.
 
     Wire shape: `#/components/schemas/MuhurtaDocument`.
@@ -6450,7 +6493,7 @@ class MuhurtaRequest:
 
 @dataclass(frozen=True, slots=True)
 class Nakshatra28Document:
-    """The document the `nakshatra28` op of the Kaal Jyoti engine 0.15.2 returns, inferred from
+    """The document the `nakshatra28` op of the Kaal Jyoti engine 0.16.0 returns, inferred from
     real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.
 
     Wire shape: `#/components/schemas/Nakshatra28Document`.
@@ -6520,7 +6563,7 @@ class Nakshatra28DocumentMoon:
 
 @dataclass(frozen=True, slots=True)
 class PaceDocument:
-    """The document the `pace` op of the Kaal Jyoti engine 0.15.2 returns, inferred from real
+    """The document the `pace` op of the Kaal Jyoti engine 0.16.0 returns, inferred from real
     responses by harness/gen_response_schemas.py. Regenerated on every engine tag.
 
     Wire shape: `#/components/schemas/PaceDocument`.
@@ -6707,7 +6750,7 @@ class PaceDocumentEntriesItemPosition:
 
 @dataclass(frozen=True, slots=True)
 class PanchangMonthDocument:
-    """The document the `panchang_month` op of the Kaal Jyoti engine 0.15.2 returns, inferred from
+    """The document the `panchang_month` op of the Kaal Jyoti engine 0.16.0 returns, inferred from
     real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.
 
     Wire shape: `#/components/schemas/PanchangMonthDocument`.
@@ -6869,8 +6912,8 @@ class PanchangMonthRequest:
     longitude: float
     """Longitude in decimal degrees, east positive, from -180 to 180, e.g. `77.209`."""
     month: str
-    """The calendar month, `YYYY-MM`, e.g. `2026-10`; every date of it is answered. Year 1800 to
-    2400.
+    """The calendar month, `YYYY-MM`, e.g. `2026-10`; every date of it is answered. From 1550-04 to
+    2400-12.
     """
     timezone: str | None = None
     """IANA time zone name, e.g. `Asia/Kolkata`. The offset in force there at that date is used, so
@@ -6953,7 +6996,7 @@ class PanchangRequest:
     """
     date: str | None = None
     """The calendar date at the place, `YYYY-MM-DD`, e.g. `2026-09-16`. Default: today there (and
-    an answer without `date` is never cached). Year 1800 to 2400.
+    an answer without `date` is never cached). From 1550-04-01 to 2400-12-31.
     """
 
     @classmethod
@@ -7311,7 +7354,7 @@ class PdfPanchangMonthRequest:
     longitude: float
     """Longitude in decimal degrees, east positive, from -180 to 180, e.g. `77.209`."""
     month: str
-    """The calendar month, `YYYY-MM`, e.g. `2026-10`; one day per row. Year 1800 to 2400."""
+    """The calendar month, `YYYY-MM`, e.g. `2026-10`; one day per row. From 1550-04 to 2400-12."""
     timezone: str | None = None
     """IANA time zone name, e.g. `Asia/Kolkata`. The offset in force there at that date is used, so
     daylight saving and historical changes (India's +06:30 war time) are handled. Give this or
@@ -7397,7 +7440,7 @@ class PdfVarshphalRequest:
     """
     year: int
     """The year, e.g. `2026`, required: the annual chart runs from that year's birthday to the
-    next. Not before the birth year; at most 2400.
+    next. Not before the birth year; at most 2399.
     """
     options: CalculationOptions | None = None
     """Settings for the calculation and the answer: ayanamsa, language, disclaimer. Every field has
@@ -7602,7 +7645,7 @@ class ReadingEntry:
 
 @dataclass(frozen=True, slots=True)
 class ReadingGrahasDocument:
-    """The document the `reading` op of the Kaal Jyoti engine 0.15.2 returns, inferred from real
+    """The document the `reading` op of the Kaal Jyoti engine 0.16.0 returns, inferred from real
     responses by harness/gen_response_schemas.py. Regenerated on every engine tag.
 
     Wire shape: `#/components/schemas/ReadingGrahasDocument`.
@@ -7638,7 +7681,7 @@ class ReadingGrahasDocument:
 
 @dataclass(frozen=True, slots=True)
 class ReadingHouseLordsDocument:
-    """The document the `reading` op of the Kaal Jyoti engine 0.15.2 returns, inferred from real
+    """The document the `reading` op of the Kaal Jyoti engine 0.16.0 returns, inferred from real
     responses by harness/gen_response_schemas.py. Regenerated on every engine tag.
 
     Wire shape: `#/components/schemas/ReadingHouseLordsDocument`.
@@ -7700,7 +7743,7 @@ class ReadingLagna:
 
 @dataclass(frozen=True, slots=True)
 class ReadingLagnaDocument:
-    """The document the `reading` op of the Kaal Jyoti engine 0.15.2 returns, inferred from real
+    """The document the `reading` op of the Kaal Jyoti engine 0.16.0 returns, inferred from real
     responses by harness/gen_response_schemas.py. Regenerated on every engine tag.
 
     Wire shape: `#/components/schemas/ReadingLagnaDocument`.
@@ -7762,7 +7805,7 @@ class ReadingNakshatra:
 
 @dataclass(frozen=True, slots=True)
 class ReadingNakshatraDocument:
-    """The document the `reading` op of the Kaal Jyoti engine 0.15.2 returns, inferred from real
+    """The document the `reading` op of the Kaal Jyoti engine 0.16.0 returns, inferred from real
     responses by harness/gen_response_schemas.py. Regenerated on every engine tag.
 
     Wire shape: `#/components/schemas/ReadingNakshatraDocument`.
@@ -7827,7 +7870,7 @@ class ReadingSummary:
 
 @dataclass(frozen=True, slots=True)
 class ReadingYogasDocument:
-    """The document the `reading` op of the Kaal Jyoti engine 0.15.2 returns, inferred from real
+    """The document the `reading` op of the Kaal Jyoti engine 0.16.0 returns, inferred from real
     responses by harness/gen_response_schemas.py. Regenerated on every engine tag.
 
     Wire shape: `#/components/schemas/ReadingYogasDocument`.
@@ -7908,7 +7951,7 @@ class ReportKundliRequest:
     year: int | None = None
     """The Varshphal's year, e.g. `2026`: the year from that year's birthday to the next. Default:
     the Varshphal year running today (last year's until this year's birthday). Not before the
-    birth year; at most 2400.
+    birth year; at most 2399.
     """
 
     @classmethod
@@ -8025,7 +8068,7 @@ class ReportNakshatraRequest:
 
 @dataclass(frozen=True, slots=True)
 class SadeSatiDocument:
-    """The document the `sade_sati` op of the Kaal Jyoti engine 0.15.2 returns, inferred from real
+    """The document the `sade_sati` op of the Kaal Jyoti engine 0.16.0 returns, inferred from real
     responses by harness/gen_response_schemas.py. Regenerated on every engine tag.
 
     Wire shape: `#/components/schemas/SadeSatiDocument`.
@@ -8207,7 +8250,7 @@ class SadeSatiRequest:
 
 @dataclass(frozen=True, slots=True)
 class SarvatobhadraDocument:
-    """The document the `sarvatobhadra` op of the Kaal Jyoti engine 0.15.2 returns, inferred from
+    """The document the `sarvatobhadra` op of the Kaal Jyoti engine 0.16.0 returns, inferred from
     real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.
 
     Wire shape: `#/components/schemas/SarvatobhadraDocument`.
@@ -8252,7 +8295,7 @@ class SarvatobhadraDocument:
 
 @dataclass(frozen=True, slots=True)
 class ShadbalaDocument:
-    """The document the `shadbala` op of the Kaal Jyoti engine 0.15.2 returns, inferred from real
+    """The document the `shadbala` op of the Kaal Jyoti engine 0.16.0 returns, inferred from real
     responses by harness/gen_response_schemas.py. Regenerated on every engine tag.
 
     Wire shape: `#/components/schemas/ShadbalaDocument`.
@@ -8329,7 +8372,7 @@ class ShadbalaDocumentPlanetsItem:
 
 @dataclass(frozen=True, slots=True)
 class SpecialLagnasDocument:
-    """The document the `special_lagnas` op of the Kaal Jyoti engine 0.15.2 returns, inferred from
+    """The document the `special_lagnas` op of the Kaal Jyoti engine 0.16.0 returns, inferred from
     real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.
 
     Wire shape: `#/components/schemas/SpecialLagnasDocument`.
@@ -8561,7 +8604,7 @@ class TransitEvent:
 
 @dataclass(frozen=True, slots=True)
 class TransitEventsDocument:
-    """The document the `transit_events` op of the Kaal Jyoti engine 0.15.2 returns, inferred from
+    """The document the `transit_events` op of the Kaal Jyoti engine 0.16.0 returns, inferred from
     real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.
 
     Wire shape: `#/components/schemas/TransitEventsDocument`.
@@ -8622,7 +8665,7 @@ class TransitEventsRequest:
 
     year: int | None = None
     """A calendar year, e.g. `2026`: from local midnight on 1 January to local midnight on the
-    next, in the zone below. Year 1800 to 2400. Give this or `from` and `to`, not both.
+    next, in the zone below. Year 1551 to 2399. Give this or `from` and `to`, not both.
     """
     from_: str | None = None
     """Start of the window instead of `year`: a UTC instant, `YYYY-MM-DDTHH:MM:SS` (optionally
@@ -8705,7 +8748,7 @@ class TransitEventsRequest:
 
 @dataclass(frozen=True, slots=True)
 class TransitNowDocument:
-    """The document the `transit_now` op of the Kaal Jyoti engine 0.15.2 returns, inferred from
+    """The document the `transit_now` op of the Kaal Jyoti engine 0.16.0 returns, inferred from
     real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.
 
     Wire shape: `#/components/schemas/TransitNowDocument`.
@@ -8833,7 +8876,7 @@ class TransitNowRequest:
 
 @dataclass(frozen=True, slots=True)
 class TransitScanDocument:
-    """The document the `transit_scan` op of the Kaal Jyoti engine 0.15.2 returns, inferred from
+    """The document the `transit_scan` op of the Kaal Jyoti engine 0.16.0 returns, inferred from
     real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.
 
     Wire shape: `#/components/schemas/TransitScanDocument`.
@@ -9042,7 +9085,7 @@ class TransitScanRequest:
 
 @dataclass(frozen=True, slots=True)
 class TripatakiDocument:
-    """The document the `tripataki` op of the Kaal Jyoti engine 0.15.2 returns, inferred from real
+    """The document the `tripataki` op of the Kaal Jyoti engine 0.16.0 returns, inferred from real
     responses by harness/gen_response_schemas.py. Regenerated on every engine tag.
 
     Wire shape: `#/components/schemas/TripatakiDocument`.
@@ -9088,7 +9131,7 @@ class TripatakiDocument:
 
 @dataclass(frozen=True, slots=True)
 class VargasDocument:
-    """The document the `vargas` op of the Kaal Jyoti engine 0.15.2 returns, inferred from real
+    """The document the `vargas` op of the Kaal Jyoti engine 0.16.0 returns, inferred from real
     responses by harness/gen_response_schemas.py. Regenerated on every engine tag.
 
     Wire shape: `#/components/schemas/VargasDocument`.
@@ -9393,7 +9436,7 @@ class VargasRequest:
 
 @dataclass(frozen=True, slots=True)
 class VarshphalHarshaBalaDocument:
-    """The document the `varshphal` op of the Kaal Jyoti engine 0.15.2 returns, inferred from real
+    """The document the `varshphal` op of the Kaal Jyoti engine 0.16.0 returns, inferred from real
     responses by harness/gen_response_schemas.py. Regenerated on every engine tag.
 
     Wire shape: `#/components/schemas/VarshphalHarshaBalaDocument`.
@@ -9502,7 +9545,7 @@ class VarshphalHarshaBalaDocumentPanchavargiyaItem:
 
 @dataclass(frozen=True, slots=True)
 class VarshphalMuddaDocument:
-    """The document the `varshphal` op of the Kaal Jyoti engine 0.15.2 returns, inferred from real
+    """The document the `varshphal` op of the Kaal Jyoti engine 0.16.0 returns, inferred from real
     responses by harness/gen_response_schemas.py. Regenerated on every engine tag.
 
     Wire shape: `#/components/schemas/VarshphalMuddaDocument`.
@@ -9646,7 +9689,7 @@ class VarshphalPeriod:
 
 @dataclass(frozen=True, slots=True)
 class VarshphalReadingDocument:
-    """The document the `varshphal_reading` op of the Kaal Jyoti engine 0.15.2 returns, inferred
+    """The document the `varshphal_reading` op of the Kaal Jyoti engine 0.16.0 returns, inferred
     from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.
 
     Wire shape: `#/components/schemas/VarshphalReadingDocument`.
@@ -10218,7 +10261,7 @@ class VarshphalRequest:
     """
     year: int
     """The year, e.g. `2026`, required: the annual chart runs from that year's birthday to the
-    next. Not before the birth year; at most 2400.
+    next. Not before the birth year; at most 2399.
     """
     options: CalculationOptions | None = None
     """Settings for the calculation and the answer: ayanamsa, language, disclaimer. Every field has
@@ -10248,7 +10291,7 @@ class VarshphalRequest:
 
 @dataclass(frozen=True, slots=True)
 class VarshphalSahamsDocument:
-    """The document the `varshphal` op of the Kaal Jyoti engine 0.15.2 returns, inferred from real
+    """The document the `varshphal` op of the Kaal Jyoti engine 0.16.0 returns, inferred from real
     responses by harness/gen_response_schemas.py. Regenerated on every engine tag.
 
     Wire shape: `#/components/schemas/VarshphalSahamsDocument`.
@@ -10304,7 +10347,7 @@ class VarshphalSahamsDocumentSahamsItem:
 
 @dataclass(frozen=True, slots=True)
 class VarshphalTajikaDocument:
-    """The document the `varshphal` op of the Kaal Jyoti engine 0.15.2 returns, inferred from real
+    """The document the `varshphal` op of the Kaal Jyoti engine 0.16.0 returns, inferred from real
     responses by harness/gen_response_schemas.py. Regenerated on every engine tag.
 
     Wire shape: `#/components/schemas/VarshphalTajikaDocument`.
@@ -10461,7 +10504,7 @@ class VarshphalTajikaDocumentTajikaRelationsValueValue:
 
 @dataclass(frozen=True, slots=True)
 class VarshphalVarshaYearDocument:
-    """The document the `varshphal` op of the Kaal Jyoti engine 0.15.2 returns, inferred from real
+    """The document the `varshphal` op of the Kaal Jyoti engine 0.16.0 returns, inferred from real
     responses by harness/gen_response_schemas.py. Regenerated on every engine tag.
 
     Wire shape: `#/components/schemas/VarshphalVarshaYearDocument`.
@@ -10642,7 +10685,7 @@ class VarshphalVarshaYearDocumentYearLordBearersItem:
 
 @dataclass(frozen=True, slots=True)
 class VikramSamvatDocument:
-    """The document the `vikram_samvat` op of the Kaal Jyoti engine 0.15.2 returns, inferred from
+    """The document the `vikram_samvat` op of the Kaal Jyoti engine 0.16.0 returns, inferred from
     real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.
 
     Wire shape: `#/components/schemas/VikramSamvatDocument`.
@@ -10706,7 +10749,7 @@ class VikramSamvatRequest:
     datetime: str
     """The local clock time at the place, `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no
     offset or `Z`, e.g. `2026-03-19T06:00:00`. The time matters: the masa depends on the Moon's
-    phase at that moment. Year 1800 to 2400.
+    phase at that moment. From 1550-04-01 to 2400-12-31.
     """
     latitude: float
     """Latitude in decimal degrees, north positive, from -89.9 to 89.9, e.g. `28.6139`."""
@@ -10766,7 +10809,7 @@ class VikramSamvatRequest:
 
 @dataclass(frozen=True, slots=True)
 class VimshottariReadingDocument:
-    """The document the `vimshottari_reading` op of the Kaal Jyoti engine 0.15.2 returns, inferred
+    """The document the `vimshottari_reading` op of the Kaal Jyoti engine 0.16.0 returns, inferred
     from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.
 
     Wire shape: `#/components/schemas/VimshottariReadingDocument`.
@@ -11549,7 +11592,7 @@ class YogaReading:
 
 @dataclass(frozen=True, slots=True)
 class YogasDocument:
-    """The document the `yogas` op of the Kaal Jyoti engine 0.15.2 returns, inferred from real
+    """The document the `yogas` op of the Kaal Jyoti engine 0.16.0 returns, inferred from real
     responses by harness/gen_response_schemas.py. Regenerated on every engine tag.
 
     Wire shape: `#/components/schemas/YogasDocument`.

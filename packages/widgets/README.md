@@ -296,7 +296,7 @@ reports below — in plain English or Hindi, with the disclaimer line at the end
 | `sign`                                                | `aries` … `pisces`, for a lagna                                                                                            | —         |
 | `nakshatra`                                           | `ashwini` … `revati` (`purva_phalguni`, …)                                                                                 | —         |
 | `datetime`, `lat`, `lon`, `city`, `timezone`, `place` | A birth, as on `<kj-chart>`                                                                                                | —         |
-| `year`                                                | The varshphal's year, from the birthday in it (1800–2400)                                                                  | running   |
+| `year`                                                | The varshphal's year, from the birthday in it (the API's supported range)                                                  | running   |
 | `parts`                                               | For `type="kundli"`: the reports to include, spaces or commas                                                              | all eight |
 | `disclaimer`, `disclaimer-name`, `disclaimer-url`     | As on `<kj-horoscope>`                                                                                                     | the API's |
 

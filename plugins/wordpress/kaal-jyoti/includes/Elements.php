@@ -156,12 +156,6 @@ final class Elements {
 	 */
 	public const TYPES = array( 'lagna', 'nakshatra', 'house_lords', 'grahas', 'yogas', 'vimshottari', 'varshphal', 'life_areas', 'kundli' );
 
-	/** The years a varshphal reading may be asked for, as the API bounds them. */
-	public const YEAR_MIN = 1800;
-
-	/** The last year a varshphal reading may be asked for. @see YEAR_MIN */
-	public const YEAR_MAX = 2400;
-
 	/** What the birth form draws for a bare `readings`: the first two. */
 	public const DEFAULT_READINGS = array( 'lagna', 'nakshatra' );
 
@@ -487,7 +481,10 @@ final class Elements {
 				return self::boolean( $value );
 
 			case 'year':
-				return preg_match( '/^\d{4}$/', $value ) && (int) $value >= self::YEAR_MIN && (int) $value <= self::YEAR_MAX ? $value : null;
+				// Only the shape: which years are answered is the API's to say
+				// (its supported range, from its ephemeris data), and a year
+				// outside it gets the API's own message naming the range.
+				return preg_match( '/^\d{4}$/', $value ) ? $value : null;
 
 			case 'theme':
 				return in_array( strtolower( $value ), Settings::THEMES, true ) ? strtolower( $value ) : null;
@@ -807,10 +804,10 @@ final class Elements {
 			return null;
 		}
 
-		$year  = (int) $parts[1];
 		$month = (int) $parts[2];
 
-		return ( $month >= 1 && $month <= 12 && $year >= self::YEAR_MIN && $year <= self::YEAR_MAX ) ? $value : null;
+		// The range of years is the API's to say; see 'year' above.
+		return ( $month >= 1 && $month <= 12 ) ? $value : null;
 	}
 
 	/**

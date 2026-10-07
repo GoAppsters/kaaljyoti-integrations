@@ -16,5 +16,5 @@ SDK_VERSION: Final = "0.1.0"
 Sent as `X-KJ-Client: sdk-python/0.1.0`.
 """
 
-OPENAPI_VERSION: Final = "0.15.2"
+OPENAPI_VERSION: Final = "0.16.0"
 """The `info.version` of the OpenAPI snapshot these models were built from."""

@@ -352,7 +352,7 @@ void main() {
   group('the generated constants', () {
     test('pin both versions', () {
       expect(sdkVersion, matches(RegExp(r'^\d+\.\d+\.\d+')));
-      expect(openApiVersion, '0.15.2');
+      expect(openApiVersion, '0.16.0');
     });
 
     test('spell the enums the schema lists', () {

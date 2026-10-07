@@ -2,7 +2,7 @@
   "openapi": "3.1.0",
   "info": {
     "title": "Kaal Jyoti API",
-    "version": "0.15.2",
+    "version": "0.16.0",
     "description": "Vedic astrology calculations — kundli, panchang, dashas, divisional charts and more — each priced in credits, every API on every plan. Planetary positions from NASA JPL’s DE440 ephemeris.",
     "termsOfService": "https://kaaljyoti.com/api/terms",
     "contact": {
@@ -295,7 +295,7 @@
       },
       "KundliDocument": {
         "additionalProperties": false,
-        "description": "The document the `kundli` op of the Kaal Jyoti engine 0.15.2 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.",
+        "description": "The document the `kundli` op of the Kaal Jyoti engine 0.16.0 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.",
         "properties": {
           "ascendant": {
             "type": "number"
@@ -583,7 +583,7 @@
       },
       "DashaDocument": {
         "additionalProperties": false,
-        "description": "The document the `dasha` op of the Kaal Jyoti engine 0.15.2 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.",
+        "description": "The document the `dasha` op of the Kaal Jyoti engine 0.16.0 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.",
         "properties": {
           "at": {
             "type": "string"
@@ -2161,7 +2161,7 @@
       },
       "VargasDocument": {
         "additionalProperties": false,
-        "description": "The document the `vargas` op of the Kaal Jyoti engine 0.15.2 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.",
+        "description": "The document the `vargas` op of the Kaal Jyoti engine 0.16.0 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.",
         "properties": {
           "lagna": {
             "additionalProperties": false,
@@ -2630,7 +2630,7 @@
       },
       "ChalitDocument": {
         "additionalProperties": false,
-        "description": "The document the `chalit` op of the Kaal Jyoti engine 0.15.2 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.",
+        "description": "The document the `chalit` op of the Kaal Jyoti engine 0.16.0 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.",
         "properties": {
           "equal": {
             "additionalProperties": false,
@@ -2958,7 +2958,7 @@
       },
       "YogasDocument": {
         "additionalProperties": false,
-        "description": "The document the `yogas` op of the Kaal Jyoti engine 0.15.2 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.",
+        "description": "The document the `yogas` op of the Kaal Jyoti engine 0.16.0 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.",
         "properties": {
           "yogas": {
             "items": {
@@ -2995,7 +2995,7 @@
       },
       "ShadbalaDocument": {
         "additionalProperties": false,
-        "description": "The document the `shadbala` op of the Kaal Jyoti engine 0.15.2 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.",
+        "description": "The document the `shadbala` op of the Kaal Jyoti engine 0.16.0 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.",
         "properties": {
           "planets": {
             "items": {
@@ -3059,7 +3059,7 @@
       },
       "BhavaBalaDocument": {
         "additionalProperties": false,
-        "description": "The document the `bhava_bala` op of the Kaal Jyoti engine 0.15.2 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.",
+        "description": "The document the `bhava_bala` op of the Kaal Jyoti engine 0.16.0 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.",
         "properties": {
           "houses": {
             "items": {
@@ -3115,7 +3115,7 @@
       },
       "AshtakavargaDocument": {
         "additionalProperties": false,
-        "description": "The document the `ashtakavarga` op of the Kaal Jyoti engine 0.15.2 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.",
+        "description": "The document the `ashtakavarga` op of the Kaal Jyoti engine 0.16.0 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.",
         "properties": {
           "bav": {
             "additionalProperties": {
@@ -3152,7 +3152,7 @@
       },
       "GrahaDrishtiDocument": {
         "additionalProperties": false,
-        "description": "The document the `graha_drishti` op of the Kaal Jyoti engine 0.15.2 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.",
+        "description": "The document the `graha_drishti` op of the Kaal Jyoti engine 0.16.0 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.",
         "properties": {
           "cast": {
             "additionalProperties": {
@@ -3322,7 +3322,7 @@
           },
           "type": "object"
         },
-        "description": "The document the `maitri` op of the Kaal Jyoti engine 0.15.2 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.",
+        "description": "The document the `maitri` op of the Kaal Jyoti engine 0.16.0 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.",
         "propertyNames": {
           "enum": ["jupiter", "ketu", "mars", "mercury", "moon", "rahu", "saturn", "sun", "venus"]
         },
@@ -3331,7 +3331,7 @@
       },
       "PaceDocument": {
         "additionalProperties": false,
-        "description": "The document the `pace` op of the Kaal Jyoti engine 0.15.2 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.",
+        "description": "The document the `pace` op of the Kaal Jyoti engine 0.16.0 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.",
         "properties": {
           "bhava_lords": {
             "items": {
@@ -3470,7 +3470,7 @@
       },
       "SpecialLagnasDocument": {
         "additionalProperties": false,
-        "description": "The document the `special_lagnas` op of the Kaal Jyoti engine 0.15.2 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.",
+        "description": "The document the `special_lagnas` op of the Kaal Jyoti engine 0.16.0 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.",
         "properties": {
           "points": {
             "items": {
@@ -3504,7 +3504,7 @@
       },
       "TripatakiDocument": {
         "additionalProperties": false,
-        "description": "The document the `tripataki` op of the Kaal Jyoti engine 0.15.2 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.",
+        "description": "The document the `tripataki` op of the Kaal Jyoti engine 0.16.0 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.",
         "properties": {
           "current_year": {
             "type": "integer"
@@ -3566,7 +3566,7 @@
       },
       "SarvatobhadraDocument": {
         "additionalProperties": false,
-        "description": "The document the `sarvatobhadra` op of the Kaal Jyoti engine 0.15.2 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.",
+        "description": "The document the `sarvatobhadra` op of the Kaal Jyoti engine 0.16.0 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.",
         "properties": {
           "nak_cell": {
             "additionalProperties": {
@@ -3659,7 +3659,7 @@
       },
       "Nakshatra28Document": {
         "additionalProperties": false,
-        "description": "The document the `nakshatra28` op of the Kaal Jyoti engine 0.15.2 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.",
+        "description": "The document the `nakshatra28` op of the Kaal Jyoti engine 0.16.0 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.",
         "properties": {
           "all": {
             "additionalProperties": {
@@ -3734,7 +3734,7 @@
       },
       "SadeSatiDocument": {
         "additionalProperties": false,
-        "description": "The document the `sade_sati` op of the Kaal Jyoti engine 0.15.2 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.",
+        "description": "The document the `sade_sati` op of the Kaal Jyoti engine 0.16.0 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.",
         "properties": {
           "arc_spans": {
             "items": {
@@ -3822,7 +3822,7 @@
       },
       "EventsDocument": {
         "additionalProperties": false,
-        "description": "The document the `events` op of the Kaal Jyoti engine 0.15.2 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.",
+        "description": "The document the `events` op of the Kaal Jyoti engine 0.16.0 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.",
         "properties": {
           "dasha_system": {
             "$ref": "#/components/schemas/LabelledId"
@@ -3960,7 +3960,7 @@
       },
       "KotaDocument": {
         "additionalProperties": false,
-        "description": "The document the `kota` op of the Kaal Jyoti engine 0.15.2 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.",
+        "description": "The document the `kota` op of the Kaal Jyoti engine 0.16.0 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.",
         "properties": {
           "at": {
             "type": "string"
@@ -4005,7 +4005,7 @@
       },
       "ChartDocument": {
         "additionalProperties": false,
-        "description": "The document the `chart` op of the Kaal Jyoti engine 0.15.2 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.",
+        "description": "The document the `chart` op of the Kaal Jyoti engine 0.16.0 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.",
         "properties": {
           "first_house": {
             "type": "string"
@@ -4059,7 +4059,7 @@
       },
       "DailyPanchangDocument": {
         "additionalProperties": false,
-        "description": "The document the `daily_panchang` op of the Kaal Jyoti engine 0.15.2 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.",
+        "description": "The document the `daily_panchang` op of the Kaal Jyoti engine 0.16.0 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.",
         "properties": {
           "abhijit_muhurta": {
             "anyOf": [
@@ -4412,7 +4412,7 @@
       },
       "MuhurtaDocument": {
         "additionalProperties": false,
-        "description": "The document the `muhurta` op of the Kaal Jyoti engine 0.15.2 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.",
+        "description": "The document the `muhurta` op of the Kaal Jyoti engine 0.16.0 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.",
         "properties": {
           "abhijit": {
             "additionalProperties": false,
@@ -4609,7 +4609,7 @@
       },
       "PanchangMonthDocument": {
         "additionalProperties": false,
-        "description": "The document the `panchang_month` op of the Kaal Jyoti engine 0.15.2 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.",
+        "description": "The document the `panchang_month` op of the Kaal Jyoti engine 0.16.0 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.",
         "properties": {
           "days": {
             "items": {
@@ -4821,7 +4821,7 @@
       },
       "EphemerisMonthDocument": {
         "additionalProperties": false,
-        "description": "The document the `ephemeris_month` op of the Kaal Jyoti engine 0.15.2 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.",
+        "description": "The document the `ephemeris_month` op of the Kaal Jyoti engine 0.16.0 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.",
         "properties": {
           "nirayan": {
             "additionalProperties": false,
@@ -5055,7 +5055,7 @@
       },
       "VikramSamvatDocument": {
         "additionalProperties": false,
-        "description": "The document the `vikram_samvat` op of the Kaal Jyoti engine 0.15.2 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.",
+        "description": "The document the `vikram_samvat` op of the Kaal Jyoti engine 0.16.0 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.",
         "properties": {
           "amanta": {
             "additionalProperties": false,
@@ -5108,7 +5108,7 @@
       },
       "JaiminiKarakasDocument": {
         "additionalProperties": false,
-        "description": "The document the `jaimini` op of the Kaal Jyoti engine 0.15.2 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.",
+        "description": "The document the `jaimini` op of the Kaal Jyoti engine 0.16.0 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.",
         "properties": {
           "karakas": {
             "additionalProperties": {
@@ -5139,7 +5139,7 @@
       },
       "JaiminiPadasDocument": {
         "additionalProperties": false,
-        "description": "The document the `jaimini` op of the Kaal Jyoti engine 0.15.2 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.",
+        "description": "The document the `jaimini` op of the Kaal Jyoti engine 0.16.0 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.",
         "properties": {
           "padas": {
             "items": {
@@ -5571,7 +5571,7 @@
       },
       "JaiminiAspectsDocument": {
         "additionalProperties": false,
-        "description": "The document the `jaimini` op of the Kaal Jyoti engine 0.15.2 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.",
+        "description": "The document the `jaimini` op of the Kaal Jyoti engine 0.16.0 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.",
         "properties": {
           "aspects": {
             "items": {
@@ -5627,7 +5627,7 @@
       },
       "JaiminiKarakamshaDocument": {
         "additionalProperties": false,
-        "description": "The document the `jaimini` op of the Kaal Jyoti engine 0.15.2 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.",
+        "description": "The document the `jaimini` op of the Kaal Jyoti engine 0.16.0 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.",
         "properties": {
           "karakamsha": {
             "additionalProperties": false,
@@ -5649,7 +5649,7 @@
       },
       "KpDocument": {
         "additionalProperties": false,
-        "description": "The document the `kp` op of the Kaal Jyoti engine 0.15.2 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.",
+        "description": "The document the `kp` op of the Kaal Jyoti engine 0.16.0 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.",
         "properties": {
           "cusps": {
             "items": {
@@ -5874,7 +5874,7 @@
       },
       "VarshphalVarshaYearDocument": {
         "additionalProperties": false,
-        "description": "The document the `varshphal` op of the Kaal Jyoti engine 0.15.2 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.",
+        "description": "The document the `varshphal` op of the Kaal Jyoti engine 0.16.0 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.",
         "properties": {
           "varsha_year": {
             "type": "integer"
@@ -6075,7 +6075,7 @@
       },
       "VarshphalHarshaBalaDocument": {
         "additionalProperties": false,
-        "description": "The document the `varshphal` op of the Kaal Jyoti engine 0.15.2 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.",
+        "description": "The document the `varshphal` op of the Kaal Jyoti engine 0.16.0 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.",
         "properties": {
           "harsha_bala": {
             "items": {
@@ -6155,7 +6155,7 @@
       },
       "VarshphalSahamsDocument": {
         "additionalProperties": false,
-        "description": "The document the `varshphal` op of the Kaal Jyoti engine 0.15.2 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.",
+        "description": "The document the `varshphal` op of the Kaal Jyoti engine 0.16.0 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.",
         "properties": {
           "sahams": {
             "items": {
@@ -6186,7 +6186,7 @@
       },
       "VarshphalTajikaDocument": {
         "additionalProperties": false,
-        "description": "The document the `varshphal` op of the Kaal Jyoti engine 0.15.2 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.",
+        "description": "The document the `varshphal` op of the Kaal Jyoti engine 0.16.0 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.",
         "properties": {
           "tajika": {
             "additionalProperties": false,
@@ -6310,7 +6310,7 @@
       },
       "VarshphalMuddaDocument": {
         "additionalProperties": false,
-        "description": "The document the `varshphal` op of the Kaal Jyoti engine 0.15.2 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.",
+        "description": "The document the `varshphal` op of the Kaal Jyoti engine 0.16.0 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.",
         "properties": {
           "mudda": {
             "items": {
@@ -6493,7 +6493,7 @@
       },
       "TransitNowDocument": {
         "additionalProperties": false,
-        "description": "The document the `transit_now` op of the Kaal Jyoti engine 0.15.2 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.",
+        "description": "The document the `transit_now` op of the Kaal Jyoti engine 0.16.0 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.",
         "properties": {
           "ascendant": {
             "type": "number"
@@ -6638,7 +6638,7 @@
       },
       "TransitScanDocument": {
         "additionalProperties": false,
-        "description": "The document the `transit_scan` op of the Kaal Jyoti engine 0.15.2 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.",
+        "description": "The document the `transit_scan` op of the Kaal Jyoti engine 0.16.0 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.",
         "properties": {
           "events": {
             "items": {
@@ -6739,7 +6739,7 @@
       },
       "TransitEventsDocument": {
         "additionalProperties": false,
-        "description": "The document the `transit_events` op of the Kaal Jyoti engine 0.15.2 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.",
+        "description": "The document the `transit_events` op of the Kaal Jyoti engine 0.16.0 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.",
         "properties": {
           "ayanamsa_id": {
             "type": "integer"
@@ -6873,7 +6873,7 @@
       },
       "MatchAshtakootDocument": {
         "additionalProperties": false,
-        "description": "The document the `match_ashtakoot` op of the Kaal Jyoti engine 0.15.2 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.",
+        "description": "The document the `match_ashtakoot` op of the Kaal Jyoti engine 0.16.0 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.",
         "properties": {
           "bride_mangal_dosha": {
             "type": "boolean"
@@ -6926,7 +6926,7 @@
       },
       "CompareDocument": {
         "additionalProperties": false,
-        "description": "The document the `compare` op of the Kaal Jyoti engine 0.15.2 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.",
+        "description": "The document the `compare` op of the Kaal Jyoti engine 0.16.0 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.",
         "properties": {
           "at": {
             "type": "string"
@@ -7051,7 +7051,7 @@
       },
       "ReadingLagnaDocument": {
         "additionalProperties": false,
-        "description": "The document the `reading` op of the Kaal Jyoti engine 0.15.2 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.",
+        "description": "The document the `reading` op of the Kaal Jyoti engine 0.16.0 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.",
         "properties": {
           "lagna": {
             "additionalProperties": false,
@@ -7103,7 +7103,7 @@
       },
       "ReadingNakshatraDocument": {
         "additionalProperties": false,
-        "description": "The document the `reading` op of the Kaal Jyoti engine 0.15.2 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.",
+        "description": "The document the `reading` op of the Kaal Jyoti engine 0.16.0 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.",
         "properties": {
           "nakshatra": {
             "additionalProperties": false,
@@ -7155,7 +7155,7 @@
       },
       "ReadingHouseLordsDocument": {
         "additionalProperties": false,
-        "description": "The document the `reading` op of the Kaal Jyoti engine 0.15.2 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.",
+        "description": "The document the `reading` op of the Kaal Jyoti engine 0.16.0 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.",
         "properties": {
           "house_lords": {
             "items": {
@@ -7219,7 +7219,7 @@
       },
       "ReadingGrahasDocument": {
         "additionalProperties": false,
-        "description": "The document the `reading` op of the Kaal Jyoti engine 0.15.2 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.",
+        "description": "The document the `reading` op of the Kaal Jyoti engine 0.16.0 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.",
         "properties": {
           "grahas": {
             "items": {
@@ -7300,7 +7300,7 @@
       },
       "ReadingYogasDocument": {
         "additionalProperties": false,
-        "description": "The document the `reading` op of the Kaal Jyoti engine 0.15.2 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.",
+        "description": "The document the `reading` op of the Kaal Jyoti engine 0.16.0 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.",
         "properties": {
           "yogas": {
             "items": {
@@ -7377,7 +7377,7 @@
       },
       "VimshottariReadingDocument": {
         "additionalProperties": false,
-        "description": "The document the `vimshottari_reading` op of the Kaal Jyoti engine 0.15.2 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.",
+        "description": "The document the `vimshottari_reading` op of the Kaal Jyoti engine 0.16.0 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.",
         "properties": {
           "basis": {
             "additionalProperties": false,
@@ -8197,7 +8197,7 @@
       },
       "LifeAreasDocument": {
         "additionalProperties": false,
-        "description": "The document the `life_areas` op of the Kaal Jyoti engine 0.15.2 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.",
+        "description": "The document the `life_areas` op of the Kaal Jyoti engine 0.16.0 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.",
         "properties": {
           "areas": {
             "items": {
@@ -8699,7 +8699,7 @@
       },
       "VarshphalReadingDocument": {
         "additionalProperties": false,
-        "description": "The document the `varshphal_reading` op of the Kaal Jyoti engine 0.15.2 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.",
+        "description": "The document the `varshphal_reading` op of the Kaal Jyoti engine 0.16.0 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.",
         "properties": {
           "areas": {
             "items": {
@@ -9987,7 +9987,7 @@
       },
       "KundliReportDocument": {
         "additionalProperties": false,
-        "description": "The document the `kundli_report` op of the Kaal Jyoti engine 0.15.2 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.",
+        "description": "The document the `kundli_report` op of the Kaal Jyoti engine 0.16.0 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.",
         "properties": {
           "grahas": {
             "items": {
@@ -12883,7 +12883,7 @@
       },
       "HoroscopeDocument": {
         "additionalProperties": false,
-        "description": "The document the `horoscope` op of the Kaal Jyoti engine 0.15.2 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.",
+        "description": "The document the `horoscope` op of the Kaal Jyoti engine 0.16.0 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.",
         "properties": {
           "areas": {
             "items": {
@@ -13023,7 +13023,7 @@
         "operationId": "getHealth",
         "tags": ["Service"],
         "summary": "Health",
-        "description": "What this instance loaded: the engine and ephemeris versions, the number of ops and how long it has been up. No key needed, and it keeps answering while the service is disabled.",
+        "description": "What this instance loaded: the engine and ephemeris versions, the number of ops, the dates it answers for (`supported_range`, from its ephemeris data) and how long it has been up. No key needed, and it keeps answering while the service is disabled.",
         "security": [],
         "responses": {
           "200": {
@@ -13032,7 +13032,14 @@
               "application/json": {
                 "schema": {
                   "type": "object",
-                  "required": ["status", "engine", "ephemeris", "ops", "uptime_s"],
+                  "required": [
+                    "status",
+                    "engine",
+                    "ephemeris",
+                    "ops",
+                    "supported_range",
+                    "uptime_s"
+                  ],
                   "properties": {
                     "status": {
                       "type": "string",
@@ -13040,14 +13047,39 @@
                     },
                     "engine": {
                       "type": "string",
-                      "examples": ["0.15.2"]
+                      "examples": ["0.16.0"]
                     },
                     "ephemeris": {
                       "type": "string",
-                      "examples": ["kaaljyoti-ephemeris 0.1.1"]
+                      "examples": ["kaaljyoti-ephemeris 0.2.1"]
                     },
                     "ops": {
                       "type": "integer"
+                    },
+                    "supported_range": {
+                      "type": "object",
+                      "description": "The dates the API answers for, from its ephemeris data: calendar dates at the place, whole months; `first_year`/`last_year` bound the whole-year fields (a Varshphal `year`). A date outside is a 400.",
+                      "required": ["first_date", "last_date", "first_year", "last_year"],
+                      "properties": {
+                        "first_date": {
+                          "type": "string",
+                          "format": "date",
+                          "examples": ["1550-04-01"]
+                        },
+                        "last_date": {
+                          "type": "string",
+                          "format": "date",
+                          "examples": ["2400-12-31"]
+                        },
+                        "first_year": {
+                          "type": "integer",
+                          "examples": [1551]
+                        },
+                        "last_year": {
+                          "type": "integer",
+                          "examples": [2399]
+                        }
+                      }
                     },
                     "uptime_s": {
                       "type": "integer"
@@ -13525,7 +13557,7 @@
                       "datetime": {
                         "type": "string",
                         "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d{1,3})?$",
-                        "description": "The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. Year 1800 to 2400."
+                        "description": "The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. From 1550-04-01 to 2400-12-31."
                       },
                       "timezone": {
                         "type": "string",
@@ -13768,7 +13800,7 @@
                       "datetime": {
                         "type": "string",
                         "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d{1,3})?$",
-                        "description": "The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. Year 1800 to 2400."
+                        "description": "The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. From 1550-04-01 to 2400-12-31."
                       },
                       "timezone": {
                         "type": "string",
@@ -14031,7 +14063,7 @@
                       "datetime": {
                         "type": "string",
                         "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d{1,3})?$",
-                        "description": "The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. Year 1800 to 2400."
+                        "description": "The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. From 1550-04-01 to 2400-12-31."
                       },
                       "timezone": {
                         "type": "string",
@@ -14300,7 +14332,7 @@
                       "datetime": {
                         "type": "string",
                         "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d{1,3})?$",
-                        "description": "The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. Year 1800 to 2400."
+                        "description": "The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. From 1550-04-01 to 2400-12-31."
                       },
                       "timezone": {
                         "type": "string",
@@ -14546,7 +14578,7 @@
                       "datetime": {
                         "type": "string",
                         "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d{1,3})?$",
-                        "description": "The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. Year 1800 to 2400."
+                        "description": "The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. From 1550-04-01 to 2400-12-31."
                       },
                       "timezone": {
                         "type": "string",
@@ -14787,7 +14819,7 @@
                       "datetime": {
                         "type": "string",
                         "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d{1,3})?$",
-                        "description": "The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. Year 1800 to 2400."
+                        "description": "The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. From 1550-04-01 to 2400-12-31."
                       },
                       "timezone": {
                         "type": "string",
@@ -15028,7 +15060,7 @@
                       "datetime": {
                         "type": "string",
                         "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d{1,3})?$",
-                        "description": "The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. Year 1800 to 2400."
+                        "description": "The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. From 1550-04-01 to 2400-12-31."
                       },
                       "timezone": {
                         "type": "string",
@@ -15269,7 +15301,7 @@
                       "datetime": {
                         "type": "string",
                         "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d{1,3})?$",
-                        "description": "The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. Year 1800 to 2400."
+                        "description": "The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. From 1550-04-01 to 2400-12-31."
                       },
                       "timezone": {
                         "type": "string",
@@ -15510,7 +15542,7 @@
                       "datetime": {
                         "type": "string",
                         "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d{1,3})?$",
-                        "description": "The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. Year 1800 to 2400."
+                        "description": "The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. From 1550-04-01 to 2400-12-31."
                       },
                       "timezone": {
                         "type": "string",
@@ -15751,7 +15783,7 @@
                       "datetime": {
                         "type": "string",
                         "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d{1,3})?$",
-                        "description": "The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. Year 1800 to 2400."
+                        "description": "The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. From 1550-04-01 to 2400-12-31."
                       },
                       "timezone": {
                         "type": "string",
@@ -15992,7 +16024,7 @@
                       "datetime": {
                         "type": "string",
                         "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d{1,3})?$",
-                        "description": "The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. Year 1800 to 2400."
+                        "description": "The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. From 1550-04-01 to 2400-12-31."
                       },
                       "timezone": {
                         "type": "string",
@@ -16233,7 +16265,7 @@
                       "datetime": {
                         "type": "string",
                         "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d{1,3})?$",
-                        "description": "The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. Year 1800 to 2400."
+                        "description": "The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. From 1550-04-01 to 2400-12-31."
                       },
                       "timezone": {
                         "type": "string",
@@ -16474,7 +16506,7 @@
                       "datetime": {
                         "type": "string",
                         "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d{1,3})?$",
-                        "description": "The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. Year 1800 to 2400."
+                        "description": "The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. From 1550-04-01 to 2400-12-31."
                       },
                       "timezone": {
                         "type": "string",
@@ -16715,7 +16747,7 @@
                       "datetime": {
                         "type": "string",
                         "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d{1,3})?$",
-                        "description": "The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. Year 1800 to 2400."
+                        "description": "The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. From 1550-04-01 to 2400-12-31."
                       },
                       "timezone": {
                         "type": "string",
@@ -16956,7 +16988,7 @@
                       "datetime": {
                         "type": "string",
                         "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d{1,3})?$",
-                        "description": "The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. Year 1800 to 2400."
+                        "description": "The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. From 1550-04-01 to 2400-12-31."
                       },
                       "timezone": {
                         "type": "string",
@@ -17199,7 +17231,7 @@
                       "datetime": {
                         "type": "string",
                         "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d{1,3})?$",
-                        "description": "The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. Year 1800 to 2400."
+                        "description": "The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. From 1550-04-01 to 2400-12-31."
                       },
                       "timezone": {
                         "type": "string",
@@ -17452,7 +17484,7 @@
                       "datetime": {
                         "type": "string",
                         "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d{1,3})?$",
-                        "description": "The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. Year 1800 to 2400."
+                        "description": "The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. From 1550-04-01 to 2400-12-31."
                       },
                       "timezone": {
                         "type": "string",
@@ -17703,7 +17735,7 @@
                       "datetime": {
                         "type": "string",
                         "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d{1,3})?$",
-                        "description": "The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. Year 1800 to 2400."
+                        "description": "The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. From 1550-04-01 to 2400-12-31."
                       },
                       "timezone": {
                         "type": "string",
@@ -17948,7 +17980,7 @@
                       "datetime": {
                         "type": "string",
                         "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d{1,3})?$",
-                        "description": "The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. Year 1800 to 2400."
+                        "description": "The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. From 1550-04-01 to 2400-12-31."
                       },
                       "timezone": {
                         "type": "string",
@@ -18415,7 +18447,7 @@
                   "date": {
                     "type": "string",
                     "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
-                    "description": "The calendar date at the place, `YYYY-MM-DD`, e.g. `2026-09-16`. Default: today there (and an answer without `date` is never cached). Year 1800 to 2400."
+                    "description": "The calendar date at the place, `YYYY-MM-DD`, e.g. `2026-09-16`. Default: today there (and an answer without `date` is never cached). From 1550-04-01 to 2400-12-31."
                   }
                 },
                 "required": ["latitude", "longitude"],
@@ -18505,7 +18537,7 @@
                       "datetime": {
                         "type": "string",
                         "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d{1,3})?$",
-                        "description": "The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. Year 1800 to 2400."
+                        "description": "The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. From 1550-04-01 to 2400-12-31."
                       },
                       "timezone": {
                         "type": "string",
@@ -18918,7 +18950,7 @@
                   "month": {
                     "type": "string",
                     "pattern": "^\\d{4}-\\d{2}$",
-                    "description": "The calendar month, `YYYY-MM`, e.g. `2026-10`; every date of it is answered. Year 1800 to 2400."
+                    "description": "The calendar month, `YYYY-MM`, e.g. `2026-10`; every date of it is answered. From 1550-04 to 2400-12."
                   }
                 },
                 "required": ["latitude", "longitude", "month"],
@@ -19150,7 +19182,7 @@
                   "month": {
                     "type": "string",
                     "pattern": "^\\d{4}-\\d{2}$",
-                    "description": "The calendar month, `YYYY-MM`, e.g. `2026-09`; one row per day. Year 1800 to 2400."
+                    "description": "The calendar month, `YYYY-MM`, e.g. `2026-09`; one row per day. From 1550-04 to 2400-12."
                   },
                   "system": {
                     "type": "string",
@@ -19242,7 +19274,7 @@
                   "datetime": {
                     "type": "string",
                     "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d{1,3})?$",
-                    "description": "The local clock time at the place, `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `2026-03-19T06:00:00`. The time matters: the masa depends on the Moon's phase at that moment. Year 1800 to 2400."
+                    "description": "The local clock time at the place, `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `2026-03-19T06:00:00`. The time matters: the masa depends on the Moon's phase at that moment. From 1550-04-01 to 2400-12-31."
                   },
                   "timezone": {
                     "type": "string",
@@ -19478,7 +19510,7 @@
                       "datetime": {
                         "type": "string",
                         "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d{1,3})?$",
-                        "description": "The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. Year 1800 to 2400."
+                        "description": "The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. From 1550-04-01 to 2400-12-31."
                       },
                       "timezone": {
                         "type": "string",
@@ -19719,7 +19751,7 @@
                       "datetime": {
                         "type": "string",
                         "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d{1,3})?$",
-                        "description": "The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. Year 1800 to 2400."
+                        "description": "The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. From 1550-04-01 to 2400-12-31."
                       },
                       "timezone": {
                         "type": "string",
@@ -19960,7 +19992,7 @@
                       "datetime": {
                         "type": "string",
                         "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d{1,3})?$",
-                        "description": "The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. Year 1800 to 2400."
+                        "description": "The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. From 1550-04-01 to 2400-12-31."
                       },
                       "timezone": {
                         "type": "string",
@@ -20201,7 +20233,7 @@
                       "datetime": {
                         "type": "string",
                         "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d{1,3})?$",
-                        "description": "The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. Year 1800 to 2400."
+                        "description": "The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. From 1550-04-01 to 2400-12-31."
                       },
                       "timezone": {
                         "type": "string",
@@ -20442,7 +20474,7 @@
                       "datetime": {
                         "type": "string",
                         "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d{1,3})?$",
-                        "description": "The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. Year 1800 to 2400."
+                        "description": "The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. From 1550-04-01 to 2400-12-31."
                       },
                       "timezone": {
                         "type": "string",
@@ -20684,7 +20716,7 @@
                       "datetime": {
                         "type": "string",
                         "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d{1,3})?$",
-                        "description": "The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. Year 1800 to 2400."
+                        "description": "The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. From 1550-04-01 to 2400-12-31."
                       },
                       "timezone": {
                         "type": "string",
@@ -20837,9 +20869,9 @@
                   },
                   "year": {
                     "type": "integer",
-                    "minimum": 1800,
-                    "maximum": 2400,
-                    "description": "The year, e.g. `2026`, required: the annual chart runs from that year's birthday to the next. Not before the birth year; at most 2400."
+                    "minimum": 1551,
+                    "maximum": 2399,
+                    "description": "The year, e.g. `2026`, required: the annual chart runs from that year's birthday to the next. Not before the birth year; at most 2399."
                   }
                 },
                 "required": ["birth", "year"],
@@ -20932,7 +20964,7 @@
                       "datetime": {
                         "type": "string",
                         "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d{1,3})?$",
-                        "description": "The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. Year 1800 to 2400."
+                        "description": "The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. From 1550-04-01 to 2400-12-31."
                       },
                       "timezone": {
                         "type": "string",
@@ -21085,9 +21117,9 @@
                   },
                   "year": {
                     "type": "integer",
-                    "minimum": 1800,
-                    "maximum": 2400,
-                    "description": "The year, e.g. `2026`, required: the annual chart runs from that year's birthday to the next. Not before the birth year; at most 2400."
+                    "minimum": 1551,
+                    "maximum": 2399,
+                    "description": "The year, e.g. `2026`, required: the annual chart runs from that year's birthday to the next. Not before the birth year; at most 2399."
                   }
                 },
                 "required": ["birth", "year"],
@@ -21180,7 +21212,7 @@
                       "datetime": {
                         "type": "string",
                         "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d{1,3})?$",
-                        "description": "The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. Year 1800 to 2400."
+                        "description": "The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. From 1550-04-01 to 2400-12-31."
                       },
                       "timezone": {
                         "type": "string",
@@ -21333,9 +21365,9 @@
                   },
                   "year": {
                     "type": "integer",
-                    "minimum": 1800,
-                    "maximum": 2400,
-                    "description": "The year, e.g. `2026`, required: the annual chart runs from that year's birthday to the next. Not before the birth year; at most 2400."
+                    "minimum": 1551,
+                    "maximum": 2399,
+                    "description": "The year, e.g. `2026`, required: the annual chart runs from that year's birthday to the next. Not before the birth year; at most 2399."
                   }
                 },
                 "required": ["birth", "year"],
@@ -21428,7 +21460,7 @@
                       "datetime": {
                         "type": "string",
                         "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d{1,3})?$",
-                        "description": "The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. Year 1800 to 2400."
+                        "description": "The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. From 1550-04-01 to 2400-12-31."
                       },
                       "timezone": {
                         "type": "string",
@@ -21581,9 +21613,9 @@
                   },
                   "year": {
                     "type": "integer",
-                    "minimum": 1800,
-                    "maximum": 2400,
-                    "description": "The year, e.g. `2026`, required: the annual chart runs from that year's birthday to the next. Not before the birth year; at most 2400."
+                    "minimum": 1551,
+                    "maximum": 2399,
+                    "description": "The year, e.g. `2026`, required: the annual chart runs from that year's birthday to the next. Not before the birth year; at most 2399."
                   }
                 },
                 "required": ["birth", "year"],
@@ -21676,7 +21708,7 @@
                       "datetime": {
                         "type": "string",
                         "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d{1,3})?$",
-                        "description": "The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. Year 1800 to 2400."
+                        "description": "The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. From 1550-04-01 to 2400-12-31."
                       },
                       "timezone": {
                         "type": "string",
@@ -21829,9 +21861,9 @@
                   },
                   "year": {
                     "type": "integer",
-                    "minimum": 1800,
-                    "maximum": 2400,
-                    "description": "The year, e.g. `2026`, required: the annual chart runs from that year's birthday to the next. Not before the birth year; at most 2400."
+                    "minimum": 1551,
+                    "maximum": 2399,
+                    "description": "The year, e.g. `2026`, required: the annual chart runs from that year's birthday to the next. Not before the birth year; at most 2399."
                   }
                 },
                 "required": ["birth", "year"],
@@ -22156,7 +22188,7 @@
                       "datetime": {
                         "type": "string",
                         "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d{1,3})?$",
-                        "description": "The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. Year 1800 to 2400."
+                        "description": "The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. From 1550-04-01 to 2400-12-31."
                       },
                       "timezone": {
                         "type": "string",
@@ -22398,9 +22430,9 @@
                 "properties": {
                   "year": {
                     "type": "integer",
-                    "minimum": 1800,
-                    "maximum": 2400,
-                    "description": "A calendar year, e.g. `2026`: from local midnight on 1 January to local midnight on the next, in the zone below. Year 1800 to 2400. Give this or `from` and `to`, not both."
+                    "minimum": 1551,
+                    "maximum": 2399,
+                    "description": "A calendar year, e.g. `2026`: from local midnight on 1 January to local midnight on the next, in the zone below. Year 1551 to 2399. Give this or `from` and `to`, not both."
                   },
                   "from": {
                     "type": "string",
@@ -22650,7 +22682,7 @@
                       "datetime": {
                         "type": "string",
                         "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d{1,3})?$",
-                        "description": "The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. Year 1800 to 2400."
+                        "description": "The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. From 1550-04-01 to 2400-12-31."
                       },
                       "timezone": {
                         "type": "string",
@@ -22692,7 +22724,7 @@
                       "datetime": {
                         "type": "string",
                         "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d{1,3})?$",
-                        "description": "The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. Year 1800 to 2400."
+                        "description": "The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. From 1550-04-01 to 2400-12-31."
                       },
                       "timezone": {
                         "type": "string",
@@ -22940,7 +22972,7 @@
                       "datetime": {
                         "type": "string",
                         "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d{1,3})?$",
-                        "description": "The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. Year 1800 to 2400."
+                        "description": "The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. From 1550-04-01 to 2400-12-31."
                       },
                       "timezone": {
                         "type": "string",
@@ -22982,7 +23014,7 @@
                       "datetime": {
                         "type": "string",
                         "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d{1,3})?$",
-                        "description": "The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. Year 1800 to 2400."
+                        "description": "The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. From 1550-04-01 to 2400-12-31."
                       },
                       "timezone": {
                         "type": "string",
@@ -23256,7 +23288,7 @@
                             "datetime": {
                               "type": "string",
                               "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d{1,3})?$",
-                              "description": "The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. Year 1800 to 2400."
+                              "description": "The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. From 1550-04-01 to 2400-12-31."
                             },
                             "timezone": {
                               "type": "string",
@@ -23298,7 +23330,7 @@
                             "datetime": {
                               "type": "string",
                               "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d{1,3})?$",
-                              "description": "The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. Year 1800 to 2400."
+                              "description": "The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. From 1550-04-01 to 2400-12-31."
                             },
                             "timezone": {
                               "type": "string",
@@ -23593,7 +23625,7 @@
                       "datetime": {
                         "type": "string",
                         "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d{1,3})?$",
-                        "description": "The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. Year 1800 to 2400."
+                        "description": "The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. From 1550-04-01 to 2400-12-31."
                       },
                       "timezone": {
                         "type": "string",
@@ -23851,7 +23883,7 @@
                       "datetime": {
                         "type": "string",
                         "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d{1,3})?$",
-                        "description": "The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. Year 1800 to 2400."
+                        "description": "The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. From 1550-04-01 to 2400-12-31."
                       },
                       "timezone": {
                         "type": "string",
@@ -24124,7 +24156,7 @@
                       "datetime": {
                         "type": "string",
                         "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d{1,3})?$",
-                        "description": "The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. Year 1800 to 2400."
+                        "description": "The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. From 1550-04-01 to 2400-12-31."
                       },
                       "timezone": {
                         "type": "string",
@@ -24365,7 +24397,7 @@
                       "datetime": {
                         "type": "string",
                         "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d{1,3})?$",
-                        "description": "The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. Year 1800 to 2400."
+                        "description": "The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. From 1550-04-01 to 2400-12-31."
                       },
                       "timezone": {
                         "type": "string",
@@ -24606,7 +24638,7 @@
                       "datetime": {
                         "type": "string",
                         "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d{1,3})?$",
-                        "description": "The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. Year 1800 to 2400."
+                        "description": "The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. From 1550-04-01 to 2400-12-31."
                       },
                       "timezone": {
                         "type": "string",
@@ -24847,7 +24879,7 @@
                       "datetime": {
                         "type": "string",
                         "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d{1,3})?$",
-                        "description": "The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. Year 1800 to 2400."
+                        "description": "The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. From 1550-04-01 to 2400-12-31."
                       },
                       "timezone": {
                         "type": "string",
@@ -25088,7 +25120,7 @@
                       "datetime": {
                         "type": "string",
                         "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d{1,3})?$",
-                        "description": "The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. Year 1800 to 2400."
+                        "description": "The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. From 1550-04-01 to 2400-12-31."
                       },
                       "timezone": {
                         "type": "string",
@@ -25330,7 +25362,7 @@
                       "datetime": {
                         "type": "string",
                         "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d{1,3})?$",
-                        "description": "The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. Year 1800 to 2400."
+                        "description": "The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. From 1550-04-01 to 2400-12-31."
                       },
                       "timezone": {
                         "type": "string",
@@ -25483,9 +25515,9 @@
                   },
                   "year": {
                     "type": "integer",
-                    "minimum": 1800,
-                    "maximum": 2400,
-                    "description": "The year, e.g. `2026`, required: the annual chart runs from that year's birthday to the next. Not before the birth year; at most 2400."
+                    "minimum": 1551,
+                    "maximum": 2399,
+                    "description": "The year, e.g. `2026`, required: the annual chart runs from that year's birthday to the next. Not before the birth year; at most 2399."
                   }
                 },
                 "required": ["birth", "year"],
@@ -25580,7 +25612,7 @@
                       "datetime": {
                         "type": "string",
                         "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d{1,3})?$",
-                        "description": "The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. Year 1800 to 2400."
+                        "description": "The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. From 1550-04-01 to 2400-12-31."
                       },
                       "timezone": {
                         "type": "string",
@@ -25752,9 +25784,9 @@
                   },
                   "year": {
                     "type": "integer",
-                    "minimum": 1800,
-                    "maximum": 2400,
-                    "description": "The Varshphal's year, e.g. `2026`: the year from that year's birthday to the next. Default: the Varshphal year running today (last year's until this year's birthday). Not before the birth year; at most 2400."
+                    "minimum": 1551,
+                    "maximum": 2399,
+                    "description": "The Varshphal's year, e.g. `2026`: the year from that year's birthday to the next. Default: the Varshphal year running today (last year's until this year's birthday). Not before the birth year; at most 2399."
                   }
                 },
                 "required": ["birth"],
@@ -26086,7 +26118,7 @@
                       "datetime": {
                         "type": "string",
                         "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d{1,3})?$",
-                        "description": "The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. Year 1800 to 2400."
+                        "description": "The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. From 1550-04-01 to 2400-12-31."
                       },
                       "timezone": {
                         "type": "string",
@@ -26493,7 +26525,7 @@
                       "datetime": {
                         "type": "string",
                         "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d{1,3})?$",
-                        "description": "The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. Year 1800 to 2400."
+                        "description": "The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. From 1550-04-01 to 2400-12-31."
                       },
                       "timezone": {
                         "type": "string",
@@ -26535,7 +26567,7 @@
                       "datetime": {
                         "type": "string",
                         "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d{1,3})?$",
-                        "description": "The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. Year 1800 to 2400."
+                        "description": "The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. From 1550-04-01 to 2400-12-31."
                       },
                       "timezone": {
                         "type": "string",
@@ -26871,7 +26903,7 @@
                       "datetime": {
                         "type": "string",
                         "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d{1,3})?$",
-                        "description": "The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. Year 1800 to 2400."
+                        "description": "The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. From 1550-04-01 to 2400-12-31."
                       },
                       "timezone": {
                         "type": "string",
@@ -27024,9 +27056,9 @@
                   },
                   "year": {
                     "type": "integer",
-                    "minimum": 1800,
-                    "maximum": 2400,
-                    "description": "The year, e.g. `2026`, required: the annual chart runs from that year's birthday to the next. Not before the birth year; at most 2400."
+                    "minimum": 1551,
+                    "maximum": 2399,
+                    "description": "The year, e.g. `2026`, required: the annual chart runs from that year's birthday to the next. Not before the birth year; at most 2399."
                   },
                   "template": {
                     "type": "string",
@@ -27344,7 +27376,7 @@
                   "month": {
                     "type": "string",
                     "pattern": "^\\d{4}-\\d{2}$",
-                    "description": "The calendar month, `YYYY-MM`, e.g. `2026-10`; one day per row. Year 1800 to 2400."
+                    "description": "The calendar month, `YYYY-MM`, e.g. `2026-10`; one day per row. From 1550-04 to 2400-12."
                   },
                   "template": {
                     "type": "string",

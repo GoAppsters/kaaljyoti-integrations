@@ -349,6 +349,12 @@ describe('hand-written values still fit their request types', () => {
       engine: '0.2.0',
       ephemeris: 'kaaljyoti-ephemeris 0.1.1',
       ops: 42,
+      supported_range: {
+        first_date: '1550-04-01',
+        last_date: '2400-12-31',
+        first_year: 1551,
+        last_year: 2399,
+      },
       uptime_s: 900,
     };
     const timezone: TimezoneDocument = {

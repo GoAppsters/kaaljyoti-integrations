@@ -182,12 +182,15 @@ export function addMonths(month: string, n: number): string {
   return at.toISOString().slice(0, 7);
 }
 
-/** A `YYYY-MM` the API will take, or `null`. */
+/**
+ * A well-formed `YYYY-MM`. Which months are answered is the API's to say
+ * (its supported range, from its ephemeris data); one outside it comes back
+ * as the API's message naming the range.
+ */
 export function isMonth(raw: string | null | undefined): raw is string {
   if (!raw || !/^\d{4}-\d{2}$/.test(raw)) return false;
   const month = Number(raw.slice(5, 7));
-  const year = Number(raw.slice(0, 4));
-  return month >= 1 && month <= 12 && year >= 1800 && year <= 2400;
+  return month >= 1 && month <= 12;
 }
 
 /**

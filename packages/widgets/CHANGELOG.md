@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.2.5
+
+- No copy of the date range: the varshphal `year` and the month attributes are checked for shape
+  only, and which dates are answered is the API's supported range (published on `/v1/health`, from
+  its ephemeris data). A date outside it shows the API's message naming the range, instead of being
+  silently replaced. The API now answers from 1 April 1550 to 31 December 2400.
+
 ## 0.2.4
 
 - `data-pricing-url="off"` and `data-proxy-docs="off"` (or `pricing-url` / `proxy-docs` on an

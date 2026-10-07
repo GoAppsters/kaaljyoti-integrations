@@ -826,7 +826,7 @@ slug from a form or a database still goes in as it is.
 
 ---
 
-Generated from OpenAPI document version **0.15.2**
+Generated from OpenAPI document version **0.16.0**
 (`kaaljyoti.OPENAPI_VERSION`, beside `kaaljyoti.SDK_VERSION`).
 `pnpm --filter sdk-python run gen` regenerates `src/kaaljyoti/generated/`, and CI fails when the generated code and the snapshot disagree.
 

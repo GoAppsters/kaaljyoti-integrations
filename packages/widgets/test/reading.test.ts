@@ -447,15 +447,17 @@ describe('the personal reports', () => {
     expect(months[0]?.classList.contains('kj-level-favourable')).toBe(true);
   });
 
-  it('varshphal: sends the year the page names, and ignores one the API would refuse', async () => {
+  it('varshphal: sends any four-digit year the page names (the API decides the range), and ignores a malformed one', async () => {
     const fetchMock = stubFetch();
     await mount({ type: 'varshphal', year: '2027', ...BIRTH });
+    await mount({ type: 'varshphal', year: '1700', ...BIRTH });
     vi.useFakeTimers({ toFake: ['Date'] });
     vi.setSystemTime(new Date(2026, 8, 29, 12));
-    await mount({ type: 'varshphal', year: '1700', ...BIRTH });
+    await mount({ type: 'varshphal', year: 'next', ...BIRTH });
     vi.useRealTimers();
     expect(bodyOf(fetchMock, 0).year).toBe(2027);
-    expect(bodyOf(fetchMock, 1).year).toBe(2026);
+    expect(bodyOf(fetchMock, 1).year).toBe(1700);
+    expect(bodyOf(fetchMock, 2).year).toBe(2026);
   });
 
   it("varshphal: before this year's birthday the running year is last year, never before birth", async () => {

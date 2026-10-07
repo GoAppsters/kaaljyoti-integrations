@@ -10,4 +10,4 @@
 const String sdkVersion = '0.1.0';
 
 /// The `info.version` of the OpenAPI snapshot these models were built from.
-const String openApiVersion = '0.15.2';
+const String openApiVersion = '0.16.0';

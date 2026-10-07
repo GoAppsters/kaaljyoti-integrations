@@ -232,10 +232,13 @@ export class KjReading extends KjElement {
     return this.type !== 'lagna' && this.type !== 'nakshatra';
   }
 
-  /** The `year` attribute, when it is one the API accepts. */
+  /**
+   * The `year` attribute, when it is a four-digit year. Which years are
+   * answered is the API's to say (its supported range).
+   */
   private get givenYear(): number | null {
-    const year = Number(this.getAttribute('year'));
-    return Number.isInteger(year) && year >= 1800 && year <= 2400 ? year : null;
+    const raw = this.getAttribute('year') ?? '';
+    return /^\d{4}$/.test(raw) ? Number(raw) : null;
   }
 
   /**

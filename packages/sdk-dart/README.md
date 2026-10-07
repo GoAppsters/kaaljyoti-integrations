@@ -720,7 +720,7 @@ in a Flutter widget's `==`.
 
 ---
 
-Generated from OpenAPI document version **0.15.2**
+Generated from OpenAPI document version **0.16.0**
 (`openApiVersion` is a constant in the package, beside `sdkVersion`).
 `pnpm --filter sdk-dart run gen` regenerates `lib/src/generated/`, and CI fails when the generated code and the snapshot disagree.
 

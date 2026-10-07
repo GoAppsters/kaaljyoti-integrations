@@ -61,7 +61,7 @@ export interface paths {
         };
         /**
          * Health
-         * @description What this instance loaded: the engine and ephemeris versions, the number of ops and how long it has been up. No key needed, and it keeps answering while the service is disabled.
+         * @description What this instance loaded: the engine and ephemeris versions, the number of ops, the dates it answers for (`supported_range`, from its ephemeris data) and how long it has been up. No key needed, and it keeps answering while the service is disabled.
          */
         get: operations["getHealth"];
         put?: never;
@@ -1326,7 +1326,7 @@ export interface components {
     schemas: {
         /**
          * ashtakavarga response
-         * @description The document the `ashtakavarga` op of the Kaal Jyoti engine 0.15.2 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.
+         * @description The document the `ashtakavarga` op of the Kaal Jyoti engine 0.16.0 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.
          */
         AshtakavargaDocument: {
             bav: {
@@ -1354,7 +1354,7 @@ export interface components {
         };
         /**
          * bhava_bala response
-         * @description The document the `bhava_bala` op of the Kaal Jyoti engine 0.15.2 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.
+         * @description The document the `bhava_bala` op of the Kaal Jyoti engine 0.16.0 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.
          */
         BhavaBalaDocument: {
             houses: {
@@ -1371,7 +1371,7 @@ export interface components {
         };
         /**
          * chalit response
-         * @description The document the `chalit` op of the Kaal Jyoti engine 0.15.2 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.
+         * @description The document the `chalit` op of the Kaal Jyoti engine 0.16.0 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.
          */
         ChalitDocument: {
             equal?: {
@@ -1425,7 +1425,7 @@ export interface components {
         };
         /**
          * chart response
-         * @description The document the `chart` op of the Kaal Jyoti engine 0.15.2 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.
+         * @description The document the `chart` op of the Kaal Jyoti engine 0.16.0 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.
          */
         ChartDocument: {
             first_house: string;
@@ -1442,7 +1442,7 @@ export interface components {
         };
         /**
          * compare response
-         * @description The document the `compare` op of the Kaal Jyoti engine 0.15.2 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.
+         * @description The document the `compare` op of the Kaal Jyoti engine 0.16.0 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.
          */
         CompareDocument: {
             at: string;
@@ -1477,7 +1477,7 @@ export interface components {
         };
         /**
          * daily_panchang response
-         * @description The document the `daily_panchang` op of the Kaal Jyoti engine 0.15.2 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.
+         * @description The document the `daily_panchang` op of the Kaal Jyoti engine 0.16.0 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.
          */
         DailyPanchangDocument: {
             abhijit_muhurta: null | (null | {
@@ -1560,7 +1560,7 @@ export interface components {
         };
         /**
          * dasha response
-         * @description The document the `dasha` op of the Kaal Jyoti engine 0.15.2 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.
+         * @description The document the `dasha` op of the Kaal Jyoti engine 0.16.0 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.
          */
         DashaDocument: {
             at: string;
@@ -1867,7 +1867,7 @@ export interface components {
         };
         /**
          * ephemeris_month response
-         * @description The document the `ephemeris_month` op of the Kaal Jyoti engine 0.15.2 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.
+         * @description The document the `ephemeris_month` op of the Kaal Jyoti engine 0.16.0 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.
          */
         EphemerisMonthDocument: {
             nirayan?: {
@@ -1938,7 +1938,7 @@ export interface components {
         };
         /**
          * events response
-         * @description The document the `events` op of the Kaal Jyoti engine 0.15.2 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.
+         * @description The document the `events` op of the Kaal Jyoti engine 0.16.0 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.
          */
         EventsDocument: {
             dasha_system: components["schemas"]["LabelledId"];
@@ -1973,7 +1973,7 @@ export interface components {
         };
         /**
          * graha_drishti response
-         * @description The document the `graha_drishti` op of the Kaal Jyoti engine 0.15.2 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.
+         * @description The document the `graha_drishti` op of the Kaal Jyoti engine 0.16.0 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.
          */
         GrahaDrishtiDocument: {
             cast: {
@@ -2007,7 +2007,7 @@ export interface components {
         };
         /**
          * horoscope response
-         * @description The document the `horoscope` op of the Kaal Jyoti engine 0.15.2 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.
+         * @description The document the `horoscope` op of the Kaal Jyoti engine 0.16.0 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.
          */
         HoroscopeDocument: {
             areas: {
@@ -2050,7 +2050,7 @@ export interface components {
         };
         /**
          * jaimini response
-         * @description The document the `jaimini` op of the Kaal Jyoti engine 0.15.2 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.
+         * @description The document the `jaimini` op of the Kaal Jyoti engine 0.16.0 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.
          */
         JaiminiAspectsDocument: {
             aspects: {
@@ -2065,7 +2065,7 @@ export interface components {
         };
         /**
          * jaimini response
-         * @description The document the `jaimini` op of the Kaal Jyoti engine 0.15.2 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.
+         * @description The document the `jaimini` op of the Kaal Jyoti engine 0.16.0 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.
          */
         JaiminiKarakamshaDocument: {
             karakamsha: {
@@ -2075,7 +2075,7 @@ export interface components {
         };
         /**
          * jaimini response
-         * @description The document the `jaimini` op of the Kaal Jyoti engine 0.15.2 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.
+         * @description The document the `jaimini` op of the Kaal Jyoti engine 0.16.0 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.
          */
         JaiminiKarakasDocument: {
             atmakaraka: components["schemas"]["LabelledId"];
@@ -2085,7 +2085,7 @@ export interface components {
         };
         /**
          * jaimini response
-         * @description The document the `jaimini` op of the Kaal Jyoti engine 0.15.2 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.
+         * @description The document the `jaimini` op of the Kaal Jyoti engine 0.16.0 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.
          */
         JaiminiPadasDocument: {
             pada_labels_by_sign: {
@@ -2198,7 +2198,7 @@ export interface components {
         };
         /**
          * kota response
-         * @description The document the `kota` op of the Kaal Jyoti engine 0.15.2 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.
+         * @description The document the `kota` op of the Kaal Jyoti engine 0.16.0 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.
          */
         KotaDocument: {
             at: string;
@@ -2214,7 +2214,7 @@ export interface components {
         };
         /**
          * kp response
-         * @description The document the `kp` op of the Kaal Jyoti engine 0.15.2 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.
+         * @description The document the `kp` op of the Kaal Jyoti engine 0.16.0 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.
          */
         KpDocument: {
             cusps: {
@@ -2271,7 +2271,7 @@ export interface components {
         };
         /**
          * kundli response
-         * @description The document the `kundli` op of the Kaal Jyoti engine 0.15.2 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.
+         * @description The document the `kundli` op of the Kaal Jyoti engine 0.16.0 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.
          */
         KundliDocument: {
             ascendant: number;
@@ -2340,7 +2340,7 @@ export interface components {
         };
         /**
          * kundli_report response
-         * @description The document the `kundli_report` op of the Kaal Jyoti engine 0.15.2 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.
+         * @description The document the `kundli_report` op of the Kaal Jyoti engine 0.16.0 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.
          */
         KundliReportDocument: {
             /** @description The closing line: "these predictions are indicative…", naming the astrologer in `options.disclaimer` when one is given. Absent when `options.disclaimer` is `"off"`. */
@@ -3004,7 +3004,7 @@ export interface components {
         };
         /**
          * life_areas response
-         * @description The document the `life_areas` op of the Kaal Jyoti engine 0.15.2 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.
+         * @description The document the `life_areas` op of the Kaal Jyoti engine 0.16.0 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.
          */
         LifeAreasDocument: {
             areas: {
@@ -3126,7 +3126,7 @@ export interface components {
         };
         /**
          * maitri response
-         * @description The document the `maitri` op of the Kaal Jyoti engine 0.15.2 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.
+         * @description The document the `maitri` op of the Kaal Jyoti engine 0.16.0 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.
          */
         MaitriDocument: {
             [key: string]: {
@@ -3139,7 +3139,7 @@ export interface components {
         };
         /**
          * match_ashtakoot response
-         * @description The document the `match_ashtakoot` op of the Kaal Jyoti engine 0.15.2 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.
+         * @description The document the `match_ashtakoot` op of the Kaal Jyoti engine 0.16.0 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.
          */
         MatchAshtakootDocument: {
             bride_mangal_dosha: boolean;
@@ -3174,7 +3174,7 @@ export interface components {
         };
         /**
          * muhurta response
-         * @description The document the `muhurta` op of the Kaal Jyoti engine 0.15.2 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.
+         * @description The document the `muhurta` op of the Kaal Jyoti engine 0.16.0 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.
          */
         MuhurtaDocument: {
             abhijit: {
@@ -3230,7 +3230,7 @@ export interface components {
         };
         /**
          * nakshatra28 response
-         * @description The document the `nakshatra28` op of the Kaal Jyoti engine 0.15.2 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.
+         * @description The document the `nakshatra28` op of the Kaal Jyoti engine 0.16.0 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.
          */
         Nakshatra28Document: {
             all: {
@@ -3251,7 +3251,7 @@ export interface components {
         };
         /**
          * pace response
-         * @description The document the `pace` op of the Kaal Jyoti engine 0.15.2 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.
+         * @description The document the `pace` op of the Kaal Jyoti engine 0.16.0 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.
          */
         PaceDocument: {
             bhava_lords: {
@@ -3286,7 +3286,7 @@ export interface components {
         };
         /**
          * panchang_month response
-         * @description The document the `panchang_month` op of the Kaal Jyoti engine 0.15.2 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.
+         * @description The document the `panchang_month` op of the Kaal Jyoti engine 0.16.0 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.
          */
         PanchangMonthDocument: {
             days: {
@@ -3344,7 +3344,7 @@ export interface components {
         };
         /**
          * reading response
-         * @description The document the `reading` op of the Kaal Jyoti engine 0.15.2 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.
+         * @description The document the `reading` op of the Kaal Jyoti engine 0.16.0 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.
          */
         ReadingGrahasDocument: {
             /** @description The closing line: "these predictions are indicative…", naming the astrologer in `options.disclaimer` when one is given. Absent when `options.disclaimer` is `"off"`. */
@@ -3374,7 +3374,7 @@ export interface components {
         };
         /**
          * reading response
-         * @description The document the `reading` op of the Kaal Jyoti engine 0.15.2 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.
+         * @description The document the `reading` op of the Kaal Jyoti engine 0.16.0 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.
          */
         ReadingHouseLordsDocument: {
             /** @description The closing line: "these predictions are indicative…", naming the astrologer in `options.disclaimer` when one is given. Absent when `options.disclaimer` is `"off"`. */
@@ -3398,7 +3398,7 @@ export interface components {
         };
         /**
          * reading response
-         * @description The document the `reading` op of the Kaal Jyoti engine 0.15.2 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.
+         * @description The document the `reading` op of the Kaal Jyoti engine 0.16.0 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.
          */
         ReadingLagnaDocument: {
             /** @description The closing line: "these predictions are indicative…", naming the astrologer in `options.disclaimer` when one is given. Absent when `options.disclaimer` is `"off"`. */
@@ -3419,7 +3419,7 @@ export interface components {
         };
         /**
          * reading response
-         * @description The document the `reading` op of the Kaal Jyoti engine 0.15.2 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.
+         * @description The document the `reading` op of the Kaal Jyoti engine 0.16.0 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.
          */
         ReadingNakshatraDocument: {
             /** @description The closing line: "these predictions are indicative…", naming the astrologer in `options.disclaimer` when one is given. Absent when `options.disclaimer` is `"off"`. */
@@ -3440,7 +3440,7 @@ export interface components {
         };
         /**
          * reading response
-         * @description The document the `reading` op of the Kaal Jyoti engine 0.15.2 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.
+         * @description The document the `reading` op of the Kaal Jyoti engine 0.16.0 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.
          */
         ReadingYogasDocument: {
             /** @description The closing line: "these predictions are indicative…", naming the astrologer in `options.disclaimer` when one is given. Absent when `options.disclaimer` is `"off"`. */
@@ -3468,7 +3468,7 @@ export interface components {
         };
         /**
          * sade_sati response
-         * @description The document the `sade_sati` op of the Kaal Jyoti engine 0.15.2 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.
+         * @description The document the `sade_sati` op of the Kaal Jyoti engine 0.16.0 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.
          */
         SadeSatiDocument: {
             arc_spans: {
@@ -3493,7 +3493,7 @@ export interface components {
         };
         /**
          * sarvatobhadra response
-         * @description The document the `sarvatobhadra` op of the Kaal Jyoti engine 0.15.2 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.
+         * @description The document the `sarvatobhadra` op of the Kaal Jyoti engine 0.16.0 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.
          */
         SarvatobhadraDocument: {
             nak_cell: {
@@ -3510,7 +3510,7 @@ export interface components {
         };
         /**
          * shadbala response
-         * @description The document the `shadbala` op of the Kaal Jyoti engine 0.15.2 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.
+         * @description The document the `shadbala` op of the Kaal Jyoti engine 0.16.0 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.
          */
         ShadbalaDocument: {
             planets: {
@@ -3529,7 +3529,7 @@ export interface components {
         };
         /**
          * special_lagnas response
-         * @description The document the `special_lagnas` op of the Kaal Jyoti engine 0.15.2 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.
+         * @description The document the `special_lagnas` op of the Kaal Jyoti engine 0.16.0 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.
          */
         SpecialLagnasDocument: {
             points: {
@@ -3553,7 +3553,7 @@ export interface components {
         };
         /**
          * transit_events response
-         * @description The document the `transit_events` op of the Kaal Jyoti engine 0.15.2 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.
+         * @description The document the `transit_events` op of the Kaal Jyoti engine 0.16.0 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.
          */
         TransitEventsDocument: {
             ayanamsa_id: number;
@@ -3582,7 +3582,7 @@ export interface components {
         };
         /**
          * transit_now response
-         * @description The document the `transit_now` op of the Kaal Jyoti engine 0.15.2 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.
+         * @description The document the `transit_now` op of the Kaal Jyoti engine 0.16.0 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.
          */
         TransitNowDocument: {
             ascendant: number;
@@ -3616,7 +3616,7 @@ export interface components {
         };
         /**
          * transit_scan response
-         * @description The document the `transit_scan` op of the Kaal Jyoti engine 0.15.2 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.
+         * @description The document the `transit_scan` op of the Kaal Jyoti engine 0.16.0 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.
          */
         TransitScanDocument: {
             events: {
@@ -3645,7 +3645,7 @@ export interface components {
         };
         /**
          * tripataki response
-         * @description The document the `tripataki` op of the Kaal Jyoti engine 0.15.2 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.
+         * @description The document the `tripataki` op of the Kaal Jyoti engine 0.16.0 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.
          */
         TripatakiDocument: {
             current_year: number;
@@ -3659,7 +3659,7 @@ export interface components {
         };
         /**
          * vargas response
-         * @description The document the `vargas` op of the Kaal Jyoti engine 0.15.2 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.
+         * @description The document the `vargas` op of the Kaal Jyoti engine 0.16.0 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.
          */
         VargasDocument: {
             lagna: {
@@ -3733,7 +3733,7 @@ export interface components {
         };
         /**
          * varshphal response
-         * @description The document the `varshphal` op of the Kaal Jyoti engine 0.15.2 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.
+         * @description The document the `varshphal` op of the Kaal Jyoti engine 0.16.0 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.
          */
         VarshphalHarshaBalaDocument: {
             harsha_bala: {
@@ -3757,7 +3757,7 @@ export interface components {
         };
         /**
          * varshphal response
-         * @description The document the `varshphal` op of the Kaal Jyoti engine 0.15.2 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.
+         * @description The document the `varshphal` op of the Kaal Jyoti engine 0.16.0 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.
          */
         VarshphalMuddaDocument: {
             mudda: {
@@ -3799,7 +3799,7 @@ export interface components {
         };
         /**
          * varshphal_reading response
-         * @description The document the `varshphal_reading` op of the Kaal Jyoti engine 0.15.2 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.
+         * @description The document the `varshphal_reading` op of the Kaal Jyoti engine 0.16.0 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.
          */
         VarshphalReadingDocument: {
             areas: {
@@ -4119,7 +4119,7 @@ export interface components {
         };
         /**
          * varshphal response
-         * @description The document the `varshphal` op of the Kaal Jyoti engine 0.15.2 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.
+         * @description The document the `varshphal` op of the Kaal Jyoti engine 0.16.0 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.
          */
         VarshphalSahamsDocument: {
             sahams: {
@@ -4131,7 +4131,7 @@ export interface components {
         };
         /**
          * varshphal response
-         * @description The document the `varshphal` op of the Kaal Jyoti engine 0.15.2 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.
+         * @description The document the `varshphal` op of the Kaal Jyoti engine 0.16.0 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.
          */
         VarshphalTajikaDocument: {
             tajika: {
@@ -4161,7 +4161,7 @@ export interface components {
         };
         /**
          * varshphal response
-         * @description The document the `varshphal` op of the Kaal Jyoti engine 0.15.2 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.
+         * @description The document the `varshphal` op of the Kaal Jyoti engine 0.16.0 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.
          */
         VarshphalVarshaYearDocument: {
             day_pravesha: boolean;
@@ -4212,7 +4212,7 @@ export interface components {
         };
         /**
          * vikram_samvat response
-         * @description The document the `vikram_samvat` op of the Kaal Jyoti engine 0.15.2 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.
+         * @description The document the `vikram_samvat` op of the Kaal Jyoti engine 0.16.0 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.
          */
         VikramSamvatDocument: {
             amanta: {
@@ -4232,7 +4232,7 @@ export interface components {
         };
         /**
          * vimshottari_reading response
-         * @description The document the `vimshottari_reading` op of the Kaal Jyoti engine 0.15.2 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.
+         * @description The document the `vimshottari_reading` op of the Kaal Jyoti engine 0.16.0 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.
          */
         VimshottariReadingDocument: {
             basis: {
@@ -4389,7 +4389,7 @@ export interface components {
         };
         /**
          * yogas response
-         * @description The document the `yogas` op of the Kaal Jyoti engine 0.15.2 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.
+         * @description The document the `yogas` op of the Kaal Jyoti engine 0.16.0 returns, inferred from real responses by harness/gen_response_schemas.py. Regenerated on every engine tag.
          */
         YogasDocument: {
             yogas: {
@@ -4505,7 +4505,7 @@ export interface operations {
                  *     }
                  */
                 "application/json": {
-                    /** @description The local clock time at the place, `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `2026-03-19T06:00:00`. The time matters: the masa depends on the Moon's phase at that moment. Year 1800 to 2400. */
+                    /** @description The local clock time at the place, `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `2026-03-19T06:00:00`. The time matters: the masa depends on the Moon's phase at that moment. From 1550-04-01 to 2400-12-31. */
                     datetime: string;
                     /** @description Latitude in decimal degrees, north positive, from -89.9 to 89.9, e.g. `28.6139`. */
                     latitude: number;
@@ -4603,7 +4603,7 @@ export interface operations {
                     latitude: number;
                     /** @description Longitude in decimal degrees, east positive, from -180 to 180, e.g. `77.209`. */
                     longitude: number;
-                    /** @description The calendar month, `YYYY-MM`, e.g. `2026-09`; one row per day. Year 1800 to 2400. */
+                    /** @description The calendar month, `YYYY-MM`, e.g. `2026-09`; one row per day. From 1550-04 to 2400-12. */
                     month: string;
                     /**
                      * @description Settings for the calculation and the answer: ayanamsa, language, disclaimer. Every field has a default, so `options` may be left out.
@@ -4690,13 +4690,30 @@ export interface operations {
                 };
                 content: {
                     "application/json": {
-                        /** @example 0.15.2 */
+                        /** @example 0.16.0 */
                         engine: string;
-                        /** @example kaaljyoti-ephemeris 0.1.1 */
+                        /** @example kaaljyoti-ephemeris 0.2.1 */
                         ephemeris: string;
                         ops: number;
                         /** @enum {string} */
                         status: "ok";
+                        /** @description The dates the API answers for, from its ephemeris data: calendar dates at the place, whole months; `first_year`/`last_year` bound the whole-year fields (a Varshphal `year`). A date outside is a 400. */
+                        supported_range: {
+                            /**
+                             * Format: date
+                             * @example 1550-04-01
+                             */
+                            first_date: string;
+                            /** @example 1551 */
+                            first_year: number;
+                            /**
+                             * Format: date
+                             * @example 2400-12-31
+                             */
+                            last_date: string;
+                            /** @example 2399 */
+                            last_year: number;
+                        };
                         uptime_s: number;
                     };
                 };
@@ -4828,7 +4845,7 @@ export interface operations {
                 "application/json": {
                     /** @description The birth: the local clock time at the birth place, its coordinates and, optionally, its zone (`timezone` or `utc_offset`, not both). */
                     birth: {
-                        /** @description The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. Year 1800 to 2400. */
+                        /** @description The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. From 1550-04-01 to 2400-12-31. */
                         datetime: string;
                         /** @description Latitude in decimal degrees, north positive, from -89.9 to 89.9, e.g. `28.6139`. */
                         latitude: number;
@@ -4926,7 +4943,7 @@ export interface operations {
                 "application/json": {
                     /** @description The birth: the local clock time at the birth place, its coordinates and, optionally, its zone (`timezone` or `utc_offset`, not both). */
                     birth: {
-                        /** @description The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. Year 1800 to 2400. */
+                        /** @description The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. From 1550-04-01 to 2400-12-31. */
                         datetime: string;
                         /** @description Latitude in decimal degrees, north positive, from -89.9 to 89.9, e.g. `28.6139`. */
                         latitude: number;
@@ -5024,7 +5041,7 @@ export interface operations {
                 "application/json": {
                     /** @description The birth: the local clock time at the birth place, its coordinates and, optionally, its zone (`timezone` or `utc_offset`, not both). */
                     birth: {
-                        /** @description The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. Year 1800 to 2400. */
+                        /** @description The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. From 1550-04-01 to 2400-12-31. */
                         datetime: string;
                         /** @description Latitude in decimal degrees, north positive, from -89.9 to 89.9, e.g. `28.6139`. */
                         latitude: number;
@@ -5122,7 +5139,7 @@ export interface operations {
                 "application/json": {
                     /** @description The birth: the local clock time at the birth place, its coordinates and, optionally, its zone (`timezone` or `utc_offset`, not both). */
                     birth: {
-                        /** @description The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. Year 1800 to 2400. */
+                        /** @description The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. From 1550-04-01 to 2400-12-31. */
                         datetime: string;
                         /** @description Latitude in decimal degrees, north positive, from -89.9 to 89.9, e.g. `28.6139`. */
                         latitude: number;
@@ -5220,7 +5237,7 @@ export interface operations {
                 "application/json": {
                     /** @description The birth: the local clock time at the birth place, its coordinates and, optionally, its zone (`timezone` or `utc_offset`, not both). */
                     birth: {
-                        /** @description The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. Year 1800 to 2400. */
+                        /** @description The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. From 1550-04-01 to 2400-12-31. */
                         datetime: string;
                         /** @description Latitude in decimal degrees, north positive, from -89.9 to 89.9, e.g. `28.6139`. */
                         latitude: number;
@@ -5318,7 +5335,7 @@ export interface operations {
                 "application/json": {
                     /** @description The birth: the local clock time at the birth place, its coordinates and, optionally, its zone (`timezone` or `utc_offset`, not both). */
                     birth: {
-                        /** @description The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. Year 1800 to 2400. */
+                        /** @description The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. From 1550-04-01 to 2400-12-31. */
                         datetime: string;
                         /** @description Latitude in decimal degrees, north positive, from -89.9 to 89.9, e.g. `28.6139`. */
                         latitude: number;
@@ -5416,7 +5433,7 @@ export interface operations {
                 "application/json": {
                     /** @description The birth: the local clock time at the birth place, its coordinates and, optionally, its zone (`timezone` or `utc_offset`, not both). */
                     birth: {
-                        /** @description The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. Year 1800 to 2400. */
+                        /** @description The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. From 1550-04-01 to 2400-12-31. */
                         datetime: string;
                         /** @description Latitude in decimal degrees, north positive, from -89.9 to 89.9, e.g. `28.6139`. */
                         latitude: number;
@@ -5514,7 +5531,7 @@ export interface operations {
                 "application/json": {
                     /** @description The birth: the local clock time at the birth place, its coordinates and, optionally, its zone (`timezone` or `utc_offset`, not both). */
                     birth: {
-                        /** @description The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. Year 1800 to 2400. */
+                        /** @description The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. From 1550-04-01 to 2400-12-31. */
                         datetime: string;
                         /** @description Latitude in decimal degrees, north positive, from -89.9 to 89.9, e.g. `28.6139`. */
                         latitude: number;
@@ -5613,7 +5630,7 @@ export interface operations {
                 "application/json": {
                     /** @description The birth: the local clock time at the birth place, its coordinates and, optionally, its zone (`timezone` or `utc_offset`, not both). */
                     birth: {
-                        /** @description The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. Year 1800 to 2400. */
+                        /** @description The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. From 1550-04-01 to 2400-12-31. */
                         datetime: string;
                         /** @description Latitude in decimal degrees, north positive, from -89.9 to 89.9, e.g. `28.6139`. */
                         latitude: number;
@@ -5720,7 +5737,7 @@ export interface operations {
                 "application/json": {
                     /** @description The birth: the local clock time at the birth place, its coordinates and, optionally, its zone (`timezone` or `utc_offset`, not both). */
                     birth: {
-                        /** @description The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. Year 1800 to 2400. */
+                        /** @description The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. From 1550-04-01 to 2400-12-31. */
                         datetime: string;
                         /** @description Latitude in decimal degrees, north positive, from -89.9 to 89.9, e.g. `28.6139`. */
                         latitude: number;
@@ -5858,7 +5875,7 @@ export interface operations {
                 "application/json": {
                     /** @description The birth: the local clock time at the birth place, its coordinates and, optionally, its zone (`timezone` or `utc_offset`, not both). */
                     birth: {
-                        /** @description The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. Year 1800 to 2400. */
+                        /** @description The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. From 1550-04-01 to 2400-12-31. */
                         datetime: string;
                         /** @description Latitude in decimal degrees, north positive, from -89.9 to 89.9, e.g. `28.6139`. */
                         latitude: number;
@@ -5973,7 +5990,7 @@ export interface operations {
                 "application/json": {
                     /** @description The birth: the local clock time at the birth place, its coordinates and, optionally, its zone (`timezone` or `utc_offset`, not both). */
                     birth: {
-                        /** @description The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. Year 1800 to 2400. */
+                        /** @description The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. From 1550-04-01 to 2400-12-31. */
                         datetime: string;
                         /** @description Latitude in decimal degrees, north positive, from -89.9 to 89.9, e.g. `28.6139`. */
                         latitude: number;
@@ -6075,7 +6092,7 @@ export interface operations {
                 "application/json": {
                     /** @description The birth: the local clock time at the birth place, its coordinates and, optionally, its zone (`timezone` or `utc_offset`, not both). */
                     birth: {
-                        /** @description The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. Year 1800 to 2400. */
+                        /** @description The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. From 1550-04-01 to 2400-12-31. */
                         datetime: string;
                         /** @description Latitude in decimal degrees, north positive, from -89.9 to 89.9, e.g. `28.6139`. */
                         latitude: number;
@@ -6173,7 +6190,7 @@ export interface operations {
                 "application/json": {
                     /** @description The birth: the local clock time at the birth place, its coordinates and, optionally, its zone (`timezone` or `utc_offset`, not both). */
                     birth: {
-                        /** @description The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. Year 1800 to 2400. */
+                        /** @description The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. From 1550-04-01 to 2400-12-31. */
                         datetime: string;
                         /** @description Latitude in decimal degrees, north positive, from -89.9 to 89.9, e.g. `28.6139`. */
                         latitude: number;
@@ -6271,7 +6288,7 @@ export interface operations {
                 "application/json": {
                     /** @description The birth: the local clock time at the birth place, its coordinates and, optionally, its zone (`timezone` or `utc_offset`, not both). */
                     birth: {
-                        /** @description The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. Year 1800 to 2400. */
+                        /** @description The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. From 1550-04-01 to 2400-12-31. */
                         datetime: string;
                         /** @description Latitude in decimal degrees, north positive, from -89.9 to 89.9, e.g. `28.6139`. */
                         latitude: number;
@@ -6369,7 +6386,7 @@ export interface operations {
                 "application/json": {
                     /** @description The birth: the local clock time at the birth place, its coordinates and, optionally, its zone (`timezone` or `utc_offset`, not both). */
                     birth: {
-                        /** @description The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. Year 1800 to 2400. */
+                        /** @description The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. From 1550-04-01 to 2400-12-31. */
                         datetime: string;
                         /** @description Latitude in decimal degrees, north positive, from -89.9 to 89.9, e.g. `28.6139`. */
                         latitude: number;
@@ -6467,7 +6484,7 @@ export interface operations {
                 "application/json": {
                     /** @description The birth: the local clock time at the birth place, its coordinates and, optionally, its zone (`timezone` or `utc_offset`, not both). */
                     birth: {
-                        /** @description The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. Year 1800 to 2400. */
+                        /** @description The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. From 1550-04-01 to 2400-12-31. */
                         datetime: string;
                         /** @description Latitude in decimal degrees, north positive, from -89.9 to 89.9, e.g. `28.6139`. */
                         latitude: number;
@@ -6567,7 +6584,7 @@ export interface operations {
                 "application/json": {
                     /** @description The birth: the local clock time at the birth place, its coordinates and, optionally, its zone (`timezone` or `utc_offset`, not both). */
                     birth: {
-                        /** @description The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. Year 1800 to 2400. */
+                        /** @description The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. From 1550-04-01 to 2400-12-31. */
                         datetime: string;
                         /** @description Latitude in decimal degrees, north positive, from -89.9 to 89.9, e.g. `28.6139`. */
                         latitude: number;
@@ -6669,7 +6686,7 @@ export interface operations {
                 "application/json": {
                     /** @description The birth: the local clock time at the birth place, its coordinates and, optionally, its zone (`timezone` or `utc_offset`, not both). */
                     birth: {
-                        /** @description The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. Year 1800 to 2400. */
+                        /** @description The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. From 1550-04-01 to 2400-12-31. */
                         datetime: string;
                         /** @description Latitude in decimal degrees, north positive, from -89.9 to 89.9, e.g. `28.6139`. */
                         latitude: number;
@@ -6767,7 +6784,7 @@ export interface operations {
                 "application/json": {
                     /** @description The birth: the local clock time at the birth place, its coordinates and, optionally, its zone (`timezone` or `utc_offset`, not both). */
                     birth: {
-                        /** @description The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. Year 1800 to 2400. */
+                        /** @description The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. From 1550-04-01 to 2400-12-31. */
                         datetime: string;
                         /** @description Latitude in decimal degrees, north positive, from -89.9 to 89.9, e.g. `28.6139`. */
                         latitude: number;
@@ -6865,7 +6882,7 @@ export interface operations {
                 "application/json": {
                     /** @description The birth: the local clock time at the birth place, its coordinates and, optionally, its zone (`timezone` or `utc_offset`, not both). */
                     birth: {
-                        /** @description The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. Year 1800 to 2400. */
+                        /** @description The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. From 1550-04-01 to 2400-12-31. */
                         datetime: string;
                         /** @description Latitude in decimal degrees, north positive, from -89.9 to 89.9, e.g. `28.6139`. */
                         latitude: number;
@@ -6963,7 +6980,7 @@ export interface operations {
                 "application/json": {
                     /** @description The birth: the local clock time at the birth place, its coordinates and, optionally, its zone (`timezone` or `utc_offset`, not both). */
                     birth: {
-                        /** @description The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. Year 1800 to 2400. */
+                        /** @description The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. From 1550-04-01 to 2400-12-31. */
                         datetime: string;
                         /** @description Latitude in decimal degrees, north positive, from -89.9 to 89.9, e.g. `28.6139`. */
                         latitude: number;
@@ -7066,7 +7083,7 @@ export interface operations {
                 "application/json": {
                     /** @description The birth: the local clock time at the birth place, its coordinates and, optionally, its zone (`timezone` or `utc_offset`, not both). */
                     birth: {
-                        /** @description The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. Year 1800 to 2400. */
+                        /** @description The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. From 1550-04-01 to 2400-12-31. */
                         datetime: string;
                         /** @description Latitude in decimal degrees, north positive, from -89.9 to 89.9, e.g. `28.6139`. */
                         latitude: number;
@@ -7166,7 +7183,7 @@ export interface operations {
                 "application/json": {
                     /** @description The birth: the local clock time at the birth place, its coordinates and, optionally, its zone (`timezone` or `utc_offset`, not both). */
                     birth: {
-                        /** @description The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. Year 1800 to 2400. */
+                        /** @description The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. From 1550-04-01 to 2400-12-31. */
                         datetime: string;
                         /** @description Latitude in decimal degrees, north positive, from -89.9 to 89.9, e.g. `28.6139`. */
                         latitude: number;
@@ -7271,7 +7288,7 @@ export interface operations {
                 "application/json": {
                     /** @description The bride's birth, in the shape of `birth`. The koota table is read from her side. */
                     bride: {
-                        /** @description The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. Year 1800 to 2400. */
+                        /** @description The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. From 1550-04-01 to 2400-12-31. */
                         datetime: string;
                         /** @description Latitude in decimal degrees, north positive, from -89.9 to 89.9, e.g. `28.6139`. */
                         latitude: number;
@@ -7286,7 +7303,7 @@ export interface operations {
                     };
                     /** @description The groom's birth, in the shape of `birth`. */
                     groom: {
-                        /** @description The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. Year 1800 to 2400. */
+                        /** @description The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. From 1550-04-01 to 2400-12-31. */
                         datetime: string;
                         /** @description Latitude in decimal degrees, north positive, from -89.9 to 89.9, e.g. `28.6139`. */
                         latitude: number;
@@ -7445,7 +7462,7 @@ export interface operations {
                     pairs: {
                         /** @description The bride's birth, in the shape of `birth`. The koota table is read from her side. */
                         bride: {
-                            /** @description The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. Year 1800 to 2400. */
+                            /** @description The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. From 1550-04-01 to 2400-12-31. */
                             datetime: string;
                             /** @description Latitude in decimal degrees, north positive, from -89.9 to 89.9, e.g. `28.6139`. */
                             latitude: number;
@@ -7460,7 +7477,7 @@ export interface operations {
                         };
                         /** @description The groom's birth, in the shape of `birth`. */
                         groom: {
-                            /** @description The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. Year 1800 to 2400. */
+                            /** @description The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. From 1550-04-01 to 2400-12-31. */
                             datetime: string;
                             /** @description Latitude in decimal degrees, north positive, from -89.9 to 89.9, e.g. `28.6139`. */
                             latitude: number;
@@ -7550,7 +7567,7 @@ export interface operations {
                 "application/json": {
                     /** @description The birth: the local clock time at the birth place, its coordinates and, optionally, its zone (`timezone` or `utc_offset`, not both). The first chart; the answer calls it `self`. */
                     birth: {
-                        /** @description The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. Year 1800 to 2400. */
+                        /** @description The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. From 1550-04-01 to 2400-12-31. */
                         datetime: string;
                         /** @description Latitude in decimal degrees, north positive, from -89.9 to 89.9, e.g. `28.6139`. */
                         latitude: number;
@@ -7597,7 +7614,7 @@ export interface operations {
                     };
                     /** @description The second chart, in the shape of `birth`; the answer calls it `partner`. */
                     partner: {
-                        /** @description The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. Year 1800 to 2400. */
+                        /** @description The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. From 1550-04-01 to 2400-12-31. */
                         datetime: string;
                         /** @description Latitude in decimal degrees, north positive, from -89.9 to 89.9, e.g. `28.6139`. */
                         latitude: number;
@@ -7659,7 +7676,7 @@ export interface operations {
                  *     }
                  */
                 "application/json": {
-                    /** @description The calendar date at the place, `YYYY-MM-DD`, e.g. `2026-09-16`. Default: today there (and an answer without `date` is never cached). Year 1800 to 2400. */
+                    /** @description The calendar date at the place, `YYYY-MM-DD`, e.g. `2026-09-16`. Default: today there (and an answer without `date` is never cached). From 1550-04-01 to 2400-12-31. */
                     date?: string;
                     /** @description Latitude in decimal degrees, north positive, from -89.9 to 89.9, e.g. `28.6139`. */
                     latitude: number;
@@ -7756,7 +7773,7 @@ export interface operations {
                     latitude: number;
                     /** @description Longitude in decimal degrees, east positive, from -180 to 180, e.g. `77.209`. */
                     longitude: number;
-                    /** @description The calendar month, `YYYY-MM`, e.g. `2026-10`; every date of it is answered. Year 1800 to 2400. */
+                    /** @description The calendar month, `YYYY-MM`, e.g. `2026-10`; every date of it is answered. From 1550-04 to 2400-12. */
                     month: string;
                     /**
                      * @description Settings for the calculation and the answer: ayanamsa, language, disclaimer. Every field has a default, so `options` may be left out.
@@ -7847,7 +7864,7 @@ export interface operations {
                 "application/json": {
                     /** @description The birth: the local clock time at the birth place, its coordinates and, optionally, its zone (`timezone` or `utc_offset`, not both). With it, the answer adds tara bala and chandra bala from the natal Moon. Give this or the place fields, not both. */
                     birth?: {
-                        /** @description The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. Year 1800 to 2400. */
+                        /** @description The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. From 1550-04-01 to 2400-12-31. */
                         datetime: string;
                         /** @description Latitude in decimal degrees, north positive, from -89.9 to 89.9, e.g. `28.6139`. */
                         latitude: number;
@@ -7961,7 +7978,7 @@ export interface operations {
                 "application/json": {
                     /** @description The birth: the local clock time at the birth place, its coordinates and, optionally, its zone (`timezone` or `utc_offset`, not both). */
                     birth: {
-                        /** @description The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. Year 1800 to 2400. */
+                        /** @description The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. From 1550-04-01 to 2400-12-31. */
                         datetime: string;
                         /** @description Latitude in decimal degrees, north positive, from -89.9 to 89.9, e.g. `28.6139`. */
                         latitude: number;
@@ -8153,7 +8170,7 @@ export interface operations {
                     };
                     /** @description The bride's birth, in the shape of `birth`. The koota table is read from her side. */
                     bride: {
-                        /** @description The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. Year 1800 to 2400. */
+                        /** @description The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. From 1550-04-01 to 2400-12-31. */
                         datetime: string;
                         /** @description Latitude in decimal degrees, north positive, from -89.9 to 89.9, e.g. `28.6139`. */
                         latitude: number;
@@ -8173,7 +8190,7 @@ export interface operations {
                     chart_style?: "north" | "south";
                     /** @description The groom's birth, in the shape of `birth`. */
                     groom: {
-                        /** @description The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. Year 1800 to 2400. */
+                        /** @description The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. From 1550-04-01 to 2400-12-31. */
                         datetime: string;
                         /** @description Latitude in decimal degrees, north positive, from -89.9 to 89.9, e.g. `28.6139`. */
                         latitude: number;
@@ -8318,7 +8335,7 @@ export interface operations {
                     latitude: number;
                     /** @description Longitude in decimal degrees, east positive, from -180 to 180, e.g. `77.209`. */
                     longitude: number;
-                    /** @description The calendar month, `YYYY-MM`, e.g. `2026-10`; one day per row. Year 1800 to 2400. */
+                    /** @description The calendar month, `YYYY-MM`, e.g. `2026-10`; one day per row. From 1550-04 to 2400-12. */
                     month: string;
                     /**
                      * @description Settings for the calculation and the answer: ayanamsa, language, disclaimer. Every field has a default, so `options` may be left out.
@@ -8426,7 +8443,7 @@ export interface operations {
                 "application/json": {
                     /** @description The birth: the local clock time at the birth place, its coordinates and, optionally, its zone (`timezone` or `utc_offset`, not both). */
                     birth: {
-                        /** @description The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. Year 1800 to 2400. */
+                        /** @description The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. From 1550-04-01 to 2400-12-31. */
                         datetime: string;
                         /** @description Latitude in decimal degrees, north positive, from -89.9 to 89.9, e.g. `28.6139`. */
                         latitude: number;
@@ -8508,7 +8525,7 @@ export interface operations {
                      * @enum {string}
                      */
                     template?: "classic" | "modern" | "minimal" | "traditional";
-                    /** @description The year, e.g. `2026`, required: the annual chart runs from that year's birthday to the next. Not before the birth year; at most 2400. */
+                    /** @description The year, e.g. `2026`, required: the annual chart runs from that year's birthday to the next. Not before the birth year; at most 2399. */
                     year: number;
                 };
             };
@@ -8698,7 +8715,7 @@ export interface operations {
                 "application/json": {
                     /** @description The birth: the local clock time at the birth place, its coordinates and, optionally, its zone (`timezone` or `utc_offset`, not both). */
                     birth: {
-                        /** @description The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. Year 1800 to 2400. */
+                        /** @description The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. From 1550-04-01 to 2400-12-31. */
                         datetime: string;
                         /** @description Latitude in decimal degrees, north positive, from -89.9 to 89.9, e.g. `28.6139`. */
                         latitude: number;
@@ -8796,7 +8813,7 @@ export interface operations {
                 "application/json": {
                     /** @description The birth: the local clock time at the birth place, its coordinates and, optionally, its zone (`timezone` or `utc_offset`, not both). */
                     birth: {
-                        /** @description The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. Year 1800 to 2400. */
+                        /** @description The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. From 1550-04-01 to 2400-12-31. */
                         datetime: string;
                         /** @description Latitude in decimal degrees, north positive, from -89.9 to 89.9, e.g. `28.6139`. */
                         latitude: number;
@@ -8900,7 +8917,7 @@ export interface operations {
                 "application/json": {
                     /** @description The birth: the local clock time at the birth place, its coordinates and, optionally, its zone (`timezone` or `utc_offset`, not both). */
                     birth: {
-                        /** @description The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. Year 1800 to 2400. */
+                        /** @description The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. From 1550-04-01 to 2400-12-31. */
                         datetime: string;
                         /** @description Latitude in decimal degrees, north positive, from -89.9 to 89.9, e.g. `28.6139`. */
                         latitude: number;
@@ -8947,7 +8964,7 @@ export interface operations {
                     };
                     /** @description The parts to include, each named once, in any order (the answer keeps the report's own order): `lagna`, `nakshatra`, `life_areas`, `house_lords`, `grahas`, `yogas`, `vimshottari`, `varshphal`. Default: all eight. The report is priced per part. */
                     parts?: ("lagna" | "nakshatra" | "life_areas" | "house_lords" | "grahas" | "yogas" | "vimshottari" | "varshphal")[];
-                    /** @description The Varshphal's year, e.g. `2026`: the year from that year's birthday to the next. Default: the Varshphal year running today (last year's until this year's birthday). Not before the birth year; at most 2400. */
+                    /** @description The Varshphal's year, e.g. `2026`: the year from that year's birthday to the next. Default: the Varshphal year running today (last year's until this year's birthday). Not before the birth year; at most 2399. */
                     year?: number;
                 };
             };
@@ -9002,7 +9019,7 @@ export interface operations {
                 "application/json": {
                     /** @description The birth: the local clock time at the birth place, its coordinates and, optionally, its zone (`timezone` or `utc_offset`, not both). The report reads its lagna. Give this or `sign`, not both. */
                     birth?: {
-                        /** @description The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. Year 1800 to 2400. */
+                        /** @description The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. From 1550-04-01 to 2400-12-31. */
                         datetime: string;
                         /** @description Latitude in decimal degrees, north positive, from -89.9 to 89.9, e.g. `28.6139`. */
                         latitude: number;
@@ -9105,7 +9122,7 @@ export interface operations {
                 "application/json": {
                     /** @description The birth: the local clock time at the birth place, its coordinates and, optionally, its zone (`timezone` or `utc_offset`, not both). */
                     birth: {
-                        /** @description The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. Year 1800 to 2400. */
+                        /** @description The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. From 1550-04-01 to 2400-12-31. */
                         datetime: string;
                         /** @description Latitude in decimal degrees, north positive, from -89.9 to 89.9, e.g. `28.6139`. */
                         latitude: number;
@@ -9203,7 +9220,7 @@ export interface operations {
                 "application/json": {
                     /** @description The birth: the local clock time at the birth place, its coordinates and, optionally, its zone (`timezone` or `utc_offset`, not both). The report reads the Moon's nakshatra. Give this or `nakshatra`, not both. */
                     birth?: {
-                        /** @description The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. Year 1800 to 2400. */
+                        /** @description The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. From 1550-04-01 to 2400-12-31. */
                         datetime: string;
                         /** @description Latitude in decimal degrees, north positive, from -89.9 to 89.9, e.g. `28.6139`. */
                         latitude: number;
@@ -9307,7 +9324,7 @@ export interface operations {
                 "application/json": {
                     /** @description The birth: the local clock time at the birth place, its coordinates and, optionally, its zone (`timezone` or `utc_offset`, not both). */
                     birth: {
-                        /** @description The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. Year 1800 to 2400. */
+                        /** @description The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. From 1550-04-01 to 2400-12-31. */
                         datetime: string;
                         /** @description Latitude in decimal degrees, north positive, from -89.9 to 89.9, e.g. `28.6139`. */
                         latitude: number;
@@ -9352,7 +9369,7 @@ export interface operations {
                          */
                         language?: ("en" | "hi") | ("en" | "hi")[];
                     };
-                    /** @description The year, e.g. `2026`, required: the annual chart runs from that year's birthday to the next. Not before the birth year; at most 2400. */
+                    /** @description The year, e.g. `2026`, required: the annual chart runs from that year's birthday to the next. Not before the birth year; at most 2399. */
                     year: number;
                 };
             };
@@ -9407,7 +9424,7 @@ export interface operations {
                 "application/json": {
                     /** @description The birth: the local clock time at the birth place, its coordinates and, optionally, its zone (`timezone` or `utc_offset`, not both). */
                     birth: {
-                        /** @description The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. Year 1800 to 2400. */
+                        /** @description The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. From 1550-04-01 to 2400-12-31. */
                         datetime: string;
                         /** @description Latitude in decimal degrees, north positive, from -89.9 to 89.9, e.g. `28.6139`. */
                         latitude: number;
@@ -9505,7 +9522,7 @@ export interface operations {
                 "application/json": {
                     /** @description The birth: the local clock time at the birth place, its coordinates and, optionally, its zone (`timezone` or `utc_offset`, not both). */
                     birth: {
-                        /** @description The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. Year 1800 to 2400. */
+                        /** @description The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. From 1550-04-01 to 2400-12-31. */
                         datetime: string;
                         /** @description Latitude in decimal degrees, north positive, from -89.9 to 89.9, e.g. `28.6139`. */
                         latitude: number;
@@ -9698,7 +9715,7 @@ export interface operations {
                     to?: string;
                     /** @description A fixed offset for the `local` times and the `year` boundaries instead, `±HH:MM`, e.g. `+05:30`; from `-14:00` to `+14:00`. Give this or `timezone`, not both. */
                     utc_offset?: string;
-                    /** @description A calendar year, e.g. `2026`: from local midnight on 1 January to local midnight on the next, in the zone below. Year 1800 to 2400. Give this or `from` and `to`, not both. */
+                    /** @description A calendar year, e.g. `2026`: from local midnight on 1 January to local midnight on the next, in the zone below. Year 1551 to 2399. Give this or `from` and `to`, not both. */
                     year?: number;
                 };
             };
@@ -9848,7 +9865,7 @@ export interface operations {
                 "application/json": {
                     /** @description The birth: the local clock time at the birth place, its coordinates and, optionally, its zone (`timezone` or `utc_offset`, not both). */
                     birth: {
-                        /** @description The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. Year 1800 to 2400. */
+                        /** @description The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. From 1550-04-01 to 2400-12-31. */
                         datetime: string;
                         /** @description Latitude in decimal degrees, north positive, from -89.9 to 89.9, e.g. `28.6139`. */
                         latitude: number;
@@ -9951,7 +9968,7 @@ export interface operations {
                 "application/json": {
                     /** @description The birth: the local clock time at the birth place, its coordinates and, optionally, its zone (`timezone` or `utc_offset`, not both). */
                     birth: {
-                        /** @description The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. Year 1800 to 2400. */
+                        /** @description The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. From 1550-04-01 to 2400-12-31. */
                         datetime: string;
                         /** @description Latitude in decimal degrees, north positive, from -89.9 to 89.9, e.g. `28.6139`. */
                         latitude: number;
@@ -9996,7 +10013,7 @@ export interface operations {
                          */
                         language?: ("en" | "hi") | ("en" | "hi")[];
                     };
-                    /** @description The year, e.g. `2026`, required: the annual chart runs from that year's birthday to the next. Not before the birth year; at most 2400. */
+                    /** @description The year, e.g. `2026`, required: the annual chart runs from that year's birthday to the next. Not before the birth year; at most 2399. */
                     year: number;
                 };
             };
@@ -10052,7 +10069,7 @@ export interface operations {
                 "application/json": {
                     /** @description The birth: the local clock time at the birth place, its coordinates and, optionally, its zone (`timezone` or `utc_offset`, not both). */
                     birth: {
-                        /** @description The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. Year 1800 to 2400. */
+                        /** @description The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. From 1550-04-01 to 2400-12-31. */
                         datetime: string;
                         /** @description Latitude in decimal degrees, north positive, from -89.9 to 89.9, e.g. `28.6139`. */
                         latitude: number;
@@ -10097,7 +10114,7 @@ export interface operations {
                          */
                         language?: ("en" | "hi") | ("en" | "hi")[];
                     };
-                    /** @description The year, e.g. `2026`, required: the annual chart runs from that year's birthday to the next. Not before the birth year; at most 2400. */
+                    /** @description The year, e.g. `2026`, required: the annual chart runs from that year's birthday to the next. Not before the birth year; at most 2399. */
                     year: number;
                 };
             };
@@ -10153,7 +10170,7 @@ export interface operations {
                 "application/json": {
                     /** @description The birth: the local clock time at the birth place, its coordinates and, optionally, its zone (`timezone` or `utc_offset`, not both). */
                     birth: {
-                        /** @description The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. Year 1800 to 2400. */
+                        /** @description The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. From 1550-04-01 to 2400-12-31. */
                         datetime: string;
                         /** @description Latitude in decimal degrees, north positive, from -89.9 to 89.9, e.g. `28.6139`. */
                         latitude: number;
@@ -10198,7 +10215,7 @@ export interface operations {
                          */
                         language?: ("en" | "hi") | ("en" | "hi")[];
                     };
-                    /** @description The year, e.g. `2026`, required: the annual chart runs from that year's birthday to the next. Not before the birth year; at most 2400. */
+                    /** @description The year, e.g. `2026`, required: the annual chart runs from that year's birthday to the next. Not before the birth year; at most 2399. */
                     year: number;
                 };
             };
@@ -10254,7 +10271,7 @@ export interface operations {
                 "application/json": {
                     /** @description The birth: the local clock time at the birth place, its coordinates and, optionally, its zone (`timezone` or `utc_offset`, not both). */
                     birth: {
-                        /** @description The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. Year 1800 to 2400. */
+                        /** @description The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. From 1550-04-01 to 2400-12-31. */
                         datetime: string;
                         /** @description Latitude in decimal degrees, north positive, from -89.9 to 89.9, e.g. `28.6139`. */
                         latitude: number;
@@ -10299,7 +10316,7 @@ export interface operations {
                          */
                         language?: ("en" | "hi") | ("en" | "hi")[];
                     };
-                    /** @description The year, e.g. `2026`, required: the annual chart runs from that year's birthday to the next. Not before the birth year; at most 2400. */
+                    /** @description The year, e.g. `2026`, required: the annual chart runs from that year's birthday to the next. Not before the birth year; at most 2399. */
                     year: number;
                 };
             };
@@ -10355,7 +10372,7 @@ export interface operations {
                 "application/json": {
                     /** @description The birth: the local clock time at the birth place, its coordinates and, optionally, its zone (`timezone` or `utc_offset`, not both). */
                     birth: {
-                        /** @description The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. Year 1800 to 2400. */
+                        /** @description The local clock time at the birth place, as a birth certificate gives it: not UTC and not your server's zone. `YYYY-MM-DDTHH:MM:SS`, optionally with `.sss`, with no offset or `Z`, e.g. `1990-05-14T10:30:00`. From 1550-04-01 to 2400-12-31. */
                         datetime: string;
                         /** @description Latitude in decimal degrees, north positive, from -89.9 to 89.9, e.g. `28.6139`. */
                         latitude: number;
@@ -10400,7 +10417,7 @@ export interface operations {
                          */
                         language?: ("en" | "hi") | ("en" | "hi")[];
                     };
-                    /** @description The year, e.g. `2026`, required: the annual chart runs from that year's birthday to the next. Not before the birth year; at most 2400. */
+                    /** @description The year, e.g. `2026`, required: the annual chart runs from that year's birthday to the next. Not before the birth year; at most 2399. */
                     year: number;
                 };
             };
