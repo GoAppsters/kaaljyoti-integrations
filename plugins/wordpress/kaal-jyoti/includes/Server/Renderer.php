@@ -19,14 +19,14 @@ use Kaaljyoti\Models\CalculationOptions;
 use Kaaljyoti\Models\DailyPanchangDocument;
 use Kaaljyoti\Models\Disclaimer;
 use Kaaljyoti\Models\HoroscopeRequest;
-use Kaaljyoti\Models\AreaSummary;
+use Kaaljyoti\Models\AreaSummary2;
 use Kaaljyoti\Models\HoroscopeDocument;
 use Kaaljyoti\Models\HoroscopeTransit;
 use Kaaljyoti\Models\KundliChartRequest;
 use Kaaljyoti\Models\LocalizedText;
 use Kaaljyoti\Models\Meta;
 use Kaaljyoti\Models\PanchangRequest;
-use Kaaljyoti\Models\ReadingSummary;
+use Kaaljyoti\Models\ReadingSummary2;
 use Kaaljyoti\Models\ReportLagnaRequest;
 use Kaaljyoti\Models\ReportNakshatraRequest;
 use Kaaljyoti\Models\TimeWindow;
@@ -1498,11 +1498,11 @@ final class Renderer {
 	/**
 	 * The overall line: its level, then its text.
 	 *
-	 * @param ReadingSummary $summary The summary.
-	 * @param string         $lang    `en` or `hi`.
+	 * @param ReadingSummary2 $summary The horoscope's summary (the PHP SDK's generated name since 0.1.2).
+	 * @param string          $lang    `en` or `hi`.
 	 * @return string The markup, or an empty string when there is no text.
 	 */
-	private static function summary_html( ReadingSummary $summary, string $lang ): string {
+	private static function summary_html( ReadingSummary2 $summary, string $lang ): string {
 		$text = self::text_in( $summary->text, $lang );
 		if ( '' === $text ) {
 			return '';
@@ -1514,11 +1514,11 @@ final class Renderer {
 	/**
 	 * One life area: its name and level, then its text.
 	 *
-	 * @param AreaSummary $area The area.
-	 * @param string      $lang `en` or `hi`.
+	 * @param AreaSummary2 $area The area (the PHP SDK's generated name since 0.1.2).
+	 * @param string       $lang `en` or `hi`.
 	 * @return string The markup, or an empty string when there is no text.
 	 */
-	private static function area_html( AreaSummary $area, string $lang ): string {
+	private static function area_html( AreaSummary2 $area, string $lang ): string {
 		$text = self::text_in( $area->text, $lang );
 		if ( '' === $text ) {
 			return '';
