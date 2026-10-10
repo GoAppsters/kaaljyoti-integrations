@@ -670,7 +670,7 @@ the stable machine half; `name` is in the first language you asked for, and
 
 ---
 
-Generated from OpenAPI document version **0.16.0**. `pnpm gen` regenerates
+Generated from OpenAPI document version **0.17.0**. `pnpm gen` regenerates
 `src/generated/openapi.d.ts` from `openapi/openapi.json`, and CI
 fails when the two disagree.
 

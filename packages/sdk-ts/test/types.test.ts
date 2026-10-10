@@ -128,7 +128,7 @@ describe('recorded answers still fit their types', () => {
     const nakshatra = nakshatraFixture.data as unknown as ReadingNakshatraDocument;
     const sign: LabelledId | undefined = lagna.lagna?.sign;
     expect(sign?.id).toBe('leo');
-    expect(lagna.lagna?.entry.text.hi).toMatch(/[ऀ-ॿ]/);
+    expect(lagna.lagna?.entry?.text.hi).toMatch(/[ऀ-ॿ]/);
     expect(nakshatra.nakshatra?.nakshatra.id).toBe('purva_phalguni');
     expect(nakshatra.disclaimer?.en).toContain('Acharya Amit Verma');
   });
@@ -137,9 +137,9 @@ describe('recorded answers still fit their types', () => {
     const data = houseLordsFixture.data as unknown as ReadingHouseLordsDocument;
     const lords: HouseLord[] = data.house_lords ?? [];
     expect(lords).toHaveLength(12);
-    expect(lords[6]?.sign.names?.['hi']).toBe('धनु');
-    expect(lords[6]?.in_house).toBe(10);
-    expect(lords[6]?.entry.text.hi).toMatch(/[ऀ-ॿ]/);
+    expect(lords[6]?.sign.names?.['hi']).toBe('मकर');
+    expect(lords[6]?.in_house).toBe(7);
+    expect(lords[6]?.entry?.text.hi).toMatch(/[ऀ-ॿ]/);
   });
 
   it('horoscope', () => {

@@ -332,12 +332,13 @@ describe('reports', () => {
     expect(data.lagna?.sign.id).toBe('leo');
     expect(data.lagna?.sign.names?.['hi']).toBe('सिंह');
     // Keyed by language, in the order asked for.
-    expect(Object.keys(data.lagna?.entry.text ?? {})).toEqual(['en', 'hi']);
-    expect(data.lagna?.entry.text.en).toContain('Leo rising');
+    expect(data.lagna?.entry).not.toBeNull();
+    expect(Object.keys(data.lagna?.entry?.text ?? {})).toEqual(['en', 'hi']);
+    expect(data.lagna?.entry?.text.en).toContain('Leo rising');
     expect(data.disclaimer?.en).toBe(
       'These predictions are indicative. For a reading of your own chart, consult an astrologer.',
     );
-    expect(meta?.engine).toBe('0.3.0');
+    expect(meta?.engine).toBe('0.17.0');
   });
 
   it('nakshatra names the astrologer given in options.disclaimer', async () => {
@@ -353,7 +354,7 @@ describe('reports', () => {
 
     expect(data.nakshatra?.nakshatra.id).toBe('purva_phalguni');
     expect(data.nakshatra?.nakshatra.name).toBe('Purva Phalguni');
-    expect(Object.keys(data.nakshatra?.entry.text ?? {})).toEqual(['en']);
+    expect(Object.keys(data.nakshatra?.entry?.text ?? {})).toEqual(['en']);
     expect(data.disclaimer?.en).toBe(
       'These predictions are indicative. For a reading of your own chart, consult Acharya Amit Verma (https://kaaljyoti.com).',
     );
@@ -380,15 +381,16 @@ describe('reports.houseLords', () => {
 
     const lords = data.house_lords ?? [];
     expect(lords.map((l) => l.house)).toEqual([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]);
-    // Gemini rising: Mercury rules the 1st and sits in the 9th.
+    // The recorded answer (for the 1990 New Delhi birth the other reports use) is
+    // Cancer rising: the Moon rules the 1st and sits in the 6th.
     const first = lords[0];
-    expect(first?.sign.id).toBe('gemini');
-    expect(first?.lord.id).toBe('mercury');
-    expect(first?.lord.names?.['hi']).toBe('बुध');
-    expect(first?.in_house).toBe(9);
-    for (const lord of lords) expect(Object.keys(lord.entry.text)).toEqual(['en', 'hi']);
+    expect(first?.sign.id).toBe('cancer');
+    expect(first?.lord.id).toBe('moon');
+    expect(first?.lord.names?.['hi']).toBe('चंद्र');
+    expect(first?.in_house).toBe(6);
+    for (const lord of lords) expect(Object.keys(lord.entry?.text ?? {})).toEqual(['en', 'hi']);
     expect(data.disclaimer?.hi).toContain('सांकेतिक');
-    expect(meta?.engine).toBe('0.5.0');
+    expect(meta?.engine).toBe('0.17.0');
   });
 
   it('keeps working when destructured off the namespace', async () => {
@@ -427,7 +429,7 @@ describe('the personal reports', () => {
     expect(grahas[0]?.house).toBe(10);
     expect(grahas[0]?.in_sign.text.en).toMatch(/^Your Sun is in Aries/);
     expect(grahas[0]?.in_house.text.hi).toMatch(/[ऀ-ॿ]/);
-    expect(meta?.engine).toBe('0.10.1');
+    expect(meta?.engine).toBe('0.17.0');
   });
 
   it('yogas: each by code and category, with the grahas in it', async () => {
@@ -441,7 +443,7 @@ describe('the personal reports', () => {
     expect(first?.participants.map((p) => p.id)).toEqual(['jupiter', 'moon']);
     expect(first?.name?.en).toBe('Gaja-Kesari Yoga');
     expect(first?.name?.hi).toBe('गजकेसरी योग');
-    expect(first?.entry.text.en).toContain('Gaja-Kesari');
+    expect(first?.entry?.text.en).toContain('Gaja-Kesari');
   });
 
   it('kundli: the parts asked for, each as its own route answers it', async () => {
@@ -480,7 +482,7 @@ describe('the personal reports', () => {
       'saturn',
     ]);
     const current = data.periods.filter((p) => p.current);
-    expect(current.map((p) => [p.lord.id, p.level])).toEqual([['mars', 'mixed']]);
+    expect(current.map((p) => [p.lord.id, p.level])).toEqual([['mars', 'favourable']]);
     expect(data.periods[0]?.antardashas.length).toBeGreaterThan(0);
     expect(Object.keys(data.periods[0]?.text ?? {})).toEqual(['en', 'hi']);
   });
@@ -511,8 +513,8 @@ describe('the personal reports', () => {
     const { data } = await kj.reports.lifeAreas(body);
 
     expect(stub.calls[0]!.url).toBe('https://api.kaaljyoti.com/v1/reports/life-areas');
-    expect(data.summary.strongest).toEqual(['foreign', 'marriage']);
-    expect(data.summary.needs_care).toEqual(['children', 'fortune']);
+    expect(data.summary.strongest).toEqual(['marriage', 'self']);
+    expect(data.summary.needs_care).toEqual(['fortune', 'education']);
     expect(data.areas).toHaveLength(11);
     expect(data.areas[0]?.area).toBe('self');
     expect(data.areas[0]?.level).toBe('favourable');

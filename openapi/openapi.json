@@ -2,7 +2,7 @@
   "openapi": "3.1.0",
   "info": {
     "title": "Kaal Jyoti API",
-    "version": "0.16.0",
+    "version": "0.17.0",
     "description": "Vedic astrology calculations — kundli, panchang, dashas, divisional charts and more — each priced in credits, every API on every plan. Planetary positions from NASA JPL’s DE440 ephemeris.",
     "termsOfService": "https://kaaljyoti.com/api/terms",
     "contact": {
@@ -15,6 +15,10 @@
     }
   },
   "servers": [
+    {
+      "url": "https://api-staging.kaaljyoti.com",
+      "description": "staging"
+    },
     {
       "url": "https://api.kaaljyoti.com",
       "description": "production"
@@ -607,7 +611,7 @@
                 "$ref": "#/components/schemas/LabelledId"
               }
             },
-            "required": ["applicable", "direct", "kendra_grahas", "start_sign"],
+            "required": ["direct", "kendra_grahas", "start_sign"],
             "type": "object"
           },
           "sthira_bala": {
@@ -6041,6 +6045,9 @@
                   "required": ["bearers", "by_muntha_fallback", "year_lord"],
                   "type": "object"
                 },
+                "muntha": {
+                  "$ref": "#/components/schemas/LabelledId"
+                },
                 "pravesh": {
                   "type": "string"
                 }
@@ -6052,6 +6059,7 @@
                 "lagna_sign",
                 "month",
                 "month_lord",
+                "muntha",
                 "pravesh"
               ],
               "type": "object"
@@ -7074,7 +7082,7 @@
                   }
                 },
                 "required": ["text"],
-                "type": "object"
+                "type": ["null", "object"]
               },
               "sign": {
                 "$ref": "#/components/schemas/LabelledId"
@@ -7126,7 +7134,7 @@
                   }
                 },
                 "required": ["text"],
-                "type": "object"
+                "type": ["null", "object"]
               },
               "nakshatra": {
                 "$ref": "#/components/schemas/LabelledId"
@@ -7179,7 +7187,7 @@
                     }
                   },
                   "required": ["text"],
-                  "type": "object"
+                  "type": ["null", "object"]
                 },
                 "house": {
                   "type": "integer"
@@ -7312,25 +7320,92 @@
                 "code": {
                   "type": "string"
                 },
+                "count": {
+                  "type": "integer"
+                },
                 "entry": {
-                  "additionalProperties": false,
-                  "properties": {
-                    "text": {
-                      "type": "object",
-                      "description": "One piece of text, keyed by language: one entry for each language in `options.language`, in that order (`{\"hi\": \"…\"}` or `{\"en\": \"…\", \"hi\": \"…\"}`).",
+                  "anyOf": [
+                    {
+                      "type": "null"
+                    },
+                    {
+                      "additionalProperties": false,
                       "properties": {
-                        "en": {
-                          "type": "string"
-                        },
-                        "hi": {
-                          "type": "string"
+                        "text": {
+                          "type": "object",
+                          "description": "One piece of text, keyed by language: one entry for each language in `options.language`, in that order (`{\"hi\": \"…\"}` or `{\"en\": \"…\", \"hi\": \"…\"}`).",
+                          "properties": {
+                            "en": {
+                              "type": "string"
+                            },
+                            "hi": {
+                              "type": "string"
+                            }
+                          },
+                          "additionalProperties": false
                         }
                       },
-                      "additionalProperties": false
+                      "required": ["text"],
+                      "type": ["null", "object"]
                     }
+                  ]
+                },
+                "formations": {
+                  "items": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "grade": {
+                        "type": "number"
+                      },
+                      "in_kendra_trikona": {
+                        "type": "boolean"
+                      },
+                      "lords": {
+                        "additionalProperties": {
+                          "items": {
+                            "type": "integer"
+                          },
+                          "type": "array"
+                        },
+                        "propertyNames": {
+                          "enum": [
+                            "jupiter",
+                            "ketu",
+                            "mars",
+                            "mercury",
+                            "moon",
+                            "rahu",
+                            "saturn",
+                            "sun",
+                            "venus"
+                          ]
+                        },
+                        "type": "object"
+                      },
+                      "participants": {
+                        "items": {
+                          "$ref": "#/components/schemas/LabelledId"
+                        },
+                        "type": "array"
+                      },
+                      "relation": {
+                        "type": ["null", "string"]
+                      },
+                      "repeated_in_d9": {
+                        "type": "boolean"
+                      }
+                    },
+                    "required": [
+                      "grade",
+                      "in_kendra_trikona",
+                      "lords",
+                      "participants",
+                      "relation",
+                      "repeated_in_d9"
+                    ],
+                    "type": "object"
                   },
-                  "required": ["text"],
-                  "type": "object"
+                  "type": "array"
                 },
                 "name": {
                   "type": "object",
@@ -7350,9 +7425,40 @@
                     "$ref": "#/components/schemas/LabelledId"
                   },
                   "type": "array"
+                },
+                "periods": {
+                  "items": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "current": {
+                        "type": "boolean"
+                      },
+                      "from": {
+                        "type": "string"
+                      },
+                      "lord": {
+                        "$ref": "#/components/schemas/LabelledId"
+                      },
+                      "to": {
+                        "type": "string"
+                      }
+                    },
+                    "required": ["current", "from", "lord", "to"],
+                    "type": "object"
+                  },
+                  "type": "array"
                 }
               },
-              "required": ["category", "code", "entry", "name", "participants"],
+              "required": [
+                "category",
+                "code",
+                "count",
+                "entry",
+                "formations",
+                "name",
+                "participants",
+                "periods"
+              ],
               "type": "object"
             },
             "type": "array"
@@ -7584,6 +7690,9 @@
                               "properties": {
                                 "kind": {
                                   "type": "string"
+                                },
+                                "planet": {
+                                  "$ref": "#/components/schemas/LabelledId"
                                 }
                               },
                               "required": ["kind"],
@@ -7657,7 +7766,7 @@
                               "type": "array"
                             },
                             "follows": {
-                              "type": ["null", "string"]
+                              "type": "string"
                             },
                             "house": {
                               "type": "integer"
@@ -7676,7 +7785,7 @@
                               "type": "array"
                             },
                             "follows": {
-                              "type": ["null", "string"]
+                              "type": "string"
                             },
                             "house": {
                               "type": "integer"
@@ -7836,17 +7945,14 @@
                         {
                           "additionalProperties": false,
                           "properties": {
-                            "kendra": {
-                              "type": "integer"
-                            },
                             "kind": {
                               "type": "string"
                             },
-                            "trikona": {
-                              "type": "integer"
+                            "with": {
+                              "type": "string"
                             }
                           },
-                          "required": ["kendra", "kind", "trikona"],
+                          "required": ["kind", "with"],
                           "type": "null"
                         },
                         {
@@ -7910,6 +8016,12 @@
                 },
                 "type": "object"
               },
+              "health_grahas": {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
               "switches": {
                 "additionalProperties": false,
                 "properties": {
@@ -7936,6 +8048,24 @@
                       },
                       "raja_yoga_min_relation": {
                         "type": "integer"
+                      },
+                      "rao_benefic_association": {
+                        "type": "boolean"
+                      },
+                      "rao_debilitated_dusthana": {
+                        "type": "boolean"
+                      },
+                      "rao_node_trikona_yk": {
+                        "type": "boolean"
+                      },
+                      "rao_vs_own_bhukti": {
+                        "type": "boolean"
+                      },
+                      "rao_yoga_bhukti": {
+                        "type": "boolean"
+                      },
+                      "rao_yoga_survives_maraka": {
+                        "type": "boolean"
                       },
                       "s19_related_papa_in_yk": {
                         "type": "string"
@@ -7976,6 +8106,12 @@
                       "mutual_dusthana_worsens",
                       "raja_yoga_dasha",
                       "raja_yoga_min_relation",
+                      "rao_benefic_association",
+                      "rao_debilitated_dusthana",
+                      "rao_node_trikona_yk",
+                      "rao_vs_own_bhukti",
+                      "rao_yoga_bhukti",
+                      "rao_yoga_survives_maraka",
                       "s19_related_papa_in_yk",
                       "s31_order",
                       "s32_unrelated",
@@ -8007,6 +8143,9 @@
                       "lagna_eighth": {
                         "type": "string"
                       },
+                      "lagna_kendra": {
+                        "type": "string"
+                      },
                       "luminaries_maraka": {
                         "type": "boolean"
                       },
@@ -8031,6 +8170,12 @@
                       "prime_maraka": {
                         "type": "string"
                       },
+                      "rao_luminary_maraka_low": {
+                        "type": "boolean"
+                      },
+                      "rao_maraka_list": {
+                        "type": "boolean"
+                      },
                       "second_twelfth": {
                         "type": ["null", "string"]
                       },
@@ -8050,6 +8195,7 @@
                       "kendradhipati_class",
                       "kt_relation",
                       "lagna_eighth",
+                      "lagna_kendra",
                       "luminaries_maraka",
                       "luminary_eighth",
                       "mercury_alone",
@@ -8058,6 +8204,8 @@
                       "node_same_kind_yk",
                       "node_with_eighth",
                       "prime_maraka",
+                      "rao_luminary_maraka_low",
+                      "rao_maraka_list",
                       "second_twelfth",
                       "trikona_eighth",
                       "trikona_sixth",
@@ -8070,7 +8218,7 @@
                 "type": "object"
               }
             },
-            "required": ["functional", "switches"],
+            "required": ["functional", "health_grahas", "switches"],
             "type": "object"
           },
           "periods": {
@@ -8081,6 +8229,58 @@
                   "items": {
                     "additionalProperties": false,
                     "properties": {
+                      "areas": {
+                        "items": {
+                          "additionalProperties": false,
+                          "properties": {
+                            "area": {
+                              "type": "string"
+                            },
+                            "grade": {
+                              "type": "integer"
+                            },
+                            "reasons": {
+                              "items": {
+                                "additionalProperties": false,
+                                "properties": {
+                                  "code": {
+                                    "type": "string"
+                                  },
+                                  "source": {
+                                    "type": "string"
+                                  }
+                                },
+                                "required": ["code", "source"],
+                                "type": "object"
+                              },
+                              "type": "array"
+                            }
+                          },
+                          "required": ["area", "grade", "reasons"],
+                          "type": "object"
+                        },
+                        "type": "array"
+                      },
+                      "care": {
+                        "anyOf": [
+                          {
+                            "type": "null"
+                          },
+                          {
+                            "additionalProperties": false,
+                            "properties": {
+                              "code": {
+                                "type": "string"
+                              },
+                              "source": {
+                                "type": "string"
+                              }
+                            },
+                            "required": ["code", "source"],
+                            "type": ["null", "object"]
+                          }
+                        ]
+                      },
                       "from": {
                         "type": "string"
                       },
@@ -8113,7 +8313,16 @@
                         "type": "string"
                       }
                     },
-                    "required": ["from", "grade", "lord", "phase", "reasons", "to"],
+                    "required": [
+                      "areas",
+                      "care",
+                      "from",
+                      "grade",
+                      "lord",
+                      "phase",
+                      "reasons",
+                      "to"
+                    ],
                     "type": "object"
                   },
                   "type": "array"
@@ -8146,18 +8355,31 @@
                 "lord": {
                   "$ref": "#/components/schemas/LabelledId"
                 },
+                "stage": {
+                  "type": "string"
+                },
+                "tara": {
+                  "type": ["null", "string"]
+                },
                 "text": {
-                  "type": "object",
-                  "description": "One piece of text, keyed by language: one entry for each language in `options.language`, in that order (`{\"hi\": \"…\"}` or `{\"en\": \"…\", \"hi\": \"…\"}`).",
-                  "properties": {
-                    "en": {
-                      "type": "string"
+                  "anyOf": [
+                    {
+                      "type": "null"
                     },
-                    "hi": {
-                      "type": "string"
+                    {
+                      "type": "object",
+                      "description": "One piece of text, keyed by language: one entry for each language in `options.language`, in that order (`{\"hi\": \"…\"}` or `{\"en\": \"…\", \"hi\": \"…\"}`).",
+                      "properties": {
+                        "en": {
+                          "type": "string"
+                        },
+                        "hi": {
+                          "type": "string"
+                        }
+                      },
+                      "additionalProperties": false
                     }
-                  },
-                  "additionalProperties": false
+                  ]
                 },
                 "to": {
                   "type": "string"
@@ -8170,6 +8392,8 @@
                 "from",
                 "level",
                 "lord",
+                "stage",
+                "tara",
                 "text",
                 "to"
               ],
@@ -8447,6 +8671,51 @@
                     "support": {
                       "type": ["null", "string"]
                     },
+                    "varga": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "checks": {
+                          "items": {
+                            "additionalProperties": false,
+                            "properties": {
+                              "graha": {
+                                "anyOf": [
+                                  {
+                                    "$ref": "#/components/schemas/LabelledId"
+                                  },
+                                  {
+                                    "type": "null"
+                                  }
+                                ]
+                              },
+                              "reason": {
+                                "type": "string"
+                              },
+                              "role": {
+                                "type": "string"
+                              },
+                              "sign": {
+                                "$ref": "#/components/schemas/LabelledId"
+                              },
+                              "status": {
+                                "type": "string"
+                              },
+                              "varga": {
+                                "type": "string"
+                              }
+                            },
+                            "required": ["graha", "reason", "role", "sign", "status", "varga"],
+                            "type": "object"
+                          },
+                          "type": "array"
+                        },
+                        "signal": {
+                          "type": "string"
+                        }
+                      },
+                      "required": ["checks", "signal"],
+                      "type": "object"
+                    },
                     "yogas": {
                       "items": {
                         "type": "string"
@@ -8468,6 +8737,7 @@
                     "relative",
                     "score",
                     "support",
+                    "varga",
                     "yogas"
                   ],
                   "type": "object"
@@ -8498,17 +8768,24 @@
                   "type": "array"
                 },
                 "text": {
-                  "type": "object",
-                  "description": "One piece of text, keyed by language: one entry for each language in `options.language`, in that order (`{\"hi\": \"…\"}` or `{\"en\": \"…\", \"hi\": \"…\"}`).",
-                  "properties": {
-                    "en": {
-                      "type": "string"
+                  "anyOf": [
+                    {
+                      "type": "null"
                     },
-                    "hi": {
-                      "type": "string"
+                    {
+                      "type": "object",
+                      "description": "One piece of text, keyed by language: one entry for each language in `options.language`, in that order (`{\"hi\": \"…\"}` or `{\"en\": \"…\", \"hi\": \"…\"}`).",
+                      "properties": {
+                        "en": {
+                          "type": "string"
+                        },
+                        "hi": {
+                          "type": "string"
+                        }
+                      },
+                      "additionalProperties": false
                     }
-                  },
-                  "additionalProperties": false
+                  ]
                 }
               },
               "required": ["area", "basis", "level", "periods", "text"],
@@ -8569,6 +8846,9 @@
                   "lagna_eighth": {
                     "type": "string"
                   },
+                  "lagna_kendra": {
+                    "type": "string"
+                  },
                   "luminaries_maraka": {
                     "type": "boolean"
                   },
@@ -8593,6 +8873,12 @@
                   "prime_maraka": {
                     "type": "string"
                   },
+                  "rao_luminary_maraka_low": {
+                    "type": "boolean"
+                  },
+                  "rao_maraka_list": {
+                    "type": "boolean"
+                  },
                   "second_twelfth": {
                     "type": "string"
                   },
@@ -8612,6 +8898,7 @@
                   "kendradhipati_class",
                   "kt_relation",
                   "lagna_eighth",
+                  "lagna_kendra",
                   "luminaries_maraka",
                   "luminary_eighth",
                   "mercury_alone",
@@ -8620,6 +8907,8 @@
                   "node_same_kind_yk",
                   "node_with_eighth",
                   "prime_maraka",
+                  "rao_luminary_maraka_low",
+                  "rao_maraka_list",
                   "second_twelfth",
                   "trikona_eighth",
                   "trikona_sixth",
@@ -8711,6 +9000,22 @@
                 "level": {
                   "type": "string"
                 },
+                "rules": {
+                  "items": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "good": {
+                        "type": ["boolean", "null"]
+                      },
+                      "id": {
+                        "type": "string"
+                      }
+                    },
+                    "required": ["good", "id"],
+                    "type": "object"
+                  },
+                  "type": "array"
+                },
                 "text": {
                   "type": "object",
                   "description": "One piece of text, keyed by language: one entry for each language in `options.language`, in that order (`{\"hi\": \"…\"}` or `{\"en\": \"…\", \"hi\": \"…\"}`).",
@@ -8725,7 +9030,7 @@
                   "additionalProperties": false
                 }
               },
-              "required": ["area", "level", "text"],
+              "required": ["area", "level", "rules", "text"],
               "type": "object"
             },
             "type": "array"
@@ -9719,6 +10024,9 @@
                       "lagna_eighth": {
                         "type": "string"
                       },
+                      "lagna_kendra": {
+                        "type": "string"
+                      },
                       "luminaries_maraka": {
                         "type": "boolean"
                       },
@@ -9743,6 +10051,12 @@
                       "prime_maraka": {
                         "type": "string"
                       },
+                      "rao_luminary_maraka_low": {
+                        "type": "boolean"
+                      },
+                      "rao_maraka_list": {
+                        "type": "boolean"
+                      },
                       "second_twelfth": {
                         "type": "string"
                       },
@@ -9762,6 +10076,7 @@
                       "kendradhipati_class",
                       "kt_relation",
                       "lagna_eighth",
+                      "lagna_kendra",
                       "luminaries_maraka",
                       "luminary_eighth",
                       "mercury_alone",
@@ -9770,6 +10085,8 @@
                       "node_same_kind_yk",
                       "node_with_eighth",
                       "prime_maraka",
+                      "rao_luminary_maraka_low",
+                      "rao_maraka_list",
                       "second_twelfth",
                       "trikona_eighth",
                       "trikona_sixth",
@@ -9913,6 +10230,150 @@
           "from": {
             "type": "string"
           },
+          "monthly": {
+            "items": {
+              "additionalProperties": false,
+              "properties": {
+                "areas": {
+                  "items": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "area": {
+                        "type": "string"
+                      },
+                      "good": {
+                        "type": ["boolean", "null"]
+                      }
+                    },
+                    "required": ["area", "good"],
+                    "type": "object"
+                  },
+                  "type": "array"
+                },
+                "best": {
+                  "anyOf": [
+                    {
+                      "type": "null"
+                    },
+                    {
+                      "additionalProperties": false,
+                      "properties": {
+                        "from": {
+                          "type": "string"
+                        },
+                        "to": {
+                          "type": "string"
+                        }
+                      },
+                      "required": ["from", "to"],
+                      "type": ["null", "object"]
+                    }
+                  ]
+                },
+                "care": {
+                  "type": "boolean"
+                },
+                "from": {
+                  "type": "string"
+                },
+                "hard": {
+                  "anyOf": [
+                    {
+                      "type": "null"
+                    },
+                    {
+                      "additionalProperties": false,
+                      "properties": {
+                        "from": {
+                          "type": "string"
+                        },
+                        "to": {
+                          "type": "string"
+                        }
+                      },
+                      "required": ["from", "to"],
+                      "type": ["null", "object"]
+                    }
+                  ]
+                },
+                "level": {
+                  "type": "string"
+                },
+                "lord": {
+                  "$ref": "#/components/schemas/LabelledId"
+                },
+                "lord_strength": {
+                  "type": "string"
+                },
+                "month": {
+                  "type": "integer"
+                },
+                "muntha": {
+                  "$ref": "#/components/schemas/LabelledId"
+                },
+                "reasons": {
+                  "items": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "code": {
+                        "type": "string"
+                      },
+                      "source": {
+                        "type": "string"
+                      }
+                    },
+                    "required": ["code", "source"],
+                    "type": "object"
+                  },
+                  "type": "array"
+                },
+                "rise": {
+                  "type": "boolean"
+                },
+                "text": {
+                  "anyOf": [
+                    {
+                      "type": "null"
+                    },
+                    {
+                      "type": "object",
+                      "description": "One piece of text, keyed by language: one entry for each language in `options.language`, in that order (`{\"hi\": \"…\"}` or `{\"en\": \"…\", \"hi\": \"…\"}`).",
+                      "properties": {
+                        "en": {
+                          "type": "string"
+                        },
+                        "hi": {
+                          "type": "string"
+                        }
+                      },
+                      "additionalProperties": false
+                    }
+                  ]
+                },
+                "to": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "areas",
+                "best",
+                "care",
+                "from",
+                "hard",
+                "level",
+                "lord",
+                "lord_strength",
+                "month",
+                "muntha",
+                "reasons",
+                "rise",
+                "text",
+                "to"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          },
           "months": {
             "items": {
               "additionalProperties": false,
@@ -9935,11 +10396,321 @@
             },
             "type": "array"
           },
+          "natal_promise": {
+            "items": {
+              "additionalProperties": false,
+              "properties": {
+                "active": {
+                  "type": "boolean"
+                },
+                "house": {
+                  "type": "integer"
+                },
+                "lord": {
+                  "$ref": "#/components/schemas/LabelledId"
+                },
+                "reasons": {
+                  "items": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "code": {
+                        "type": "string"
+                      },
+                      "source": {
+                        "type": "string"
+                      }
+                    },
+                    "required": ["code", "source"],
+                    "type": "object"
+                  },
+                  "type": "array"
+                },
+                "text": {
+                  "anyOf": [
+                    {
+                      "type": "null"
+                    },
+                    {
+                      "type": "object",
+                      "description": "One piece of text, keyed by language: one entry for each language in `options.language`, in that order (`{\"hi\": \"…\"}` or `{\"en\": \"…\", \"hi\": \"…\"}`).",
+                      "properties": {
+                        "en": {
+                          "type": "string"
+                        },
+                        "hi": {
+                          "type": "string"
+                        }
+                      },
+                      "additionalProperties": false
+                    }
+                  ]
+                },
+                "with": {
+                  "type": "string"
+                }
+              },
+              "required": ["active", "house", "lord", "reasons", "text", "with"],
+              "type": "object"
+            },
+            "type": "array"
+          },
+          "periods": {
+            "items": {
+              "additionalProperties": false,
+              "properties": {
+                "from": {
+                  "type": "string"
+                },
+                "level": {
+                  "type": "string"
+                },
+                "lord": {
+                  "anyOf": [
+                    {
+                      "$ref": "#/components/schemas/LabelledId"
+                    },
+                    {
+                      "type": "string"
+                    }
+                  ]
+                },
+                "reasons": {
+                  "items": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "code": {
+                        "type": "string"
+                      },
+                      "source": {
+                        "type": "string"
+                      }
+                    },
+                    "required": ["code", "source"],
+                    "type": "object"
+                  },
+                  "type": "array"
+                },
+                "step": {
+                  "type": "integer"
+                },
+                "subs": {
+                  "items": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "from": {
+                        "type": "string"
+                      },
+                      "good": {
+                        "type": ["boolean", "null"]
+                      },
+                      "lord": {
+                        "anyOf": [
+                          {
+                            "$ref": "#/components/schemas/LabelledId"
+                          },
+                          {
+                            "type": "string"
+                          }
+                        ]
+                      },
+                      "to": {
+                        "type": "string"
+                      }
+                    },
+                    "required": ["from", "good", "lord", "to"],
+                    "type": "object"
+                  },
+                  "type": "array"
+                },
+                "to": {
+                  "type": "string"
+                }
+              },
+              "required": ["from", "level", "lord", "reasons", "step", "subs", "to"],
+              "type": "object"
+            },
+            "type": "array"
+          },
+          "sahams": {
+            "items": {
+              "additionalProperties": false,
+              "properties": {
+                "day": {
+                  "type": ["null", "string"]
+                },
+                "half": {
+                  "type": ["null", "string"]
+                },
+                "key": {
+                  "type": "string"
+                },
+                "lord": {
+                  "$ref": "#/components/schemas/LabelledId"
+                },
+                "name": {
+                  "anyOf": [
+                    {
+                      "type": "null"
+                    },
+                    {
+                      "type": "object",
+                      "description": "One piece of text, keyed by language: one entry for each language in `options.language`, in that order (`{\"hi\": \"…\"}` or `{\"en\": \"…\", \"hi\": \"…\"}`).",
+                      "properties": {
+                        "en": {
+                          "type": "string"
+                        },
+                        "hi": {
+                          "type": "string"
+                        }
+                      },
+                      "additionalProperties": false
+                    }
+                  ]
+                },
+                "period": {
+                  "anyOf": [
+                    {
+                      "type": "null"
+                    },
+                    {
+                      "additionalProperties": false,
+                      "properties": {
+                        "from": {
+                          "$ref": "#/components/schemas/LabelledId"
+                        },
+                        "to": {
+                          "$ref": "#/components/schemas/LabelledId"
+                        }
+                      },
+                      "required": ["from", "to"],
+                      "type": ["null", "object"]
+                    }
+                  ]
+                },
+                "reasons": {
+                  "items": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "code": {
+                        "type": "string"
+                      },
+                      "source": {
+                        "type": "string"
+                      }
+                    },
+                    "required": ["code", "source"],
+                    "type": "object"
+                  },
+                  "type": "array"
+                },
+                "sign": {
+                  "$ref": "#/components/schemas/LabelledId"
+                },
+                "text": {
+                  "anyOf": [
+                    {
+                      "type": "null"
+                    },
+                    {
+                      "type": "object",
+                      "description": "One piece of text, keyed by language: one entry for each language in `options.language`, in that order (`{\"hi\": \"…\"}` or `{\"en\": \"…\", \"hi\": \"…\"}`).",
+                      "properties": {
+                        "en": {
+                          "type": "string"
+                        },
+                        "hi": {
+                          "type": "string"
+                        }
+                      },
+                      "additionalProperties": false
+                    }
+                  ]
+                },
+                "verdict": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "day",
+                "half",
+                "key",
+                "lord",
+                "name",
+                "period",
+                "reasons",
+                "sign",
+                "text",
+                "verdict"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          },
           "summary": {
             "additionalProperties": false,
             "properties": {
+              "best": {
+                "anyOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "additionalProperties": false,
+                    "properties": {
+                      "from": {
+                        "type": "string"
+                      },
+                      "to": {
+                        "type": "string"
+                      }
+                    },
+                    "required": ["from", "to"],
+                    "type": ["null", "object"]
+                  }
+                ]
+              },
+              "hard": {
+                "anyOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "additionalProperties": false,
+                    "properties": {
+                      "from": {
+                        "type": "string"
+                      },
+                      "to": {
+                        "type": "string"
+                      }
+                    },
+                    "required": ["from", "to"],
+                    "type": ["null", "object"]
+                  }
+                ]
+              },
               "level": {
                 "type": "string"
+              },
+              "note": {
+                "anyOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "type": "object",
+                    "description": "One piece of text, keyed by language: one entry for each language in `options.language`, in that order (`{\"hi\": \"…\"}` or `{\"en\": \"…\", \"hi\": \"…\"}`).",
+                    "properties": {
+                      "en": {
+                        "type": "string"
+                      },
+                      "hi": {
+                        "type": "string"
+                      }
+                    },
+                    "additionalProperties": false
+                  }
+                ]
               },
               "text": {
                 "type": "object",
@@ -9955,7 +10726,7 @@
                 "additionalProperties": false
               }
             },
-            "required": ["level", "text"],
+            "required": ["best", "hard", "level", "note", "text"],
             "type": "object"
           },
           "to": {
@@ -9981,7 +10752,20 @@
             "additionalProperties": false
           }
         },
-        "required": ["areas", "basis", "from", "months", "summary", "to", "varsha_year", "year"],
+        "required": [
+          "areas",
+          "basis",
+          "from",
+          "monthly",
+          "months",
+          "natal_promise",
+          "periods",
+          "sahams",
+          "summary",
+          "to",
+          "varsha_year",
+          "year"
+        ],
         "title": "varshphal_reading response",
         "type": "object"
       },
@@ -10077,7 +10861,7 @@
                     }
                   },
                   "required": ["text"],
-                  "type": "object"
+                  "type": ["null", "object"]
                 },
                 "house": {
                   "type": ["integer", "null"]
@@ -10093,6 +10877,119 @@
                 }
               },
               "required": ["entry", "house", "in_house", "lord", "sign"],
+              "type": "object"
+            },
+            "type": "array"
+          },
+          "in_depth": {
+            "items": {
+              "additionalProperties": false,
+              "properties": {
+                "areas": {
+                  "items": {
+                    "type": "string"
+                  },
+                  "type": "array"
+                },
+                "grahas": {
+                  "items": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "entry": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "text": {
+                            "type": "object",
+                            "description": "One piece of text, keyed by language: one entry for each language in `options.language`, in that order (`{\"hi\": \"…\"}` or `{\"en\": \"…\", \"hi\": \"…\"}`).",
+                            "properties": {
+                              "en": {
+                                "type": "string"
+                              },
+                              "hi": {
+                                "type": "string"
+                              }
+                            },
+                            "additionalProperties": false
+                          }
+                        },
+                        "required": ["text"],
+                        "type": ["null", "object"]
+                      },
+                      "graha": {
+                        "anyOf": [
+                          {
+                            "$ref": "#/components/schemas/LabelledId"
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "house": {
+                        "type": ["integer", "null"]
+                      },
+                      "sign": {
+                        "$ref": "#/components/schemas/LabelledId"
+                      }
+                    },
+                    "required": ["entry", "graha", "house", "sign"],
+                    "type": "object"
+                  },
+                  "type": "array"
+                },
+                "houses": {
+                  "items": {
+                    "type": "integer"
+                  },
+                  "type": "array"
+                },
+                "lords": {
+                  "items": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "entry": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "text": {
+                            "type": "object",
+                            "description": "One piece of text, keyed by language: one entry for each language in `options.language`, in that order (`{\"hi\": \"…\"}` or `{\"en\": \"…\", \"hi\": \"…\"}`).",
+                            "properties": {
+                              "en": {
+                                "type": "string"
+                              },
+                              "hi": {
+                                "type": "string"
+                              }
+                            },
+                            "additionalProperties": false
+                          }
+                        },
+                        "required": ["text"],
+                        "type": ["null", "object"]
+                      },
+                      "house": {
+                        "type": ["integer", "null"]
+                      },
+                      "in_house": {
+                        "type": "integer"
+                      },
+                      "lord": {
+                        "$ref": "#/components/schemas/LabelledId"
+                      },
+                      "sign": {
+                        "$ref": "#/components/schemas/LabelledId"
+                      }
+                    },
+                    "required": ["entry", "house", "in_house", "lord", "sign"],
+                    "type": "object"
+                  },
+                  "type": "array"
+                },
+                "topic": {
+                  "type": "string"
+                }
+              },
+              "required": ["areas", "grahas", "houses", "lords", "topic"],
               "type": "object"
             },
             "type": "array"
@@ -10118,7 +11015,7 @@
                   }
                 },
                 "required": ["text"],
-                "type": "object"
+                "type": ["null", "object"]
               },
               "sign": {
                 "$ref": "#/components/schemas/LabelledId"
@@ -10378,6 +11275,51 @@
                         "support": {
                           "type": ["null", "string"]
                         },
+                        "varga": {
+                          "additionalProperties": false,
+                          "properties": {
+                            "checks": {
+                              "items": {
+                                "additionalProperties": false,
+                                "properties": {
+                                  "graha": {
+                                    "anyOf": [
+                                      {
+                                        "$ref": "#/components/schemas/LabelledId"
+                                      },
+                                      {
+                                        "type": "null"
+                                      }
+                                    ]
+                                  },
+                                  "reason": {
+                                    "type": "string"
+                                  },
+                                  "role": {
+                                    "type": "string"
+                                  },
+                                  "sign": {
+                                    "$ref": "#/components/schemas/LabelledId"
+                                  },
+                                  "status": {
+                                    "type": "string"
+                                  },
+                                  "varga": {
+                                    "type": "string"
+                                  }
+                                },
+                                "required": ["graha", "reason", "role", "sign", "status", "varga"],
+                                "type": "object"
+                              },
+                              "type": "array"
+                            },
+                            "signal": {
+                              "type": "string"
+                            }
+                          },
+                          "required": ["checks", "signal"],
+                          "type": "object"
+                        },
                         "yogas": {
                           "items": {
                             "type": "string"
@@ -10399,6 +11341,7 @@
                         "relative",
                         "score",
                         "support",
+                        "varga",
                         "yogas"
                       ],
                       "type": "object"
@@ -10429,17 +11372,24 @@
                       "type": "array"
                     },
                     "text": {
-                      "type": "object",
-                      "description": "One piece of text, keyed by language: one entry for each language in `options.language`, in that order (`{\"hi\": \"…\"}` or `{\"en\": \"…\", \"hi\": \"…\"}`).",
-                      "properties": {
-                        "en": {
-                          "type": "string"
+                      "anyOf": [
+                        {
+                          "type": "null"
                         },
-                        "hi": {
-                          "type": "string"
+                        {
+                          "type": "object",
+                          "description": "One piece of text, keyed by language: one entry for each language in `options.language`, in that order (`{\"hi\": \"…\"}` or `{\"en\": \"…\", \"hi\": \"…\"}`).",
+                          "properties": {
+                            "en": {
+                              "type": "string"
+                            },
+                            "hi": {
+                              "type": "string"
+                            }
+                          },
+                          "additionalProperties": false
                         }
-                      },
-                      "additionalProperties": false
+                      ]
                     }
                   },
                   "required": ["area", "basis", "level", "periods", "text"],
@@ -10500,6 +11450,9 @@
                       "lagna_eighth": {
                         "type": "string"
                       },
+                      "lagna_kendra": {
+                        "type": "string"
+                      },
                       "luminaries_maraka": {
                         "type": "boolean"
                       },
@@ -10524,6 +11477,12 @@
                       "prime_maraka": {
                         "type": "string"
                       },
+                      "rao_luminary_maraka_low": {
+                        "type": "boolean"
+                      },
+                      "rao_maraka_list": {
+                        "type": "boolean"
+                      },
                       "second_twelfth": {
                         "type": ["null", "string"]
                       },
@@ -10543,6 +11502,7 @@
                       "kendradhipati_class",
                       "kt_relation",
                       "lagna_eighth",
+                      "lagna_kendra",
                       "luminaries_maraka",
                       "luminary_eighth",
                       "mercury_alone",
@@ -10551,6 +11511,8 @@
                       "node_same_kind_yk",
                       "node_with_eighth",
                       "prime_maraka",
+                      "rao_luminary_maraka_low",
+                      "rao_maraka_list",
                       "second_twelfth",
                       "trikona_eighth",
                       "trikona_sixth",
@@ -10635,13 +11597,313 @@
                   }
                 },
                 "required": ["text"],
-                "type": "object"
+                "type": ["null", "object"]
               },
               "nakshatra": {
                 "$ref": "#/components/schemas/LabelledId"
               }
             },
             "required": ["entry", "nakshatra"],
+            "type": "object"
+          },
+          "nature": {
+            "items": {
+              "additionalProperties": false,
+              "properties": {
+                "entry": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "text": {
+                      "type": "object",
+                      "description": "One piece of text, keyed by language: one entry for each language in `options.language`, in that order (`{\"hi\": \"…\"}` or `{\"en\": \"…\", \"hi\": \"…\"}`).",
+                      "properties": {
+                        "en": {
+                          "type": "string"
+                        },
+                        "hi": {
+                          "type": "string"
+                        }
+                      },
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": ["text"],
+                  "type": ["null", "object"]
+                },
+                "graha": {
+                  "anyOf": [
+                    {
+                      "$ref": "#/components/schemas/LabelledId"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "house": {
+                  "type": ["integer", "null"]
+                },
+                "sign": {
+                  "$ref": "#/components/schemas/LabelledId"
+                }
+              },
+              "required": ["entry", "graha", "house", "sign"],
+              "type": "object"
+            },
+            "type": "array"
+          },
+          "now_next": {
+            "additionalProperties": false,
+            "properties": {
+              "dasha": {
+                "items": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "antardasha": {
+                      "type": "string"
+                    },
+                    "current": {
+                      "type": "boolean"
+                    },
+                    "from": {
+                      "type": "string"
+                    },
+                    "grade": {
+                      "type": "number"
+                    },
+                    "health_note": {
+                      "type": "boolean"
+                    },
+                    "level": {
+                      "type": "string"
+                    },
+                    "mahadasha": {
+                      "type": "string"
+                    },
+                    "reasons": {
+                      "items": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "code": {
+                            "type": "string"
+                          },
+                          "source": {
+                            "type": "string"
+                          }
+                        },
+                        "required": ["code", "source"],
+                        "type": "object"
+                      },
+                      "type": "array"
+                    },
+                    "stage": {
+                      "type": "string"
+                    },
+                    "text": {
+                      "anyOf": [
+                        {
+                          "type": "null"
+                        },
+                        {
+                          "type": "object",
+                          "description": "One piece of text, keyed by language: one entry for each language in `options.language`, in that order (`{\"hi\": \"…\"}` or `{\"en\": \"…\", \"hi\": \"…\"}`).",
+                          "properties": {
+                            "en": {
+                              "type": "string"
+                            },
+                            "hi": {
+                              "type": "string"
+                            }
+                          },
+                          "additionalProperties": false
+                        }
+                      ]
+                    },
+                    "to": {
+                      "type": "string"
+                    },
+                    "yogas": {
+                      "items": {
+                        "type": "string"
+                      },
+                      "type": "array"
+                    }
+                  },
+                  "required": [
+                    "antardasha",
+                    "current",
+                    "from",
+                    "grade",
+                    "health_note",
+                    "level",
+                    "mahadasha",
+                    "reasons",
+                    "stage",
+                    "text",
+                    "to",
+                    "yogas"
+                  ],
+                  "type": "object"
+                },
+                "type": "array"
+              },
+              "from": {
+                "type": "string"
+              },
+              "moon_sign": {
+                "$ref": "#/components/schemas/LabelledId"
+              },
+              "stage": {
+                "type": "string"
+              },
+              "to": {
+                "type": "string"
+              },
+              "transits": {
+                "items": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "areas": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "general": {
+                          "type": "object",
+                          "description": "One piece of text, keyed by language: one entry for each language in `options.language`, in that order (`{\"hi\": \"…\"}` or `{\"en\": \"…\", \"hi\": \"…\"}`).",
+                          "properties": {
+                            "en": {
+                              "type": "string"
+                            },
+                            "hi": {
+                              "type": "string"
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        "health": {
+                          "type": "object",
+                          "description": "One piece of text, keyed by language: one entry for each language in `options.language`, in that order (`{\"hi\": \"…\"}` or `{\"en\": \"…\", \"hi\": \"…\"}`).",
+                          "properties": {
+                            "en": {
+                              "type": "string"
+                            },
+                            "hi": {
+                              "type": "string"
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        "money": {
+                          "type": "object",
+                          "description": "One piece of text, keyed by language: one entry for each language in `options.language`, in that order (`{\"hi\": \"…\"}` or `{\"en\": \"…\", \"hi\": \"…\"}`).",
+                          "properties": {
+                            "en": {
+                              "type": "string"
+                            },
+                            "hi": {
+                              "type": "string"
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        "relationships": {
+                          "type": "object",
+                          "description": "One piece of text, keyed by language: one entry for each language in `options.language`, in that order (`{\"hi\": \"…\"}` or `{\"en\": \"…\", \"hi\": \"…\"}`).",
+                          "properties": {
+                            "en": {
+                              "type": "string"
+                            },
+                            "hi": {
+                              "type": "string"
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        "work": {
+                          "type": "object",
+                          "description": "One piece of text, keyed by language: one entry for each language in `options.language`, in that order (`{\"hi\": \"…\"}` or `{\"en\": \"…\", \"hi\": \"…\"}`).",
+                          "properties": {
+                            "en": {
+                              "type": "string"
+                            },
+                            "hi": {
+                              "type": "string"
+                            }
+                          },
+                          "additionalProperties": false
+                        }
+                      },
+                      "required": ["general", "health", "money", "relationships", "work"],
+                      "type": "object"
+                    },
+                    "from": {
+                      "$ref": "#/components/schemas/LabelledId"
+                    },
+                    "graha": {
+                      "anyOf": [
+                        {
+                          "$ref": "#/components/schemas/LabelledId"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    },
+                    "house": {
+                      "type": ["integer", "null"]
+                    },
+                    "sign": {
+                      "$ref": "#/components/schemas/LabelledId"
+                    },
+                    "stays": {
+                      "items": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "from": {
+                            "$ref": "#/components/schemas/LabelledId"
+                          },
+                          "retrograde": {
+                            "type": "boolean"
+                          },
+                          "to": {
+                            "$ref": "#/components/schemas/LabelledId"
+                          }
+                        },
+                        "required": ["from", "retrograde", "to"],
+                        "type": "object"
+                      },
+                      "type": "array"
+                    },
+                    "text": {
+                      "anyOf": [
+                        {
+                          "type": "null"
+                        },
+                        {
+                          "type": "object",
+                          "description": "One piece of text, keyed by language: one entry for each language in `options.language`, in that order (`{\"hi\": \"…\"}` or `{\"en\": \"…\", \"hi\": \"…\"}`).",
+                          "properties": {
+                            "en": {
+                              "type": "string"
+                            },
+                            "hi": {
+                              "type": "string"
+                            }
+                          },
+                          "additionalProperties": false
+                        }
+                      ]
+                    },
+                    "to": {
+                      "$ref": "#/components/schemas/LabelledId"
+                    }
+                  },
+                  "required": ["areas", "from", "graha", "house", "sign", "stays", "text", "to"],
+                  "type": "object"
+                },
+                "type": "array"
+              }
+            },
+            "required": ["dasha", "from", "moon_sign", "stage", "to", "transits"],
             "type": "object"
           },
           "parts": {
@@ -10663,6 +11925,22 @@
                     "level": {
                       "type": "string"
                     },
+                    "rules": {
+                      "items": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "good": {
+                            "type": ["boolean", "null"]
+                          },
+                          "id": {
+                            "type": "string"
+                          }
+                        },
+                        "required": ["good", "id"],
+                        "type": "object"
+                      },
+                      "type": "array"
+                    },
                     "text": {
                       "type": "object",
                       "description": "One piece of text, keyed by language: one entry for each language in `options.language`, in that order (`{\"hi\": \"…\"}` or `{\"en\": \"…\", \"hi\": \"…\"}`).",
@@ -10677,7 +11955,7 @@
                       "additionalProperties": false
                     }
                   },
-                  "required": ["area", "level", "text"],
+                  "required": ["area", "level", "rules", "text"],
                   "type": "object"
                 },
                 "type": "array"
@@ -11735,6 +13013,9 @@
                           "lagna_eighth": {
                             "type": "string"
                           },
+                          "lagna_kendra": {
+                            "type": "string"
+                          },
                           "luminaries_maraka": {
                             "type": "boolean"
                           },
@@ -11759,6 +13040,12 @@
                           "prime_maraka": {
                             "type": "string"
                           },
+                          "rao_luminary_maraka_low": {
+                            "type": "boolean"
+                          },
+                          "rao_maraka_list": {
+                            "type": "boolean"
+                          },
                           "second_twelfth": {
                             "type": ["null", "string"]
                           },
@@ -11778,6 +13065,7 @@
                           "kendradhipati_class",
                           "kt_relation",
                           "lagna_eighth",
+                          "lagna_kendra",
                           "luminaries_maraka",
                           "luminary_eighth",
                           "mercury_alone",
@@ -11786,6 +13074,8 @@
                           "node_same_kind_yk",
                           "node_with_eighth",
                           "prime_maraka",
+                          "rao_luminary_maraka_low",
+                          "rao_maraka_list",
                           "second_twelfth",
                           "trikona_eighth",
                           "trikona_sixth",
@@ -11936,6 +13226,150 @@
               "from": {
                 "type": "string"
               },
+              "monthly": {
+                "items": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "areas": {
+                      "items": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "area": {
+                            "type": "string"
+                          },
+                          "good": {
+                            "type": ["boolean", "null"]
+                          }
+                        },
+                        "required": ["area", "good"],
+                        "type": "object"
+                      },
+                      "type": "array"
+                    },
+                    "best": {
+                      "anyOf": [
+                        {
+                          "type": "null"
+                        },
+                        {
+                          "additionalProperties": false,
+                          "properties": {
+                            "from": {
+                              "type": "string"
+                            },
+                            "to": {
+                              "type": "string"
+                            }
+                          },
+                          "required": ["from", "to"],
+                          "type": ["null", "object"]
+                        }
+                      ]
+                    },
+                    "care": {
+                      "type": ["boolean", "null"]
+                    },
+                    "from": {
+                      "type": "string"
+                    },
+                    "hard": {
+                      "anyOf": [
+                        {
+                          "type": "null"
+                        },
+                        {
+                          "additionalProperties": false,
+                          "properties": {
+                            "from": {
+                              "type": "string"
+                            },
+                            "to": {
+                              "type": "string"
+                            }
+                          },
+                          "required": ["from", "to"],
+                          "type": ["null", "object"]
+                        }
+                      ]
+                    },
+                    "level": {
+                      "type": "string"
+                    },
+                    "lord": {
+                      "$ref": "#/components/schemas/LabelledId"
+                    },
+                    "lord_strength": {
+                      "type": "string"
+                    },
+                    "month": {
+                      "type": "integer"
+                    },
+                    "muntha": {
+                      "$ref": "#/components/schemas/LabelledId"
+                    },
+                    "reasons": {
+                      "items": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "code": {
+                            "type": "string"
+                          },
+                          "source": {
+                            "type": "string"
+                          }
+                        },
+                        "required": ["code", "source"],
+                        "type": "object"
+                      },
+                      "type": "array"
+                    },
+                    "rise": {
+                      "type": "boolean"
+                    },
+                    "text": {
+                      "anyOf": [
+                        {
+                          "type": "null"
+                        },
+                        {
+                          "type": "object",
+                          "description": "One piece of text, keyed by language: one entry for each language in `options.language`, in that order (`{\"hi\": \"…\"}` or `{\"en\": \"…\", \"hi\": \"…\"}`).",
+                          "properties": {
+                            "en": {
+                              "type": "string"
+                            },
+                            "hi": {
+                              "type": "string"
+                            }
+                          },
+                          "additionalProperties": false
+                        }
+                      ]
+                    },
+                    "to": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "areas",
+                    "best",
+                    "care",
+                    "from",
+                    "hard",
+                    "level",
+                    "lord",
+                    "lord_strength",
+                    "month",
+                    "muntha",
+                    "reasons",
+                    "rise",
+                    "text",
+                    "to"
+                  ],
+                  "type": "object"
+                },
+                "type": "array"
+              },
               "months": {
                 "items": {
                   "additionalProperties": false,
@@ -11958,11 +13392,321 @@
                 },
                 "type": "array"
               },
+              "natal_promise": {
+                "items": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "active": {
+                      "type": "boolean"
+                    },
+                    "house": {
+                      "type": ["integer", "null"]
+                    },
+                    "lord": {
+                      "$ref": "#/components/schemas/LabelledId"
+                    },
+                    "reasons": {
+                      "items": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "code": {
+                            "type": "string"
+                          },
+                          "source": {
+                            "type": "string"
+                          }
+                        },
+                        "required": ["code", "source"],
+                        "type": "object"
+                      },
+                      "type": "array"
+                    },
+                    "text": {
+                      "anyOf": [
+                        {
+                          "type": "null"
+                        },
+                        {
+                          "type": "object",
+                          "description": "One piece of text, keyed by language: one entry for each language in `options.language`, in that order (`{\"hi\": \"…\"}` or `{\"en\": \"…\", \"hi\": \"…\"}`).",
+                          "properties": {
+                            "en": {
+                              "type": "string"
+                            },
+                            "hi": {
+                              "type": "string"
+                            }
+                          },
+                          "additionalProperties": false
+                        }
+                      ]
+                    },
+                    "with": {
+                      "type": "string"
+                    }
+                  },
+                  "required": ["active", "house", "lord", "reasons", "text", "with"],
+                  "type": "object"
+                },
+                "type": "array"
+              },
+              "periods": {
+                "items": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "from": {
+                      "type": "string"
+                    },
+                    "level": {
+                      "type": "string"
+                    },
+                    "lord": {
+                      "anyOf": [
+                        {
+                          "$ref": "#/components/schemas/LabelledId"
+                        },
+                        {
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "reasons": {
+                      "items": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "code": {
+                            "type": "string"
+                          },
+                          "source": {
+                            "type": "string"
+                          }
+                        },
+                        "required": ["code", "source"],
+                        "type": "object"
+                      },
+                      "type": "array"
+                    },
+                    "step": {
+                      "type": "integer"
+                    },
+                    "subs": {
+                      "items": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "from": {
+                            "type": "string"
+                          },
+                          "good": {
+                            "type": ["boolean", "null"]
+                          },
+                          "lord": {
+                            "anyOf": [
+                              {
+                                "$ref": "#/components/schemas/LabelledId"
+                              },
+                              {
+                                "type": "string"
+                              }
+                            ]
+                          },
+                          "to": {
+                            "type": "string"
+                          }
+                        },
+                        "required": ["from", "good", "lord", "to"],
+                        "type": "object"
+                      },
+                      "type": "array"
+                    },
+                    "to": {
+                      "type": "string"
+                    }
+                  },
+                  "required": ["from", "level", "lord", "reasons", "step", "subs", "to"],
+                  "type": "object"
+                },
+                "type": "array"
+              },
+              "sahams": {
+                "items": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "day": {
+                      "type": ["null", "string"]
+                    },
+                    "half": {
+                      "type": ["null", "string"]
+                    },
+                    "key": {
+                      "type": "string"
+                    },
+                    "lord": {
+                      "$ref": "#/components/schemas/LabelledId"
+                    },
+                    "name": {
+                      "anyOf": [
+                        {
+                          "type": "null"
+                        },
+                        {
+                          "type": "object",
+                          "description": "One piece of text, keyed by language: one entry for each language in `options.language`, in that order (`{\"hi\": \"…\"}` or `{\"en\": \"…\", \"hi\": \"…\"}`).",
+                          "properties": {
+                            "en": {
+                              "type": "string"
+                            },
+                            "hi": {
+                              "type": "string"
+                            }
+                          },
+                          "additionalProperties": false
+                        }
+                      ]
+                    },
+                    "period": {
+                      "anyOf": [
+                        {
+                          "type": "null"
+                        },
+                        {
+                          "additionalProperties": false,
+                          "properties": {
+                            "from": {
+                              "$ref": "#/components/schemas/LabelledId"
+                            },
+                            "to": {
+                              "$ref": "#/components/schemas/LabelledId"
+                            }
+                          },
+                          "required": ["from", "to"],
+                          "type": ["null", "object"]
+                        }
+                      ]
+                    },
+                    "reasons": {
+                      "items": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "code": {
+                            "type": "string"
+                          },
+                          "source": {
+                            "type": "string"
+                          }
+                        },
+                        "required": ["code", "source"],
+                        "type": "object"
+                      },
+                      "type": "array"
+                    },
+                    "sign": {
+                      "$ref": "#/components/schemas/LabelledId"
+                    },
+                    "text": {
+                      "anyOf": [
+                        {
+                          "type": "null"
+                        },
+                        {
+                          "type": "object",
+                          "description": "One piece of text, keyed by language: one entry for each language in `options.language`, in that order (`{\"hi\": \"…\"}` or `{\"en\": \"…\", \"hi\": \"…\"}`).",
+                          "properties": {
+                            "en": {
+                              "type": "string"
+                            },
+                            "hi": {
+                              "type": "string"
+                            }
+                          },
+                          "additionalProperties": false
+                        }
+                      ]
+                    },
+                    "verdict": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "day",
+                    "half",
+                    "key",
+                    "lord",
+                    "name",
+                    "period",
+                    "reasons",
+                    "sign",
+                    "text",
+                    "verdict"
+                  ],
+                  "type": "object"
+                },
+                "type": "array"
+              },
               "summary": {
                 "additionalProperties": false,
                 "properties": {
+                  "best": {
+                    "anyOf": [
+                      {
+                        "type": "null"
+                      },
+                      {
+                        "additionalProperties": false,
+                        "properties": {
+                          "from": {
+                            "type": "string"
+                          },
+                          "to": {
+                            "type": "string"
+                          }
+                        },
+                        "required": ["from", "to"],
+                        "type": ["null", "object"]
+                      }
+                    ]
+                  },
+                  "hard": {
+                    "anyOf": [
+                      {
+                        "type": "null"
+                      },
+                      {
+                        "additionalProperties": false,
+                        "properties": {
+                          "from": {
+                            "type": "string"
+                          },
+                          "to": {
+                            "type": "string"
+                          }
+                        },
+                        "required": ["from", "to"],
+                        "type": ["null", "object"]
+                      }
+                    ]
+                  },
                   "level": {
                     "type": "string"
+                  },
+                  "note": {
+                    "anyOf": [
+                      {
+                        "type": "null"
+                      },
+                      {
+                        "type": "object",
+                        "description": "One piece of text, keyed by language: one entry for each language in `options.language`, in that order (`{\"hi\": \"…\"}` or `{\"en\": \"…\", \"hi\": \"…\"}`).",
+                        "properties": {
+                          "en": {
+                            "type": "string"
+                          },
+                          "hi": {
+                            "type": "string"
+                          }
+                        },
+                        "additionalProperties": false
+                      }
+                    ]
                   },
                   "text": {
                     "type": "object",
@@ -11978,7 +13722,7 @@
                     "additionalProperties": false
                   }
                 },
-                "required": ["level", "text"],
+                "required": ["best", "hard", "level", "note", "text"],
                 "type": "object"
               },
               "to": {
@@ -11995,7 +13739,11 @@
               "areas",
               "basis",
               "from",
+              "monthly",
               "months",
+              "natal_promise",
+              "periods",
+              "sahams",
               "summary",
               "to",
               "varsha_year",
@@ -12211,6 +13959,9 @@
                                   "properties": {
                                     "kind": {
                                       "type": "string"
+                                    },
+                                    "planet": {
+                                      "$ref": "#/components/schemas/LabelledId"
                                     }
                                   },
                                   "required": ["kind"],
@@ -12284,7 +14035,7 @@
                                   "type": "array"
                                 },
                                 "follows": {
-                                  "type": ["null", "string"]
+                                  "type": "string"
                                 },
                                 "house": {
                                   "type": ["integer", "null"]
@@ -12303,7 +14054,7 @@
                                   "type": "array"
                                 },
                                 "follows": {
-                                  "type": ["null", "string"]
+                                  "type": "string"
                                 },
                                 "house": {
                                   "type": ["integer", "null"]
@@ -12463,17 +14214,14 @@
                             {
                               "additionalProperties": false,
                               "properties": {
-                                "kendra": {
-                                  "type": "integer"
-                                },
                                 "kind": {
                                   "type": "string"
                                 },
-                                "trikona": {
-                                  "type": "integer"
+                                "with": {
+                                  "type": "string"
                                 }
                               },
-                              "required": ["kendra", "kind", "trikona"],
+                              "required": ["kind", "with"],
                               "type": "null"
                             },
                             {
@@ -12537,6 +14285,12 @@
                     },
                     "type": "object"
                   },
+                  "health_grahas": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
                   "switches": {
                     "additionalProperties": false,
                     "properties": {
@@ -12563,6 +14317,24 @@
                           },
                           "raja_yoga_min_relation": {
                             "type": "integer"
+                          },
+                          "rao_benefic_association": {
+                            "type": "boolean"
+                          },
+                          "rao_debilitated_dusthana": {
+                            "type": "boolean"
+                          },
+                          "rao_node_trikona_yk": {
+                            "type": "boolean"
+                          },
+                          "rao_vs_own_bhukti": {
+                            "type": "boolean"
+                          },
+                          "rao_yoga_bhukti": {
+                            "type": "boolean"
+                          },
+                          "rao_yoga_survives_maraka": {
+                            "type": "boolean"
                           },
                           "s19_related_papa_in_yk": {
                             "type": "string"
@@ -12603,6 +14375,12 @@
                           "mutual_dusthana_worsens",
                           "raja_yoga_dasha",
                           "raja_yoga_min_relation",
+                          "rao_benefic_association",
+                          "rao_debilitated_dusthana",
+                          "rao_node_trikona_yk",
+                          "rao_vs_own_bhukti",
+                          "rao_yoga_bhukti",
+                          "rao_yoga_survives_maraka",
                           "s19_related_papa_in_yk",
                           "s31_order",
                           "s32_unrelated",
@@ -12634,6 +14412,9 @@
                           "lagna_eighth": {
                             "type": "string"
                           },
+                          "lagna_kendra": {
+                            "type": "string"
+                          },
                           "luminaries_maraka": {
                             "type": "boolean"
                           },
@@ -12658,6 +14439,12 @@
                           "prime_maraka": {
                             "type": "string"
                           },
+                          "rao_luminary_maraka_low": {
+                            "type": "boolean"
+                          },
+                          "rao_maraka_list": {
+                            "type": "boolean"
+                          },
                           "second_twelfth": {
                             "type": ["null", "string"]
                           },
@@ -12677,6 +14464,7 @@
                           "kendradhipati_class",
                           "kt_relation",
                           "lagna_eighth",
+                          "lagna_kendra",
                           "luminaries_maraka",
                           "luminary_eighth",
                           "mercury_alone",
@@ -12685,6 +14473,8 @@
                           "node_same_kind_yk",
                           "node_with_eighth",
                           "prime_maraka",
+                          "rao_luminary_maraka_low",
+                          "rao_maraka_list",
                           "second_twelfth",
                           "trikona_eighth",
                           "trikona_sixth",
@@ -12697,7 +14487,7 @@
                     "type": "object"
                   }
                 },
-                "required": ["functional", "switches"],
+                "required": ["functional", "health_grahas", "switches"],
                 "type": "object"
               },
               "periods": {
@@ -12708,11 +14498,63 @@
                       "items": {
                         "additionalProperties": false,
                         "properties": {
+                          "areas": {
+                            "items": {
+                              "additionalProperties": false,
+                              "properties": {
+                                "area": {
+                                  "type": "string"
+                                },
+                                "grade": {
+                                  "type": "number"
+                                },
+                                "reasons": {
+                                  "items": {
+                                    "additionalProperties": false,
+                                    "properties": {
+                                      "code": {
+                                        "type": "string"
+                                      },
+                                      "source": {
+                                        "type": "string"
+                                      }
+                                    },
+                                    "required": ["code", "source"],
+                                    "type": "object"
+                                  },
+                                  "type": "array"
+                                }
+                              },
+                              "required": ["area", "grade", "reasons"],
+                              "type": "object"
+                            },
+                            "type": "array"
+                          },
+                          "care": {
+                            "anyOf": [
+                              {
+                                "type": "null"
+                              },
+                              {
+                                "additionalProperties": false,
+                                "properties": {
+                                  "code": {
+                                    "type": "string"
+                                  },
+                                  "source": {
+                                    "type": "string"
+                                  }
+                                },
+                                "required": ["code", "source"],
+                                "type": ["null", "object"]
+                              }
+                            ]
+                          },
                           "from": {
                             "type": "string"
                           },
                           "grade": {
-                            "type": "integer"
+                            "type": "number"
                           },
                           "lord": {
                             "$ref": "#/components/schemas/LabelledId"
@@ -12740,7 +14582,16 @@
                             "type": "string"
                           }
                         },
-                        "required": ["from", "grade", "lord", "phase", "reasons", "to"],
+                        "required": [
+                          "areas",
+                          "care",
+                          "from",
+                          "grade",
+                          "lord",
+                          "phase",
+                          "reasons",
+                          "to"
+                        ],
                         "type": "object"
                       },
                       "type": "array"
@@ -12773,18 +14624,31 @@
                     "lord": {
                       "$ref": "#/components/schemas/LabelledId"
                     },
+                    "stage": {
+                      "type": "string"
+                    },
+                    "tara": {
+                      "type": ["null", "string"]
+                    },
                     "text": {
-                      "type": "object",
-                      "description": "One piece of text, keyed by language: one entry for each language in `options.language`, in that order (`{\"hi\": \"…\"}` or `{\"en\": \"…\", \"hi\": \"…\"}`).",
-                      "properties": {
-                        "en": {
-                          "type": "string"
+                      "anyOf": [
+                        {
+                          "type": "null"
                         },
-                        "hi": {
-                          "type": "string"
+                        {
+                          "type": "object",
+                          "description": "One piece of text, keyed by language: one entry for each language in `options.language`, in that order (`{\"hi\": \"…\"}` or `{\"en\": \"…\", \"hi\": \"…\"}`).",
+                          "properties": {
+                            "en": {
+                              "type": "string"
+                            },
+                            "hi": {
+                              "type": "string"
+                            }
+                          },
+                          "additionalProperties": false
                         }
-                      },
-                      "additionalProperties": false
+                      ]
                     },
                     "to": {
                       "type": "string"
@@ -12797,6 +14661,8 @@
                     "from",
                     "level",
                     "lord",
+                    "stage",
+                    "tara",
                     "text",
                     "to"
                   ],
@@ -12818,25 +14684,92 @@
                 "code": {
                   "type": "string"
                 },
+                "count": {
+                  "type": "integer"
+                },
                 "entry": {
-                  "additionalProperties": false,
-                  "properties": {
-                    "text": {
-                      "type": "object",
-                      "description": "One piece of text, keyed by language: one entry for each language in `options.language`, in that order (`{\"hi\": \"…\"}` or `{\"en\": \"…\", \"hi\": \"…\"}`).",
+                  "anyOf": [
+                    {
+                      "type": "null"
+                    },
+                    {
+                      "additionalProperties": false,
                       "properties": {
-                        "en": {
-                          "type": "string"
-                        },
-                        "hi": {
-                          "type": "string"
+                        "text": {
+                          "type": "object",
+                          "description": "One piece of text, keyed by language: one entry for each language in `options.language`, in that order (`{\"hi\": \"…\"}` or `{\"en\": \"…\", \"hi\": \"…\"}`).",
+                          "properties": {
+                            "en": {
+                              "type": "string"
+                            },
+                            "hi": {
+                              "type": "string"
+                            }
+                          },
+                          "additionalProperties": false
                         }
                       },
-                      "additionalProperties": false
+                      "required": ["text"],
+                      "type": ["null", "object"]
                     }
+                  ]
+                },
+                "formations": {
+                  "items": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "grade": {
+                        "type": "number"
+                      },
+                      "in_kendra_trikona": {
+                        "type": "boolean"
+                      },
+                      "lords": {
+                        "additionalProperties": {
+                          "items": {
+                            "type": "integer"
+                          },
+                          "type": "array"
+                        },
+                        "propertyNames": {
+                          "enum": [
+                            "jupiter",
+                            "ketu",
+                            "mars",
+                            "mercury",
+                            "moon",
+                            "rahu",
+                            "saturn",
+                            "sun",
+                            "venus"
+                          ]
+                        },
+                        "type": "object"
+                      },
+                      "participants": {
+                        "items": {
+                          "$ref": "#/components/schemas/LabelledId"
+                        },
+                        "type": "array"
+                      },
+                      "relation": {
+                        "type": ["null", "string"]
+                      },
+                      "repeated_in_d9": {
+                        "type": "boolean"
+                      }
+                    },
+                    "required": [
+                      "grade",
+                      "in_kendra_trikona",
+                      "lords",
+                      "participants",
+                      "relation",
+                      "repeated_in_d9"
+                    ],
+                    "type": "object"
                   },
-                  "required": ["text"],
-                  "type": "object"
+                  "type": "array"
                 },
                 "name": {
                   "type": "object",
@@ -12856,9 +14789,40 @@
                     "$ref": "#/components/schemas/LabelledId"
                   },
                   "type": "array"
+                },
+                "periods": {
+                  "items": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "current": {
+                        "type": "boolean"
+                      },
+                      "from": {
+                        "type": "string"
+                      },
+                      "lord": {
+                        "$ref": "#/components/schemas/LabelledId"
+                      },
+                      "to": {
+                        "type": "string"
+                      }
+                    },
+                    "required": ["current", "from", "lord", "to"],
+                    "type": "object"
+                  },
+                  "type": "array"
                 }
               },
-              "required": ["category", "code", "entry", "name", "participants"],
+              "required": [
+                "category",
+                "code",
+                "count",
+                "entry",
+                "formations",
+                "name",
+                "participants",
+                "periods"
+              ],
               "type": "object"
             },
             "type": "array"
@@ -24846,7 +26810,7 @@
         "operationId": "postReportsVimshottari",
         "tags": ["Reports"],
         "summary": "Vimshottari reading",
-        "description": "Every Vimshottari mahadasha of a birth, from birth to age 80, each read as **one summary**: the mahadasha named, a `level` — `favourable`, `mixed` or `care` — and a text that says what the period is like, which areas of life it brings forward, and its best and most demanding stretches with their dates. `current` marks the one running now. The antardashas are combined into the summary, not read one by one; each is listed under `antardashas` with its dates, a grade (−3 to +3) and the reasons, for you or your astrologer, not for the reader. The rules are Laghu Parashari's (slokas 29–40) on each graha's role for the lagna. Languages and the `disclaimer` as for `/v1/reports/lagna`.\n\nCosts 5 credits.",
+        "description": "Every Vimshottari mahadasha of a birth, from birth to age 80, each read as **one summary**: the mahadasha named, a `level` — `favourable`, `mixed` or `care` — and a text that says what the period is like, which areas of life it brings forward, and its best and most demanding stretches with their dates. `current` marks the one running now. The antardashas are combined into the summary, not read one by one; each is listed under `antardashas` with its dates, a grade (−3 to +3) and the reasons, for you or your astrologer, not for the reader. The rules are Laghu Parashari's (slokas 29–40) on each graha's role for the lagna. Languages and the `disclaimer` as for `/v1/reports/lagna`.\n\nCosts 5 credits.\n\n**The example answer is shortened:** long lists (`data.periods[].antardashas[].areas`) show only their first 3 items. A real answer has them all.",
         "x-kj-credits": 5,
         "security": [
           {
@@ -25576,7 +27540,7 @@
         "operationId": "postReportsKundli",
         "tags": ["Reports"],
         "summary": "Kundli report (the whole birth report)",
-        "description": "The whole written birth report in one call — what the PDF kundli prints. Each part is exactly what its own report route answers for the same birth: `lagna` and `nakshatra` (`/v1/reports/lagna`, `/v1/reports/nakshatra`), `life_areas` (`/v1/reports/life-areas`), `house_lords`, `grahas` and `yogas` (`/v1/reports/house-lords`, `/grahas`, `/yogas`), `vimshottari` (`/v1/reports/vimshottari`) and `varshphal` (`/v1/reports/varshphal` for `year`, default the Varshphal year running today). Send `parts` to take only some of them (default all eight); the answer lists what it holds in `parts`, in that order, followed by one key per part. It is several reports in one, so it is priced as the reports it contains, not as one. Languages and the `disclaimer` as for `/v1/reports/lagna`; one `disclaimer` for the whole report.\n\n**Costs 5 credits per part** — 40 for the whole report, the same as calling the eight reports one by one — reserved up front and reported in `meta.credits`. A request that is refused costs nothing.\n\n**The example answer is shortened:** long lists (`data.life_areas.areas[].basis.reasons`) show only their first 3 items. A real answer has them all.",
+        "description": "The whole written birth report in one call — what the PDF kundli prints. Each part is exactly what its own report route answers for the same birth: `lagna` and `nakshatra` (`/v1/reports/lagna`, `/v1/reports/nakshatra`), `life_areas` (`/v1/reports/life-areas`), `house_lords`, `grahas` and `yogas` (`/v1/reports/house-lords`, `/grahas`, `/yogas`), `vimshottari` (`/v1/reports/vimshottari`) and `varshphal` (`/v1/reports/varshphal` for `year`, default the Varshphal year running today). Send `parts` to take only some of them (default all eleven); the answer lists what it holds in `parts`, in that order, followed by one key per part. It is several reports in one, so it is priced as the reports it contains, not as one. Languages and the `disclaimer` as for `/v1/reports/lagna`; one `disclaimer` for the whole report.\n\n**Costs 5 credits per part** — 40 for the whole report, the same as calling the eight reports one by one — reserved up front and reported in `meta.credits`. A request that is refused costs nothing.\n\n**The example answer is shortened:** long lists (`data.life_areas.areas[].basis.reasons`) show only their first 3 items. A real answer has them all.",
         "x-kj-credits": 5,
         "x-kj-credits-per": "part",
         "security": [
@@ -25770,17 +27734,20 @@
                       "enum": [
                         "lagna",
                         "nakshatra",
+                        "nature",
                         "life_areas",
+                        "in_depth",
                         "house_lords",
                         "grahas",
                         "yogas",
                         "vimshottari",
-                        "varshphal"
+                        "varshphal",
+                        "now_next"
                       ]
                     },
                     "minItems": 1,
-                    "maxItems": 8,
-                    "description": "The parts to include, each named once, in any order (the answer keeps the report's own order): `lagna`, `nakshatra`, `life_areas`, `house_lords`, `grahas`, `yogas`, `vimshottari`, `varshphal`. Default: all eight. The report is priced per part."
+                    "maxItems": 11,
+                    "description": "The parts to include, each named once, in any order (the answer keeps the report's own order): `lagna`, `nakshatra`, `nature`, `life_areas`, `in_depth`, `house_lords`, `grahas`, `yogas`, `vimshottari`, `varshphal`, `now_next`. Default: all eleven. The report is priced per part."
                   },
                   "year": {
                     "type": "integer",
@@ -26081,7 +28048,7 @@
         "operationId": "postPdfKundli",
         "tags": ["PDF"],
         "summary": "Kundli PDF",
-        "description": "The birth chart as a printable PDF, in two editions. The cover carries only the name and the city; the birth details follow on the basic details page. `basic` (the default, 12–20 pages): basic details, the charts (D1, D9 and the Moon chart), the Vimshottari dasha, an overview, the lagna and nakshatra, the life areas, the mahadashas and the yogas. `professional` (30–45 pages): the same plus a contents page, eleven more divisional charts, ashtakavarga charts and totals, the natural, temporary and five-fold friendship tables, bhava chalit (in `options.house_system`, default Placidus; this is the only route whose `options` take it), KP planets and cusps, mangal dosha, sade sati dates, Yogini and Chara dasha, the house lords read in full and the grahas in sign and house. `sections` lists the sections to print instead of the edition's. Both editions cost the same credits. The body is the body of `POST /v1/kundli` plus `edition`, `sections`, `vargas`, `name`, `template`, `chart_style` and `branding`.\n\n**Every paid plan** (not Free). This PDF costs **1,000 credits** and one PDF from the month's PDF allowance (Starter 50, Growth 200, Scale 500, Enterprise 2,500). The same request by the same account within 24 hours returns the same PDF without using the allowance (it still costs its credits). A heavy route: 10 requests a minute, and publishable (`kj_pub_…`) keys may not call it. `branding` in the body is Enterprise only; otherwise the account's saved branding is printed.",
+        "description": "The birth chart as a printable PDF, in three editions. The cover carries only the name and the city; the birth details follow on the basic details page. `basic` (the default, 12–27 pages): basic details, the charts (D1, D9 and the Moon chart), the Vimshottari dasha, an overview, the lagna and nakshatra, the life areas, the mahadashas and the yogas. `professional` (30–45 pages): the same plus a contents page, eleven more divisional charts, ashtakavarga charts and totals, the natural, temporary and five-fold friendship tables, bhava chalit (in `options.house_system`, default Placidus; this is the only route whose `options` take it), KP planets and cusps, mangal dosha, sade sati dates, Yogini and Chara dasha, the house lords read in full and the grahas in sign and house. `life` (the Life Report, written for the person it is about): the details and charts, the sarvashtakavarga, an overview, now and next, who they are (lagna, nakshatra, nature), each area of life and each topic in depth, Manglik and Sade Sati, the dasha timeline and its reading, and the yogas. `sections` lists the sections to print instead of the edition's. All three editions cost the same credits. The body is the body of `POST /v1/kundli` plus `edition`, `sections`, `vargas`, `name`, `template`, `chart_style` and `branding`.\n\n**Every paid plan** (not Free). This PDF costs **1,000 credits** and one PDF from the month's PDF allowance (Starter 50, Growth 200, Scale 500, Enterprise 2,500). The same request by the same account within 24 hours returns the same PDF without using the allowance (it still costs its credits). A heavy route: 10 requests a minute, and publishable (`kj_pub_…`) keys may not call it. `branding` in the body is Enterprise only; otherwise the account's saved branding is printed.",
         "x-kj-credits": 1000,
         "security": [
           {
@@ -26354,8 +28321,8 @@
                   },
                   "edition": {
                     "type": "string",
-                    "enum": ["basic", "professional"],
-                    "description": "How much the kundli prints: `basic` (the default, about 12 to 20 pages) or `professional` (every section, about 30 to 45). Both cost the same."
+                    "enum": ["basic", "professional", "life"],
+                    "description": "How much the kundli prints: `basic` (the default, about 12 to 27 pages), `professional` (the astrologer's edition, every technical section, about 30 to 45) or `life` (the Life Report, written for the person it is about: who they are, each area of life in depth, Manglik, Sade Sati and the dasha timeline). All three cost the same."
                   },
                   "sections": {
                     "type": "array",
@@ -26382,11 +28349,15 @@
                         "house_lords",
                         "grahas",
                         "vimshottari_reading",
-                        "yogas"
+                        "yogas",
+                        "now_next",
+                        "nature",
+                        "sarvashtakavarga",
+                        "in_depth"
                       ]
                     },
                     "minItems": 1,
-                    "maxItems": 21,
+                    "maxItems": 25,
                     "description": "The sections to print, by id, in any order (the PDF keeps its own), e.g. `[\"details\", \"charts\", \"kp_planets\", \"kp_cusps\"]`. Default: the edition's. The cover always prints."
                   },
                   "vargas": {
@@ -26867,7 +28838,7 @@
         "operationId": "postPdfVarshphal",
         "tags": ["PDF"],
         "summary": "Varshphal PDF",
-        "description": "The annual chart for `year` as a printable PDF, 6–8 pages: the varsha chart, the muntha and year lord, the balas, the sahams, the Tajika yogas, the mudda dasha and the reading of the year. The body is the body of `POST /v1/varshphal` plus `name`, `template`, `chart_style` and `branding`.\n\n**Every paid plan** (not Free). This PDF costs **500 credits** and one PDF from the month's PDF allowance (Starter 50, Growth 200, Scale 500, Enterprise 2,500). The same request by the same account within 24 hours returns the same PDF without using the allowance (it still costs its credits). A heavy route: 10 requests a minute, and publishable (`kj_pub_…`) keys may not call it. `branding` in the body is Enterprise only; otherwise the account's saved branding is printed.",
+        "description": "The annual chart for `year` as a printable PDF, in two editions. `life` (the default): the varsha chart, the muntha and year lord, the year and each area of life read for the person, and the months. `professional` adds the astrologer's tables: planet strengths, the Tajika yogas, every saham, the period grades with their sub-periods and the month lords. Both cost the same. The body is the body of `POST /v1/varshphal` plus `edition`, `name`, `template`, `chart_style` and `branding`.\n\n**Every paid plan** (not Free). This PDF costs **500 credits** and one PDF from the month's PDF allowance (Starter 50, Growth 200, Scale 500, Enterprise 2,500). The same request by the same account within 24 hours returns the same PDF without using the allowance (it still costs its credits). A heavy route: 10 requests a minute, and publishable (`kj_pub_…`) keys may not call it. `branding` in the body is Enterprise only; otherwise the account's saved branding is printed.",
         "x-kj-credits": 500,
         "security": [
           {
@@ -27136,6 +29107,11 @@
                     "minLength": 1,
                     "maxLength": 120,
                     "description": "The person's name, printed on the cover and used in the file name; 1 to 120 characters. Default: none (the cover carries the title only)."
+                  },
+                  "edition": {
+                    "type": "string",
+                    "enum": ["life", "professional"],
+                    "description": "How much the Varshphal prints: `life` (the default, the year written for the person it is about) or `professional` (adds the astrologer's tables: planet strengths, Tajika yogas, every saham, the period grades with their sub-periods and the month lords). Both cost the same."
                   }
                 },
                 "required": ["birth", "year"],

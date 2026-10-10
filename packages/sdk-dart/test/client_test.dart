@@ -310,17 +310,19 @@ void main() {
       final lords = answer.data.houseLords!;
       expect(
           lords.map((l) => l.house), [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]);
-      // Gemini rising: Mercury rules the 1st and sits in the 9th.
-      expect(lords.first.sign.id, 'gemini');
-      expect(lords.first.lord.id, 'mercury');
-      expect(lords.first.lord.names?['hi'], 'बुध');
-      expect(lords.first.inHouse, 9);
+      // The recorded answer (for the 1990 New Delhi birth the other reports
+      // use) is Cancer rising: the Moon rules the 1st and sits in the 6th.
+      expect(lords.first.sign.id, 'cancer');
+      expect(lords.first.lord.id, 'moon');
+      expect(lords.first.lord.names?['hi'], 'चंद्र');
+      expect(lords.first.inHouse, 6);
       for (final lord in lords) {
-        expect(lord.entry.text.en, isNotEmpty);
-        expect(lord.entry.text.hi, isNotEmpty);
+        expect(lord.entry, isNotNull);
+        expect(lord.entry!.text.en, isNotEmpty);
+        expect(lord.entry!.text.hi, isNotEmpty);
       }
       expect(answer.data.disclaimer?.hi, contains('सांकेतिक'));
-      expect(answer.meta.engine, '0.5.0');
+      expect(answer.meta.engine, '0.17.0');
     });
 
     test('lagna sends the sign and reads both languages back', () async {
@@ -344,8 +346,9 @@ void main() {
       });
       expect(answer.data.lagna?.sign.id, 'leo');
       expect(answer.data.lagna?.sign.names?['hi'], 'सिंह');
-      expect(answer.data.lagna?.entry.text.en, startsWith('With Leo rising'));
-      expect(answer.data.lagna?.entry.text.hi, isNotEmpty);
+      expect(answer.data.lagna?.entry, isNotNull);
+      expect(answer.data.lagna?.entry?.text.en, startsWith('With Leo rising'));
+      expect(answer.data.lagna?.entry?.text.hi, isNotEmpty);
       expect(
         answer.data.disclaimer?.en,
         'These predictions are indicative. For a reading of your own chart, '
@@ -383,9 +386,10 @@ void main() {
         },
       });
       expect(answer.data.nakshatra?.nakshatra.id, 'purva_phalguni');
-      expect(answer.data.nakshatra?.entry.text.en, contains('Purva Phalguni'));
+      expect(answer.data.nakshatra?.entry, isNotNull);
+      expect(answer.data.nakshatra?.entry?.text.en, contains('Purva Phalguni'));
       // English only was asked for, so there is no Hindi to read.
-      expect(answer.data.nakshatra?.entry.text.hi, isNull);
+      expect(answer.data.nakshatra?.entry?.text.hi, isNull);
       expect(
         answer.data.disclaimer?.en,
         endsWith('consult Acharya Amit Verma (https://kaaljyoti.com).'),
@@ -433,7 +437,7 @@ void main() {
       expect(grahas.first.house, 10);
       expect(grahas.first.inSign.text.en, startsWith('Your Sun is in Aries'));
       expect(grahas.first.inHouse.text.hi, isNotEmpty);
-      expect(answer.meta.engine, '0.10.1');
+      expect(answer.meta.engine, '0.17.0');
     });
 
     test('yogas: each by code and category, with the grahas in it', () async {
@@ -485,7 +489,7 @@ void main() {
           ['venus', 'sun', 'moon', 'mars', 'rahu', 'jupiter', 'saturn']);
       final current = periods.where((p) => p.current).toList();
       expect(current.map((p) => [p.lord.id, p.level]), [
-        ['mars', 'mixed']
+        ['mars', 'favourable']
       ]);
       expect(periods.first.antardashas, isNotEmpty);
     });
@@ -518,8 +522,8 @@ void main() {
       final answer = await kj.reports.lifeAreas(KundliRequest(birth: birth));
 
       expect(sent.single.url.path, '/v1/reports/life-areas');
-      expect(answer.data.summary.strongest, ['foreign', 'marriage']);
-      expect(answer.data.summary.needsCare, ['children', 'fortune']);
+      expect(answer.data.summary.strongest, ['marriage', 'self']);
+      expect(answer.data.summary.needsCare, ['fortune', 'education']);
       final List<LifeArea> areas = answer.data.areas;
       expect(areas, hasLength(11));
       expect([areas.first.area, areas.first.level], ['self', 'favourable']);
@@ -577,10 +581,10 @@ void main() {
       expect(data.sign.id, 'aries');
       expect(data.from, '2026-09-27T18:30:00.000Z');
       expect(data.to, '2026-09-28T18:30:00.000Z');
-      final ReadingSummary summary = data.summary;
+      final ReadingSummary2 summary = data.summary;
       expect(summary.level, 'care');
       expect(summary.text.hi, isNotEmpty);
-      final List<AreaSummary> areas = data.areas;
+      final List<AreaSummary2> areas = data.areas;
       expect(areas.map((a) => [a.area, a.level]), [
         ['work', 'mixed'],
         ['money', 'care'],

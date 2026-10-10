@@ -11,7 +11,7 @@ import pytest
 
 import kaaljyoti.transport
 from kaaljyoti import (
-    AreaSummary,
+    AreaSummary2,
     BatchDocument,
     BatchMeta,
     Birth,
@@ -46,7 +46,7 @@ from kaaljyoti import (
     ReadingHouseLordsDocument,
     ReadingLagnaDocument,
     ReadingNakshatraDocument,
-    ReadingSummary,
+    ReadingSummary2,
     ReferenceMeta,
     ReportKundliRequest,
     ReportLagnaRequest,
@@ -228,7 +228,7 @@ def test_horoscope_sends_the_sign_and_period_and_reads_the_summaries() -> None:
     data = answer.data
     assert data.sign.id == "aries"
     assert (data.from_, data.to) == ("2026-09-27T18:30:00.000Z", "2026-09-28T18:30:00.000Z")
-    assert isinstance(data.summary, ReadingSummary)
+    assert isinstance(data.summary, ReadingSummary2)
     assert data.summary.level == "care"
     assert data.summary.text.en and data.summary.text.hi
     assert [(a.area, a.level) for a in data.areas] == [
@@ -238,7 +238,7 @@ def test_horoscope_sends_the_sign_and_period_and_reads_the_summaries() -> None:
         ("health", "mixed"),
         ("education", "care"),
     ]
-    assert all(isinstance(a, AreaSummary) for a in data.areas)
+    assert all(isinstance(a, AreaSummary2) for a in data.areas)
     # The transits behind it: the Moon leaves Pisces during the day, so it is
     # there twice, the two stays meeting at one instant.
     moons = [t for t in data.basis if t.graha.id == "moon"]
@@ -281,7 +281,7 @@ def test_reports_grahas_reads_nine_grahas() -> None:
     assert (sun.sign.id, sun.house) == ("aries", 10)
     assert (sun.in_sign.text.en or "").startswith("Your Sun is in Aries")
     assert sun.in_house.text.hi
-    assert answer.meta.engine == "0.10.1"
+    assert answer.meta.engine == "0.17.0"
 
 
 def test_reports_yogas_names_each_by_code() -> None:
@@ -327,7 +327,7 @@ def test_reports_vimshottari_marks_the_current_mahadasha() -> None:
     assert [p.lord.id for p in periods] == [
         "venus", "sun", "moon", "mars", "rahu", "jupiter", "saturn"
     ]  # fmt: skip
-    assert [(p.lord.id, p.level) for p in periods if p.current] == [("mars", "mixed")]
+    assert [(p.lord.id, p.level) for p in periods if p.current] == [("mars", "favourable")]
     assert periods[0].antardashas
 
 
@@ -352,8 +352,8 @@ def test_reports_life_areas_reads_eleven_areas() -> None:
     answer = kj.reports.life_areas(KundliRequest(birth=BIRTH_1990))
     assert http.last.url.endswith(operation("postReportsLifeAreas").path)
     data = answer.data
-    assert data.summary.strongest == ["foreign", "marriage"]
-    assert data.summary.needs_care == ["children", "fortune"]
+    assert data.summary.strongest == ["marriage", "self"]
+    assert data.summary.needs_care == ["fortune", "education"]
     assert len(data.areas) == 11
     assert isinstance(data.areas[0], LifeArea)
     assert (data.areas[0].area, data.areas[0].level) == ("self", "favourable")
@@ -392,6 +392,7 @@ def test_reports_lagna_reads_a_sign_in_both_languages() -> None:
     assert lagna is not None
     assert lagna.sign.id == "leo"
     assert lagna.sign.names == {"en": "Leo", "hi": "सिंह"}
+    assert lagna.entry is not None
     assert lagna.entry.text.en and lagna.entry.text.hi
     assert answer.data.disclaimer is not None
     assert answer.data.disclaimer.en is not None
@@ -417,6 +418,7 @@ def test_reports_nakshatra_sends_a_named_disclaimer() -> None:
     reading = answer.data.nakshatra
     assert reading is not None
     assert reading.nakshatra.id == "purva_phalguni"
+    assert reading.entry is not None
     assert reading.entry.text.en
     assert answer.data.disclaimer is not None
     assert answer.data.disclaimer.en == (
@@ -452,15 +454,17 @@ def test_reports_house_lords_reads_twelve_houses_in_order() -> None:
     lords = answer.data.house_lords
     assert lords is not None
     assert [lord.house for lord in lords] == list(range(1, 13))
-    # Gemini rising: Mercury rules the 1st and sits in the 9th.
+    # The recorded answer (for the 1990 New Delhi birth the other reports use) is
+    # Cancer rising: the Moon rules the 1st and sits in the 6th.
     first = lords[0]
-    assert (first.sign.id, first.lord.id, first.in_house) == ("gemini", "mercury", 9)
-    assert first.lord.names == {"en": "Mercury", "hi": "बुध"}
+    assert (first.sign.id, first.lord.id, first.in_house) == ("cancer", "moon", 6)
+    assert first.lord.names == {"en": "Moon", "hi": "चंद्र"}
     for lord in lords:
+        assert lord.entry is not None
         assert lord.entry.text.en and lord.entry.text.hi
     assert answer.data.disclaimer is not None
     assert "सांकेतिक" in (answer.data.disclaimer.hi or "")
-    assert answer.meta.engine == "0.5.0"
+    assert answer.meta.engine == "0.17.0"
 
 
 def test_the_disclaimer_can_be_turned_off() -> None:

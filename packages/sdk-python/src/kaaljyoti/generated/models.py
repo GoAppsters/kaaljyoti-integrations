@@ -214,18 +214,24 @@ class AntardashaReading:
     }
     """Attributes whose wire key is not their own name."""
 
+    areas: list[AntardashaReadingAreasItem]
     from_: str
     """Wire key: `from`."""
     grade: int
     lord: LabelledId
     reasons: list[VimshottariReadingDocumentBasisFunctionalValueDashaRoleReasonsItem]
     to: str
+    care: VimshottariReadingDocumentBasisFunctionalValueDashaRoleReasonsItem | None = None
     phase: str | None = None
 
     @classmethod
     def from_dict(cls, data: Mapping[str, Any]) -> AntardashaReading:
         """Read the wire shape, as `json.loads` returns it."""
         return cls(
+            areas=[
+                AntardashaReadingAreasItem.from_dict(as_dict(e0))
+                for e0 in as_list(data.get("areas"))
+            ],
             from_=as_str(data.get("from")),
             grade=as_int(data.get("grade")),
             lord=LabelledId.from_dict(as_dict(data.get("lord"))),
@@ -236,19 +242,58 @@ class AntardashaReading:
                 for e0 in as_list(data.get("reasons"))
             ],
             to=as_str(data.get("to")),
+            care=None
+            if data.get("care") is None
+            else VimshottariReadingDocumentBasisFunctionalValueDashaRoleReasonsItem.from_dict(
+                as_dict(data.get("care"))
+            ),
             phase=as_str_or_none(data.get("phase")),
         )
 
     def to_dict(self) -> dict[str, Any]:
         """This value as JSON, with every `None` left out."""
         out: dict[str, Any] = {}
+        out["areas"] = [e0.to_dict() for e0 in self.areas]
         out["from"] = self.from_
         out["grade"] = self.grade
         out["lord"] = self.lord.to_dict()
         out["reasons"] = [e0.to_dict() for e0 in self.reasons]
         out["to"] = self.to
+        if self.care is not None:
+            out["care"] = self.care.to_dict()
         if self.phase is not None:
             out["phase"] = self.phase
+        return out
+
+
+@dataclass(frozen=True, slots=True)
+class AntardashaReadingAreasItem:
+    """Wire shape: `AntardashaReading.areas[]`."""
+
+    area: str
+    grade: int
+    reasons: list[VimshottariReadingDocumentBasisFunctionalValueDashaRoleReasonsItem]
+
+    @classmethod
+    def from_dict(cls, data: Mapping[str, Any]) -> AntardashaReadingAreasItem:
+        """Read the wire shape, as `json.loads` returns it."""
+        return cls(
+            area=as_str(data.get("area")),
+            grade=as_int(data.get("grade")),
+            reasons=[
+                VimshottariReadingDocumentBasisFunctionalValueDashaRoleReasonsItem.from_dict(
+                    as_dict(e0)
+                )
+                for e0 in as_list(data.get("reasons"))
+            ],
+        )
+
+    def to_dict(self) -> dict[str, Any]:
+        """This value as JSON, with every `None` left out."""
+        out: dict[str, Any] = {}
+        out["area"] = self.area
+        out["grade"] = self.grade
+        out["reasons"] = [e0.to_dict() for e0 in self.reasons]
         return out
 
 
@@ -262,6 +307,7 @@ class AreaSummary:
 
     area: str
     level: str
+    rules: list[AreaSummaryRulesItem]
     text: LocalizedText
     """One piece of text, keyed by language: one entry for each language in `options.language`, in
     that order (`{"hi": "…"}` or `{"en": "…", "hi": "…"}`).
@@ -269,6 +315,39 @@ class AreaSummary:
 
     @classmethod
     def from_dict(cls, data: Mapping[str, Any]) -> AreaSummary:
+        """Read the wire shape, as `json.loads` returns it."""
+        return cls(
+            area=as_str(data.get("area")),
+            level=as_str(data.get("level")),
+            rules=[
+                AreaSummaryRulesItem.from_dict(as_dict(e0)) for e0 in as_list(data.get("rules"))
+            ],
+            text=LocalizedText.from_dict(as_dict(data.get("text"))),
+        )
+
+    def to_dict(self) -> dict[str, Any]:
+        """This value as JSON, with every `None` left out."""
+        out: dict[str, Any] = {}
+        out["area"] = self.area
+        out["level"] = self.level
+        out["rules"] = [e0.to_dict() for e0 in self.rules]
+        out["text"] = self.text.to_dict()
+        return out
+
+
+@dataclass(frozen=True, slots=True)
+class AreaSummary2:
+    """Wire shape: `HoroscopeDocument.areas[]`."""
+
+    area: str
+    level: str
+    text: LocalizedText
+    """One piece of text, keyed by language: one entry for each language in `options.language`, in
+    that order (`{"hi": "…"}` or `{"en": "…", "hi": "…"}`).
+    """
+
+    @classmethod
+    def from_dict(cls, data: Mapping[str, Any]) -> AreaSummary2:
         """Read the wire shape, as `json.loads` returns it."""
         return cls(
             area=as_str(data.get("area")),
@@ -282,6 +361,30 @@ class AreaSummary:
         out["area"] = self.area
         out["level"] = self.level
         out["text"] = self.text.to_dict()
+        return out
+
+
+@dataclass(frozen=True, slots=True)
+class AreaSummaryRulesItem:
+    """Wire shape: `AreaSummary.rules[]`."""
+
+    id: str
+    good: bool | None = None
+
+    @classmethod
+    def from_dict(cls, data: Mapping[str, Any]) -> AreaSummaryRulesItem:
+        """Read the wire shape, as `json.loads` returns it."""
+        return cls(
+            id=as_str(data.get("id")),
+            good=as_bool_or_none(data.get("good")),
+        )
+
+    def to_dict(self) -> dict[str, Any]:
+        """This value as JSON, with every `None` left out."""
+        out: dict[str, Any] = {}
+        out["id"] = self.id
+        if self.good is not None:
+            out["good"] = self.good
         return out
 
 
@@ -1490,28 +1593,29 @@ class DashaDocument:
 class DashaDocumentMandookContext:
     """Wire shape: `DashaDocument.mandook_context`."""
 
-    applicable: bool
     direct: bool
     kendra_grahas: int
     start_sign: LabelledId
+    applicable: bool | None = None
 
     @classmethod
     def from_dict(cls, data: Mapping[str, Any]) -> DashaDocumentMandookContext:
         """Read the wire shape, as `json.loads` returns it."""
         return cls(
-            applicable=as_bool(data.get("applicable")),
             direct=as_bool(data.get("direct")),
             kendra_grahas=as_int(data.get("kendra_grahas")),
             start_sign=LabelledId.from_dict(as_dict(data.get("start_sign"))),
+            applicable=as_bool_or_none(data.get("applicable")),
         )
 
     def to_dict(self) -> dict[str, Any]:
         """This value as JSON, with every `None` left out."""
         out: dict[str, Any] = {}
-        out["applicable"] = self.applicable
         out["direct"] = self.direct
         out["kendra_grahas"] = self.kendra_grahas
         out["start_sign"] = self.start_sign.to_dict()
+        if self.applicable is not None:
+            out["applicable"] = self.applicable
         return out
 
 
@@ -2908,13 +3012,13 @@ class HoroscopeDocument:
     }
     """Attributes whose wire key is not their own name."""
 
-    areas: list[AreaSummary]
+    areas: list[AreaSummary2]
     basis: list[HoroscopeTransit]
     from_: str
     """Wire key: `from`."""
     period: str
     sign: LabelledId
-    summary: ReadingSummary
+    summary: ReadingSummary2
     to: str
     disclaimer: LocalizedText | None = None
     """The closing line: "these predictions are indicative…", naming the astrologer in
@@ -2925,12 +3029,12 @@ class HoroscopeDocument:
     def from_dict(cls, data: Mapping[str, Any]) -> HoroscopeDocument:
         """Read the wire shape, as `json.loads` returns it."""
         return cls(
-            areas=[AreaSummary.from_dict(as_dict(e0)) for e0 in as_list(data.get("areas"))],
+            areas=[AreaSummary2.from_dict(as_dict(e0)) for e0 in as_list(data.get("areas"))],
             basis=[HoroscopeTransit.from_dict(as_dict(e0)) for e0 in as_list(data.get("basis"))],
             from_=as_str(data.get("from")),
             period=as_str(data.get("period")),
             sign=LabelledId.from_dict(as_dict(data.get("sign"))),
-            summary=ReadingSummary.from_dict(as_dict(data.get("summary"))),
+            summary=ReadingSummary2.from_dict(as_dict(data.get("summary"))),
             to=as_str(data.get("to")),
             disclaimer=None
             if data.get("disclaimer") is None
@@ -3074,31 +3178,34 @@ class HoroscopeTransit:
 class HouseLord:
     """Wire shape: `ReadingHouseLordsDocument.house_lords[]`."""
 
-    entry: ReadingEntry
     house: int
     in_house: int
     lord: LabelledId
     sign: LabelledId
+    entry: ReadingEntry | None = None
 
     @classmethod
     def from_dict(cls, data: Mapping[str, Any]) -> HouseLord:
         """Read the wire shape, as `json.loads` returns it."""
         return cls(
-            entry=ReadingEntry.from_dict(as_dict(data.get("entry"))),
             house=as_int(data.get("house")),
             in_house=as_int(data.get("in_house")),
             lord=LabelledId.from_dict(as_dict(data.get("lord"))),
             sign=LabelledId.from_dict(as_dict(data.get("sign"))),
+            entry=None
+            if data.get("entry") is None
+            else ReadingEntry.from_dict(as_dict(data.get("entry"))),
         )
 
     def to_dict(self) -> dict[str, Any]:
         """This value as JSON, with every `None` left out."""
         out: dict[str, Any] = {}
-        out["entry"] = self.entry.to_dict()
         out["house"] = self.house
         out["in_house"] = self.in_house
         out["lord"] = self.lord.to_dict()
         out["sign"] = self.sign.to_dict()
+        if self.entry is not None:
+            out["entry"] = self.entry.to_dict()
         return out
 
 
@@ -4088,9 +4195,12 @@ class KundliReportDocument:
     parts: list[str]
     grahas: list[KundliReportGraha] | None = None
     house_lords: list[KundliReportHouseLord] | None = None
+    in_depth: list[KundliReportDocumentInDepthItem] | None = None
     lagna: ReadingLagna | None = None
     life_areas: KundliReportLifeAreas | None = None
     nakshatra: ReadingNakshatra | None = None
+    nature: list[KundliReportDocumentInDepthItemGrahasItem] | None = None
+    now_next: KundliReportDocumentNowNext | None = None
     varshphal: KundliReportVarshphal | None = None
     vimshottari: KundliReportVimshottari | None = None
     yogas: list[YogaReading] | None = None
@@ -4113,6 +4223,12 @@ class KundliReportDocument:
                 KundliReportHouseLord.from_dict(as_dict(e0))
                 for e0 in as_list(data.get("house_lords"))
             ],
+            in_depth=None
+            if data.get("in_depth") is None
+            else [
+                KundliReportDocumentInDepthItem.from_dict(as_dict(e0))
+                for e0 in as_list(data.get("in_depth"))
+            ],
             lagna=None
             if data.get("lagna") is None
             else ReadingLagna.from_dict(as_dict(data.get("lagna"))),
@@ -4122,6 +4238,15 @@ class KundliReportDocument:
             nakshatra=None
             if data.get("nakshatra") is None
             else ReadingNakshatra.from_dict(as_dict(data.get("nakshatra"))),
+            nature=None
+            if data.get("nature") is None
+            else [
+                KundliReportDocumentInDepthItemGrahasItem.from_dict(as_dict(e0))
+                for e0 in as_list(data.get("nature"))
+            ],
+            now_next=None
+            if data.get("now_next") is None
+            else KundliReportDocumentNowNext.from_dict(as_dict(data.get("now_next"))),
             varshphal=None
             if data.get("varshphal") is None
             else KundliReportVarshphal.from_dict(as_dict(data.get("varshphal"))),
@@ -4144,12 +4269,18 @@ class KundliReportDocument:
             out["grahas"] = [e0.to_dict() for e0 in self.grahas]
         if self.house_lords is not None:
             out["house_lords"] = [e0.to_dict() for e0 in self.house_lords]
+        if self.in_depth is not None:
+            out["in_depth"] = [e0.to_dict() for e0 in self.in_depth]
         if self.lagna is not None:
             out["lagna"] = self.lagna.to_dict()
         if self.life_areas is not None:
             out["life_areas"] = self.life_areas.to_dict()
         if self.nakshatra is not None:
             out["nakshatra"] = self.nakshatra.to_dict()
+        if self.nature is not None:
+            out["nature"] = [e0.to_dict() for e0 in self.nature]
+        if self.now_next is not None:
+            out["now_next"] = self.now_next.to_dict()
         if self.varshphal is not None:
             out["varshphal"] = self.varshphal.to_dict()
         if self.vimshottari is not None:
@@ -4158,6 +4289,331 @@ class KundliReportDocument:
             out["yogas"] = [e0.to_dict() for e0 in self.yogas]
         if self.disclaimer is not None:
             out["disclaimer"] = self.disclaimer.to_dict()
+        return out
+
+
+@dataclass(frozen=True, slots=True)
+class KundliReportDocumentInDepthItem:
+    """Wire shape: `KundliReportDocument.in_depth[]`."""
+
+    areas: list[str]
+    grahas: list[KundliReportDocumentInDepthItemGrahasItem]
+    houses: list[int]
+    lords: list[KundliReportHouseLord]
+    topic: str
+
+    @classmethod
+    def from_dict(cls, data: Mapping[str, Any]) -> KundliReportDocumentInDepthItem:
+        """Read the wire shape, as `json.loads` returns it."""
+        return cls(
+            areas=[as_str(e0) for e0 in as_list(data.get("areas"))],
+            grahas=[
+                KundliReportDocumentInDepthItemGrahasItem.from_dict(as_dict(e0))
+                for e0 in as_list(data.get("grahas"))
+            ],
+            houses=[as_int(e0) for e0 in as_list(data.get("houses"))],
+            lords=[
+                KundliReportHouseLord.from_dict(as_dict(e0)) for e0 in as_list(data.get("lords"))
+            ],
+            topic=as_str(data.get("topic")),
+        )
+
+    def to_dict(self) -> dict[str, Any]:
+        """This value as JSON, with every `None` left out."""
+        out: dict[str, Any] = {}
+        out["areas"] = list(self.areas)
+        out["grahas"] = [e0.to_dict() for e0 in self.grahas]
+        out["houses"] = list(self.houses)
+        out["lords"] = [e0.to_dict() for e0 in self.lords]
+        out["topic"] = self.topic
+        return out
+
+
+@dataclass(frozen=True, slots=True)
+class KundliReportDocumentInDepthItemGrahasItem:
+    """Wire shape: `KundliReportDocumentInDepthItem.grahas[]`."""
+
+    sign: LabelledId
+    entry: ReadingEntry | None = None
+    graha: LabelledId | None = None
+    house: int | None = None
+
+    @classmethod
+    def from_dict(cls, data: Mapping[str, Any]) -> KundliReportDocumentInDepthItemGrahasItem:
+        """Read the wire shape, as `json.loads` returns it."""
+        return cls(
+            sign=LabelledId.from_dict(as_dict(data.get("sign"))),
+            entry=None
+            if data.get("entry") is None
+            else ReadingEntry.from_dict(as_dict(data.get("entry"))),
+            graha=None
+            if data.get("graha") is None
+            else LabelledId.from_dict(as_dict(data.get("graha"))),
+            house=as_int_or_none(data.get("house")),
+        )
+
+    def to_dict(self) -> dict[str, Any]:
+        """This value as JSON, with every `None` left out."""
+        out: dict[str, Any] = {}
+        out["sign"] = self.sign.to_dict()
+        if self.entry is not None:
+            out["entry"] = self.entry.to_dict()
+        if self.graha is not None:
+            out["graha"] = self.graha.to_dict()
+        if self.house is not None:
+            out["house"] = self.house
+        return out
+
+
+@dataclass(frozen=True, slots=True)
+class KundliReportDocumentNowNext:
+    """Wire shape: `KundliReportDocument.now_next`."""
+
+    _WIRE: ClassVar[dict[str, str]] = {
+        "from_": "from",
+    }
+    """Attributes whose wire key is not their own name."""
+
+    dasha: list[KundliReportDocumentNowNextDashaItem]
+    from_: str
+    """Wire key: `from`."""
+    moon_sign: LabelledId
+    stage: str
+    to: str
+    transits: list[KundliReportDocumentNowNextTransitsItem]
+
+    @classmethod
+    def from_dict(cls, data: Mapping[str, Any]) -> KundliReportDocumentNowNext:
+        """Read the wire shape, as `json.loads` returns it."""
+        return cls(
+            dasha=[
+                KundliReportDocumentNowNextDashaItem.from_dict(as_dict(e0))
+                for e0 in as_list(data.get("dasha"))
+            ],
+            from_=as_str(data.get("from")),
+            moon_sign=LabelledId.from_dict(as_dict(data.get("moon_sign"))),
+            stage=as_str(data.get("stage")),
+            to=as_str(data.get("to")),
+            transits=[
+                KundliReportDocumentNowNextTransitsItem.from_dict(as_dict(e0))
+                for e0 in as_list(data.get("transits"))
+            ],
+        )
+
+    def to_dict(self) -> dict[str, Any]:
+        """This value as JSON, with every `None` left out."""
+        out: dict[str, Any] = {}
+        out["dasha"] = [e0.to_dict() for e0 in self.dasha]
+        out["from"] = self.from_
+        out["moon_sign"] = self.moon_sign.to_dict()
+        out["stage"] = self.stage
+        out["to"] = self.to
+        out["transits"] = [e0.to_dict() for e0 in self.transits]
+        return out
+
+
+@dataclass(frozen=True, slots=True)
+class KundliReportDocumentNowNextDashaItem:
+    """Wire shape: `KundliReportDocumentNowNext.dasha[]`."""
+
+    _WIRE: ClassVar[dict[str, str]] = {
+        "from_": "from",
+    }
+    """Attributes whose wire key is not their own name."""
+
+    antardasha: str
+    current: bool
+    from_: str
+    """Wire key: `from`."""
+    grade: float
+    health_note: bool
+    level: str
+    mahadasha: str
+    reasons: list[VimshottariReadingDocumentBasisFunctionalValueDashaRoleReasonsItem]
+    stage: str
+    to: str
+    yogas: list[str]
+    text: LocalizedText | None = None
+
+    @classmethod
+    def from_dict(cls, data: Mapping[str, Any]) -> KundliReportDocumentNowNextDashaItem:
+        """Read the wire shape, as `json.loads` returns it."""
+        return cls(
+            antardasha=as_str(data.get("antardasha")),
+            current=as_bool(data.get("current")),
+            from_=as_str(data.get("from")),
+            grade=as_float(data.get("grade")),
+            health_note=as_bool(data.get("health_note")),
+            level=as_str(data.get("level")),
+            mahadasha=as_str(data.get("mahadasha")),
+            reasons=[
+                VimshottariReadingDocumentBasisFunctionalValueDashaRoleReasonsItem.from_dict(
+                    as_dict(e0)
+                )
+                for e0 in as_list(data.get("reasons"))
+            ],
+            stage=as_str(data.get("stage")),
+            to=as_str(data.get("to")),
+            yogas=[as_str(e0) for e0 in as_list(data.get("yogas"))],
+            text=None
+            if data.get("text") is None
+            else LocalizedText.from_dict(as_dict(data.get("text"))),
+        )
+
+    def to_dict(self) -> dict[str, Any]:
+        """This value as JSON, with every `None` left out."""
+        out: dict[str, Any] = {}
+        out["antardasha"] = self.antardasha
+        out["current"] = self.current
+        out["from"] = self.from_
+        out["grade"] = self.grade
+        out["health_note"] = self.health_note
+        out["level"] = self.level
+        out["mahadasha"] = self.mahadasha
+        out["reasons"] = [e0.to_dict() for e0 in self.reasons]
+        out["stage"] = self.stage
+        out["to"] = self.to
+        out["yogas"] = list(self.yogas)
+        if self.text is not None:
+            out["text"] = self.text.to_dict()
+        return out
+
+
+@dataclass(frozen=True, slots=True)
+class KundliReportDocumentNowNextTransitsItem:
+    """Wire shape: `KundliReportDocumentNowNext.transits[]`."""
+
+    _WIRE: ClassVar[dict[str, str]] = {
+        "from_": "from",
+    }
+    """Attributes whose wire key is not their own name."""
+
+    areas: KundliReportDocumentNowNextTransitsItemAreas
+    from_: LabelledId
+    """Wire key: `from`."""
+    sign: LabelledId
+    stays: list[KundliReportDocumentNowNextTransitsItemStaysItem]
+    to: LabelledId
+    graha: LabelledId | None = None
+    house: int | None = None
+    text: LocalizedText | None = None
+
+    @classmethod
+    def from_dict(cls, data: Mapping[str, Any]) -> KundliReportDocumentNowNextTransitsItem:
+        """Read the wire shape, as `json.loads` returns it."""
+        return cls(
+            areas=KundliReportDocumentNowNextTransitsItemAreas.from_dict(
+                as_dict(data.get("areas"))
+            ),
+            from_=LabelledId.from_dict(as_dict(data.get("from"))),
+            sign=LabelledId.from_dict(as_dict(data.get("sign"))),
+            stays=[
+                KundliReportDocumentNowNextTransitsItemStaysItem.from_dict(as_dict(e0))
+                for e0 in as_list(data.get("stays"))
+            ],
+            to=LabelledId.from_dict(as_dict(data.get("to"))),
+            graha=None
+            if data.get("graha") is None
+            else LabelledId.from_dict(as_dict(data.get("graha"))),
+            house=as_int_or_none(data.get("house")),
+            text=None
+            if data.get("text") is None
+            else LocalizedText.from_dict(as_dict(data.get("text"))),
+        )
+
+    def to_dict(self) -> dict[str, Any]:
+        """This value as JSON, with every `None` left out."""
+        out: dict[str, Any] = {}
+        out["areas"] = self.areas.to_dict()
+        out["from"] = self.from_.to_dict()
+        out["sign"] = self.sign.to_dict()
+        out["stays"] = [e0.to_dict() for e0 in self.stays]
+        out["to"] = self.to.to_dict()
+        if self.graha is not None:
+            out["graha"] = self.graha.to_dict()
+        if self.house is not None:
+            out["house"] = self.house
+        if self.text is not None:
+            out["text"] = self.text.to_dict()
+        return out
+
+
+@dataclass(frozen=True, slots=True)
+class KundliReportDocumentNowNextTransitsItemAreas:
+    """Wire shape: `KundliReportDocumentNowNextTransitsItem.areas`."""
+
+    general: LocalizedText
+    """One piece of text, keyed by language: one entry for each language in `options.language`, in
+    that order (`{"hi": "…"}` or `{"en": "…", "hi": "…"}`).
+    """
+    health: LocalizedText
+    """One piece of text, keyed by language: one entry for each language in `options.language`, in
+    that order (`{"hi": "…"}` or `{"en": "…", "hi": "…"}`).
+    """
+    money: LocalizedText
+    """One piece of text, keyed by language: one entry for each language in `options.language`, in
+    that order (`{"hi": "…"}` or `{"en": "…", "hi": "…"}`).
+    """
+    relationships: LocalizedText
+    """One piece of text, keyed by language: one entry for each language in `options.language`, in
+    that order (`{"hi": "…"}` or `{"en": "…", "hi": "…"}`).
+    """
+    work: LocalizedText
+    """One piece of text, keyed by language: one entry for each language in `options.language`, in
+    that order (`{"hi": "…"}` or `{"en": "…", "hi": "…"}`).
+    """
+
+    @classmethod
+    def from_dict(cls, data: Mapping[str, Any]) -> KundliReportDocumentNowNextTransitsItemAreas:
+        """Read the wire shape, as `json.loads` returns it."""
+        return cls(
+            general=LocalizedText.from_dict(as_dict(data.get("general"))),
+            health=LocalizedText.from_dict(as_dict(data.get("health"))),
+            money=LocalizedText.from_dict(as_dict(data.get("money"))),
+            relationships=LocalizedText.from_dict(as_dict(data.get("relationships"))),
+            work=LocalizedText.from_dict(as_dict(data.get("work"))),
+        )
+
+    def to_dict(self) -> dict[str, Any]:
+        """This value as JSON, with every `None` left out."""
+        out: dict[str, Any] = {}
+        out["general"] = self.general.to_dict()
+        out["health"] = self.health.to_dict()
+        out["money"] = self.money.to_dict()
+        out["relationships"] = self.relationships.to_dict()
+        out["work"] = self.work.to_dict()
+        return out
+
+
+@dataclass(frozen=True, slots=True)
+class KundliReportDocumentNowNextTransitsItemStaysItem:
+    """Wire shape: `KundliReportDocumentNowNextTransitsItem.stays[]`."""
+
+    _WIRE: ClassVar[dict[str, str]] = {
+        "from_": "from",
+    }
+    """Attributes whose wire key is not their own name."""
+
+    from_: LabelledId
+    """Wire key: `from`."""
+    retrograde: bool
+    to: LabelledId
+
+    @classmethod
+    def from_dict(cls, data: Mapping[str, Any]) -> KundliReportDocumentNowNextTransitsItemStaysItem:
+        """Read the wire shape, as `json.loads` returns it."""
+        return cls(
+            from_=LabelledId.from_dict(as_dict(data.get("from"))),
+            retrograde=as_bool(data.get("retrograde")),
+            to=LabelledId.from_dict(as_dict(data.get("to"))),
+        )
+
+    def to_dict(self) -> dict[str, Any]:
+        """This value as JSON, with every `None` left out."""
+        out: dict[str, Any] = {}
+        out["from"] = self.from_.to_dict()
+        out["retrograde"] = self.retrograde
+        out["to"] = self.to.to_dict()
         return out
 
 
@@ -4201,30 +4657,33 @@ class KundliReportGraha:
 class KundliReportHouseLord:
     """Wire shape: `KundliReportDocument.house_lords[]`."""
 
-    entry: ReadingEntry
     in_house: int
     lord: LabelledId
     sign: LabelledId
+    entry: ReadingEntry | None = None
     house: int | None = None
 
     @classmethod
     def from_dict(cls, data: Mapping[str, Any]) -> KundliReportHouseLord:
         """Read the wire shape, as `json.loads` returns it."""
         return cls(
-            entry=ReadingEntry.from_dict(as_dict(data.get("entry"))),
             in_house=as_int(data.get("in_house")),
             lord=LabelledId.from_dict(as_dict(data.get("lord"))),
             sign=LabelledId.from_dict(as_dict(data.get("sign"))),
+            entry=None
+            if data.get("entry") is None
+            else ReadingEntry.from_dict(as_dict(data.get("entry"))),
             house=as_int_or_none(data.get("house")),
         )
 
     def to_dict(self) -> dict[str, Any]:
         """This value as JSON, with every `None` left out."""
         out: dict[str, Any] = {}
-        out["entry"] = self.entry.to_dict()
         out["in_house"] = self.in_house
         out["lord"] = self.lord.to_dict()
         out["sign"] = self.sign.to_dict()
+        if self.entry is not None:
+            out["entry"] = self.entry.to_dict()
         if self.house is not None:
             out["house"] = self.house
         return out
@@ -4292,25 +4751,25 @@ class KundliReportMahadasha:
     }
     """Attributes whose wire key is not their own name."""
 
-    antardashas: list[AntardashaReading]
+    antardashas: list[KundliReportMahadashaAntardashasItem]
     areas: list[KundliReportMahadashaAreasItem]
     current: bool
     from_: str
     """Wire key: `from`."""
     level: str
     lord: LabelledId
-    text: LocalizedText
-    """One piece of text, keyed by language: one entry for each language in `options.language`, in
-    that order (`{"hi": "…"}` or `{"en": "…", "hi": "…"}`).
-    """
+    stage: str
     to: str
+    tara: str | None = None
+    text: LocalizedText | None = None
 
     @classmethod
     def from_dict(cls, data: Mapping[str, Any]) -> KundliReportMahadasha:
         """Read the wire shape, as `json.loads` returns it."""
         return cls(
             antardashas=[
-                AntardashaReading.from_dict(as_dict(e0)) for e0 in as_list(data.get("antardashas"))
+                KundliReportMahadashaAntardashasItem.from_dict(as_dict(e0))
+                for e0 in as_list(data.get("antardashas"))
             ],
             areas=[
                 KundliReportMahadashaAreasItem.from_dict(as_dict(e0))
@@ -4320,8 +4779,12 @@ class KundliReportMahadasha:
             from_=as_str(data.get("from")),
             level=as_str(data.get("level")),
             lord=LabelledId.from_dict(as_dict(data.get("lord"))),
-            text=LocalizedText.from_dict(as_dict(data.get("text"))),
+            stage=as_str(data.get("stage")),
             to=as_str(data.get("to")),
+            tara=as_str_or_none(data.get("tara")),
+            text=None
+            if data.get("text") is None
+            else LocalizedText.from_dict(as_dict(data.get("text"))),
         )
 
     def to_dict(self) -> dict[str, Any]:
@@ -4333,8 +4796,104 @@ class KundliReportMahadasha:
         out["from"] = self.from_
         out["level"] = self.level
         out["lord"] = self.lord.to_dict()
-        out["text"] = self.text.to_dict()
+        out["stage"] = self.stage
         out["to"] = self.to
+        if self.tara is not None:
+            out["tara"] = self.tara
+        if self.text is not None:
+            out["text"] = self.text.to_dict()
+        return out
+
+
+@dataclass(frozen=True, slots=True)
+class KundliReportMahadashaAntardashasItem:
+    """Wire shape: `KundliReportMahadasha.antardashas[]`."""
+
+    _WIRE: ClassVar[dict[str, str]] = {
+        "from_": "from",
+    }
+    """Attributes whose wire key is not their own name."""
+
+    areas: list[KundliReportMahadashaAntardashasItemAreasItem]
+    from_: str
+    """Wire key: `from`."""
+    grade: float
+    lord: LabelledId
+    reasons: list[VimshottariReadingDocumentBasisFunctionalValueDashaRoleReasonsItem]
+    to: str
+    care: VimshottariReadingDocumentBasisFunctionalValueDashaRoleReasonsItem | None = None
+    phase: str | None = None
+
+    @classmethod
+    def from_dict(cls, data: Mapping[str, Any]) -> KundliReportMahadashaAntardashasItem:
+        """Read the wire shape, as `json.loads` returns it."""
+        return cls(
+            areas=[
+                KundliReportMahadashaAntardashasItemAreasItem.from_dict(as_dict(e0))
+                for e0 in as_list(data.get("areas"))
+            ],
+            from_=as_str(data.get("from")),
+            grade=as_float(data.get("grade")),
+            lord=LabelledId.from_dict(as_dict(data.get("lord"))),
+            reasons=[
+                VimshottariReadingDocumentBasisFunctionalValueDashaRoleReasonsItem.from_dict(
+                    as_dict(e0)
+                )
+                for e0 in as_list(data.get("reasons"))
+            ],
+            to=as_str(data.get("to")),
+            care=None
+            if data.get("care") is None
+            else VimshottariReadingDocumentBasisFunctionalValueDashaRoleReasonsItem.from_dict(
+                as_dict(data.get("care"))
+            ),
+            phase=as_str_or_none(data.get("phase")),
+        )
+
+    def to_dict(self) -> dict[str, Any]:
+        """This value as JSON, with every `None` left out."""
+        out: dict[str, Any] = {}
+        out["areas"] = [e0.to_dict() for e0 in self.areas]
+        out["from"] = self.from_
+        out["grade"] = self.grade
+        out["lord"] = self.lord.to_dict()
+        out["reasons"] = [e0.to_dict() for e0 in self.reasons]
+        out["to"] = self.to
+        if self.care is not None:
+            out["care"] = self.care.to_dict()
+        if self.phase is not None:
+            out["phase"] = self.phase
+        return out
+
+
+@dataclass(frozen=True, slots=True)
+class KundliReportMahadashaAntardashasItemAreasItem:
+    """Wire shape: `KundliReportMahadashaAntardashasItem.areas[]`."""
+
+    area: str
+    grade: float
+    reasons: list[VimshottariReadingDocumentBasisFunctionalValueDashaRoleReasonsItem]
+
+    @classmethod
+    def from_dict(cls, data: Mapping[str, Any]) -> KundliReportMahadashaAntardashasItemAreasItem:
+        """Read the wire shape, as `json.loads` returns it."""
+        return cls(
+            area=as_str(data.get("area")),
+            grade=as_float(data.get("grade")),
+            reasons=[
+                VimshottariReadingDocumentBasisFunctionalValueDashaRoleReasonsItem.from_dict(
+                    as_dict(e0)
+                )
+                for e0 in as_list(data.get("reasons"))
+            ],
+        )
+
+    def to_dict(self) -> dict[str, Any]:
+        """This value as JSON, with every `None` left out."""
+        out: dict[str, Any] = {}
+        out["area"] = self.area
+        out["grade"] = self.grade
+        out["reasons"] = [e0.to_dict() for e0 in self.reasons]
         return out
 
 
@@ -4375,7 +4934,11 @@ class KundliReportVarshphal:
     basis: KundliReportVarshphalBasis
     from_: str
     """Wire key: `from`."""
+    monthly: list[KundliReportVarshphalMonthlyItem]
     months: list[VarshphalPeriod]
+    natal_promise: list[KundliReportVarshphalNatalPromiseItem]
+    periods: list[VarshphalReadingDocumentPeriodsItem]
+    sahams: list[VarshphalReadingDocumentSahamsItem]
     summary: ReadingSummary
     to: str
     varsha_year: int
@@ -4388,7 +4951,23 @@ class KundliReportVarshphal:
             areas=[AreaSummary.from_dict(as_dict(e0)) for e0 in as_list(data.get("areas"))],
             basis=KundliReportVarshphalBasis.from_dict(as_dict(data.get("basis"))),
             from_=as_str(data.get("from")),
+            monthly=[
+                KundliReportVarshphalMonthlyItem.from_dict(as_dict(e0))
+                for e0 in as_list(data.get("monthly"))
+            ],
             months=[VarshphalPeriod.from_dict(as_dict(e0)) for e0 in as_list(data.get("months"))],
+            natal_promise=[
+                KundliReportVarshphalNatalPromiseItem.from_dict(as_dict(e0))
+                for e0 in as_list(data.get("natal_promise"))
+            ],
+            periods=[
+                VarshphalReadingDocumentPeriodsItem.from_dict(as_dict(e0))
+                for e0 in as_list(data.get("periods"))
+            ],
+            sahams=[
+                VarshphalReadingDocumentSahamsItem.from_dict(as_dict(e0))
+                for e0 in as_list(data.get("sahams"))
+            ],
             summary=ReadingSummary.from_dict(as_dict(data.get("summary"))),
             to=as_str(data.get("to")),
             varsha_year=as_int(data.get("varsha_year")),
@@ -4401,7 +4980,11 @@ class KundliReportVarshphal:
         out["areas"] = [e0.to_dict() for e0 in self.areas]
         out["basis"] = self.basis.to_dict()
         out["from"] = self.from_
+        out["monthly"] = [e0.to_dict() for e0 in self.monthly]
         out["months"] = [e0.to_dict() for e0 in self.months]
+        out["natal_promise"] = [e0.to_dict() for e0 in self.natal_promise]
+        out["periods"] = [e0.to_dict() for e0 in self.periods]
+        out["sahams"] = [e0.to_dict() for e0 in self.sahams]
         out["summary"] = self.summary.to_dict()
         out["to"] = self.to
         out["varsha_year"] = self.varsha_year
@@ -4792,6 +5375,139 @@ class KundliReportVarshphalBasisYearLord:
 
 
 @dataclass(frozen=True, slots=True)
+class KundliReportVarshphalMonthlyItem:
+    """Wire shape: `KundliReportVarshphal.monthly[]`."""
+
+    _WIRE: ClassVar[dict[str, str]] = {
+        "from_": "from",
+    }
+    """Attributes whose wire key is not their own name."""
+
+    areas: list[VarshphalReadingDocumentMonthlyItemAreasItem]
+    from_: str
+    """Wire key: `from`."""
+    level: str
+    lord: LabelledId
+    lord_strength: str
+    month: int
+    muntha: LabelledId
+    reasons: list[VimshottariReadingDocumentBasisFunctionalValueDashaRoleReasonsItem]
+    rise: bool
+    to: str
+    best: VarshphalReadingDocumentMonthlyItemBest | None = None
+    care: bool | None = None
+    hard: VarshphalReadingDocumentMonthlyItemBest | None = None
+    text: LocalizedText | None = None
+
+    @classmethod
+    def from_dict(cls, data: Mapping[str, Any]) -> KundliReportVarshphalMonthlyItem:
+        """Read the wire shape, as `json.loads` returns it."""
+        return cls(
+            areas=[
+                VarshphalReadingDocumentMonthlyItemAreasItem.from_dict(as_dict(e0))
+                for e0 in as_list(data.get("areas"))
+            ],
+            from_=as_str(data.get("from")),
+            level=as_str(data.get("level")),
+            lord=LabelledId.from_dict(as_dict(data.get("lord"))),
+            lord_strength=as_str(data.get("lord_strength")),
+            month=as_int(data.get("month")),
+            muntha=LabelledId.from_dict(as_dict(data.get("muntha"))),
+            reasons=[
+                VimshottariReadingDocumentBasisFunctionalValueDashaRoleReasonsItem.from_dict(
+                    as_dict(e0)
+                )
+                for e0 in as_list(data.get("reasons"))
+            ],
+            rise=as_bool(data.get("rise")),
+            to=as_str(data.get("to")),
+            best=None
+            if data.get("best") is None
+            else VarshphalReadingDocumentMonthlyItemBest.from_dict(as_dict(data.get("best"))),
+            care=as_bool_or_none(data.get("care")),
+            hard=None
+            if data.get("hard") is None
+            else VarshphalReadingDocumentMonthlyItemBest.from_dict(as_dict(data.get("hard"))),
+            text=None
+            if data.get("text") is None
+            else LocalizedText.from_dict(as_dict(data.get("text"))),
+        )
+
+    def to_dict(self) -> dict[str, Any]:
+        """This value as JSON, with every `None` left out."""
+        out: dict[str, Any] = {}
+        out["areas"] = [e0.to_dict() for e0 in self.areas]
+        out["from"] = self.from_
+        out["level"] = self.level
+        out["lord"] = self.lord.to_dict()
+        out["lord_strength"] = self.lord_strength
+        out["month"] = self.month
+        out["muntha"] = self.muntha.to_dict()
+        out["reasons"] = [e0.to_dict() for e0 in self.reasons]
+        out["rise"] = self.rise
+        out["to"] = self.to
+        if self.best is not None:
+            out["best"] = self.best.to_dict()
+        if self.care is not None:
+            out["care"] = self.care
+        if self.hard is not None:
+            out["hard"] = self.hard.to_dict()
+        if self.text is not None:
+            out["text"] = self.text.to_dict()
+        return out
+
+
+@dataclass(frozen=True, slots=True)
+class KundliReportVarshphalNatalPromiseItem:
+    """Wire shape: `KundliReportVarshphal.natal_promise[]`."""
+
+    _WIRE: ClassVar[dict[str, str]] = {
+        "with_": "with",
+    }
+    """Attributes whose wire key is not their own name."""
+
+    active: bool
+    lord: LabelledId
+    reasons: list[VimshottariReadingDocumentBasisFunctionalValueDashaRoleReasonsItem]
+    with_: str
+    """Wire key: `with`."""
+    house: int | None = None
+    text: LocalizedText | None = None
+
+    @classmethod
+    def from_dict(cls, data: Mapping[str, Any]) -> KundliReportVarshphalNatalPromiseItem:
+        """Read the wire shape, as `json.loads` returns it."""
+        return cls(
+            active=as_bool(data.get("active")),
+            lord=LabelledId.from_dict(as_dict(data.get("lord"))),
+            reasons=[
+                VimshottariReadingDocumentBasisFunctionalValueDashaRoleReasonsItem.from_dict(
+                    as_dict(e0)
+                )
+                for e0 in as_list(data.get("reasons"))
+            ],
+            with_=as_str(data.get("with")),
+            house=as_int_or_none(data.get("house")),
+            text=None
+            if data.get("text") is None
+            else LocalizedText.from_dict(as_dict(data.get("text"))),
+        )
+
+    def to_dict(self) -> dict[str, Any]:
+        """This value as JSON, with every `None` left out."""
+        out: dict[str, Any] = {}
+        out["active"] = self.active
+        out["lord"] = self.lord.to_dict()
+        out["reasons"] = [e0.to_dict() for e0 in self.reasons]
+        out["with"] = self.with_
+        if self.house is not None:
+            out["house"] = self.house
+        if self.text is not None:
+            out["text"] = self.text.to_dict()
+        return out
+
+
+@dataclass(frozen=True, slots=True)
 class KundliReportVimshottari:
     """Wire shape: `KundliReportDocument.vimshottari`."""
 
@@ -4821,6 +5537,7 @@ class KundliReportVimshottariBasis:
     """Wire shape: `KundliReportVimshottari.basis`."""
 
     functional: dict[str, KundliReportVimshottariBasisFunctionalValue]
+    health_grahas: list[str]
     switches: VimshottariReadingDocumentBasisSwitches
 
     @classmethod
@@ -4831,6 +5548,7 @@ class KundliReportVimshottariBasis:
                 k0: KundliReportVimshottariBasisFunctionalValue.from_dict(as_dict(v0))
                 for k0, v0 in as_dict(data.get("functional")).items()
             },
+            health_grahas=[as_str(e0) for e0 in as_list(data.get("health_grahas"))],
             switches=VimshottariReadingDocumentBasisSwitches.from_dict(
                 as_dict(data.get("switches"))
             ),
@@ -4840,6 +5558,7 @@ class KundliReportVimshottariBasis:
         """This value as JSON, with every `None` left out."""
         out: dict[str, Any] = {}
         out["functional"] = {k0: v0.to_dict() for k0, v0 in self.functional.items()}
+        out["health_grahas"] = list(self.health_grahas)
         out["switches"] = self.switches.to_dict()
         return out
 
@@ -5144,7 +5863,7 @@ class KundliReportVimshottariBasisFunctionalValueNodeProxy:
     """Wire shape: `KundliReportVimshottariBasisFunctionalValue.node_proxy`."""
 
     companions: list[str]
-    follows: str | None = None
+    follows: str
     house: int | None = None
 
     @classmethod
@@ -5154,7 +5873,7 @@ class KundliReportVimshottariBasisFunctionalValueNodeProxy:
         """Read the wire shape, as `json.loads` returns it."""
         return cls(
             companions=[as_str(e0) for e0 in as_list(data.get("companions"))],
-            follows=as_str_or_none(data.get("follows")),
+            follows=as_str(data.get("follows")),
             house=as_int_or_none(data.get("house")),
         )
 
@@ -5162,8 +5881,7 @@ class KundliReportVimshottariBasisFunctionalValueNodeProxy:
         """This value as JSON, with every `None` left out."""
         out: dict[str, Any] = {}
         out["companions"] = list(self.companions)
-        if self.follows is not None:
-            out["follows"] = self.follows
+        out["follows"] = self.follows
         if self.house is not None:
             out["house"] = self.house
         return out
@@ -5276,11 +5994,8 @@ class LifeArea:
     area: str
     basis: LifeAreaBasis
     level: str
-    periods: list[LifeAreaPeriod]
-    text: LocalizedText
-    """One piece of text, keyed by language: one entry for each language in `options.language`, in
-    that order (`{"hi": "…"}` or `{"en": "…", "hi": "…"}`).
-    """
+    periods: list[YogaReadingPeriodsItem]
+    text: LocalizedText | None = None
 
     @classmethod
     def from_dict(cls, data: Mapping[str, Any]) -> LifeArea:
@@ -5289,8 +6004,12 @@ class LifeArea:
             area=as_str(data.get("area")),
             basis=LifeAreaBasis.from_dict(as_dict(data.get("basis"))),
             level=as_str(data.get("level")),
-            periods=[LifeAreaPeriod.from_dict(as_dict(e0)) for e0 in as_list(data.get("periods"))],
-            text=LocalizedText.from_dict(as_dict(data.get("text"))),
+            periods=[
+                YogaReadingPeriodsItem.from_dict(as_dict(e0)) for e0 in as_list(data.get("periods"))
+            ],
+            text=None
+            if data.get("text") is None
+            else LocalizedText.from_dict(as_dict(data.get("text"))),
         )
 
     def to_dict(self) -> dict[str, Any]:
@@ -5300,7 +6019,8 @@ class LifeArea:
         out["basis"] = self.basis.to_dict()
         out["level"] = self.level
         out["periods"] = [e0.to_dict() for e0 in self.periods]
-        out["text"] = self.text.to_dict()
+        if self.text is not None:
+            out["text"] = self.text.to_dict()
         return out
 
 
@@ -5319,6 +6039,7 @@ class LifeAreaBasis:
     reasons: list[LifeAreaBasisReasonsItem]
     relative: float
     score: float
+    varga: LifeAreaBasisVarga
     yogas: list[str]
     pressure: str | None = None
     support: str | None = None
@@ -5352,6 +6073,7 @@ class LifeAreaBasis:
             ],
             relative=as_float(data.get("relative")),
             score=as_float(data.get("score")),
+            varga=LifeAreaBasisVarga.from_dict(as_dict(data.get("varga"))),
             yogas=[as_str(e0) for e0 in as_list(data.get("yogas"))],
             pressure=as_str_or_none(data.get("pressure")),
             support=as_str_or_none(data.get("support")),
@@ -5371,6 +6093,7 @@ class LifeAreaBasis:
         out["reasons"] = [e0.to_dict() for e0 in self.reasons]
         out["relative"] = self.relative
         out["score"] = self.score
+        out["varga"] = self.varga.to_dict()
         out["yogas"] = list(self.yogas)
         if self.pressure is not None:
             out["pressure"] = self.pressure
@@ -5530,37 +6253,66 @@ class LifeAreaBasisReasonsItem:
 
 
 @dataclass(frozen=True, slots=True)
-class LifeAreaPeriod:
-    """Wire shape: `LifeArea.periods[]`."""
+class LifeAreaBasisVarga:
+    """Wire shape: `LifeAreaBasis.varga`."""
 
-    _WIRE: ClassVar[dict[str, str]] = {
-        "from_": "from",
-    }
-    """Attributes whose wire key is not their own name."""
-
-    current: bool
-    from_: str
-    """Wire key: `from`."""
-    lord: LabelledId
-    to: str
+    checks: list[LifeAreaBasisVargaChecksItem]
+    signal: str
 
     @classmethod
-    def from_dict(cls, data: Mapping[str, Any]) -> LifeAreaPeriod:
+    def from_dict(cls, data: Mapping[str, Any]) -> LifeAreaBasisVarga:
         """Read the wire shape, as `json.loads` returns it."""
         return cls(
-            current=as_bool(data.get("current")),
-            from_=as_str(data.get("from")),
-            lord=LabelledId.from_dict(as_dict(data.get("lord"))),
-            to=as_str(data.get("to")),
+            checks=[
+                LifeAreaBasisVargaChecksItem.from_dict(as_dict(e0))
+                for e0 in as_list(data.get("checks"))
+            ],
+            signal=as_str(data.get("signal")),
         )
 
     def to_dict(self) -> dict[str, Any]:
         """This value as JSON, with every `None` left out."""
         out: dict[str, Any] = {}
-        out["current"] = self.current
-        out["from"] = self.from_
-        out["lord"] = self.lord.to_dict()
-        out["to"] = self.to
+        out["checks"] = [e0.to_dict() for e0 in self.checks]
+        out["signal"] = self.signal
+        return out
+
+
+@dataclass(frozen=True, slots=True)
+class LifeAreaBasisVargaChecksItem:
+    """Wire shape: `LifeAreaBasisVarga.checks[]`."""
+
+    reason: str
+    role: str
+    sign: LabelledId
+    status: str
+    varga: str
+    graha: LabelledId | None = None
+
+    @classmethod
+    def from_dict(cls, data: Mapping[str, Any]) -> LifeAreaBasisVargaChecksItem:
+        """Read the wire shape, as `json.loads` returns it."""
+        return cls(
+            reason=as_str(data.get("reason")),
+            role=as_str(data.get("role")),
+            sign=LabelledId.from_dict(as_dict(data.get("sign"))),
+            status=as_str(data.get("status")),
+            varga=as_str(data.get("varga")),
+            graha=None
+            if data.get("graha") is None
+            else LabelledId.from_dict(as_dict(data.get("graha"))),
+        )
+
+    def to_dict(self) -> dict[str, Any]:
+        """This value as JSON, with every `None` left out."""
+        out: dict[str, Any] = {}
+        out["reason"] = self.reason
+        out["role"] = self.role
+        out["sign"] = self.sign.to_dict()
+        out["status"] = self.status
+        out["varga"] = self.varga
+        if self.graha is not None:
+            out["graha"] = self.graha.to_dict()
         return out
 
 
@@ -5639,6 +6391,7 @@ class LifeAreasDocumentSwitchesFunctional:
     kendradhipati_class: str
     kt_relation: str
     lagna_eighth: str
+    lagna_kendra: str
     luminaries_maraka: bool
     luminary_eighth: str
     mercury_alone: str
@@ -5647,6 +6400,8 @@ class LifeAreasDocumentSwitchesFunctional:
     node_same_kind_yk: bool
     node_with_eighth: str
     prime_maraka: str
+    rao_luminary_maraka_low: bool
+    rao_maraka_list: bool
     second_twelfth: str
     trikona_eighth: str
     trikona_sixth: str
@@ -5661,6 +6416,7 @@ class LifeAreasDocumentSwitchesFunctional:
             kendradhipati_class=as_str(data.get("kendradhipati_class")),
             kt_relation=as_str(data.get("kt_relation")),
             lagna_eighth=as_str(data.get("lagna_eighth")),
+            lagna_kendra=as_str(data.get("lagna_kendra")),
             luminaries_maraka=as_bool(data.get("luminaries_maraka")),
             luminary_eighth=as_str(data.get("luminary_eighth")),
             mercury_alone=as_str(data.get("mercury_alone")),
@@ -5669,6 +6425,8 @@ class LifeAreasDocumentSwitchesFunctional:
             node_same_kind_yk=as_bool(data.get("node_same_kind_yk")),
             node_with_eighth=as_str(data.get("node_with_eighth")),
             prime_maraka=as_str(data.get("prime_maraka")),
+            rao_luminary_maraka_low=as_bool(data.get("rao_luminary_maraka_low")),
+            rao_maraka_list=as_bool(data.get("rao_maraka_list")),
             second_twelfth=as_str(data.get("second_twelfth")),
             trikona_eighth=as_str(data.get("trikona_eighth")),
             trikona_sixth=as_str(data.get("trikona_sixth")),
@@ -5683,6 +6441,7 @@ class LifeAreasDocumentSwitchesFunctional:
         out["kendradhipati_class"] = self.kendradhipati_class
         out["kt_relation"] = self.kt_relation
         out["lagna_eighth"] = self.lagna_eighth
+        out["lagna_kendra"] = self.lagna_kendra
         out["luminaries_maraka"] = self.luminaries_maraka
         out["luminary_eighth"] = self.luminary_eighth
         out["mercury_alone"] = self.mercury_alone
@@ -5691,6 +6450,8 @@ class LifeAreasDocumentSwitchesFunctional:
         out["node_same_kind_yk"] = self.node_same_kind_yk
         out["node_with_eighth"] = self.node_with_eighth
         out["prime_maraka"] = self.prime_maraka
+        out["rao_luminary_maraka_low"] = self.rao_luminary_maraka_low
+        out["rao_maraka_list"] = self.rao_maraka_list
         out["second_twelfth"] = self.second_twelfth
         out["trikona_eighth"] = self.trikona_eighth
         out["trikona_sixth"] = self.trikona_sixth
@@ -5846,11 +6607,10 @@ class MahadashaReading:
     """Wire key: `from`."""
     level: str
     lord: LabelledId
-    text: LocalizedText
-    """One piece of text, keyed by language: one entry for each language in `options.language`, in
-    that order (`{"hi": "…"}` or `{"en": "…", "hi": "…"}`).
-    """
+    stage: str
     to: str
+    tara: str | None = None
+    text: LocalizedText | None = None
 
     @classmethod
     def from_dict(cls, data: Mapping[str, Any]) -> MahadashaReading:
@@ -5864,8 +6624,12 @@ class MahadashaReading:
             from_=as_str(data.get("from")),
             level=as_str(data.get("level")),
             lord=LabelledId.from_dict(as_dict(data.get("lord"))),
-            text=LocalizedText.from_dict(as_dict(data.get("text"))),
+            stage=as_str(data.get("stage")),
             to=as_str(data.get("to")),
+            tara=as_str_or_none(data.get("tara")),
+            text=None
+            if data.get("text") is None
+            else LocalizedText.from_dict(as_dict(data.get("text"))),
         )
 
     def to_dict(self) -> dict[str, Any]:
@@ -5877,8 +6641,12 @@ class MahadashaReading:
         out["from"] = self.from_
         out["level"] = self.level
         out["lord"] = self.lord.to_dict()
-        out["text"] = self.text.to_dict()
+        out["stage"] = self.stage
         out["to"] = self.to
+        if self.tara is not None:
+            out["tara"] = self.tara
+        if self.text is not None:
+            out["text"] = self.text.to_dict()
         return out
 
 
@@ -7219,8 +7987,10 @@ class PdfKundliRequest:
     Default: none (the cover carries the title only).
     """
     edition: str | None = None
-    """How much the kundli prints: `basic` (the default, about 12 to 20 pages) or `professional`
-    (every section, about 30 to 45). Both cost the same.
+    """How much the kundli prints: `basic` (the default, about 12 to 27 pages), `professional` (the
+    astrologer's edition, every technical section, about 30 to 45) or `life` (the Life Report,
+    written for the person it is about: who they are, each area of life in depth, Manglik, Sade
+    Sati and the dasha timeline). All three cost the same.
     """
     sections: list[str] | None = None
     """The sections to print, by id, in any order (the PDF keeps its own), e.g. `["details",
@@ -7462,6 +8232,12 @@ class PdfVarshphalRequest:
     """The person's name, printed on the cover and used in the file name; 1 to 120 characters.
     Default: none (the cover carries the title only).
     """
+    edition: str | None = None
+    """How much the Varshphal prints: `life` (the default, the year written for the person it is
+    about) or `professional` (adds the astrologer's tables: planet strengths, Tajika yogas,
+    every saham, the period grades with their sub-periods and the month lords). Both cost the
+    same.
+    """
 
     @classmethod
     def from_dict(cls, data: Mapping[str, Any]) -> PdfVarshphalRequest:
@@ -7478,6 +8254,7 @@ class PdfVarshphalRequest:
             if data.get("branding") is None
             else PdfBranding.from_dict(as_dict(data.get("branding"))),
             name=as_str_or_none(data.get("name")),
+            edition=as_str_or_none(data.get("edition")),
         )
 
     def to_dict(self) -> dict[str, Any]:
@@ -7495,6 +8272,8 @@ class PdfVarshphalRequest:
             out["branding"] = self.branding.to_dict()
         if self.name is not None:
             out["name"] = self.name
+        if self.edition is not None:
+            out["edition"] = self.edition
         return out
 
 
@@ -7722,22 +8501,25 @@ class ReadingLagna:
     Wire shape: `ReadingLagnaDocument.lagna`.
     """
 
-    entry: ReadingEntry
     sign: LabelledId
+    entry: ReadingEntry | None = None
 
     @classmethod
     def from_dict(cls, data: Mapping[str, Any]) -> ReadingLagna:
         """Read the wire shape, as `json.loads` returns it."""
         return cls(
-            entry=ReadingEntry.from_dict(as_dict(data.get("entry"))),
             sign=LabelledId.from_dict(as_dict(data.get("sign"))),
+            entry=None
+            if data.get("entry") is None
+            else ReadingEntry.from_dict(as_dict(data.get("entry"))),
         )
 
     def to_dict(self) -> dict[str, Any]:
         """This value as JSON, with every `None` left out."""
         out: dict[str, Any] = {}
-        out["entry"] = self.entry.to_dict()
         out["sign"] = self.sign.to_dict()
+        if self.entry is not None:
+            out["entry"] = self.entry.to_dict()
         return out
 
 
@@ -7784,22 +8566,25 @@ class ReadingNakshatra:
     Wire shape: `ReadingNakshatraDocument.nakshatra`.
     """
 
-    entry: ReadingEntry
     nakshatra: LabelledId
+    entry: ReadingEntry | None = None
 
     @classmethod
     def from_dict(cls, data: Mapping[str, Any]) -> ReadingNakshatra:
         """Read the wire shape, as `json.loads` returns it."""
         return cls(
-            entry=ReadingEntry.from_dict(as_dict(data.get("entry"))),
             nakshatra=LabelledId.from_dict(as_dict(data.get("nakshatra"))),
+            entry=None
+            if data.get("entry") is None
+            else ReadingEntry.from_dict(as_dict(data.get("entry"))),
         )
 
     def to_dict(self) -> dict[str, Any]:
         """This value as JSON, with every `None` left out."""
         out: dict[str, Any] = {}
-        out["entry"] = self.entry.to_dict()
         out["nakshatra"] = self.nakshatra.to_dict()
+        if self.entry is not None:
+            out["entry"] = self.entry.to_dict()
         return out
 
 
@@ -7851,9 +8636,53 @@ class ReadingSummary:
     """One piece of text, keyed by language: one entry for each language in `options.language`, in
     that order (`{"hi": "…"}` or `{"en": "…", "hi": "…"}`).
     """
+    best: VarshphalReadingDocumentMonthlyItemBest | None = None
+    hard: VarshphalReadingDocumentMonthlyItemBest | None = None
+    note: LocalizedText | None = None
 
     @classmethod
     def from_dict(cls, data: Mapping[str, Any]) -> ReadingSummary:
+        """Read the wire shape, as `json.loads` returns it."""
+        return cls(
+            level=as_str(data.get("level")),
+            text=LocalizedText.from_dict(as_dict(data.get("text"))),
+            best=None
+            if data.get("best") is None
+            else VarshphalReadingDocumentMonthlyItemBest.from_dict(as_dict(data.get("best"))),
+            hard=None
+            if data.get("hard") is None
+            else VarshphalReadingDocumentMonthlyItemBest.from_dict(as_dict(data.get("hard"))),
+            note=None
+            if data.get("note") is None
+            else LocalizedText.from_dict(as_dict(data.get("note"))),
+        )
+
+    def to_dict(self) -> dict[str, Any]:
+        """This value as JSON, with every `None` left out."""
+        out: dict[str, Any] = {}
+        out["level"] = self.level
+        out["text"] = self.text.to_dict()
+        if self.best is not None:
+            out["best"] = self.best.to_dict()
+        if self.hard is not None:
+            out["hard"] = self.hard.to_dict()
+        if self.note is not None:
+            out["note"] = self.note.to_dict()
+        return out
+
+
+@dataclass(frozen=True, slots=True)
+class ReadingSummary2:
+    """Wire shape: `HoroscopeDocument.summary`."""
+
+    level: str
+    text: LocalizedText
+    """One piece of text, keyed by language: one entry for each language in `options.language`, in
+    that order (`{"hi": "…"}` or `{"en": "…", "hi": "…"}`).
+    """
+
+    @classmethod
+    def from_dict(cls, data: Mapping[str, Any]) -> ReadingSummary2:
         """Read the wire shape, as `json.loads` returns it."""
         return cls(
             level=as_str(data.get("level")),
@@ -7945,8 +8774,9 @@ class ReportKundliRequest:
     """
     parts: list[str] | None = None
     """The parts to include, each named once, in any order (the answer keeps the report's own
-    order): `lagna`, `nakshatra`, `life_areas`, `house_lords`, `grahas`, `yogas`, `vimshottari`,
-    `varshphal`. Default: all eight. The report is priced per part.
+    order): `lagna`, `nakshatra`, `nature`, `life_areas`, `in_depth`, `house_lords`, `grahas`,
+    `yogas`, `vimshottari`, `varshphal`, `now_next`. Default: all eleven. The report is priced
+    per part.
     """
     year: int | None = None
     """The Varshphal's year, e.g. `2026`: the year from that year's birthday to the next. Default:
@@ -9704,7 +10534,11 @@ class VarshphalReadingDocument:
     basis: VarshphalReadingDocumentBasis
     from_: str
     """Wire key: `from`."""
+    monthly: list[VarshphalReadingDocumentMonthlyItem]
     months: list[VarshphalPeriod]
+    natal_promise: list[VarshphalReadingDocumentNatalPromiseItem]
+    periods: list[VarshphalReadingDocumentPeriodsItem]
+    sahams: list[VarshphalReadingDocumentSahamsItem]
     summary: ReadingSummary
     to: str
     varsha_year: int
@@ -9721,7 +10555,23 @@ class VarshphalReadingDocument:
             areas=[AreaSummary.from_dict(as_dict(e0)) for e0 in as_list(data.get("areas"))],
             basis=VarshphalReadingDocumentBasis.from_dict(as_dict(data.get("basis"))),
             from_=as_str(data.get("from")),
+            monthly=[
+                VarshphalReadingDocumentMonthlyItem.from_dict(as_dict(e0))
+                for e0 in as_list(data.get("monthly"))
+            ],
             months=[VarshphalPeriod.from_dict(as_dict(e0)) for e0 in as_list(data.get("months"))],
+            natal_promise=[
+                VarshphalReadingDocumentNatalPromiseItem.from_dict(as_dict(e0))
+                for e0 in as_list(data.get("natal_promise"))
+            ],
+            periods=[
+                VarshphalReadingDocumentPeriodsItem.from_dict(as_dict(e0))
+                for e0 in as_list(data.get("periods"))
+            ],
+            sahams=[
+                VarshphalReadingDocumentSahamsItem.from_dict(as_dict(e0))
+                for e0 in as_list(data.get("sahams"))
+            ],
             summary=ReadingSummary.from_dict(as_dict(data.get("summary"))),
             to=as_str(data.get("to")),
             varsha_year=as_int(data.get("varsha_year")),
@@ -9737,7 +10587,11 @@ class VarshphalReadingDocument:
         out["areas"] = [e0.to_dict() for e0 in self.areas]
         out["basis"] = self.basis.to_dict()
         out["from"] = self.from_
+        out["monthly"] = [e0.to_dict() for e0 in self.monthly]
         out["months"] = [e0.to_dict() for e0 in self.months]
+        out["natal_promise"] = [e0.to_dict() for e0 in self.natal_promise]
+        out["periods"] = [e0.to_dict() for e0 in self.periods]
+        out["sahams"] = [e0.to_dict() for e0 in self.sahams]
         out["summary"] = self.summary.to_dict()
         out["to"] = self.to
         out["varsha_year"] = self.varsha_year
@@ -10252,6 +11106,372 @@ class VarshphalReadingDocumentBasisYearLord:
 
 
 @dataclass(frozen=True, slots=True)
+class VarshphalReadingDocumentMonthlyItem:
+    """Wire shape: `VarshphalReadingDocument.monthly[]`."""
+
+    _WIRE: ClassVar[dict[str, str]] = {
+        "from_": "from",
+    }
+    """Attributes whose wire key is not their own name."""
+
+    areas: list[VarshphalReadingDocumentMonthlyItemAreasItem]
+    care: bool
+    from_: str
+    """Wire key: `from`."""
+    level: str
+    lord: LabelledId
+    lord_strength: str
+    month: int
+    muntha: LabelledId
+    reasons: list[VimshottariReadingDocumentBasisFunctionalValueDashaRoleReasonsItem]
+    rise: bool
+    to: str
+    best: VarshphalReadingDocumentMonthlyItemBest | None = None
+    hard: VarshphalReadingDocumentMonthlyItemBest | None = None
+    text: LocalizedText | None = None
+
+    @classmethod
+    def from_dict(cls, data: Mapping[str, Any]) -> VarshphalReadingDocumentMonthlyItem:
+        """Read the wire shape, as `json.loads` returns it."""
+        return cls(
+            areas=[
+                VarshphalReadingDocumentMonthlyItemAreasItem.from_dict(as_dict(e0))
+                for e0 in as_list(data.get("areas"))
+            ],
+            care=as_bool(data.get("care")),
+            from_=as_str(data.get("from")),
+            level=as_str(data.get("level")),
+            lord=LabelledId.from_dict(as_dict(data.get("lord"))),
+            lord_strength=as_str(data.get("lord_strength")),
+            month=as_int(data.get("month")),
+            muntha=LabelledId.from_dict(as_dict(data.get("muntha"))),
+            reasons=[
+                VimshottariReadingDocumentBasisFunctionalValueDashaRoleReasonsItem.from_dict(
+                    as_dict(e0)
+                )
+                for e0 in as_list(data.get("reasons"))
+            ],
+            rise=as_bool(data.get("rise")),
+            to=as_str(data.get("to")),
+            best=None
+            if data.get("best") is None
+            else VarshphalReadingDocumentMonthlyItemBest.from_dict(as_dict(data.get("best"))),
+            hard=None
+            if data.get("hard") is None
+            else VarshphalReadingDocumentMonthlyItemBest.from_dict(as_dict(data.get("hard"))),
+            text=None
+            if data.get("text") is None
+            else LocalizedText.from_dict(as_dict(data.get("text"))),
+        )
+
+    def to_dict(self) -> dict[str, Any]:
+        """This value as JSON, with every `None` left out."""
+        out: dict[str, Any] = {}
+        out["areas"] = [e0.to_dict() for e0 in self.areas]
+        out["care"] = self.care
+        out["from"] = self.from_
+        out["level"] = self.level
+        out["lord"] = self.lord.to_dict()
+        out["lord_strength"] = self.lord_strength
+        out["month"] = self.month
+        out["muntha"] = self.muntha.to_dict()
+        out["reasons"] = [e0.to_dict() for e0 in self.reasons]
+        out["rise"] = self.rise
+        out["to"] = self.to
+        if self.best is not None:
+            out["best"] = self.best.to_dict()
+        if self.hard is not None:
+            out["hard"] = self.hard.to_dict()
+        if self.text is not None:
+            out["text"] = self.text.to_dict()
+        return out
+
+
+@dataclass(frozen=True, slots=True)
+class VarshphalReadingDocumentMonthlyItemAreasItem:
+    """Wire shape: `VarshphalReadingDocumentMonthlyItem.areas[]`."""
+
+    area: str
+    good: bool | None = None
+
+    @classmethod
+    def from_dict(cls, data: Mapping[str, Any]) -> VarshphalReadingDocumentMonthlyItemAreasItem:
+        """Read the wire shape, as `json.loads` returns it."""
+        return cls(
+            area=as_str(data.get("area")),
+            good=as_bool_or_none(data.get("good")),
+        )
+
+    def to_dict(self) -> dict[str, Any]:
+        """This value as JSON, with every `None` left out."""
+        out: dict[str, Any] = {}
+        out["area"] = self.area
+        if self.good is not None:
+            out["good"] = self.good
+        return out
+
+
+@dataclass(frozen=True, slots=True)
+class VarshphalReadingDocumentMonthlyItemBest:
+    """Wire shape: `VarshphalReadingDocumentMonthlyItem.best`."""
+
+    _WIRE: ClassVar[dict[str, str]] = {
+        "from_": "from",
+    }
+    """Attributes whose wire key is not their own name."""
+
+    from_: str
+    """Wire key: `from`."""
+    to: str
+
+    @classmethod
+    def from_dict(cls, data: Mapping[str, Any]) -> VarshphalReadingDocumentMonthlyItemBest:
+        """Read the wire shape, as `json.loads` returns it."""
+        return cls(
+            from_=as_str(data.get("from")),
+            to=as_str(data.get("to")),
+        )
+
+    def to_dict(self) -> dict[str, Any]:
+        """This value as JSON, with every `None` left out."""
+        out: dict[str, Any] = {}
+        out["from"] = self.from_
+        out["to"] = self.to
+        return out
+
+
+@dataclass(frozen=True, slots=True)
+class VarshphalReadingDocumentNatalPromiseItem:
+    """Wire shape: `VarshphalReadingDocument.natal_promise[]`."""
+
+    _WIRE: ClassVar[dict[str, str]] = {
+        "with_": "with",
+    }
+    """Attributes whose wire key is not their own name."""
+
+    active: bool
+    house: int
+    lord: LabelledId
+    reasons: list[VimshottariReadingDocumentBasisFunctionalValueDashaRoleReasonsItem]
+    with_: str
+    """Wire key: `with`."""
+    text: LocalizedText | None = None
+
+    @classmethod
+    def from_dict(cls, data: Mapping[str, Any]) -> VarshphalReadingDocumentNatalPromiseItem:
+        """Read the wire shape, as `json.loads` returns it."""
+        return cls(
+            active=as_bool(data.get("active")),
+            house=as_int(data.get("house")),
+            lord=LabelledId.from_dict(as_dict(data.get("lord"))),
+            reasons=[
+                VimshottariReadingDocumentBasisFunctionalValueDashaRoleReasonsItem.from_dict(
+                    as_dict(e0)
+                )
+                for e0 in as_list(data.get("reasons"))
+            ],
+            with_=as_str(data.get("with")),
+            text=None
+            if data.get("text") is None
+            else LocalizedText.from_dict(as_dict(data.get("text"))),
+        )
+
+    def to_dict(self) -> dict[str, Any]:
+        """This value as JSON, with every `None` left out."""
+        out: dict[str, Any] = {}
+        out["active"] = self.active
+        out["house"] = self.house
+        out["lord"] = self.lord.to_dict()
+        out["reasons"] = [e0.to_dict() for e0 in self.reasons]
+        out["with"] = self.with_
+        if self.text is not None:
+            out["text"] = self.text.to_dict()
+        return out
+
+
+@dataclass(frozen=True, slots=True)
+class VarshphalReadingDocumentPeriodsItem:
+    """Wire shape: `VarshphalReadingDocument.periods[]`."""
+
+    _WIRE: ClassVar[dict[str, str]] = {
+        "from_": "from",
+    }
+    """Attributes whose wire key is not their own name."""
+
+    from_: str
+    """Wire key: `from`."""
+    level: str
+    reasons: list[VimshottariReadingDocumentBasisFunctionalValueDashaRoleReasonsItem]
+    step: int
+    subs: list[VarshphalReadingDocumentPeriodsItemSubsItem]
+    to: str
+    lord: Any = None
+
+    @classmethod
+    def from_dict(cls, data: Mapping[str, Any]) -> VarshphalReadingDocumentPeriodsItem:
+        """Read the wire shape, as `json.loads` returns it."""
+        return cls(
+            from_=as_str(data.get("from")),
+            level=as_str(data.get("level")),
+            reasons=[
+                VimshottariReadingDocumentBasisFunctionalValueDashaRoleReasonsItem.from_dict(
+                    as_dict(e0)
+                )
+                for e0 in as_list(data.get("reasons"))
+            ],
+            step=as_int(data.get("step")),
+            subs=[
+                VarshphalReadingDocumentPeriodsItemSubsItem.from_dict(as_dict(e0))
+                for e0 in as_list(data.get("subs"))
+            ],
+            to=as_str(data.get("to")),
+            lord=data.get("lord"),
+        )
+
+    def to_dict(self) -> dict[str, Any]:
+        """This value as JSON, with every `None` left out."""
+        out: dict[str, Any] = {}
+        out["from"] = self.from_
+        out["level"] = self.level
+        out["reasons"] = [e0.to_dict() for e0 in self.reasons]
+        out["step"] = self.step
+        out["subs"] = [e0.to_dict() for e0 in self.subs]
+        out["to"] = self.to
+        if self.lord is not None:
+            out["lord"] = self.lord
+        return out
+
+
+@dataclass(frozen=True, slots=True)
+class VarshphalReadingDocumentPeriodsItemSubsItem:
+    """Wire shape: `VarshphalReadingDocumentPeriodsItem.subs[]`."""
+
+    _WIRE: ClassVar[dict[str, str]] = {
+        "from_": "from",
+    }
+    """Attributes whose wire key is not their own name."""
+
+    from_: str
+    """Wire key: `from`."""
+    to: str
+    good: bool | None = None
+    lord: Any = None
+
+    @classmethod
+    def from_dict(cls, data: Mapping[str, Any]) -> VarshphalReadingDocumentPeriodsItemSubsItem:
+        """Read the wire shape, as `json.loads` returns it."""
+        return cls(
+            from_=as_str(data.get("from")),
+            to=as_str(data.get("to")),
+            good=as_bool_or_none(data.get("good")),
+            lord=data.get("lord"),
+        )
+
+    def to_dict(self) -> dict[str, Any]:
+        """This value as JSON, with every `None` left out."""
+        out: dict[str, Any] = {}
+        out["from"] = self.from_
+        out["to"] = self.to
+        if self.good is not None:
+            out["good"] = self.good
+        if self.lord is not None:
+            out["lord"] = self.lord
+        return out
+
+
+@dataclass(frozen=True, slots=True)
+class VarshphalReadingDocumentSahamsItem:
+    """Wire shape: `VarshphalReadingDocument.sahams[]`."""
+
+    key: str
+    lord: LabelledId
+    reasons: list[VimshottariReadingDocumentBasisFunctionalValueDashaRoleReasonsItem]
+    sign: LabelledId
+    verdict: str
+    day: str | None = None
+    half: str | None = None
+    name: LocalizedText | None = None
+    period: VarshphalReadingDocumentSahamsItemPeriod | None = None
+    text: LocalizedText | None = None
+
+    @classmethod
+    def from_dict(cls, data: Mapping[str, Any]) -> VarshphalReadingDocumentSahamsItem:
+        """Read the wire shape, as `json.loads` returns it."""
+        return cls(
+            key=as_str(data.get("key")),
+            lord=LabelledId.from_dict(as_dict(data.get("lord"))),
+            reasons=[
+                VimshottariReadingDocumentBasisFunctionalValueDashaRoleReasonsItem.from_dict(
+                    as_dict(e0)
+                )
+                for e0 in as_list(data.get("reasons"))
+            ],
+            sign=LabelledId.from_dict(as_dict(data.get("sign"))),
+            verdict=as_str(data.get("verdict")),
+            day=as_str_or_none(data.get("day")),
+            half=as_str_or_none(data.get("half")),
+            name=None
+            if data.get("name") is None
+            else LocalizedText.from_dict(as_dict(data.get("name"))),
+            period=None
+            if data.get("period") is None
+            else VarshphalReadingDocumentSahamsItemPeriod.from_dict(as_dict(data.get("period"))),
+            text=None
+            if data.get("text") is None
+            else LocalizedText.from_dict(as_dict(data.get("text"))),
+        )
+
+    def to_dict(self) -> dict[str, Any]:
+        """This value as JSON, with every `None` left out."""
+        out: dict[str, Any] = {}
+        out["key"] = self.key
+        out["lord"] = self.lord.to_dict()
+        out["reasons"] = [e0.to_dict() for e0 in self.reasons]
+        out["sign"] = self.sign.to_dict()
+        out["verdict"] = self.verdict
+        if self.day is not None:
+            out["day"] = self.day
+        if self.half is not None:
+            out["half"] = self.half
+        if self.name is not None:
+            out["name"] = self.name.to_dict()
+        if self.period is not None:
+            out["period"] = self.period.to_dict()
+        if self.text is not None:
+            out["text"] = self.text.to_dict()
+        return out
+
+
+@dataclass(frozen=True, slots=True)
+class VarshphalReadingDocumentSahamsItemPeriod:
+    """Wire shape: `VarshphalReadingDocumentSahamsItem.period`."""
+
+    _WIRE: ClassVar[dict[str, str]] = {
+        "from_": "from",
+    }
+    """Attributes whose wire key is not their own name."""
+
+    from_: LabelledId
+    """Wire key: `from`."""
+    to: LabelledId
+
+    @classmethod
+    def from_dict(cls, data: Mapping[str, Any]) -> VarshphalReadingDocumentSahamsItemPeriod:
+        """Read the wire shape, as `json.loads` returns it."""
+        return cls(
+            from_=LabelledId.from_dict(as_dict(data.get("from"))),
+            to=LabelledId.from_dict(as_dict(data.get("to"))),
+        )
+
+    def to_dict(self) -> dict[str, Any]:
+        """This value as JSON, with every `None` left out."""
+        out: dict[str, Any] = {}
+        out["from"] = self.from_.to_dict()
+        out["to"] = self.to.to_dict()
+        return out
+
+
+@dataclass(frozen=True, slots=True)
 class VarshphalRequest:
     """Wire shape: `POST /v1/varshphal body`."""
 
@@ -10563,6 +11783,7 @@ class VarshphalVarshaYearDocumentMaasaItem:
     lagna_sign: LabelledId
     month: int
     month_lord: VarshphalVarshaYearDocumentYearLord
+    muntha: LabelledId
     pravesh: str
 
     @classmethod
@@ -10577,6 +11798,7 @@ class VarshphalVarshaYearDocumentMaasaItem:
             month_lord=VarshphalVarshaYearDocumentYearLord.from_dict(
                 as_dict(data.get("month_lord"))
             ),
+            muntha=LabelledId.from_dict(as_dict(data.get("muntha"))),
             pravesh=as_str(data.get("pravesh")),
         )
 
@@ -10589,6 +11811,7 @@ class VarshphalVarshaYearDocumentMaasaItem:
         out["lagna_sign"] = self.lagna_sign.to_dict()
         out["month"] = self.month
         out["month_lord"] = self.month_lord.to_dict()
+        out["muntha"] = self.muntha.to_dict()
         out["pravesh"] = self.pravesh
         return out
 
@@ -10850,6 +12073,7 @@ class VimshottariReadingDocumentBasis:
     """Wire shape: `VimshottariReadingDocument.basis`."""
 
     functional: dict[str, VimshottariReadingDocumentBasisFunctionalValue]
+    health_grahas: list[str]
     switches: VimshottariReadingDocumentBasisSwitches
 
     @classmethod
@@ -10860,6 +12084,7 @@ class VimshottariReadingDocumentBasis:
                 k0: VimshottariReadingDocumentBasisFunctionalValue.from_dict(as_dict(v0))
                 for k0, v0 in as_dict(data.get("functional")).items()
             },
+            health_grahas=[as_str(e0) for e0 in as_list(data.get("health_grahas"))],
             switches=VimshottariReadingDocumentBasisSwitches.from_dict(
                 as_dict(data.get("switches"))
             ),
@@ -10869,6 +12094,7 @@ class VimshottariReadingDocumentBasis:
         """This value as JSON, with every `None` left out."""
         out: dict[str, Any] = {}
         out["functional"] = {k0: v0.to_dict() for k0, v0 in self.functional.items()}
+        out["health_grahas"] = list(self.health_grahas)
         out["switches"] = self.switches.to_dict()
         return out
 
@@ -11227,8 +12453,8 @@ class VimshottariReadingDocumentBasisFunctionalValueNodeProxy:
     """Wire shape: `VimshottariReadingDocumentBasisFunctionalValue.node_proxy`."""
 
     companions: list[str]
+    follows: str
     house: int
-    follows: str | None = None
 
     @classmethod
     def from_dict(
@@ -11237,17 +12463,16 @@ class VimshottariReadingDocumentBasisFunctionalValueNodeProxy:
         """Read the wire shape, as `json.loads` returns it."""
         return cls(
             companions=[as_str(e0) for e0 in as_list(data.get("companions"))],
+            follows=as_str(data.get("follows")),
             house=as_int(data.get("house")),
-            follows=as_str_or_none(data.get("follows")),
         )
 
     def to_dict(self) -> dict[str, Any]:
         """This value as JSON, with every `None` left out."""
         out: dict[str, Any] = {}
         out["companions"] = list(self.companions)
+        out["follows"] = self.follows
         out["house"] = self.house
-        if self.follows is not None:
-            out["follows"] = self.follows
         return out
 
 
@@ -11422,6 +12647,12 @@ class VimshottariReadingDocumentBasisSwitchesDasha:
     mutual_dusthana_worsens: bool
     raja_yoga_dasha: bool
     raja_yoga_min_relation: int
+    rao_benefic_association: bool
+    rao_debilitated_dusthana: bool
+    rao_node_trikona_yk: bool
+    rao_vs_own_bhukti: bool
+    rao_yoga_bhukti: bool
+    rao_yoga_survives_maraka: bool
     s19_related_papa_in_yk: str
     s31_order: str
     s32_unrelated: str
@@ -11444,6 +12675,12 @@ class VimshottariReadingDocumentBasisSwitchesDasha:
             mutual_dusthana_worsens=as_bool(data.get("mutual_dusthana_worsens")),
             raja_yoga_dasha=as_bool(data.get("raja_yoga_dasha")),
             raja_yoga_min_relation=as_int(data.get("raja_yoga_min_relation")),
+            rao_benefic_association=as_bool(data.get("rao_benefic_association")),
+            rao_debilitated_dusthana=as_bool(data.get("rao_debilitated_dusthana")),
+            rao_node_trikona_yk=as_bool(data.get("rao_node_trikona_yk")),
+            rao_vs_own_bhukti=as_bool(data.get("rao_vs_own_bhukti")),
+            rao_yoga_bhukti=as_bool(data.get("rao_yoga_bhukti")),
+            rao_yoga_survives_maraka=as_bool(data.get("rao_yoga_survives_maraka")),
             s19_related_papa_in_yk=as_str(data.get("s19_related_papa_in_yk")),
             s31_order=as_str(data.get("s31_order")),
             s32_unrelated=as_str(data.get("s32_unrelated")),
@@ -11466,6 +12703,12 @@ class VimshottariReadingDocumentBasisSwitchesDasha:
         out["mutual_dusthana_worsens"] = self.mutual_dusthana_worsens
         out["raja_yoga_dasha"] = self.raja_yoga_dasha
         out["raja_yoga_min_relation"] = self.raja_yoga_min_relation
+        out["rao_benefic_association"] = self.rao_benefic_association
+        out["rao_debilitated_dusthana"] = self.rao_debilitated_dusthana
+        out["rao_node_trikona_yk"] = self.rao_node_trikona_yk
+        out["rao_vs_own_bhukti"] = self.rao_vs_own_bhukti
+        out["rao_yoga_bhukti"] = self.rao_yoga_bhukti
+        out["rao_yoga_survives_maraka"] = self.rao_yoga_survives_maraka
         out["s19_related_papa_in_yk"] = self.s19_related_papa_in_yk
         out["s31_order"] = self.s31_order
         out["s32_unrelated"] = self.s32_unrelated
@@ -11488,6 +12731,7 @@ class VimshottariReadingDocumentBasisSwitchesFunctional:
     kendradhipati_class: str
     kt_relation: str
     lagna_eighth: str
+    lagna_kendra: str
     luminaries_maraka: bool
     luminary_eighth: str
     mercury_alone: str
@@ -11496,6 +12740,8 @@ class VimshottariReadingDocumentBasisSwitchesFunctional:
     node_same_kind_yk: bool
     node_with_eighth: str
     prime_maraka: str
+    rao_luminary_maraka_low: bool
+    rao_maraka_list: bool
     trikona_eighth: str
     trikona_sixth: str
     unlisted_pairs: str
@@ -11512,6 +12758,7 @@ class VimshottariReadingDocumentBasisSwitchesFunctional:
             kendradhipati_class=as_str(data.get("kendradhipati_class")),
             kt_relation=as_str(data.get("kt_relation")),
             lagna_eighth=as_str(data.get("lagna_eighth")),
+            lagna_kendra=as_str(data.get("lagna_kendra")),
             luminaries_maraka=as_bool(data.get("luminaries_maraka")),
             luminary_eighth=as_str(data.get("luminary_eighth")),
             mercury_alone=as_str(data.get("mercury_alone")),
@@ -11520,6 +12767,8 @@ class VimshottariReadingDocumentBasisSwitchesFunctional:
             node_same_kind_yk=as_bool(data.get("node_same_kind_yk")),
             node_with_eighth=as_str(data.get("node_with_eighth")),
             prime_maraka=as_str(data.get("prime_maraka")),
+            rao_luminary_maraka_low=as_bool(data.get("rao_luminary_maraka_low")),
+            rao_maraka_list=as_bool(data.get("rao_maraka_list")),
             trikona_eighth=as_str(data.get("trikona_eighth")),
             trikona_sixth=as_str(data.get("trikona_sixth")),
             unlisted_pairs=as_str(data.get("unlisted_pairs")),
@@ -11534,6 +12783,7 @@ class VimshottariReadingDocumentBasisSwitchesFunctional:
         out["kendradhipati_class"] = self.kendradhipati_class
         out["kt_relation"] = self.kt_relation
         out["lagna_eighth"] = self.lagna_eighth
+        out["lagna_kendra"] = self.lagna_kendra
         out["luminaries_maraka"] = self.luminaries_maraka
         out["luminary_eighth"] = self.luminary_eighth
         out["mercury_alone"] = self.mercury_alone
@@ -11542,6 +12792,8 @@ class VimshottariReadingDocumentBasisSwitchesFunctional:
         out["node_same_kind_yk"] = self.node_same_kind_yk
         out["node_with_eighth"] = self.node_with_eighth
         out["prime_maraka"] = self.prime_maraka
+        out["rao_luminary_maraka_low"] = self.rao_luminary_maraka_low
+        out["rao_maraka_list"] = self.rao_maraka_list
         out["trikona_eighth"] = self.trikona_eighth
         out["trikona_sixth"] = self.trikona_sixth
         out["unlisted_pairs"] = self.unlisted_pairs
@@ -11559,12 +12811,15 @@ class YogaReading:
 
     category: str
     code: str
-    entry: ReadingEntry
+    count: int
+    formations: list[YogaReadingFormationsItem]
     name: LocalizedText
     """One piece of text, keyed by language: one entry for each language in `options.language`, in
     that order (`{"hi": "…"}` or `{"en": "…", "hi": "…"}`).
     """
     participants: list[LabelledId]
+    periods: list[YogaReadingPeriodsItem]
+    entry: ReadingEntry | None = None
 
     @classmethod
     def from_dict(cls, data: Mapping[str, Any]) -> YogaReading:
@@ -11572,11 +12827,21 @@ class YogaReading:
         return cls(
             category=as_str(data.get("category")),
             code=as_str(data.get("code")),
-            entry=ReadingEntry.from_dict(as_dict(data.get("entry"))),
+            count=as_int(data.get("count")),
+            formations=[
+                YogaReadingFormationsItem.from_dict(as_dict(e0))
+                for e0 in as_list(data.get("formations"))
+            ],
             name=LocalizedText.from_dict(as_dict(data.get("name"))),
             participants=[
                 LabelledId.from_dict(as_dict(e0)) for e0 in as_list(data.get("participants"))
             ],
+            periods=[
+                YogaReadingPeriodsItem.from_dict(as_dict(e0)) for e0 in as_list(data.get("periods"))
+            ],
+            entry=None
+            if data.get("entry") is None
+            else ReadingEntry.from_dict(as_dict(data.get("entry"))),
         )
 
     def to_dict(self) -> dict[str, Any]:
@@ -11584,9 +12849,89 @@ class YogaReading:
         out: dict[str, Any] = {}
         out["category"] = self.category
         out["code"] = self.code
-        out["entry"] = self.entry.to_dict()
+        out["count"] = self.count
+        out["formations"] = [e0.to_dict() for e0 in self.formations]
         out["name"] = self.name.to_dict()
         out["participants"] = [e0.to_dict() for e0 in self.participants]
+        out["periods"] = [e0.to_dict() for e0 in self.periods]
+        if self.entry is not None:
+            out["entry"] = self.entry.to_dict()
+        return out
+
+
+@dataclass(frozen=True, slots=True)
+class YogaReadingFormationsItem:
+    """Wire shape: `YogaReading.formations[]`."""
+
+    grade: float
+    in_kendra_trikona: bool
+    lords: dict[str, list[int]]
+    participants: list[LabelledId]
+    repeated_in_d9: bool
+    relation: str | None = None
+
+    @classmethod
+    def from_dict(cls, data: Mapping[str, Any]) -> YogaReadingFormationsItem:
+        """Read the wire shape, as `json.loads` returns it."""
+        return cls(
+            grade=as_float(data.get("grade")),
+            in_kendra_trikona=as_bool(data.get("in_kendra_trikona")),
+            lords={
+                k0: [as_int(e1) for e1 in as_list(v0)]
+                for k0, v0 in as_dict(data.get("lords")).items()
+            },
+            participants=[
+                LabelledId.from_dict(as_dict(e0)) for e0 in as_list(data.get("participants"))
+            ],
+            repeated_in_d9=as_bool(data.get("repeated_in_d9")),
+            relation=as_str_or_none(data.get("relation")),
+        )
+
+    def to_dict(self) -> dict[str, Any]:
+        """This value as JSON, with every `None` left out."""
+        out: dict[str, Any] = {}
+        out["grade"] = self.grade
+        out["in_kendra_trikona"] = self.in_kendra_trikona
+        out["lords"] = {k0: list(v0) for k0, v0 in self.lords.items()}
+        out["participants"] = [e0.to_dict() for e0 in self.participants]
+        out["repeated_in_d9"] = self.repeated_in_d9
+        if self.relation is not None:
+            out["relation"] = self.relation
+        return out
+
+
+@dataclass(frozen=True, slots=True)
+class YogaReadingPeriodsItem:
+    """Wire shape: `YogaReading.periods[]`."""
+
+    _WIRE: ClassVar[dict[str, str]] = {
+        "from_": "from",
+    }
+    """Attributes whose wire key is not their own name."""
+
+    current: bool
+    from_: str
+    """Wire key: `from`."""
+    lord: LabelledId
+    to: str
+
+    @classmethod
+    def from_dict(cls, data: Mapping[str, Any]) -> YogaReadingPeriodsItem:
+        """Read the wire shape, as `json.loads` returns it."""
+        return cls(
+            current=as_bool(data.get("current")),
+            from_=as_str(data.get("from")),
+            lord=LabelledId.from_dict(as_dict(data.get("lord"))),
+            to=as_str(data.get("to")),
+        )
+
+    def to_dict(self) -> dict[str, Any]:
+        """This value as JSON, with every `None` left out."""
+        out: dict[str, Any] = {}
+        out["current"] = self.current
+        out["from"] = self.from_
+        out["lord"] = self.lord.to_dict()
+        out["to"] = self.to
         return out
 
 

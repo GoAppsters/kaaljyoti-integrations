@@ -156,7 +156,7 @@ describe.skipIf(!enabled)('staging smoke', () => {
       options: { language: ['en', 'hi'] },
     });
     expect(lagna.data.lagna?.sign.id).toBe('leo');
-    expect(Object.keys(lagna.data.lagna?.entry.text ?? {})).toEqual(['en', 'hi']);
+    expect(Object.keys(lagna.data.lagna?.entry?.text ?? {})).toEqual(['en', 'hi']);
     expect(lagna.data.disclaimer?.en).toContain('indicative');
 
     const nakshatra = await kj.reports.nakshatra({
@@ -174,7 +174,7 @@ describe.skipIf(!enabled)('staging smoke', () => {
     });
 
     expect(data.house_lords?.map((l) => l.house)).toEqual([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]);
-    expect(Object.keys(data.house_lords?.[0]?.entry.text ?? {})).toEqual(['en', 'hi']);
+    expect(Object.keys(data.house_lords?.[0]?.entry?.text ?? {})).toEqual(['en', 'hi']);
     expect(data.disclaimer?.en).toContain('indicative');
   });
 

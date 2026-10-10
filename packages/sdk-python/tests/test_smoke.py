@@ -173,6 +173,7 @@ def test_a_lagna_reading_answers_in_both_languages(kj: Kaaljyoti) -> None:
     )
     assert answer.data.lagna is not None
     assert answer.data.lagna.sign.id == "cancer"
+    assert answer.data.lagna.entry is not None
     assert answer.data.lagna.entry.text.en and answer.data.lagna.entry.text.hi
 
 
@@ -202,6 +203,7 @@ def test_the_house_lords_answer_twelve_houses_in_order(kj: Kaaljyoti) -> None:
     assert [lord.house for lord in lords] == list(range(1, 13))
     assert all(1 <= lord.in_house <= 12 for lord in lords)
     assert lords[0].sign.id == "cancer"
+    assert lords[0].entry is not None
     assert lords[0].entry.text.en and lords[0].entry.text.hi
 
 

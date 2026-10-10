@@ -197,8 +197,9 @@ void main() {
       );
 
       expect(answer.data.lagna?.sign.id, 'leo');
-      expect(answer.data.lagna?.entry.text.en, isNotEmpty);
-      expect(answer.data.lagna?.entry.text.hi, isNotEmpty);
+      expect(answer.data.lagna?.entry, isNotNull);
+      expect(answer.data.lagna?.entry?.text.en, isNotEmpty);
+      expect(answer.data.lagna?.entry?.text.hi, isNotEmpty);
       expect(answer.data.disclaimer?.en, startsWith('These predictions'));
     });
 
@@ -271,7 +272,8 @@ void main() {
       expect(
           lords.map((l) => l.house), [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]);
       expect(lords.first.sign.id, 'cancer');
-      expect(lords.first.entry.text.hi, isNotEmpty);
+      expect(lords.first.entry, isNotNull);
+      expect(lords.first.entry?.text.hi, isNotEmpty);
     });
 
     test('a place search answers coordinates and a zone', () async {

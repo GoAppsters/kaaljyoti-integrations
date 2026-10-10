@@ -395,6 +395,8 @@ class Disclaimer {
 /// Wire shape: `MahadashaReading.antardashas[]`.
 class AntardashaReading {
   const AntardashaReading({
+    required this.areas,
+    this.care,
     required this.from,
     required this.grade,
     required this.lord,
@@ -405,6 +407,13 @@ class AntardashaReading {
 
   factory AntardashaReading.fromJson(Map<String, dynamic> json) {
     return AntardashaReading(
+      areas: asList(json['areas'])
+          .map((e) => AntardashaReadingAreasItem.fromJson(asMap(e)))
+          .toList(),
+      care: json['care'] == null
+          ? null
+          : VimshottariReadingDocumentBasisFunctionalValueDashaRoleReasonsItem
+              .fromJson(asMap(json['care'])),
       from: asString(json['from']),
       grade: asInt(json['grade']),
       lord: LabelledId.fromJson(asMap(json['lord'])),
@@ -417,6 +426,11 @@ class AntardashaReading {
       to: asString(json['to']),
     );
   }
+
+  final List<AntardashaReadingAreasItem> areas;
+
+  final VimshottariReadingDocumentBasisFunctionalValueDashaRoleReasonsItem?
+      care;
 
   final String from;
 
@@ -434,6 +448,11 @@ class AntardashaReading {
   /// This value as JSON, with every null key left out.
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
+    json['areas'] = areas.map((e) => e.toJson()).toList();
+    final care = this.care;
+    if (care != null) {
+      json['care'] = care.toJson();
+    }
     json['from'] = from;
     json['grade'] = grade;
     json['lord'] = lord.toJson();
@@ -446,16 +465,93 @@ class AntardashaReading {
   }
 }
 
+/// Wire shape: `AntardashaReading.areas[]`.
+class AntardashaReadingAreasItem {
+  const AntardashaReadingAreasItem({
+    required this.area,
+    required this.grade,
+    required this.reasons,
+  });
+
+  factory AntardashaReadingAreasItem.fromJson(Map<String, dynamic> json) {
+    return AntardashaReadingAreasItem(
+      area: asString(json['area']),
+      grade: asInt(json['grade']),
+      reasons: asList(json['reasons'])
+          .map((e) =>
+              VimshottariReadingDocumentBasisFunctionalValueDashaRoleReasonsItem
+                  .fromJson(asMap(e)))
+          .toList(),
+    );
+  }
+
+  final String area;
+
+  final int grade;
+
+  final List<VimshottariReadingDocumentBasisFunctionalValueDashaRoleReasonsItem>
+      reasons;
+
+  /// This value as JSON, with every null key left out.
+  Map<String, dynamic> toJson() {
+    final json = <String, dynamic>{};
+    json['area'] = area;
+    json['grade'] = grade;
+    json['reasons'] = reasons.map((e) => e.toJson()).toList();
+    return json;
+  }
+}
+
 /// Wire shape: `VarshphalReadingDocument.areas[]`.
 class AreaSummary {
   const AreaSummary({
     required this.area,
     required this.level,
+    required this.rules,
     required this.text,
   });
 
   factory AreaSummary.fromJson(Map<String, dynamic> json) {
     return AreaSummary(
+      area: asString(json['area']),
+      level: asString(json['level']),
+      rules: asList(json['rules'])
+          .map((e) => AreaSummaryRulesItem.fromJson(asMap(e)))
+          .toList(),
+      text: LocalizedText.fromJson(asMap(json['text'])),
+    );
+  }
+
+  final String area;
+
+  final String level;
+
+  final List<AreaSummaryRulesItem> rules;
+
+  /// One piece of text, keyed by language: one entry for each language in `options.language`, in that order (`{"hi": "…"}` or `{"en": "…", "hi": "…"}`).
+  final LocalizedText text;
+
+  /// This value as JSON, with every null key left out.
+  Map<String, dynamic> toJson() {
+    final json = <String, dynamic>{};
+    json['area'] = area;
+    json['level'] = level;
+    json['rules'] = rules.map((e) => e.toJson()).toList();
+    json['text'] = text.toJson();
+    return json;
+  }
+}
+
+/// Wire shape: `HoroscopeDocument.areas[]`.
+class AreaSummary2 {
+  const AreaSummary2({
+    required this.area,
+    required this.level,
+    required this.text,
+  });
+
+  factory AreaSummary2.fromJson(Map<String, dynamic> json) {
+    return AreaSummary2(
       area: asString(json['area']),
       level: asString(json['level']),
       text: LocalizedText.fromJson(asMap(json['text'])),
@@ -475,6 +571,35 @@ class AreaSummary {
     json['area'] = area;
     json['level'] = level;
     json['text'] = text.toJson();
+    return json;
+  }
+}
+
+/// Wire shape: `AreaSummary.rules[]`.
+class AreaSummaryRulesItem {
+  const AreaSummaryRulesItem({
+    this.good,
+    required this.id,
+  });
+
+  factory AreaSummaryRulesItem.fromJson(Map<String, dynamic> json) {
+    return AreaSummaryRulesItem(
+      good: asBoolOrNull(json['good']),
+      id: asString(json['id']),
+    );
+  }
+
+  final bool? good;
+
+  final String id;
+
+  /// This value as JSON, with every null key left out.
+  Map<String, dynamic> toJson() {
+    final json = <String, dynamic>{};
+    if (good != null) {
+      json['good'] = good;
+    }
+    json['id'] = id;
     return json;
   }
 }
@@ -2096,7 +2221,7 @@ class DashaDocument {
 /// Wire shape: `DashaDocument.mandook_context`.
 class DashaDocumentMandookContext {
   const DashaDocumentMandookContext({
-    required this.applicable,
+    this.applicable,
     required this.direct,
     required this.kendraGrahas,
     required this.startSign,
@@ -2104,14 +2229,14 @@ class DashaDocumentMandookContext {
 
   factory DashaDocumentMandookContext.fromJson(Map<String, dynamic> json) {
     return DashaDocumentMandookContext(
-      applicable: asBool(json['applicable']),
+      applicable: asBoolOrNull(json['applicable']),
       direct: asBool(json['direct']),
       kendraGrahas: asInt(json['kendra_grahas']),
       startSign: LabelledId.fromJson(asMap(json['start_sign'])),
     );
   }
 
-  final bool applicable;
+  final bool? applicable;
 
   final bool direct;
 
@@ -2124,7 +2249,9 @@ class DashaDocumentMandookContext {
   /// This value as JSON, with every null key left out.
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    json['applicable'] = applicable;
+    if (applicable != null) {
+      json['applicable'] = applicable;
+    }
     json['direct'] = direct;
     json['kendra_grahas'] = kendraGrahas;
     json['start_sign'] = startSign.toJson();
@@ -3927,7 +4054,7 @@ class HoroscopeDocument {
   factory HoroscopeDocument.fromJson(Map<String, dynamic> json) {
     return HoroscopeDocument(
       areas: asList(json['areas'])
-          .map((e) => AreaSummary.fromJson(asMap(e)))
+          .map((e) => AreaSummary2.fromJson(asMap(e)))
           .toList(),
       basis: asList(json['basis'])
           .map((e) => HoroscopeTransit.fromJson(asMap(e)))
@@ -3935,7 +4062,7 @@ class HoroscopeDocument {
       from: asString(json['from']),
       period: asString(json['period']),
       sign: LabelledId.fromJson(asMap(json['sign'])),
-      summary: ReadingSummary.fromJson(asMap(json['summary'])),
+      summary: ReadingSummary2.fromJson(asMap(json['summary'])),
       to: asString(json['to']),
       disclaimer: json['disclaimer'] == null
           ? null
@@ -3943,7 +4070,7 @@ class HoroscopeDocument {
     );
   }
 
-  final List<AreaSummary> areas;
+  final List<AreaSummary2> areas;
 
   final List<HoroscopeTransit> basis;
 
@@ -3953,7 +4080,7 @@ class HoroscopeDocument {
 
   final LabelledId sign;
 
-  final ReadingSummary summary;
+  final ReadingSummary2 summary;
 
   final String to;
 
@@ -4115,7 +4242,7 @@ class HoroscopeTransit {
 /// Wire shape: `ReadingHouseLordsDocument.house_lords[]`.
 class HouseLord {
   const HouseLord({
-    required this.entry,
+    this.entry,
     required this.house,
     required this.inHouse,
     required this.lord,
@@ -4124,7 +4251,9 @@ class HouseLord {
 
   factory HouseLord.fromJson(Map<String, dynamic> json) {
     return HouseLord(
-      entry: ReadingEntry.fromJson(asMap(json['entry'])),
+      entry: json['entry'] == null
+          ? null
+          : ReadingEntry.fromJson(asMap(json['entry'])),
       house: asInt(json['house']),
       inHouse: asInt(json['in_house']),
       lord: LabelledId.fromJson(asMap(json['lord'])),
@@ -4132,7 +4261,7 @@ class HouseLord {
     );
   }
 
-  final ReadingEntry entry;
+  final ReadingEntry? entry;
 
   final int house;
 
@@ -4146,7 +4275,10 @@ class HouseLord {
   /// This value as JSON, with every null key left out.
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    json['entry'] = entry.toJson();
+    final entry = this.entry;
+    if (entry != null) {
+      json['entry'] = entry.toJson();
+    }
     json['house'] = house;
     json['in_house'] = inHouse;
     json['lord'] = lord.toJson();
@@ -5434,9 +5566,12 @@ class KundliReportDocument {
   const KundliReportDocument({
     this.grahas,
     this.houseLords,
+    this.inDepth,
     this.lagna,
     this.lifeAreas,
     this.nakshatra,
+    this.nature,
+    this.nowNext,
     required this.parts,
     this.varshphal,
     this.vimshottari,
@@ -5456,6 +5591,11 @@ class KundliReportDocument {
           : asList(json['house_lords'])
               .map((e) => KundliReportHouseLord.fromJson(asMap(e)))
               .toList(),
+      inDepth: json['in_depth'] == null
+          ? null
+          : asList(json['in_depth'])
+              .map((e) => KundliReportDocumentInDepthItem.fromJson(asMap(e)))
+              .toList(),
       lagna: json['lagna'] == null
           ? null
           : ReadingLagna.fromJson(asMap(json['lagna'])),
@@ -5465,6 +5605,15 @@ class KundliReportDocument {
       nakshatra: json['nakshatra'] == null
           ? null
           : ReadingNakshatra.fromJson(asMap(json['nakshatra'])),
+      nature: json['nature'] == null
+          ? null
+          : asList(json['nature'])
+              .map((e) =>
+                  KundliReportDocumentInDepthItemGrahasItem.fromJson(asMap(e)))
+              .toList(),
+      nowNext: json['now_next'] == null
+          ? null
+          : KundliReportDocumentNowNext.fromJson(asMap(json['now_next'])),
       parts: asList(json['parts']).map((e) => asString(e)).toList(),
       varshphal: json['varshphal'] == null
           ? null
@@ -5488,12 +5637,20 @@ class KundliReportDocument {
   /// Wire key: `house_lords`.
   final List<KundliReportHouseLord>? houseLords;
 
+  /// Wire key: `in_depth`.
+  final List<KundliReportDocumentInDepthItem>? inDepth;
+
   final ReadingLagna? lagna;
 
   /// Wire key: `life_areas`.
   final KundliReportLifeAreas? lifeAreas;
 
   final ReadingNakshatra? nakshatra;
+
+  final List<KundliReportDocumentInDepthItemGrahasItem>? nature;
+
+  /// Wire key: `now_next`.
+  final KundliReportDocumentNowNext? nowNext;
 
   final List<String> parts;
 
@@ -5517,6 +5674,10 @@ class KundliReportDocument {
     if (houseLords != null) {
       json['house_lords'] = houseLords.map((e) => e.toJson()).toList();
     }
+    final inDepth = this.inDepth;
+    if (inDepth != null) {
+      json['in_depth'] = inDepth.map((e) => e.toJson()).toList();
+    }
     final lagna = this.lagna;
     if (lagna != null) {
       json['lagna'] = lagna.toJson();
@@ -5528,6 +5689,14 @@ class KundliReportDocument {
     final nakshatra = this.nakshatra;
     if (nakshatra != null) {
       json['nakshatra'] = nakshatra.toJson();
+    }
+    final nature = this.nature;
+    if (nature != null) {
+      json['nature'] = nature.map((e) => e.toJson()).toList();
+    }
+    final nowNext = this.nowNext;
+    if (nowNext != null) {
+      json['now_next'] = nowNext.toJson();
     }
     json['parts'] = parts;
     final varshphal = this.varshphal;
@@ -5546,6 +5715,400 @@ class KundliReportDocument {
     if (disclaimer != null) {
       json['disclaimer'] = disclaimer.toJson();
     }
+    return json;
+  }
+}
+
+/// Wire shape: `KundliReportDocument.in_depth[]`.
+class KundliReportDocumentInDepthItem {
+  const KundliReportDocumentInDepthItem({
+    required this.areas,
+    required this.grahas,
+    required this.houses,
+    required this.lords,
+    required this.topic,
+  });
+
+  factory KundliReportDocumentInDepthItem.fromJson(Map<String, dynamic> json) {
+    return KundliReportDocumentInDepthItem(
+      areas: asList(json['areas']).map((e) => asString(e)).toList(),
+      grahas: asList(json['grahas'])
+          .map((e) =>
+              KundliReportDocumentInDepthItemGrahasItem.fromJson(asMap(e)))
+          .toList(),
+      houses: asList(json['houses']).map((e) => asInt(e)).toList(),
+      lords: asList(json['lords'])
+          .map((e) => KundliReportHouseLord.fromJson(asMap(e)))
+          .toList(),
+      topic: asString(json['topic']),
+    );
+  }
+
+  final List<String> areas;
+
+  final List<KundliReportDocumentInDepthItemGrahasItem> grahas;
+
+  final List<int> houses;
+
+  final List<KundliReportHouseLord> lords;
+
+  final String topic;
+
+  /// This value as JSON, with every null key left out.
+  Map<String, dynamic> toJson() {
+    final json = <String, dynamic>{};
+    json['areas'] = areas;
+    json['grahas'] = grahas.map((e) => e.toJson()).toList();
+    json['houses'] = houses;
+    json['lords'] = lords.map((e) => e.toJson()).toList();
+    json['topic'] = topic;
+    return json;
+  }
+}
+
+/// Wire shape: `KundliReportDocumentInDepthItem.grahas[]`.
+class KundliReportDocumentInDepthItemGrahasItem {
+  const KundliReportDocumentInDepthItemGrahasItem({
+    this.entry,
+    this.graha,
+    this.house,
+    required this.sign,
+  });
+
+  factory KundliReportDocumentInDepthItemGrahasItem.fromJson(
+      Map<String, dynamic> json) {
+    return KundliReportDocumentInDepthItemGrahasItem(
+      entry: json['entry'] == null
+          ? null
+          : ReadingEntry.fromJson(asMap(json['entry'])),
+      graha: json['graha'] == null
+          ? null
+          : LabelledId.fromJson(asMap(json['graha'])),
+      house: asIntOrNull(json['house']),
+      sign: LabelledId.fromJson(asMap(json['sign'])),
+    );
+  }
+
+  final ReadingEntry? entry;
+
+  final LabelledId? graha;
+
+  final int? house;
+
+  final LabelledId sign;
+
+  /// This value as JSON, with every null key left out.
+  Map<String, dynamic> toJson() {
+    final json = <String, dynamic>{};
+    final entry = this.entry;
+    if (entry != null) {
+      json['entry'] = entry.toJson();
+    }
+    final graha = this.graha;
+    if (graha != null) {
+      json['graha'] = graha.toJson();
+    }
+    if (house != null) {
+      json['house'] = house;
+    }
+    json['sign'] = sign.toJson();
+    return json;
+  }
+}
+
+/// Wire shape: `KundliReportDocument.now_next`.
+class KundliReportDocumentNowNext {
+  const KundliReportDocumentNowNext({
+    required this.dasha,
+    required this.from,
+    required this.moonSign,
+    required this.stage,
+    required this.to,
+    required this.transits,
+  });
+
+  factory KundliReportDocumentNowNext.fromJson(Map<String, dynamic> json) {
+    return KundliReportDocumentNowNext(
+      dasha: asList(json['dasha'])
+          .map((e) => KundliReportDocumentNowNextDashaItem.fromJson(asMap(e)))
+          .toList(),
+      from: asString(json['from']),
+      moonSign: LabelledId.fromJson(asMap(json['moon_sign'])),
+      stage: asString(json['stage']),
+      to: asString(json['to']),
+      transits: asList(json['transits'])
+          .map(
+              (e) => KundliReportDocumentNowNextTransitsItem.fromJson(asMap(e)))
+          .toList(),
+    );
+  }
+
+  final List<KundliReportDocumentNowNextDashaItem> dasha;
+
+  final String from;
+
+  /// Wire key: `moon_sign`.
+  final LabelledId moonSign;
+
+  final String stage;
+
+  final String to;
+
+  final List<KundliReportDocumentNowNextTransitsItem> transits;
+
+  /// This value as JSON, with every null key left out.
+  Map<String, dynamic> toJson() {
+    final json = <String, dynamic>{};
+    json['dasha'] = dasha.map((e) => e.toJson()).toList();
+    json['from'] = from;
+    json['moon_sign'] = moonSign.toJson();
+    json['stage'] = stage;
+    json['to'] = to;
+    json['transits'] = transits.map((e) => e.toJson()).toList();
+    return json;
+  }
+}
+
+/// Wire shape: `KundliReportDocumentNowNext.dasha[]`.
+class KundliReportDocumentNowNextDashaItem {
+  const KundliReportDocumentNowNextDashaItem({
+    required this.antardasha,
+    required this.current,
+    required this.from,
+    required this.grade,
+    required this.healthNote,
+    required this.level,
+    required this.mahadasha,
+    required this.reasons,
+    required this.stage,
+    this.text,
+    required this.to,
+    required this.yogas,
+  });
+
+  factory KundliReportDocumentNowNextDashaItem.fromJson(
+      Map<String, dynamic> json) {
+    return KundliReportDocumentNowNextDashaItem(
+      antardasha: asString(json['antardasha']),
+      current: asBool(json['current']),
+      from: asString(json['from']),
+      grade: asDouble(json['grade']),
+      healthNote: asBool(json['health_note']),
+      level: asString(json['level']),
+      mahadasha: asString(json['mahadasha']),
+      reasons: asList(json['reasons'])
+          .map((e) =>
+              VimshottariReadingDocumentBasisFunctionalValueDashaRoleReasonsItem
+                  .fromJson(asMap(e)))
+          .toList(),
+      stage: asString(json['stage']),
+      text: json['text'] == null
+          ? null
+          : LocalizedText.fromJson(asMap(json['text'])),
+      to: asString(json['to']),
+      yogas: asList(json['yogas']).map((e) => asString(e)).toList(),
+    );
+  }
+
+  final String antardasha;
+
+  final bool current;
+
+  final String from;
+
+  final double grade;
+
+  /// Wire key: `health_note`.
+  final bool healthNote;
+
+  final String level;
+
+  final String mahadasha;
+
+  final List<VimshottariReadingDocumentBasisFunctionalValueDashaRoleReasonsItem>
+      reasons;
+
+  final String stage;
+
+  final LocalizedText? text;
+
+  final String to;
+
+  final List<String> yogas;
+
+  /// This value as JSON, with every null key left out.
+  Map<String, dynamic> toJson() {
+    final json = <String, dynamic>{};
+    json['antardasha'] = antardasha;
+    json['current'] = current;
+    json['from'] = from;
+    json['grade'] = grade;
+    json['health_note'] = healthNote;
+    json['level'] = level;
+    json['mahadasha'] = mahadasha;
+    json['reasons'] = reasons.map((e) => e.toJson()).toList();
+    json['stage'] = stage;
+    final text = this.text;
+    if (text != null) {
+      json['text'] = text.toJson();
+    }
+    json['to'] = to;
+    json['yogas'] = yogas;
+    return json;
+  }
+}
+
+/// Wire shape: `KundliReportDocumentNowNext.transits[]`.
+class KundliReportDocumentNowNextTransitsItem {
+  const KundliReportDocumentNowNextTransitsItem({
+    required this.areas,
+    required this.from,
+    this.graha,
+    this.house,
+    required this.sign,
+    required this.stays,
+    this.text,
+    required this.to,
+  });
+
+  factory KundliReportDocumentNowNextTransitsItem.fromJson(
+      Map<String, dynamic> json) {
+    return KundliReportDocumentNowNextTransitsItem(
+      areas: KundliReportDocumentNowNextTransitsItemAreas.fromJson(
+          asMap(json['areas'])),
+      from: LabelledId.fromJson(asMap(json['from'])),
+      graha: json['graha'] == null
+          ? null
+          : LabelledId.fromJson(asMap(json['graha'])),
+      house: asIntOrNull(json['house']),
+      sign: LabelledId.fromJson(asMap(json['sign'])),
+      stays: asList(json['stays'])
+          .map((e) => KundliReportDocumentNowNextTransitsItemStaysItem.fromJson(
+              asMap(e)))
+          .toList(),
+      text: json['text'] == null
+          ? null
+          : LocalizedText.fromJson(asMap(json['text'])),
+      to: LabelledId.fromJson(asMap(json['to'])),
+    );
+  }
+
+  final KundliReportDocumentNowNextTransitsItemAreas areas;
+
+  final LabelledId from;
+
+  final LabelledId? graha;
+
+  final int? house;
+
+  final LabelledId sign;
+
+  final List<KundliReportDocumentNowNextTransitsItemStaysItem> stays;
+
+  final LocalizedText? text;
+
+  final LabelledId to;
+
+  /// This value as JSON, with every null key left out.
+  Map<String, dynamic> toJson() {
+    final json = <String, dynamic>{};
+    json['areas'] = areas.toJson();
+    json['from'] = from.toJson();
+    final graha = this.graha;
+    if (graha != null) {
+      json['graha'] = graha.toJson();
+    }
+    if (house != null) {
+      json['house'] = house;
+    }
+    json['sign'] = sign.toJson();
+    json['stays'] = stays.map((e) => e.toJson()).toList();
+    final text = this.text;
+    if (text != null) {
+      json['text'] = text.toJson();
+    }
+    json['to'] = to.toJson();
+    return json;
+  }
+}
+
+/// Wire shape: `KundliReportDocumentNowNextTransitsItem.areas`.
+class KundliReportDocumentNowNextTransitsItemAreas {
+  const KundliReportDocumentNowNextTransitsItemAreas({
+    required this.general,
+    required this.health,
+    required this.money,
+    required this.relationships,
+    required this.work,
+  });
+
+  factory KundliReportDocumentNowNextTransitsItemAreas.fromJson(
+      Map<String, dynamic> json) {
+    return KundliReportDocumentNowNextTransitsItemAreas(
+      general: LocalizedText.fromJson(asMap(json['general'])),
+      health: LocalizedText.fromJson(asMap(json['health'])),
+      money: LocalizedText.fromJson(asMap(json['money'])),
+      relationships: LocalizedText.fromJson(asMap(json['relationships'])),
+      work: LocalizedText.fromJson(asMap(json['work'])),
+    );
+  }
+
+  /// One piece of text, keyed by language: one entry for each language in `options.language`, in that order (`{"hi": "…"}` or `{"en": "…", "hi": "…"}`).
+  final LocalizedText general;
+
+  /// One piece of text, keyed by language: one entry for each language in `options.language`, in that order (`{"hi": "…"}` or `{"en": "…", "hi": "…"}`).
+  final LocalizedText health;
+
+  /// One piece of text, keyed by language: one entry for each language in `options.language`, in that order (`{"hi": "…"}` or `{"en": "…", "hi": "…"}`).
+  final LocalizedText money;
+
+  /// One piece of text, keyed by language: one entry for each language in `options.language`, in that order (`{"hi": "…"}` or `{"en": "…", "hi": "…"}`).
+  final LocalizedText relationships;
+
+  /// One piece of text, keyed by language: one entry for each language in `options.language`, in that order (`{"hi": "…"}` or `{"en": "…", "hi": "…"}`).
+  final LocalizedText work;
+
+  /// This value as JSON, with every null key left out.
+  Map<String, dynamic> toJson() {
+    final json = <String, dynamic>{};
+    json['general'] = general.toJson();
+    json['health'] = health.toJson();
+    json['money'] = money.toJson();
+    json['relationships'] = relationships.toJson();
+    json['work'] = work.toJson();
+    return json;
+  }
+}
+
+/// Wire shape: `KundliReportDocumentNowNextTransitsItem.stays[]`.
+class KundliReportDocumentNowNextTransitsItemStaysItem {
+  const KundliReportDocumentNowNextTransitsItemStaysItem({
+    required this.from,
+    required this.retrograde,
+    required this.to,
+  });
+
+  factory KundliReportDocumentNowNextTransitsItemStaysItem.fromJson(
+      Map<String, dynamic> json) {
+    return KundliReportDocumentNowNextTransitsItemStaysItem(
+      from: LabelledId.fromJson(asMap(json['from'])),
+      retrograde: asBool(json['retrograde']),
+      to: LabelledId.fromJson(asMap(json['to'])),
+    );
+  }
+
+  final LabelledId from;
+
+  final bool retrograde;
+
+  final LabelledId to;
+
+  /// This value as JSON, with every null key left out.
+  Map<String, dynamic> toJson() {
+    final json = <String, dynamic>{};
+    json['from'] = from.toJson();
+    json['retrograde'] = retrograde;
+    json['to'] = to.toJson();
     return json;
   }
 }
@@ -5604,7 +6167,7 @@ class KundliReportGraha {
 /// Wire shape: `KundliReportDocument.house_lords[]`.
 class KundliReportHouseLord {
   const KundliReportHouseLord({
-    required this.entry,
+    this.entry,
     this.house,
     required this.inHouse,
     required this.lord,
@@ -5613,7 +6176,9 @@ class KundliReportHouseLord {
 
   factory KundliReportHouseLord.fromJson(Map<String, dynamic> json) {
     return KundliReportHouseLord(
-      entry: ReadingEntry.fromJson(asMap(json['entry'])),
+      entry: json['entry'] == null
+          ? null
+          : ReadingEntry.fromJson(asMap(json['entry'])),
       house: asIntOrNull(json['house']),
       inHouse: asInt(json['in_house']),
       lord: LabelledId.fromJson(asMap(json['lord'])),
@@ -5621,7 +6186,7 @@ class KundliReportHouseLord {
     );
   }
 
-  final ReadingEntry entry;
+  final ReadingEntry? entry;
 
   final int? house;
 
@@ -5635,7 +6200,10 @@ class KundliReportHouseLord {
   /// This value as JSON, with every null key left out.
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    json['entry'] = entry.toJson();
+    final entry = this.entry;
+    if (entry != null) {
+      json['entry'] = entry.toJson();
+    }
     if (house != null) {
       json['house'] = house;
     }
@@ -5719,14 +6287,16 @@ class KundliReportMahadasha {
     required this.from,
     required this.level,
     required this.lord,
-    required this.text,
+    required this.stage,
+    this.tara,
+    this.text,
     required this.to,
   });
 
   factory KundliReportMahadasha.fromJson(Map<String, dynamic> json) {
     return KundliReportMahadasha(
       antardashas: asList(json['antardashas'])
-          .map((e) => AntardashaReading.fromJson(asMap(e)))
+          .map((e) => KundliReportMahadashaAntardashasItem.fromJson(asMap(e)))
           .toList(),
       areas: asList(json['areas'])
           .map((e) => KundliReportMahadashaAreasItem.fromJson(asMap(e)))
@@ -5735,12 +6305,16 @@ class KundliReportMahadasha {
       from: asString(json['from']),
       level: asString(json['level']),
       lord: LabelledId.fromJson(asMap(json['lord'])),
-      text: LocalizedText.fromJson(asMap(json['text'])),
+      stage: asString(json['stage']),
+      tara: asStringOrNull(json['tara']),
+      text: json['text'] == null
+          ? null
+          : LocalizedText.fromJson(asMap(json['text'])),
       to: asString(json['to']),
     );
   }
 
-  final List<AntardashaReading> antardashas;
+  final List<KundliReportMahadashaAntardashasItem> antardashas;
 
   final List<KundliReportMahadashaAreasItem> areas;
 
@@ -5752,8 +6326,11 @@ class KundliReportMahadasha {
 
   final LabelledId lord;
 
-  /// One piece of text, keyed by language: one entry for each language in `options.language`, in that order (`{"hi": "…"}` or `{"en": "…", "hi": "…"}`).
-  final LocalizedText text;
+  final String stage;
+
+  final String? tara;
+
+  final LocalizedText? text;
 
   final String to;
 
@@ -5766,8 +6343,128 @@ class KundliReportMahadasha {
     json['from'] = from;
     json['level'] = level;
     json['lord'] = lord.toJson();
-    json['text'] = text.toJson();
+    json['stage'] = stage;
+    if (tara != null) {
+      json['tara'] = tara;
+    }
+    final text = this.text;
+    if (text != null) {
+      json['text'] = text.toJson();
+    }
     json['to'] = to;
+    return json;
+  }
+}
+
+/// Wire shape: `KundliReportMahadasha.antardashas[]`.
+class KundliReportMahadashaAntardashasItem {
+  const KundliReportMahadashaAntardashasItem({
+    required this.areas,
+    this.care,
+    required this.from,
+    required this.grade,
+    required this.lord,
+    this.phase,
+    required this.reasons,
+    required this.to,
+  });
+
+  factory KundliReportMahadashaAntardashasItem.fromJson(
+      Map<String, dynamic> json) {
+    return KundliReportMahadashaAntardashasItem(
+      areas: asList(json['areas'])
+          .map((e) =>
+              KundliReportMahadashaAntardashasItemAreasItem.fromJson(asMap(e)))
+          .toList(),
+      care: json['care'] == null
+          ? null
+          : VimshottariReadingDocumentBasisFunctionalValueDashaRoleReasonsItem
+              .fromJson(asMap(json['care'])),
+      from: asString(json['from']),
+      grade: asDouble(json['grade']),
+      lord: LabelledId.fromJson(asMap(json['lord'])),
+      phase: asStringOrNull(json['phase']),
+      reasons: asList(json['reasons'])
+          .map((e) =>
+              VimshottariReadingDocumentBasisFunctionalValueDashaRoleReasonsItem
+                  .fromJson(asMap(e)))
+          .toList(),
+      to: asString(json['to']),
+    );
+  }
+
+  final List<KundliReportMahadashaAntardashasItemAreasItem> areas;
+
+  final VimshottariReadingDocumentBasisFunctionalValueDashaRoleReasonsItem?
+      care;
+
+  final String from;
+
+  final double grade;
+
+  final LabelledId lord;
+
+  final String? phase;
+
+  final List<VimshottariReadingDocumentBasisFunctionalValueDashaRoleReasonsItem>
+      reasons;
+
+  final String to;
+
+  /// This value as JSON, with every null key left out.
+  Map<String, dynamic> toJson() {
+    final json = <String, dynamic>{};
+    json['areas'] = areas.map((e) => e.toJson()).toList();
+    final care = this.care;
+    if (care != null) {
+      json['care'] = care.toJson();
+    }
+    json['from'] = from;
+    json['grade'] = grade;
+    json['lord'] = lord.toJson();
+    if (phase != null) {
+      json['phase'] = phase;
+    }
+    json['reasons'] = reasons.map((e) => e.toJson()).toList();
+    json['to'] = to;
+    return json;
+  }
+}
+
+/// Wire shape: `KundliReportMahadashaAntardashasItem.areas[]`.
+class KundliReportMahadashaAntardashasItemAreasItem {
+  const KundliReportMahadashaAntardashasItemAreasItem({
+    required this.area,
+    required this.grade,
+    required this.reasons,
+  });
+
+  factory KundliReportMahadashaAntardashasItemAreasItem.fromJson(
+      Map<String, dynamic> json) {
+    return KundliReportMahadashaAntardashasItemAreasItem(
+      area: asString(json['area']),
+      grade: asDouble(json['grade']),
+      reasons: asList(json['reasons'])
+          .map((e) =>
+              VimshottariReadingDocumentBasisFunctionalValueDashaRoleReasonsItem
+                  .fromJson(asMap(e)))
+          .toList(),
+    );
+  }
+
+  final String area;
+
+  final double grade;
+
+  final List<VimshottariReadingDocumentBasisFunctionalValueDashaRoleReasonsItem>
+      reasons;
+
+  /// This value as JSON, with every null key left out.
+  Map<String, dynamic> toJson() {
+    final json = <String, dynamic>{};
+    json['area'] = area;
+    json['grade'] = grade;
+    json['reasons'] = reasons.map((e) => e.toJson()).toList();
     return json;
   }
 }
@@ -5807,7 +6504,11 @@ class KundliReportVarshphal {
     required this.areas,
     required this.basis,
     required this.from,
+    required this.monthly,
     required this.months,
+    required this.natalPromise,
+    required this.periods,
+    required this.sahams,
     required this.summary,
     required this.to,
     required this.varshaYear,
@@ -5821,8 +6522,20 @@ class KundliReportVarshphal {
           .toList(),
       basis: KundliReportVarshphalBasis.fromJson(asMap(json['basis'])),
       from: asString(json['from']),
+      monthly: asList(json['monthly'])
+          .map((e) => KundliReportVarshphalMonthlyItem.fromJson(asMap(e)))
+          .toList(),
       months: asList(json['months'])
           .map((e) => VarshphalPeriod.fromJson(asMap(e)))
+          .toList(),
+      natalPromise: asList(json['natal_promise'])
+          .map((e) => KundliReportVarshphalNatalPromiseItem.fromJson(asMap(e)))
+          .toList(),
+      periods: asList(json['periods'])
+          .map((e) => VarshphalReadingDocumentPeriodsItem.fromJson(asMap(e)))
+          .toList(),
+      sahams: asList(json['sahams'])
+          .map((e) => VarshphalReadingDocumentSahamsItem.fromJson(asMap(e)))
           .toList(),
       summary: ReadingSummary.fromJson(asMap(json['summary'])),
       to: asString(json['to']),
@@ -5837,7 +6550,16 @@ class KundliReportVarshphal {
 
   final String from;
 
+  final List<KundliReportVarshphalMonthlyItem> monthly;
+
   final List<VarshphalPeriod> months;
+
+  /// Wire key: `natal_promise`.
+  final List<KundliReportVarshphalNatalPromiseItem> natalPromise;
+
+  final List<VarshphalReadingDocumentPeriodsItem> periods;
+
+  final List<VarshphalReadingDocumentSahamsItem> sahams;
 
   final ReadingSummary summary;
 
@@ -5854,7 +6576,11 @@ class KundliReportVarshphal {
     json['areas'] = areas.map((e) => e.toJson()).toList();
     json['basis'] = basis.toJson();
     json['from'] = from;
+    json['monthly'] = monthly.map((e) => e.toJson()).toList();
     json['months'] = months.map((e) => e.toJson()).toList();
+    json['natal_promise'] = natalPromise.map((e) => e.toJson()).toList();
+    json['periods'] = periods.map((e) => e.toJson()).toList();
+    json['sahams'] = sahams.map((e) => e.toJson()).toList();
     json['summary'] = summary.toJson();
     json['to'] = to;
     json['varsha_year'] = varshaYear;
@@ -6379,6 +7105,182 @@ class KundliReportVarshphalBasisYearLord {
   }
 }
 
+/// Wire shape: `KundliReportVarshphal.monthly[]`.
+class KundliReportVarshphalMonthlyItem {
+  const KundliReportVarshphalMonthlyItem({
+    required this.areas,
+    this.best,
+    this.care,
+    required this.from,
+    this.hard,
+    required this.level,
+    required this.lord,
+    required this.lordStrength,
+    required this.month,
+    required this.muntha,
+    required this.reasons,
+    required this.rise,
+    this.text,
+    required this.to,
+  });
+
+  factory KundliReportVarshphalMonthlyItem.fromJson(Map<String, dynamic> json) {
+    return KundliReportVarshphalMonthlyItem(
+      areas: asList(json['areas'])
+          .map((e) =>
+              VarshphalReadingDocumentMonthlyItemAreasItem.fromJson(asMap(e)))
+          .toList(),
+      best: json['best'] == null
+          ? null
+          : VarshphalReadingDocumentMonthlyItemBest.fromJson(
+              asMap(json['best'])),
+      care: asBoolOrNull(json['care']),
+      from: asString(json['from']),
+      hard: json['hard'] == null
+          ? null
+          : VarshphalReadingDocumentMonthlyItemBest.fromJson(
+              asMap(json['hard'])),
+      level: asString(json['level']),
+      lord: LabelledId.fromJson(asMap(json['lord'])),
+      lordStrength: asString(json['lord_strength']),
+      month: asInt(json['month']),
+      muntha: LabelledId.fromJson(asMap(json['muntha'])),
+      reasons: asList(json['reasons'])
+          .map((e) =>
+              VimshottariReadingDocumentBasisFunctionalValueDashaRoleReasonsItem
+                  .fromJson(asMap(e)))
+          .toList(),
+      rise: asBool(json['rise']),
+      text: json['text'] == null
+          ? null
+          : LocalizedText.fromJson(asMap(json['text'])),
+      to: asString(json['to']),
+    );
+  }
+
+  final List<VarshphalReadingDocumentMonthlyItemAreasItem> areas;
+
+  final VarshphalReadingDocumentMonthlyItemBest? best;
+
+  final bool? care;
+
+  final String from;
+
+  final VarshphalReadingDocumentMonthlyItemBest? hard;
+
+  final String level;
+
+  final LabelledId lord;
+
+  /// Wire key: `lord_strength`.
+  final String lordStrength;
+
+  final int month;
+
+  final LabelledId muntha;
+
+  final List<VimshottariReadingDocumentBasisFunctionalValueDashaRoleReasonsItem>
+      reasons;
+
+  final bool rise;
+
+  final LocalizedText? text;
+
+  final String to;
+
+  /// This value as JSON, with every null key left out.
+  Map<String, dynamic> toJson() {
+    final json = <String, dynamic>{};
+    json['areas'] = areas.map((e) => e.toJson()).toList();
+    final best = this.best;
+    if (best != null) {
+      json['best'] = best.toJson();
+    }
+    if (care != null) {
+      json['care'] = care;
+    }
+    json['from'] = from;
+    final hard = this.hard;
+    if (hard != null) {
+      json['hard'] = hard.toJson();
+    }
+    json['level'] = level;
+    json['lord'] = lord.toJson();
+    json['lord_strength'] = lordStrength;
+    json['month'] = month;
+    json['muntha'] = muntha.toJson();
+    json['reasons'] = reasons.map((e) => e.toJson()).toList();
+    json['rise'] = rise;
+    final text = this.text;
+    if (text != null) {
+      json['text'] = text.toJson();
+    }
+    json['to'] = to;
+    return json;
+  }
+}
+
+/// Wire shape: `KundliReportVarshphal.natal_promise[]`.
+class KundliReportVarshphalNatalPromiseItem {
+  const KundliReportVarshphalNatalPromiseItem({
+    required this.active,
+    this.house,
+    required this.lord,
+    required this.reasons,
+    this.text,
+    required this.withValue,
+  });
+
+  factory KundliReportVarshphalNatalPromiseItem.fromJson(
+      Map<String, dynamic> json) {
+    return KundliReportVarshphalNatalPromiseItem(
+      active: asBool(json['active']),
+      house: asIntOrNull(json['house']),
+      lord: LabelledId.fromJson(asMap(json['lord'])),
+      reasons: asList(json['reasons'])
+          .map((e) =>
+              VimshottariReadingDocumentBasisFunctionalValueDashaRoleReasonsItem
+                  .fromJson(asMap(e)))
+          .toList(),
+      text: json['text'] == null
+          ? null
+          : LocalizedText.fromJson(asMap(json['text'])),
+      withValue: asString(json['with']),
+    );
+  }
+
+  final bool active;
+
+  final int? house;
+
+  final LabelledId lord;
+
+  final List<VimshottariReadingDocumentBasisFunctionalValueDashaRoleReasonsItem>
+      reasons;
+
+  final LocalizedText? text;
+
+  /// Wire key: `with`.
+  final String withValue;
+
+  /// This value as JSON, with every null key left out.
+  Map<String, dynamic> toJson() {
+    final json = <String, dynamic>{};
+    json['active'] = active;
+    if (house != null) {
+      json['house'] = house;
+    }
+    json['lord'] = lord.toJson();
+    json['reasons'] = reasons.map((e) => e.toJson()).toList();
+    final text = this.text;
+    if (text != null) {
+      json['text'] = text.toJson();
+    }
+    json['with'] = withValue;
+    return json;
+  }
+}
+
 /// Wire shape: `KundliReportDocument.vimshottari`.
 class KundliReportVimshottari {
   const KundliReportVimshottari({
@@ -6412,6 +7314,7 @@ class KundliReportVimshottari {
 class KundliReportVimshottariBasis {
   const KundliReportVimshottariBasis({
     required this.functional,
+    required this.healthGrahas,
     required this.switches,
   });
 
@@ -6419,6 +7322,8 @@ class KundliReportVimshottariBasis {
     return KundliReportVimshottariBasis(
       functional: asMap(json['functional']).map((k, v) => MapEntry(
           k, KundliReportVimshottariBasisFunctionalValue.fromJson(asMap(v)))),
+      healthGrahas:
+          asList(json['health_grahas']).map((e) => asString(e)).toList(),
       switches: VimshottariReadingDocumentBasisSwitches.fromJson(
           asMap(json['switches'])),
     );
@@ -6426,12 +7331,16 @@ class KundliReportVimshottariBasis {
 
   final Map<String, KundliReportVimshottariBasisFunctionalValue> functional;
 
+  /// Wire key: `health_grahas`.
+  final List<String> healthGrahas;
+
   final VimshottariReadingDocumentBasisSwitches switches;
 
   /// This value as JSON, with every null key left out.
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
     json['functional'] = functional.map((k, v) => MapEntry(k, v.toJson()));
+    json['health_grahas'] = healthGrahas;
     json['switches'] = switches.toJson();
     return json;
   }
@@ -6827,7 +7736,7 @@ class KundliReportVimshottariBasisFunctionalValueMaraka {
 class KundliReportVimshottariBasisFunctionalValueNodeProxy {
   const KundliReportVimshottariBasisFunctionalValueNodeProxy({
     required this.companions,
-    this.follows,
+    required this.follows,
     this.house,
   });
 
@@ -6835,14 +7744,14 @@ class KundliReportVimshottariBasisFunctionalValueNodeProxy {
       Map<String, dynamic> json) {
     return KundliReportVimshottariBasisFunctionalValueNodeProxy(
       companions: asList(json['companions']).map((e) => asString(e)).toList(),
-      follows: asStringOrNull(json['follows']),
+      follows: asString(json['follows']),
       house: asIntOrNull(json['house']),
     );
   }
 
   final List<String> companions;
 
-  final String? follows;
+  final String follows;
 
   final int? house;
 
@@ -6850,9 +7759,7 @@ class KundliReportVimshottariBasisFunctionalValueNodeProxy {
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
     json['companions'] = companions;
-    if (follows != null) {
-      json['follows'] = follows;
-    }
+    json['follows'] = follows;
     if (house != null) {
       json['house'] = house;
     }
@@ -6987,7 +7894,7 @@ class LifeArea {
     required this.basis,
     required this.level,
     required this.periods,
-    required this.text,
+    this.text,
   });
 
   factory LifeArea.fromJson(Map<String, dynamic> json) {
@@ -6996,9 +7903,11 @@ class LifeArea {
       basis: LifeAreaBasis.fromJson(asMap(json['basis'])),
       level: asString(json['level']),
       periods: asList(json['periods'])
-          .map((e) => LifeAreaPeriod.fromJson(asMap(e)))
+          .map((e) => YogaReadingPeriodsItem.fromJson(asMap(e)))
           .toList(),
-      text: LocalizedText.fromJson(asMap(json['text'])),
+      text: json['text'] == null
+          ? null
+          : LocalizedText.fromJson(asMap(json['text'])),
     );
   }
 
@@ -7008,10 +7917,9 @@ class LifeArea {
 
   final String level;
 
-  final List<LifeAreaPeriod> periods;
+  final List<YogaReadingPeriodsItem> periods;
 
-  /// One piece of text, keyed by language: one entry for each language in `options.language`, in that order (`{"hi": "…"}` or `{"en": "…", "hi": "…"}`).
-  final LocalizedText text;
+  final LocalizedText? text;
 
   /// This value as JSON, with every null key left out.
   Map<String, dynamic> toJson() {
@@ -7020,7 +7928,10 @@ class LifeArea {
     json['basis'] = basis.toJson();
     json['level'] = level;
     json['periods'] = periods.map((e) => e.toJson()).toList();
-    json['text'] = text.toJson();
+    final text = this.text;
+    if (text != null) {
+      json['text'] = text.toJson();
+    }
     return json;
   }
 }
@@ -7041,6 +7952,7 @@ class LifeAreaBasis {
     required this.relative,
     required this.score,
     this.support,
+    required this.varga,
     required this.yogas,
   });
 
@@ -7069,6 +7981,7 @@ class LifeAreaBasis {
       relative: asDouble(json['relative']),
       score: asDouble(json['score']),
       support: asStringOrNull(json['support']),
+      varga: LifeAreaBasisVarga.fromJson(asMap(json['varga'])),
       yogas: asList(json['yogas']).map((e) => asString(e)).toList(),
     );
   }
@@ -7100,6 +8013,8 @@ class LifeAreaBasis {
 
   final String? support;
 
+  final LifeAreaBasisVarga varga;
+
   final List<String> yogas;
 
   /// This value as JSON, with every null key left out.
@@ -7122,6 +8037,7 @@ class LifeAreaBasis {
     if (support != null) {
       json['support'] = support;
     }
+    json['varga'] = varga.toJson();
     json['yogas'] = yogas;
     return json;
   }
@@ -7336,39 +8252,83 @@ class LifeAreaBasisReasonsItem {
   }
 }
 
-/// Wire shape: `LifeArea.periods[]`.
-class LifeAreaPeriod {
-  const LifeAreaPeriod({
-    required this.current,
-    required this.from,
-    required this.lord,
-    required this.to,
+/// Wire shape: `LifeAreaBasis.varga`.
+class LifeAreaBasisVarga {
+  const LifeAreaBasisVarga({
+    required this.checks,
+    required this.signal,
   });
 
-  factory LifeAreaPeriod.fromJson(Map<String, dynamic> json) {
-    return LifeAreaPeriod(
-      current: asBool(json['current']),
-      from: asString(json['from']),
-      lord: LabelledId.fromJson(asMap(json['lord'])),
-      to: asString(json['to']),
+  factory LifeAreaBasisVarga.fromJson(Map<String, dynamic> json) {
+    return LifeAreaBasisVarga(
+      checks: asList(json['checks'])
+          .map((e) => LifeAreaBasisVargaChecksItem.fromJson(asMap(e)))
+          .toList(),
+      signal: asString(json['signal']),
     );
   }
 
-  final bool current;
+  final List<LifeAreaBasisVargaChecksItem> checks;
 
-  final String from;
-
-  final LabelledId lord;
-
-  final String to;
+  final String signal;
 
   /// This value as JSON, with every null key left out.
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    json['current'] = current;
-    json['from'] = from;
-    json['lord'] = lord.toJson();
-    json['to'] = to;
+    json['checks'] = checks.map((e) => e.toJson()).toList();
+    json['signal'] = signal;
+    return json;
+  }
+}
+
+/// Wire shape: `LifeAreaBasisVarga.checks[]`.
+class LifeAreaBasisVargaChecksItem {
+  const LifeAreaBasisVargaChecksItem({
+    this.graha,
+    required this.reason,
+    required this.role,
+    required this.sign,
+    required this.status,
+    required this.varga,
+  });
+
+  factory LifeAreaBasisVargaChecksItem.fromJson(Map<String, dynamic> json) {
+    return LifeAreaBasisVargaChecksItem(
+      graha: json['graha'] == null
+          ? null
+          : LabelledId.fromJson(asMap(json['graha'])),
+      reason: asString(json['reason']),
+      role: asString(json['role']),
+      sign: LabelledId.fromJson(asMap(json['sign'])),
+      status: asString(json['status']),
+      varga: asString(json['varga']),
+    );
+  }
+
+  final LabelledId? graha;
+
+  final String reason;
+
+  final String role;
+
+  final LabelledId sign;
+
+  final String status;
+
+  final String varga;
+
+  /// This value as JSON, with every null key left out.
+  Map<String, dynamic> toJson() {
+    final json = <String, dynamic>{};
+    final graha = this.graha;
+    if (graha != null) {
+      json['graha'] = graha.toJson();
+    }
+    json['reason'] = reason;
+    json['role'] = role;
+    json['sign'] = sign.toJson();
+    json['status'] = status;
+    json['varga'] = varga;
     return json;
   }
 }
@@ -7458,6 +8418,7 @@ class LifeAreasDocumentSwitchesFunctional {
     required this.kendradhipatiClass,
     required this.ktRelation,
     required this.lagnaEighth,
+    required this.lagnaKendra,
     required this.luminariesMaraka,
     required this.luminaryEighth,
     required this.mercuryAlone,
@@ -7466,6 +8427,8 @@ class LifeAreasDocumentSwitchesFunctional {
     required this.nodeSameKindYk,
     required this.nodeWithEighth,
     required this.primeMaraka,
+    required this.raoLuminaryMarakaLow,
+    required this.raoMarakaList,
     required this.secondTwelfth,
     required this.trikonaEighth,
     required this.trikonaSixth,
@@ -7480,6 +8443,7 @@ class LifeAreasDocumentSwitchesFunctional {
       kendradhipatiClass: asString(json['kendradhipati_class']),
       ktRelation: asString(json['kt_relation']),
       lagnaEighth: asString(json['lagna_eighth']),
+      lagnaKendra: asString(json['lagna_kendra']),
       luminariesMaraka: asBool(json['luminaries_maraka']),
       luminaryEighth: asString(json['luminary_eighth']),
       mercuryAlone: asString(json['mercury_alone']),
@@ -7488,6 +8452,8 @@ class LifeAreasDocumentSwitchesFunctional {
       nodeSameKindYk: asBool(json['node_same_kind_yk']),
       nodeWithEighth: asString(json['node_with_eighth']),
       primeMaraka: asString(json['prime_maraka']),
+      raoLuminaryMarakaLow: asBool(json['rao_luminary_maraka_low']),
+      raoMarakaList: asBool(json['rao_maraka_list']),
       secondTwelfth: asString(json['second_twelfth']),
       trikonaEighth: asString(json['trikona_eighth']),
       trikonaSixth: asString(json['trikona_sixth']),
@@ -7509,6 +8475,9 @@ class LifeAreasDocumentSwitchesFunctional {
 
   /// Wire key: `lagna_eighth`.
   final String lagnaEighth;
+
+  /// Wire key: `lagna_kendra`.
+  final String lagnaKendra;
 
   /// Wire key: `luminaries_maraka`.
   final bool luminariesMaraka;
@@ -7534,6 +8503,12 @@ class LifeAreasDocumentSwitchesFunctional {
   /// Wire key: `prime_maraka`.
   final String primeMaraka;
 
+  /// Wire key: `rao_luminary_maraka_low`.
+  final bool raoLuminaryMarakaLow;
+
+  /// Wire key: `rao_maraka_list`.
+  final bool raoMarakaList;
+
   /// Wire key: `second_twelfth`.
   final String secondTwelfth;
 
@@ -7554,6 +8529,7 @@ class LifeAreasDocumentSwitchesFunctional {
     json['kendradhipati_class'] = kendradhipatiClass;
     json['kt_relation'] = ktRelation;
     json['lagna_eighth'] = lagnaEighth;
+    json['lagna_kendra'] = lagnaKendra;
     json['luminaries_maraka'] = luminariesMaraka;
     json['luminary_eighth'] = luminaryEighth;
     json['mercury_alone'] = mercuryAlone;
@@ -7562,6 +8538,8 @@ class LifeAreasDocumentSwitchesFunctional {
     json['node_same_kind_yk'] = nodeSameKindYk;
     json['node_with_eighth'] = nodeWithEighth;
     json['prime_maraka'] = primeMaraka;
+    json['rao_luminary_maraka_low'] = raoLuminaryMarakaLow;
+    json['rao_maraka_list'] = raoMarakaList;
     json['second_twelfth'] = secondTwelfth;
     json['trikona_eighth'] = trikonaEighth;
     json['trikona_sixth'] = trikonaSixth;
@@ -7750,7 +8728,9 @@ class MahadashaReading {
     required this.from,
     required this.level,
     required this.lord,
-    required this.text,
+    required this.stage,
+    this.tara,
+    this.text,
     required this.to,
   });
 
@@ -7766,7 +8746,11 @@ class MahadashaReading {
       from: asString(json['from']),
       level: asString(json['level']),
       lord: LabelledId.fromJson(asMap(json['lord'])),
-      text: LocalizedText.fromJson(asMap(json['text'])),
+      stage: asString(json['stage']),
+      tara: asStringOrNull(json['tara']),
+      text: json['text'] == null
+          ? null
+          : LocalizedText.fromJson(asMap(json['text'])),
       to: asString(json['to']),
     );
   }
@@ -7783,8 +8767,11 @@ class MahadashaReading {
 
   final LabelledId lord;
 
-  /// One piece of text, keyed by language: one entry for each language in `options.language`, in that order (`{"hi": "…"}` or `{"en": "…", "hi": "…"}`).
-  final LocalizedText text;
+  final String stage;
+
+  final String? tara;
+
+  final LocalizedText? text;
 
   final String to;
 
@@ -7797,7 +8784,14 @@ class MahadashaReading {
     json['from'] = from;
     json['level'] = level;
     json['lord'] = lord.toJson();
-    json['text'] = text.toJson();
+    json['stage'] = stage;
+    if (tara != null) {
+      json['tara'] = tara;
+    }
+    final text = this.text;
+    if (text != null) {
+      json['text'] = text.toJson();
+    }
     json['to'] = to;
     return json;
   }
@@ -9469,7 +10463,7 @@ class PdfKundliRequest {
   /// The person's name, printed on the cover and used in the file name; 1 to 120 characters. Default: none (the cover carries the title only).
   final String? name;
 
-  /// How much the kundli prints: `basic` (the default, about 12 to 20 pages) or `professional` (every section, about 30 to 45). Both cost the same.
+  /// How much the kundli prints: `basic` (the default, about 12 to 27 pages), `professional` (the astrologer's edition, every technical section, about 30 to 45) or `life` (the Life Report, written for the person it is about: who they are, each area of life in depth, Manglik, Sade Sati and the dasha timeline). All three cost the same.
   final String? edition;
 
   /// The sections to print, by id, in any order (the PDF keeps its own), e.g. `["details", "charts", "kp_planets", "kp_cusps"]`. Default: the edition's. The cover always prints.
@@ -9712,6 +10706,7 @@ class PdfVarshphalRequest {
     this.chartStyle,
     this.branding,
     this.name,
+    this.edition,
   });
 
   factory PdfVarshphalRequest.fromJson(Map<String, dynamic> json) {
@@ -9727,6 +10722,7 @@ class PdfVarshphalRequest {
           ? null
           : PdfBranding.fromJson(asMap(json['branding'])),
       name: asStringOrNull(json['name']),
+      edition: asStringOrNull(json['edition']),
     );
   }
 
@@ -9753,6 +10749,9 @@ class PdfVarshphalRequest {
   /// The person's name, printed on the cover and used in the file name; 1 to 120 characters. Default: none (the cover carries the title only).
   final String? name;
 
+  /// How much the Varshphal prints: `life` (the default, the year written for the person it is about) or `professional` (adds the astrologer's tables: planet strengths, Tajika yogas, every saham, the period grades with their sub-periods and the month lords). Both cost the same.
+  final String? edition;
+
   /// This value as JSON, with every null key left out.
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -9774,6 +10773,9 @@ class PdfVarshphalRequest {
     }
     if (name != null) {
       json['name'] = name;
+    }
+    if (edition != null) {
+      json['edition'] = edition;
     }
     return json;
   }
@@ -10048,25 +11050,30 @@ class ReadingHouseLordsDocument {
 /// Wire shape: `ReadingLagnaDocument.lagna`.
 class ReadingLagna {
   const ReadingLagna({
-    required this.entry,
+    this.entry,
     required this.sign,
   });
 
   factory ReadingLagna.fromJson(Map<String, dynamic> json) {
     return ReadingLagna(
-      entry: ReadingEntry.fromJson(asMap(json['entry'])),
+      entry: json['entry'] == null
+          ? null
+          : ReadingEntry.fromJson(asMap(json['entry'])),
       sign: LabelledId.fromJson(asMap(json['sign'])),
     );
   }
 
-  final ReadingEntry entry;
+  final ReadingEntry? entry;
 
   final LabelledId sign;
 
   /// This value as JSON, with every null key left out.
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    json['entry'] = entry.toJson();
+    final entry = this.entry;
+    if (entry != null) {
+      json['entry'] = entry.toJson();
+    }
     json['sign'] = sign.toJson();
     return json;
   }
@@ -10115,25 +11122,30 @@ class ReadingLagnaDocument {
 /// Wire shape: `ReadingNakshatraDocument.nakshatra`.
 class ReadingNakshatra {
   const ReadingNakshatra({
-    required this.entry,
+    this.entry,
     required this.nakshatra,
   });
 
   factory ReadingNakshatra.fromJson(Map<String, dynamic> json) {
     return ReadingNakshatra(
-      entry: ReadingEntry.fromJson(asMap(json['entry'])),
+      entry: json['entry'] == null
+          ? null
+          : ReadingEntry.fromJson(asMap(json['entry'])),
       nakshatra: LabelledId.fromJson(asMap(json['nakshatra'])),
     );
   }
 
-  final ReadingEntry entry;
+  final ReadingEntry? entry;
 
   final LabelledId nakshatra;
 
   /// This value as JSON, with every null key left out.
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    json['entry'] = entry.toJson();
+    final entry = this.entry;
+    if (entry != null) {
+      json['entry'] = entry.toJson();
+    }
     json['nakshatra'] = nakshatra.toJson();
     return json;
   }
@@ -10182,12 +11194,72 @@ class ReadingNakshatraDocument {
 /// Wire shape: `VarshphalReadingDocument.summary`.
 class ReadingSummary {
   const ReadingSummary({
+    this.best,
+    this.hard,
     required this.level,
+    this.note,
     required this.text,
   });
 
   factory ReadingSummary.fromJson(Map<String, dynamic> json) {
     return ReadingSummary(
+      best: json['best'] == null
+          ? null
+          : VarshphalReadingDocumentMonthlyItemBest.fromJson(
+              asMap(json['best'])),
+      hard: json['hard'] == null
+          ? null
+          : VarshphalReadingDocumentMonthlyItemBest.fromJson(
+              asMap(json['hard'])),
+      level: asString(json['level']),
+      note: json['note'] == null
+          ? null
+          : LocalizedText.fromJson(asMap(json['note'])),
+      text: LocalizedText.fromJson(asMap(json['text'])),
+    );
+  }
+
+  final VarshphalReadingDocumentMonthlyItemBest? best;
+
+  final VarshphalReadingDocumentMonthlyItemBest? hard;
+
+  final String level;
+
+  final LocalizedText? note;
+
+  /// One piece of text, keyed by language: one entry for each language in `options.language`, in that order (`{"hi": "…"}` or `{"en": "…", "hi": "…"}`).
+  final LocalizedText text;
+
+  /// This value as JSON, with every null key left out.
+  Map<String, dynamic> toJson() {
+    final json = <String, dynamic>{};
+    final best = this.best;
+    if (best != null) {
+      json['best'] = best.toJson();
+    }
+    final hard = this.hard;
+    if (hard != null) {
+      json['hard'] = hard.toJson();
+    }
+    json['level'] = level;
+    final note = this.note;
+    if (note != null) {
+      json['note'] = note.toJson();
+    }
+    json['text'] = text.toJson();
+    return json;
+  }
+}
+
+/// Wire shape: `HoroscopeDocument.summary`.
+class ReadingSummary2 {
+  const ReadingSummary2({
+    required this.level,
+    required this.text,
+  });
+
+  factory ReadingSummary2.fromJson(Map<String, dynamic> json) {
+    return ReadingSummary2(
       level: asString(json['level']),
       text: LocalizedText.fromJson(asMap(json['text'])),
     );
@@ -10311,7 +11383,7 @@ class ReportKundliRequest {
   /// Settings for the calculation and the answer: ayanamsa, language, disclaimer. Every field has a default, so `options` may be left out.
   final CalculationOptions? options;
 
-  /// The parts to include, each named once, in any order (the answer keeps the report's own order): `lagna`, `nakshatra`, `life_areas`, `house_lords`, `grahas`, `yogas`, `vimshottari`, `varshphal`. Default: all eight. The report is priced per part.
+  /// The parts to include, each named once, in any order (the answer keeps the report's own order): `lagna`, `nakshatra`, `nature`, `life_areas`, `in_depth`, `house_lords`, `grahas`, `yogas`, `vimshottari`, `varshphal`, `now_next`. Default: all eleven. The report is priced per part.
   final List<String>? parts;
 
   /// The Varshphal's year, e.g. `2026`: the year from that year's birthday to the next. Default: the Varshphal year running today (last year's until this year's birthday). Not before the birth year; at most 2399.
@@ -12435,7 +13507,11 @@ class VarshphalReadingDocument {
     required this.areas,
     required this.basis,
     required this.from,
+    required this.monthly,
     required this.months,
+    required this.natalPromise,
+    required this.periods,
+    required this.sahams,
     required this.summary,
     required this.to,
     required this.varshaYear,
@@ -12450,8 +13526,21 @@ class VarshphalReadingDocument {
           .toList(),
       basis: VarshphalReadingDocumentBasis.fromJson(asMap(json['basis'])),
       from: asString(json['from']),
+      monthly: asList(json['monthly'])
+          .map((e) => VarshphalReadingDocumentMonthlyItem.fromJson(asMap(e)))
+          .toList(),
       months: asList(json['months'])
           .map((e) => VarshphalPeriod.fromJson(asMap(e)))
+          .toList(),
+      natalPromise: asList(json['natal_promise'])
+          .map((e) =>
+              VarshphalReadingDocumentNatalPromiseItem.fromJson(asMap(e)))
+          .toList(),
+      periods: asList(json['periods'])
+          .map((e) => VarshphalReadingDocumentPeriodsItem.fromJson(asMap(e)))
+          .toList(),
+      sahams: asList(json['sahams'])
+          .map((e) => VarshphalReadingDocumentSahamsItem.fromJson(asMap(e)))
           .toList(),
       summary: ReadingSummary.fromJson(asMap(json['summary'])),
       to: asString(json['to']),
@@ -12469,7 +13558,16 @@ class VarshphalReadingDocument {
 
   final String from;
 
+  final List<VarshphalReadingDocumentMonthlyItem> monthly;
+
   final List<VarshphalPeriod> months;
+
+  /// Wire key: `natal_promise`.
+  final List<VarshphalReadingDocumentNatalPromiseItem> natalPromise;
+
+  final List<VarshphalReadingDocumentPeriodsItem> periods;
+
+  final List<VarshphalReadingDocumentSahamsItem> sahams;
 
   final ReadingSummary summary;
 
@@ -12489,7 +13587,11 @@ class VarshphalReadingDocument {
     json['areas'] = areas.map((e) => e.toJson()).toList();
     json['basis'] = basis.toJson();
     json['from'] = from;
+    json['monthly'] = monthly.map((e) => e.toJson()).toList();
     json['months'] = months.map((e) => e.toJson()).toList();
+    json['natal_promise'] = natalPromise.map((e) => e.toJson()).toList();
+    json['periods'] = periods.map((e) => e.toJson()).toList();
+    json['sahams'] = sahams.map((e) => e.toJson()).toList();
     json['summary'] = summary.toJson();
     json['to'] = to;
     json['varsha_year'] = varshaYear;
@@ -13194,6 +14296,463 @@ class VarshphalReadingDocumentBasisYearLord {
   }
 }
 
+/// Wire shape: `VarshphalReadingDocument.monthly[]`.
+class VarshphalReadingDocumentMonthlyItem {
+  const VarshphalReadingDocumentMonthlyItem({
+    required this.areas,
+    this.best,
+    required this.care,
+    required this.from,
+    this.hard,
+    required this.level,
+    required this.lord,
+    required this.lordStrength,
+    required this.month,
+    required this.muntha,
+    required this.reasons,
+    required this.rise,
+    this.text,
+    required this.to,
+  });
+
+  factory VarshphalReadingDocumentMonthlyItem.fromJson(
+      Map<String, dynamic> json) {
+    return VarshphalReadingDocumentMonthlyItem(
+      areas: asList(json['areas'])
+          .map((e) =>
+              VarshphalReadingDocumentMonthlyItemAreasItem.fromJson(asMap(e)))
+          .toList(),
+      best: json['best'] == null
+          ? null
+          : VarshphalReadingDocumentMonthlyItemBest.fromJson(
+              asMap(json['best'])),
+      care: asBool(json['care']),
+      from: asString(json['from']),
+      hard: json['hard'] == null
+          ? null
+          : VarshphalReadingDocumentMonthlyItemBest.fromJson(
+              asMap(json['hard'])),
+      level: asString(json['level']),
+      lord: LabelledId.fromJson(asMap(json['lord'])),
+      lordStrength: asString(json['lord_strength']),
+      month: asInt(json['month']),
+      muntha: LabelledId.fromJson(asMap(json['muntha'])),
+      reasons: asList(json['reasons'])
+          .map((e) =>
+              VimshottariReadingDocumentBasisFunctionalValueDashaRoleReasonsItem
+                  .fromJson(asMap(e)))
+          .toList(),
+      rise: asBool(json['rise']),
+      text: json['text'] == null
+          ? null
+          : LocalizedText.fromJson(asMap(json['text'])),
+      to: asString(json['to']),
+    );
+  }
+
+  final List<VarshphalReadingDocumentMonthlyItemAreasItem> areas;
+
+  final VarshphalReadingDocumentMonthlyItemBest? best;
+
+  final bool care;
+
+  final String from;
+
+  final VarshphalReadingDocumentMonthlyItemBest? hard;
+
+  final String level;
+
+  final LabelledId lord;
+
+  /// Wire key: `lord_strength`.
+  final String lordStrength;
+
+  final int month;
+
+  final LabelledId muntha;
+
+  final List<VimshottariReadingDocumentBasisFunctionalValueDashaRoleReasonsItem>
+      reasons;
+
+  final bool rise;
+
+  final LocalizedText? text;
+
+  final String to;
+
+  /// This value as JSON, with every null key left out.
+  Map<String, dynamic> toJson() {
+    final json = <String, dynamic>{};
+    json['areas'] = areas.map((e) => e.toJson()).toList();
+    final best = this.best;
+    if (best != null) {
+      json['best'] = best.toJson();
+    }
+    json['care'] = care;
+    json['from'] = from;
+    final hard = this.hard;
+    if (hard != null) {
+      json['hard'] = hard.toJson();
+    }
+    json['level'] = level;
+    json['lord'] = lord.toJson();
+    json['lord_strength'] = lordStrength;
+    json['month'] = month;
+    json['muntha'] = muntha.toJson();
+    json['reasons'] = reasons.map((e) => e.toJson()).toList();
+    json['rise'] = rise;
+    final text = this.text;
+    if (text != null) {
+      json['text'] = text.toJson();
+    }
+    json['to'] = to;
+    return json;
+  }
+}
+
+/// Wire shape: `VarshphalReadingDocumentMonthlyItem.areas[]`.
+class VarshphalReadingDocumentMonthlyItemAreasItem {
+  const VarshphalReadingDocumentMonthlyItemAreasItem({
+    required this.area,
+    this.good,
+  });
+
+  factory VarshphalReadingDocumentMonthlyItemAreasItem.fromJson(
+      Map<String, dynamic> json) {
+    return VarshphalReadingDocumentMonthlyItemAreasItem(
+      area: asString(json['area']),
+      good: asBoolOrNull(json['good']),
+    );
+  }
+
+  final String area;
+
+  final bool? good;
+
+  /// This value as JSON, with every null key left out.
+  Map<String, dynamic> toJson() {
+    final json = <String, dynamic>{};
+    json['area'] = area;
+    if (good != null) {
+      json['good'] = good;
+    }
+    return json;
+  }
+}
+
+/// Wire shape: `VarshphalReadingDocumentMonthlyItem.best`.
+class VarshphalReadingDocumentMonthlyItemBest {
+  const VarshphalReadingDocumentMonthlyItemBest({
+    required this.from,
+    required this.to,
+  });
+
+  factory VarshphalReadingDocumentMonthlyItemBest.fromJson(
+      Map<String, dynamic> json) {
+    return VarshphalReadingDocumentMonthlyItemBest(
+      from: asString(json['from']),
+      to: asString(json['to']),
+    );
+  }
+
+  final String from;
+
+  final String to;
+
+  /// This value as JSON, with every null key left out.
+  Map<String, dynamic> toJson() {
+    final json = <String, dynamic>{};
+    json['from'] = from;
+    json['to'] = to;
+    return json;
+  }
+}
+
+/// Wire shape: `VarshphalReadingDocument.natal_promise[]`.
+class VarshphalReadingDocumentNatalPromiseItem {
+  const VarshphalReadingDocumentNatalPromiseItem({
+    required this.active,
+    required this.house,
+    required this.lord,
+    required this.reasons,
+    this.text,
+    required this.withValue,
+  });
+
+  factory VarshphalReadingDocumentNatalPromiseItem.fromJson(
+      Map<String, dynamic> json) {
+    return VarshphalReadingDocumentNatalPromiseItem(
+      active: asBool(json['active']),
+      house: asInt(json['house']),
+      lord: LabelledId.fromJson(asMap(json['lord'])),
+      reasons: asList(json['reasons'])
+          .map((e) =>
+              VimshottariReadingDocumentBasisFunctionalValueDashaRoleReasonsItem
+                  .fromJson(asMap(e)))
+          .toList(),
+      text: json['text'] == null
+          ? null
+          : LocalizedText.fromJson(asMap(json['text'])),
+      withValue: asString(json['with']),
+    );
+  }
+
+  final bool active;
+
+  final int house;
+
+  final LabelledId lord;
+
+  final List<VimshottariReadingDocumentBasisFunctionalValueDashaRoleReasonsItem>
+      reasons;
+
+  final LocalizedText? text;
+
+  /// Wire key: `with`.
+  final String withValue;
+
+  /// This value as JSON, with every null key left out.
+  Map<String, dynamic> toJson() {
+    final json = <String, dynamic>{};
+    json['active'] = active;
+    json['house'] = house;
+    json['lord'] = lord.toJson();
+    json['reasons'] = reasons.map((e) => e.toJson()).toList();
+    final text = this.text;
+    if (text != null) {
+      json['text'] = text.toJson();
+    }
+    json['with'] = withValue;
+    return json;
+  }
+}
+
+/// Wire shape: `VarshphalReadingDocument.periods[]`.
+class VarshphalReadingDocumentPeriodsItem {
+  const VarshphalReadingDocumentPeriodsItem({
+    required this.from,
+    required this.level,
+    this.lord,
+    required this.reasons,
+    required this.step,
+    required this.subs,
+    required this.to,
+  });
+
+  factory VarshphalReadingDocumentPeriodsItem.fromJson(
+      Map<String, dynamic> json) {
+    return VarshphalReadingDocumentPeriodsItem(
+      from: asString(json['from']),
+      level: asString(json['level']),
+      lord: json['lord'],
+      reasons: asList(json['reasons'])
+          .map((e) =>
+              VimshottariReadingDocumentBasisFunctionalValueDashaRoleReasonsItem
+                  .fromJson(asMap(e)))
+          .toList(),
+      step: asInt(json['step']),
+      subs: asList(json['subs'])
+          .map((e) =>
+              VarshphalReadingDocumentPeriodsItemSubsItem.fromJson(asMap(e)))
+          .toList(),
+      to: asString(json['to']),
+    );
+  }
+
+  final String from;
+
+  final String level;
+
+  final Object? lord;
+
+  final List<VimshottariReadingDocumentBasisFunctionalValueDashaRoleReasonsItem>
+      reasons;
+
+  final int step;
+
+  final List<VarshphalReadingDocumentPeriodsItemSubsItem> subs;
+
+  final String to;
+
+  /// This value as JSON, with every null key left out.
+  Map<String, dynamic> toJson() {
+    final json = <String, dynamic>{};
+    json['from'] = from;
+    json['level'] = level;
+    if (lord != null) {
+      json['lord'] = lord;
+    }
+    json['reasons'] = reasons.map((e) => e.toJson()).toList();
+    json['step'] = step;
+    json['subs'] = subs.map((e) => e.toJson()).toList();
+    json['to'] = to;
+    return json;
+  }
+}
+
+/// Wire shape: `VarshphalReadingDocumentPeriodsItem.subs[]`.
+class VarshphalReadingDocumentPeriodsItemSubsItem {
+  const VarshphalReadingDocumentPeriodsItemSubsItem({
+    required this.from,
+    this.good,
+    this.lord,
+    required this.to,
+  });
+
+  factory VarshphalReadingDocumentPeriodsItemSubsItem.fromJson(
+      Map<String, dynamic> json) {
+    return VarshphalReadingDocumentPeriodsItemSubsItem(
+      from: asString(json['from']),
+      good: asBoolOrNull(json['good']),
+      lord: json['lord'],
+      to: asString(json['to']),
+    );
+  }
+
+  final String from;
+
+  final bool? good;
+
+  final Object? lord;
+
+  final String to;
+
+  /// This value as JSON, with every null key left out.
+  Map<String, dynamic> toJson() {
+    final json = <String, dynamic>{};
+    json['from'] = from;
+    if (good != null) {
+      json['good'] = good;
+    }
+    if (lord != null) {
+      json['lord'] = lord;
+    }
+    json['to'] = to;
+    return json;
+  }
+}
+
+/// Wire shape: `VarshphalReadingDocument.sahams[]`.
+class VarshphalReadingDocumentSahamsItem {
+  const VarshphalReadingDocumentSahamsItem({
+    this.day,
+    this.half,
+    required this.key,
+    required this.lord,
+    this.name,
+    this.period,
+    required this.reasons,
+    required this.sign,
+    this.text,
+    required this.verdict,
+  });
+
+  factory VarshphalReadingDocumentSahamsItem.fromJson(
+      Map<String, dynamic> json) {
+    return VarshphalReadingDocumentSahamsItem(
+      day: asStringOrNull(json['day']),
+      half: asStringOrNull(json['half']),
+      key: asString(json['key']),
+      lord: LabelledId.fromJson(asMap(json['lord'])),
+      name: json['name'] == null
+          ? null
+          : LocalizedText.fromJson(asMap(json['name'])),
+      period: json['period'] == null
+          ? null
+          : VarshphalReadingDocumentSahamsItemPeriod.fromJson(
+              asMap(json['period'])),
+      reasons: asList(json['reasons'])
+          .map((e) =>
+              VimshottariReadingDocumentBasisFunctionalValueDashaRoleReasonsItem
+                  .fromJson(asMap(e)))
+          .toList(),
+      sign: LabelledId.fromJson(asMap(json['sign'])),
+      text: json['text'] == null
+          ? null
+          : LocalizedText.fromJson(asMap(json['text'])),
+      verdict: asString(json['verdict']),
+    );
+  }
+
+  final String? day;
+
+  final String? half;
+
+  final String key;
+
+  final LabelledId lord;
+
+  final LocalizedText? name;
+
+  final VarshphalReadingDocumentSahamsItemPeriod? period;
+
+  final List<VimshottariReadingDocumentBasisFunctionalValueDashaRoleReasonsItem>
+      reasons;
+
+  final LabelledId sign;
+
+  final LocalizedText? text;
+
+  final String verdict;
+
+  /// This value as JSON, with every null key left out.
+  Map<String, dynamic> toJson() {
+    final json = <String, dynamic>{};
+    if (day != null) {
+      json['day'] = day;
+    }
+    if (half != null) {
+      json['half'] = half;
+    }
+    json['key'] = key;
+    json['lord'] = lord.toJson();
+    final name = this.name;
+    if (name != null) {
+      json['name'] = name.toJson();
+    }
+    final period = this.period;
+    if (period != null) {
+      json['period'] = period.toJson();
+    }
+    json['reasons'] = reasons.map((e) => e.toJson()).toList();
+    json['sign'] = sign.toJson();
+    final text = this.text;
+    if (text != null) {
+      json['text'] = text.toJson();
+    }
+    json['verdict'] = verdict;
+    return json;
+  }
+}
+
+/// Wire shape: `VarshphalReadingDocumentSahamsItem.period`.
+class VarshphalReadingDocumentSahamsItemPeriod {
+  const VarshphalReadingDocumentSahamsItemPeriod({
+    required this.from,
+    required this.to,
+  });
+
+  factory VarshphalReadingDocumentSahamsItemPeriod.fromJson(
+      Map<String, dynamic> json) {
+    return VarshphalReadingDocumentSahamsItemPeriod(
+      from: LabelledId.fromJson(asMap(json['from'])),
+      to: LabelledId.fromJson(asMap(json['to'])),
+    );
+  }
+
+  final LabelledId from;
+
+  final LabelledId to;
+
+  /// This value as JSON, with every null key left out.
+  Map<String, dynamic> toJson() {
+    final json = <String, dynamic>{};
+    json['from'] = from.toJson();
+    json['to'] = to.toJson();
+    return json;
+  }
+}
+
 /// Wire shape: `POST /v1/varshphal body`.
 class VarshphalRequest {
   const VarshphalRequest({
@@ -13582,6 +15141,7 @@ class VarshphalVarshaYearDocumentMaasaItem {
     required this.lagnaSign,
     required this.month,
     required this.monthLord,
+    required this.muntha,
     required this.pravesh,
   });
 
@@ -13595,6 +15155,7 @@ class VarshphalVarshaYearDocumentMaasaItem {
       month: asInt(json['month']),
       monthLord: VarshphalVarshaYearDocumentYearLord.fromJson(
           asMap(json['month_lord'])),
+      muntha: LabelledId.fromJson(asMap(json['muntha'])),
       pravesh: asString(json['pravesh']),
     );
   }
@@ -13615,6 +15176,8 @@ class VarshphalVarshaYearDocumentMaasaItem {
   /// Wire key: `month_lord`.
   final VarshphalVarshaYearDocumentYearLord monthLord;
 
+  final LabelledId muntha;
+
   final String pravesh;
 
   /// This value as JSON, with every null key left out.
@@ -13626,6 +15189,7 @@ class VarshphalVarshaYearDocumentMaasaItem {
     json['lagna_sign'] = lagnaSign.toJson();
     json['month'] = month;
     json['month_lord'] = monthLord.toJson();
+    json['muntha'] = muntha.toJson();
     json['pravesh'] = pravesh;
     return json;
   }
@@ -13945,6 +15509,7 @@ class VimshottariReadingDocument {
 class VimshottariReadingDocumentBasis {
   const VimshottariReadingDocumentBasis({
     required this.functional,
+    required this.healthGrahas,
     required this.switches,
   });
 
@@ -13952,6 +15517,8 @@ class VimshottariReadingDocumentBasis {
     return VimshottariReadingDocumentBasis(
       functional: asMap(json['functional']).map((k, v) => MapEntry(k,
           VimshottariReadingDocumentBasisFunctionalValue.fromJson(asMap(v)))),
+      healthGrahas:
+          asList(json['health_grahas']).map((e) => asString(e)).toList(),
       switches: VimshottariReadingDocumentBasisSwitches.fromJson(
           asMap(json['switches'])),
     );
@@ -13959,12 +15526,16 @@ class VimshottariReadingDocumentBasis {
 
   final Map<String, VimshottariReadingDocumentBasisFunctionalValue> functional;
 
+  /// Wire key: `health_grahas`.
+  final List<String> healthGrahas;
+
   final VimshottariReadingDocumentBasisSwitches switches;
 
   /// This value as JSON, with every null key left out.
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
     json['functional'] = functional.map((k, v) => MapEntry(k, v.toJson()));
+    json['health_grahas'] = healthGrahas;
     json['switches'] = switches.toJson();
     return json;
   }
@@ -14421,7 +15992,7 @@ class VimshottariReadingDocumentBasisFunctionalValueMarakaBasis {
 class VimshottariReadingDocumentBasisFunctionalValueNodeProxy {
   const VimshottariReadingDocumentBasisFunctionalValueNodeProxy({
     required this.companions,
-    this.follows,
+    required this.follows,
     required this.house,
   });
 
@@ -14429,14 +16000,14 @@ class VimshottariReadingDocumentBasisFunctionalValueNodeProxy {
       Map<String, dynamic> json) {
     return VimshottariReadingDocumentBasisFunctionalValueNodeProxy(
       companions: asList(json['companions']).map((e) => asString(e)).toList(),
-      follows: asStringOrNull(json['follows']),
+      follows: asString(json['follows']),
       house: asInt(json['house']),
     );
   }
 
   final List<String> companions;
 
-  final String? follows;
+  final String follows;
 
   final int house;
 
@@ -14444,9 +16015,7 @@ class VimshottariReadingDocumentBasisFunctionalValueNodeProxy {
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
     json['companions'] = companions;
-    if (follows != null) {
-      json['follows'] = follows;
-    }
+    json['follows'] = follows;
     json['house'] = house;
     return json;
   }
@@ -14651,6 +16220,12 @@ class VimshottariReadingDocumentBasisSwitchesDasha {
     required this.mutualDusthanaWorsens,
     required this.rajaYogaDasha,
     required this.rajaYogaMinRelation,
+    required this.raoBeneficAssociation,
+    required this.raoDebilitatedDusthana,
+    required this.raoNodeTrikonaYk,
+    required this.raoVsOwnBhukti,
+    required this.raoYogaBhukti,
+    required this.raoYogaSurvivesMaraka,
     required this.s19RelatedPapaInYk,
     required this.s31Order,
     required this.s32Unrelated,
@@ -14673,6 +16248,12 @@ class VimshottariReadingDocumentBasisSwitchesDasha {
       mutualDusthanaWorsens: asBool(json['mutual_dusthana_worsens']),
       rajaYogaDasha: asBool(json['raja_yoga_dasha']),
       rajaYogaMinRelation: asInt(json['raja_yoga_min_relation']),
+      raoBeneficAssociation: asBool(json['rao_benefic_association']),
+      raoDebilitatedDusthana: asBool(json['rao_debilitated_dusthana']),
+      raoNodeTrikonaYk: asBool(json['rao_node_trikona_yk']),
+      raoVsOwnBhukti: asBool(json['rao_vs_own_bhukti']),
+      raoYogaBhukti: asBool(json['rao_yoga_bhukti']),
+      raoYogaSurvivesMaraka: asBool(json['rao_yoga_survives_maraka']),
       s19RelatedPapaInYk: asString(json['s19_related_papa_in_yk']),
       s31Order: asString(json['s31_order']),
       s32Unrelated: asString(json['s32_unrelated']),
@@ -14707,6 +16288,24 @@ class VimshottariReadingDocumentBasisSwitchesDasha {
 
   /// Wire key: `raja_yoga_min_relation`.
   final int rajaYogaMinRelation;
+
+  /// Wire key: `rao_benefic_association`.
+  final bool raoBeneficAssociation;
+
+  /// Wire key: `rao_debilitated_dusthana`.
+  final bool raoDebilitatedDusthana;
+
+  /// Wire key: `rao_node_trikona_yk`.
+  final bool raoNodeTrikonaYk;
+
+  /// Wire key: `rao_vs_own_bhukti`.
+  final bool raoVsOwnBhukti;
+
+  /// Wire key: `rao_yoga_bhukti`.
+  final bool raoYogaBhukti;
+
+  /// Wire key: `rao_yoga_survives_maraka`.
+  final bool raoYogaSurvivesMaraka;
 
   /// Wire key: `s19_related_papa_in_yk`.
   final String s19RelatedPapaInYk;
@@ -14747,6 +16346,12 @@ class VimshottariReadingDocumentBasisSwitchesDasha {
     json['mutual_dusthana_worsens'] = mutualDusthanaWorsens;
     json['raja_yoga_dasha'] = rajaYogaDasha;
     json['raja_yoga_min_relation'] = rajaYogaMinRelation;
+    json['rao_benefic_association'] = raoBeneficAssociation;
+    json['rao_debilitated_dusthana'] = raoDebilitatedDusthana;
+    json['rao_node_trikona_yk'] = raoNodeTrikonaYk;
+    json['rao_vs_own_bhukti'] = raoVsOwnBhukti;
+    json['rao_yoga_bhukti'] = raoYogaBhukti;
+    json['rao_yoga_survives_maraka'] = raoYogaSurvivesMaraka;
     json['s19_related_papa_in_yk'] = s19RelatedPapaInYk;
     json['s31_order'] = s31Order;
     json['s32_unrelated'] = s32Unrelated;
@@ -14769,6 +16374,7 @@ class VimshottariReadingDocumentBasisSwitchesFunctional {
     required this.kendradhipatiClass,
     required this.ktRelation,
     required this.lagnaEighth,
+    required this.lagnaKendra,
     required this.luminariesMaraka,
     required this.luminaryEighth,
     required this.mercuryAlone,
@@ -14777,6 +16383,8 @@ class VimshottariReadingDocumentBasisSwitchesFunctional {
     required this.nodeSameKindYk,
     required this.nodeWithEighth,
     required this.primeMaraka,
+    required this.raoLuminaryMarakaLow,
+    required this.raoMarakaList,
     this.secondTwelfth,
     required this.trikonaEighth,
     required this.trikonaSixth,
@@ -14791,6 +16399,7 @@ class VimshottariReadingDocumentBasisSwitchesFunctional {
       kendradhipatiClass: asString(json['kendradhipati_class']),
       ktRelation: asString(json['kt_relation']),
       lagnaEighth: asString(json['lagna_eighth']),
+      lagnaKendra: asString(json['lagna_kendra']),
       luminariesMaraka: asBool(json['luminaries_maraka']),
       luminaryEighth: asString(json['luminary_eighth']),
       mercuryAlone: asString(json['mercury_alone']),
@@ -14799,6 +16408,8 @@ class VimshottariReadingDocumentBasisSwitchesFunctional {
       nodeSameKindYk: asBool(json['node_same_kind_yk']),
       nodeWithEighth: asString(json['node_with_eighth']),
       primeMaraka: asString(json['prime_maraka']),
+      raoLuminaryMarakaLow: asBool(json['rao_luminary_maraka_low']),
+      raoMarakaList: asBool(json['rao_maraka_list']),
       secondTwelfth: asStringOrNull(json['second_twelfth']),
       trikonaEighth: asString(json['trikona_eighth']),
       trikonaSixth: asString(json['trikona_sixth']),
@@ -14820,6 +16431,9 @@ class VimshottariReadingDocumentBasisSwitchesFunctional {
 
   /// Wire key: `lagna_eighth`.
   final String lagnaEighth;
+
+  /// Wire key: `lagna_kendra`.
+  final String lagnaKendra;
 
   /// Wire key: `luminaries_maraka`.
   final bool luminariesMaraka;
@@ -14845,6 +16459,12 @@ class VimshottariReadingDocumentBasisSwitchesFunctional {
   /// Wire key: `prime_maraka`.
   final String primeMaraka;
 
+  /// Wire key: `rao_luminary_maraka_low`.
+  final bool raoLuminaryMarakaLow;
+
+  /// Wire key: `rao_maraka_list`.
+  final bool raoMarakaList;
+
   /// Wire key: `second_twelfth`.
   final String? secondTwelfth;
 
@@ -14865,6 +16485,7 @@ class VimshottariReadingDocumentBasisSwitchesFunctional {
     json['kendradhipati_class'] = kendradhipatiClass;
     json['kt_relation'] = ktRelation;
     json['lagna_eighth'] = lagnaEighth;
+    json['lagna_kendra'] = lagnaKendra;
     json['luminaries_maraka'] = luminariesMaraka;
     json['luminary_eighth'] = luminaryEighth;
     json['mercury_alone'] = mercuryAlone;
@@ -14873,6 +16494,8 @@ class VimshottariReadingDocumentBasisSwitchesFunctional {
     json['node_same_kind_yk'] = nodeSameKindYk;
     json['node_with_eighth'] = nodeWithEighth;
     json['prime_maraka'] = primeMaraka;
+    json['rao_luminary_maraka_low'] = raoLuminaryMarakaLow;
+    json['rao_maraka_list'] = raoMarakaList;
     if (secondTwelfth != null) {
       json['second_twelfth'] = secondTwelfth;
     }
@@ -14888,19 +16511,31 @@ class YogaReading {
   const YogaReading({
     required this.category,
     required this.code,
-    required this.entry,
+    required this.count,
+    this.entry,
+    required this.formations,
     required this.name,
     required this.participants,
+    required this.periods,
   });
 
   factory YogaReading.fromJson(Map<String, dynamic> json) {
     return YogaReading(
       category: asString(json['category']),
       code: asString(json['code']),
-      entry: ReadingEntry.fromJson(asMap(json['entry'])),
+      count: asInt(json['count']),
+      entry: json['entry'] == null
+          ? null
+          : ReadingEntry.fromJson(asMap(json['entry'])),
+      formations: asList(json['formations'])
+          .map((e) => YogaReadingFormationsItem.fromJson(asMap(e)))
+          .toList(),
       name: LocalizedText.fromJson(asMap(json['name'])),
       participants: asList(json['participants'])
           .map((e) => LabelledId.fromJson(asMap(e)))
+          .toList(),
+      periods: asList(json['periods'])
+          .map((e) => YogaReadingPeriodsItem.fromJson(asMap(e)))
           .toList(),
     );
   }
@@ -14909,21 +16544,124 @@ class YogaReading {
 
   final String code;
 
-  final ReadingEntry entry;
+  final int count;
+
+  final ReadingEntry? entry;
+
+  final List<YogaReadingFormationsItem> formations;
 
   /// One piece of text, keyed by language: one entry for each language in `options.language`, in that order (`{"hi": "…"}` or `{"en": "…", "hi": "…"}`).
   final LocalizedText name;
 
   final List<LabelledId> participants;
 
+  final List<YogaReadingPeriodsItem> periods;
+
   /// This value as JSON, with every null key left out.
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
     json['category'] = category;
     json['code'] = code;
-    json['entry'] = entry.toJson();
+    json['count'] = count;
+    final entry = this.entry;
+    if (entry != null) {
+      json['entry'] = entry.toJson();
+    }
+    json['formations'] = formations.map((e) => e.toJson()).toList();
     json['name'] = name.toJson();
     json['participants'] = participants.map((e) => e.toJson()).toList();
+    json['periods'] = periods.map((e) => e.toJson()).toList();
+    return json;
+  }
+}
+
+/// Wire shape: `YogaReading.formations[]`.
+class YogaReadingFormationsItem {
+  const YogaReadingFormationsItem({
+    required this.grade,
+    required this.inKendraTrikona,
+    required this.lords,
+    required this.participants,
+    this.relation,
+    required this.repeatedInD9,
+  });
+
+  factory YogaReadingFormationsItem.fromJson(Map<String, dynamic> json) {
+    return YogaReadingFormationsItem(
+      grade: asDouble(json['grade']),
+      inKendraTrikona: asBool(json['in_kendra_trikona']),
+      lords: asMap(json['lords'])
+          .map((k, v) => MapEntry(k, asList(v).map((e) => asInt(e)).toList())),
+      participants: asList(json['participants'])
+          .map((e) => LabelledId.fromJson(asMap(e)))
+          .toList(),
+      relation: asStringOrNull(json['relation']),
+      repeatedInD9: asBool(json['repeated_in_d9']),
+    );
+  }
+
+  final double grade;
+
+  /// Wire key: `in_kendra_trikona`.
+  final bool inKendraTrikona;
+
+  final Map<String, List<int>> lords;
+
+  final List<LabelledId> participants;
+
+  final String? relation;
+
+  /// Wire key: `repeated_in_d9`.
+  final bool repeatedInD9;
+
+  /// This value as JSON, with every null key left out.
+  Map<String, dynamic> toJson() {
+    final json = <String, dynamic>{};
+    json['grade'] = grade;
+    json['in_kendra_trikona'] = inKendraTrikona;
+    json['lords'] = lords.map((k, v) => MapEntry(k, v));
+    json['participants'] = participants.map((e) => e.toJson()).toList();
+    if (relation != null) {
+      json['relation'] = relation;
+    }
+    json['repeated_in_d9'] = repeatedInD9;
+    return json;
+  }
+}
+
+/// Wire shape: `YogaReading.periods[]`.
+class YogaReadingPeriodsItem {
+  const YogaReadingPeriodsItem({
+    required this.current,
+    required this.from,
+    required this.lord,
+    required this.to,
+  });
+
+  factory YogaReadingPeriodsItem.fromJson(Map<String, dynamic> json) {
+    return YogaReadingPeriodsItem(
+      current: asBool(json['current']),
+      from: asString(json['from']),
+      lord: LabelledId.fromJson(asMap(json['lord'])),
+      to: asString(json['to']),
+    );
+  }
+
+  final bool current;
+
+  final String from;
+
+  final LabelledId lord;
+
+  final String to;
+
+  /// This value as JSON, with every null key left out.
+  Map<String, dynamic> toJson() {
+    final json = <String, dynamic>{};
+    json['current'] = current;
+    json['from'] = from;
+    json['lord'] = lord.toJson();
+    json['to'] = to;
     return json;
   }
 }

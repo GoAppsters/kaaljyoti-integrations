@@ -1,7 +1,7 @@
 {
   "name": "@kaaljyoti/sdk",
   "author": "GoAppsters (https://goappsters.in)",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Typed TypeScript/Node client for the Kaal Jyoti API: kundli, panchang, dasha, transits, matching and more.",
   "license": "MIT",
   "repository": {

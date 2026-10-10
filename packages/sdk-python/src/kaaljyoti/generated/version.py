@@ -10,11 +10,11 @@ from __future__ import annotations
 
 from typing import Final
 
-SDK_VERSION: Final = "0.1.1"
+SDK_VERSION: Final = "0.1.2"
 """The version of this package, from `pyproject.toml`.
 
-Sent as `X-KJ-Client: sdk-python/0.1.1`.
+Sent as `X-KJ-Client: sdk-python/0.1.2`.
 """
 
-OPENAPI_VERSION: Final = "0.16.0"
+OPENAPI_VERSION: Final = "0.17.0"
 """The `info.version` of the OpenAPI snapshot these models were built from."""

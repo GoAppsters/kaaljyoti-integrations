@@ -501,7 +501,7 @@ function client(apiKey: string, fetchImpl: typeof fetch): Kaaljyoti {
 
 describe('the table covers openapi.json', () => {
   it('is the document version the README names', () => {
-    expect(document.info.version).toBe('0.16.0');
+    expect(document.info.version).toBe('0.17.0');
   });
 
   it('has one entry per operation, and no entry without one', () => {

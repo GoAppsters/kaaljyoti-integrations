@@ -785,7 +785,7 @@ export interface paths {
         put?: never;
         /**
          * Kundli PDF
-         * @description The birth chart as a printable PDF, in two editions. The cover carries only the name and the city; the birth details follow on the basic details page. `basic` (the default, 12–20 pages): basic details, the charts (D1, D9 and the Moon chart), the Vimshottari dasha, an overview, the lagna and nakshatra, the life areas, the mahadashas and the yogas. `professional` (30–45 pages): the same plus a contents page, eleven more divisional charts, ashtakavarga charts and totals, the natural, temporary and five-fold friendship tables, bhava chalit (in `options.house_system`, default Placidus; this is the only route whose `options` take it), KP planets and cusps, mangal dosha, sade sati dates, Yogini and Chara dasha, the house lords read in full and the grahas in sign and house. `sections` lists the sections to print instead of the edition's. Both editions cost the same credits. The body is the body of `POST /v1/kundli` plus `edition`, `sections`, `vargas`, `name`, `template`, `chart_style` and `branding`.
+         * @description The birth chart as a printable PDF, in three editions. The cover carries only the name and the city; the birth details follow on the basic details page. `basic` (the default, 12–27 pages): basic details, the charts (D1, D9 and the Moon chart), the Vimshottari dasha, an overview, the lagna and nakshatra, the life areas, the mahadashas and the yogas. `professional` (30–45 pages): the same plus a contents page, eleven more divisional charts, ashtakavarga charts and totals, the natural, temporary and five-fold friendship tables, bhava chalit (in `options.house_system`, default Placidus; this is the only route whose `options` take it), KP planets and cusps, mangal dosha, sade sati dates, Yogini and Chara dasha, the house lords read in full and the grahas in sign and house. `life` (the Life Report, written for the person it is about): the details and charts, the sarvashtakavarga, an overview, now and next, who they are (lagna, nakshatra, nature), each area of life and each topic in depth, Manglik and Sade Sati, the dasha timeline and its reading, and the yogas. `sections` lists the sections to print instead of the edition's. All three editions cost the same credits. The body is the body of `POST /v1/kundli` plus `edition`, `sections`, `vargas`, `name`, `template`, `chart_style` and `branding`.
          *
          *     **Every paid plan** (not Free). This PDF costs **1,000 credits** and one PDF from the month's PDF allowance (Starter 50, Growth 200, Scale 500, Enterprise 2,500). The same request by the same account within 24 hours returns the same PDF without using the allowance (it still costs its credits). A heavy route: 10 requests a minute, and publishable (`kj_pub_…`) keys may not call it. `branding` in the body is Enterprise only; otherwise the account's saved branding is printed.
          */
@@ -851,7 +851,7 @@ export interface paths {
         put?: never;
         /**
          * Varshphal PDF
-         * @description The annual chart for `year` as a printable PDF, 6–8 pages: the varsha chart, the muntha and year lord, the balas, the sahams, the Tajika yogas, the mudda dasha and the reading of the year. The body is the body of `POST /v1/varshphal` plus `name`, `template`, `chart_style` and `branding`.
+         * @description The annual chart for `year` as a printable PDF, in two editions. `life` (the default): the varsha chart, the muntha and year lord, the year and each area of life read for the person, and the months. `professional` adds the astrologer's tables: planet strengths, the Tajika yogas, every saham, the period grades with their sub-periods and the month lords. Both cost the same. The body is the body of `POST /v1/varshphal` plus `edition`, `name`, `template`, `chart_style` and `branding`.
          *
          *     **Every paid plan** (not Free). This PDF costs **500 credits** and one PDF from the month's PDF allowance (Starter 50, Growth 200, Scale 500, Enterprise 2,500). The same request by the same account within 24 hours returns the same PDF without using the allowance (it still costs its credits). A heavy route: 10 requests a minute, and publishable (`kj_pub_…`) keys may not call it. `branding` in the body is Enterprise only; otherwise the account's saved branding is printed.
          */
@@ -963,7 +963,7 @@ export interface paths {
         put?: never;
         /**
          * Kundli report (the whole birth report)
-         * @description The whole written birth report in one call — what the PDF kundli prints. Each part is exactly what its own report route answers for the same birth: `lagna` and `nakshatra` (`/v1/reports/lagna`, `/v1/reports/nakshatra`), `life_areas` (`/v1/reports/life-areas`), `house_lords`, `grahas` and `yogas` (`/v1/reports/house-lords`, `/grahas`, `/yogas`), `vimshottari` (`/v1/reports/vimshottari`) and `varshphal` (`/v1/reports/varshphal` for `year`, default the Varshphal year running today). Send `parts` to take only some of them (default all eight); the answer lists what it holds in `parts`, in that order, followed by one key per part. It is several reports in one, so it is priced as the reports it contains, not as one. Languages and the `disclaimer` as for `/v1/reports/lagna`; one `disclaimer` for the whole report.
+         * @description The whole written birth report in one call — what the PDF kundli prints. Each part is exactly what its own report route answers for the same birth: `lagna` and `nakshatra` (`/v1/reports/lagna`, `/v1/reports/nakshatra`), `life_areas` (`/v1/reports/life-areas`), `house_lords`, `grahas` and `yogas` (`/v1/reports/house-lords`, `/grahas`, `/yogas`), `vimshottari` (`/v1/reports/vimshottari`) and `varshphal` (`/v1/reports/varshphal` for `year`, default the Varshphal year running today). Send `parts` to take only some of them (default all eleven); the answer lists what it holds in `parts`, in that order, followed by one key per part. It is several reports in one, so it is priced as the reports it contains, not as one. Languages and the `disclaimer` as for `/v1/reports/lagna`; one `disclaimer` for the whole report.
          *
          *     **Costs 5 credits per part** — 40 for the whole report, the same as calling the eight reports one by one — reserved up front and reported in `meta.credits`. A request that is refused costs nothing.
          *
@@ -1080,6 +1080,8 @@ export interface paths {
          * @description Every Vimshottari mahadasha of a birth, from birth to age 80, each read as **one summary**: the mahadasha named, a `level` — `favourable`, `mixed` or `care` — and a text that says what the period is like, which areas of life it brings forward, and its best and most demanding stretches with their dates. `current` marks the one running now. The antardashas are combined into the summary, not read one by one; each is listed under `antardashas` with its dates, a grade (−3 to +3) and the reasons, for you or your astrologer, not for the reader. The rules are Laghu Parashari's (slokas 29–40) on each graha's role for the lagna. Languages and the `disclaimer` as for `/v1/reports/lagna`.
          *
          *     Costs 5 credits.
+         *
+         *     **The example answer is shortened:** long lists (`data.periods[].antardashas[].areas`) show only their first 3 items. A real answer has them all.
          */
         post: operations["postReportsVimshottari"];
         delete?: never;
@@ -1566,7 +1568,7 @@ export interface components {
             at: string;
             from?: components["schemas"]["LabelledId"];
             mandook_context?: {
-                applicable: boolean;
+                applicable?: boolean;
                 direct: boolean;
                 kendra_grahas: number;
                 start_sign: components["schemas"]["LabelledId"];
@@ -2368,7 +2370,7 @@ export interface components {
                 sign: components["schemas"]["LabelledId"];
             }[];
             house_lords?: {
-                entry: {
+                entry: null | {
                     /** @description One piece of text, keyed by language: one entry for each language in `options.language`, in that order (`{"hi": "…"}` or `{"en": "…", "hi": "…"}`). */
                     text: {
                         en?: string;
@@ -2380,8 +2382,38 @@ export interface components {
                 lord: components["schemas"]["LabelledId"];
                 sign: components["schemas"]["LabelledId"];
             }[];
+            in_depth?: {
+                areas: string[];
+                grahas: {
+                    entry: null | {
+                        /** @description One piece of text, keyed by language: one entry for each language in `options.language`, in that order (`{"hi": "…"}` or `{"en": "…", "hi": "…"}`). */
+                        text: {
+                            en?: string;
+                            hi?: string;
+                        };
+                    };
+                    graha: components["schemas"]["LabelledId"] | null;
+                    house: number | null;
+                    sign: components["schemas"]["LabelledId"];
+                }[];
+                houses: number[];
+                lords: {
+                    entry: null | {
+                        /** @description One piece of text, keyed by language: one entry for each language in `options.language`, in that order (`{"hi": "…"}` or `{"en": "…", "hi": "…"}`). */
+                        text: {
+                            en?: string;
+                            hi?: string;
+                        };
+                    };
+                    house: number | null;
+                    in_house: number;
+                    lord: components["schemas"]["LabelledId"];
+                    sign: components["schemas"]["LabelledId"];
+                }[];
+                topic: string;
+            }[];
             lagna?: {
-                entry: {
+                entry: null | {
                     /** @description One piece of text, keyed by language: one entry for each language in `options.language`, in that order (`{"hi": "…"}` or `{"en": "…", "hi": "…"}`). */
                     text: {
                         en?: string;
@@ -2445,6 +2477,17 @@ export interface components {
                         relative: number;
                         score: number;
                         support: null | string;
+                        varga: {
+                            checks: {
+                                graha: components["schemas"]["LabelledId"] | null;
+                                reason: string;
+                                role: string;
+                                sign: components["schemas"]["LabelledId"];
+                                status: string;
+                                varga: string;
+                            }[];
+                            signal: string;
+                        };
                         yogas: string[];
                     };
                     level: string;
@@ -2454,8 +2497,7 @@ export interface components {
                         lord: components["schemas"]["LabelledId"];
                         to: string;
                     }[];
-                    /** @description One piece of text, keyed by language: one entry for each language in `options.language`, in that order (`{"hi": "…"}` or `{"en": "…", "hi": "…"}`). */
-                    text: {
+                    text: null | {
                         en?: string;
                         hi?: string;
                     };
@@ -2476,6 +2518,7 @@ export interface components {
                         kendradhipati_class: string;
                         kt_relation: string;
                         lagna_eighth: string;
+                        lagna_kendra: string;
                         luminaries_maraka: boolean;
                         luminary_eighth: string;
                         mercury_alone: string;
@@ -2484,6 +2527,8 @@ export interface components {
                         node_same_kind_yk: boolean;
                         node_with_eighth: string;
                         prime_maraka: string;
+                        rao_luminary_maraka_low: boolean;
+                        rao_maraka_list: boolean;
                         second_twelfth: null | string;
                         trikona_eighth: string;
                         trikona_sixth: string;
@@ -2504,7 +2549,7 @@ export interface components {
                 };
             };
             nakshatra?: {
-                entry: {
+                entry: null | {
                     /** @description One piece of text, keyed by language: one entry for each language in `options.language`, in that order (`{"hi": "…"}` or `{"en": "…", "hi": "…"}`). */
                     text: {
                         en?: string;
@@ -2513,11 +2558,96 @@ export interface components {
                 };
                 nakshatra: components["schemas"]["LabelledId"];
             };
+            nature?: {
+                entry: null | {
+                    /** @description One piece of text, keyed by language: one entry for each language in `options.language`, in that order (`{"hi": "…"}` or `{"en": "…", "hi": "…"}`). */
+                    text: {
+                        en?: string;
+                        hi?: string;
+                    };
+                };
+                graha: components["schemas"]["LabelledId"] | null;
+                house: number | null;
+                sign: components["schemas"]["LabelledId"];
+            }[];
+            now_next?: {
+                dasha: {
+                    antardasha: string;
+                    current: boolean;
+                    from: string;
+                    grade: number;
+                    health_note: boolean;
+                    level: string;
+                    mahadasha: string;
+                    reasons: {
+                        code: string;
+                        source: string;
+                    }[];
+                    stage: string;
+                    text: null | {
+                        en?: string;
+                        hi?: string;
+                    };
+                    to: string;
+                    yogas: string[];
+                }[];
+                from: string;
+                moon_sign: components["schemas"]["LabelledId"];
+                stage: string;
+                to: string;
+                transits: {
+                    areas: {
+                        /** @description One piece of text, keyed by language: one entry for each language in `options.language`, in that order (`{"hi": "…"}` or `{"en": "…", "hi": "…"}`). */
+                        general: {
+                            en?: string;
+                            hi?: string;
+                        };
+                        /** @description One piece of text, keyed by language: one entry for each language in `options.language`, in that order (`{"hi": "…"}` or `{"en": "…", "hi": "…"}`). */
+                        health: {
+                            en?: string;
+                            hi?: string;
+                        };
+                        /** @description One piece of text, keyed by language: one entry for each language in `options.language`, in that order (`{"hi": "…"}` or `{"en": "…", "hi": "…"}`). */
+                        money: {
+                            en?: string;
+                            hi?: string;
+                        };
+                        /** @description One piece of text, keyed by language: one entry for each language in `options.language`, in that order (`{"hi": "…"}` or `{"en": "…", "hi": "…"}`). */
+                        relationships: {
+                            en?: string;
+                            hi?: string;
+                        };
+                        /** @description One piece of text, keyed by language: one entry for each language in `options.language`, in that order (`{"hi": "…"}` or `{"en": "…", "hi": "…"}`). */
+                        work: {
+                            en?: string;
+                            hi?: string;
+                        };
+                    };
+                    from: components["schemas"]["LabelledId"];
+                    graha: components["schemas"]["LabelledId"] | null;
+                    house: number | null;
+                    sign: components["schemas"]["LabelledId"];
+                    stays: {
+                        from: components["schemas"]["LabelledId"];
+                        retrograde: boolean;
+                        to: components["schemas"]["LabelledId"];
+                    }[];
+                    text: null | {
+                        en?: string;
+                        hi?: string;
+                    };
+                    to: components["schemas"]["LabelledId"];
+                }[];
+            };
             parts: string[];
             varshphal?: {
                 areas: {
                     area: string;
                     level: string;
+                    rules: {
+                        good: boolean | null;
+                        id: string;
+                    }[];
                     /** @description One piece of text, keyed by language: one entry for each language in `options.language`, in that order (`{"hi": "…"}` or `{"en": "…", "hi": "…"}`). */
                     text: {
                         en?: string;
@@ -2762,6 +2892,7 @@ export interface components {
                             kendradhipati_class: string;
                             kt_relation: string;
                             lagna_eighth: string;
+                            lagna_kendra: string;
                             luminaries_maraka: boolean;
                             luminary_eighth: string;
                             mercury_alone: string;
@@ -2770,6 +2901,8 @@ export interface components {
                             node_same_kind_yk: boolean;
                             node_with_eighth: string;
                             prime_maraka: string;
+                            rao_luminary_maraka_low: boolean;
+                            rao_maraka_list: boolean;
                             second_twelfth: null | string;
                             trikona_eighth: string;
                             trikona_sixth: string;
@@ -2807,14 +2940,112 @@ export interface components {
                     };
                 };
                 from: string;
+                monthly: {
+                    areas: {
+                        area: string;
+                        good: boolean | null;
+                    }[];
+                    best: null | (null | {
+                        from: string;
+                        to: string;
+                    });
+                    care: boolean | null;
+                    from: string;
+                    hard: null | (null | {
+                        from: string;
+                        to: string;
+                    });
+                    level: string;
+                    lord: components["schemas"]["LabelledId"];
+                    lord_strength: string;
+                    month: number;
+                    muntha: components["schemas"]["LabelledId"];
+                    reasons: {
+                        code: string;
+                        source: string;
+                    }[];
+                    rise: boolean;
+                    text: null | {
+                        en?: string;
+                        hi?: string;
+                    };
+                    to: string;
+                }[];
                 months: {
                     from: string;
                     level: string;
                     lord: components["schemas"]["LabelledId"];
                     to: string;
                 }[];
-                summary: {
+                natal_promise: {
+                    active: boolean;
+                    house: number | null;
+                    lord: components["schemas"]["LabelledId"];
+                    reasons: {
+                        code: string;
+                        source: string;
+                    }[];
+                    text: null | {
+                        en?: string;
+                        hi?: string;
+                    };
+                    with: string;
+                }[];
+                periods: {
+                    from: string;
                     level: string;
+                    lord: components["schemas"]["LabelledId"] | string;
+                    reasons: {
+                        code: string;
+                        source: string;
+                    }[];
+                    step: number;
+                    subs: {
+                        from: string;
+                        good: boolean | null;
+                        lord: components["schemas"]["LabelledId"] | string;
+                        to: string;
+                    }[];
+                    to: string;
+                }[];
+                sahams: {
+                    day: null | string;
+                    half: null | string;
+                    key: string;
+                    lord: components["schemas"]["LabelledId"];
+                    name: null | {
+                        en?: string;
+                        hi?: string;
+                    };
+                    period: null | (null | {
+                        from: components["schemas"]["LabelledId"];
+                        to: components["schemas"]["LabelledId"];
+                    });
+                    reasons: {
+                        code: string;
+                        source: string;
+                    }[];
+                    sign: components["schemas"]["LabelledId"];
+                    text: null | {
+                        en?: string;
+                        hi?: string;
+                    };
+                    verdict: string;
+                }[];
+                summary: {
+                    best: null | (null | {
+                        from: string;
+                        to: string;
+                    });
+                    hard: null | (null | {
+                        from: string;
+                        to: string;
+                    });
+                    level: string;
+                    note: null | {
+                        en?: string;
+                        hi?: string;
+                    };
                     /** @description One piece of text, keyed by language: one entry for each language in `options.language`, in that order (`{"hi": "…"}` or `{"en": "…", "hi": "…"}`). */
                     text: {
                         en?: string;
@@ -2872,7 +3103,7 @@ export interface components {
                             net: string;
                             node_proxy: null | {
                                 companions: string[];
-                                follows: null | string;
+                                follows: string;
                                 house: number | null;
                             };
                             planet: components["schemas"]["LabelledId"];
@@ -2904,6 +3135,7 @@ export interface components {
                             };
                         };
                     };
+                    health_grahas: string[];
                     switches: {
                         dasha: {
                             inauspicious_light_softens: boolean;
@@ -2913,6 +3145,12 @@ export interface components {
                             mutual_dusthana_worsens: boolean;
                             raja_yoga_dasha: boolean;
                             raja_yoga_min_relation: number;
+                            rao_benefic_association: boolean;
+                            rao_debilitated_dusthana: boolean;
+                            rao_node_trikona_yk: boolean;
+                            rao_vs_own_bhukti: boolean;
+                            rao_yoga_bhukti: boolean;
+                            rao_yoga_survives_maraka: boolean;
                             s19_related_papa_in_yk: string;
                             s31_order: string;
                             s32_unrelated: string;
@@ -2930,6 +3168,7 @@ export interface components {
                             kendradhipati_class: string;
                             kt_relation: string;
                             lagna_eighth: string;
+                            lagna_kendra: string;
                             luminaries_maraka: boolean;
                             luminary_eighth: string;
                             mercury_alone: string;
@@ -2938,6 +3177,8 @@ export interface components {
                             node_same_kind_yk: boolean;
                             node_with_eighth: string;
                             prime_maraka: string;
+                            rao_luminary_maraka_low: boolean;
+                            rao_maraka_list: boolean;
                             second_twelfth: null | string;
                             trikona_eighth: string;
                             trikona_sixth: string;
@@ -2947,6 +3188,18 @@ export interface components {
                 };
                 periods: {
                     antardashas: {
+                        areas: {
+                            area: string;
+                            grade: number;
+                            reasons: {
+                                code: string;
+                                source: string;
+                            }[];
+                        }[];
+                        care: null | (null | {
+                            code: string;
+                            source: string;
+                        });
                         from: string;
                         grade: number;
                         lord: components["schemas"]["LabelledId"];
@@ -2965,8 +3218,9 @@ export interface components {
                     from: string;
                     level: string;
                     lord: components["schemas"]["LabelledId"];
-                    /** @description One piece of text, keyed by language: one entry for each language in `options.language`, in that order (`{"hi": "…"}` or `{"en": "…", "hi": "…"}`). */
-                    text: {
+                    stage: string;
+                    tara: null | string;
+                    text: null | {
                         en?: string;
                         hi?: string;
                     };
@@ -2976,19 +3230,36 @@ export interface components {
             yogas?: {
                 category: string;
                 code: string;
-                entry: {
+                count: number;
+                entry: null | (null | {
                     /** @description One piece of text, keyed by language: one entry for each language in `options.language`, in that order (`{"hi": "…"}` or `{"en": "…", "hi": "…"}`). */
                     text: {
                         en?: string;
                         hi?: string;
                     };
-                };
+                });
+                formations: {
+                    grade: number;
+                    in_kendra_trikona: boolean;
+                    lords: {
+                        [key: string]: number[];
+                    };
+                    participants: components["schemas"]["LabelledId"][];
+                    relation: null | string;
+                    repeated_in_d9: boolean;
+                }[];
                 /** @description One piece of text, keyed by language: one entry for each language in `options.language`, in that order (`{"hi": "…"}` or `{"en": "…", "hi": "…"}`). */
                 name: {
                     en?: string;
                     hi?: string;
                 };
                 participants: components["schemas"]["LabelledId"][];
+                periods: {
+                    current: boolean;
+                    from: string;
+                    lord: components["schemas"]["LabelledId"];
+                    to: string;
+                }[];
             }[];
         };
         /** @description An id the gateway has named. The engine answers in stable snake_case ids (`sun`, `cancer`, `purva_phalguni`); every field that holds one is published as this object instead of as a bare string, so a client can show `name` and still switch on `id`. The panchang limbs, vara, masa and paksha use the same kind of id (`pratipada`, `somavara`, `shukla`). Ask for several languages (`options.language`) and `names` carries one entry per language. */
@@ -3061,6 +3332,17 @@ export interface components {
                     relative: number;
                     score: number;
                     support: null | string;
+                    varga: {
+                        checks: {
+                            graha: components["schemas"]["LabelledId"] | null;
+                            reason: string;
+                            role: string;
+                            sign: components["schemas"]["LabelledId"];
+                            status: string;
+                            varga: string;
+                        }[];
+                        signal: string;
+                    };
                     yogas: string[];
                 };
                 level: string;
@@ -3070,8 +3352,7 @@ export interface components {
                     lord: components["schemas"]["LabelledId"];
                     to: string;
                 }[];
-                /** @description One piece of text, keyed by language: one entry for each language in `options.language`, in that order (`{"hi": "…"}` or `{"en": "…", "hi": "…"}`). */
-                text: {
+                text: null | {
                     en?: string;
                     hi?: string;
                 };
@@ -3097,6 +3378,7 @@ export interface components {
                     kendradhipati_class: string;
                     kt_relation: string;
                     lagna_eighth: string;
+                    lagna_kendra: string;
                     luminaries_maraka: boolean;
                     luminary_eighth: string;
                     mercury_alone: string;
@@ -3105,6 +3387,8 @@ export interface components {
                     node_same_kind_yk: boolean;
                     node_with_eighth: string;
                     prime_maraka: string;
+                    rao_luminary_maraka_low: boolean;
+                    rao_maraka_list: boolean;
                     second_twelfth: string;
                     trikona_eighth: string;
                     trikona_sixth: string;
@@ -3383,7 +3667,7 @@ export interface components {
                 hi?: string;
             };
             house_lords?: {
-                entry: {
+                entry: null | {
                     /** @description One piece of text, keyed by language: one entry for each language in `options.language`, in that order (`{"hi": "…"}` or `{"en": "…", "hi": "…"}`). */
                     text: {
                         en?: string;
@@ -3407,7 +3691,7 @@ export interface components {
                 hi?: string;
             };
             lagna?: {
-                entry: {
+                entry: null | {
                     /** @description One piece of text, keyed by language: one entry for each language in `options.language`, in that order (`{"hi": "…"}` or `{"en": "…", "hi": "…"}`). */
                     text: {
                         en?: string;
@@ -3428,7 +3712,7 @@ export interface components {
                 hi?: string;
             };
             nakshatra?: {
-                entry: {
+                entry: null | {
                     /** @description One piece of text, keyed by language: one entry for each language in `options.language`, in that order (`{"hi": "…"}` or `{"en": "…", "hi": "…"}`). */
                     text: {
                         en?: string;
@@ -3451,19 +3735,36 @@ export interface components {
             yogas?: {
                 category: string;
                 code: string;
-                entry: {
+                count: number;
+                entry: null | (null | {
                     /** @description One piece of text, keyed by language: one entry for each language in `options.language`, in that order (`{"hi": "…"}` or `{"en": "…", "hi": "…"}`). */
                     text: {
                         en?: string;
                         hi?: string;
                     };
-                };
+                });
+                formations: {
+                    grade: number;
+                    in_kendra_trikona: boolean;
+                    lords: {
+                        [key: string]: number[];
+                    };
+                    participants: components["schemas"]["LabelledId"][];
+                    relation: null | string;
+                    repeated_in_d9: boolean;
+                }[];
                 /** @description One piece of text, keyed by language: one entry for each language in `options.language`, in that order (`{"hi": "…"}` or `{"en": "…", "hi": "…"}`). */
                 name: {
                     en?: string;
                     hi?: string;
                 };
                 participants: components["schemas"]["LabelledId"][];
+                periods: {
+                    current: boolean;
+                    from: string;
+                    lord: components["schemas"]["LabelledId"];
+                    to: string;
+                }[];
             }[];
         };
         /**
@@ -3805,6 +4106,10 @@ export interface components {
             areas: {
                 area: string;
                 level: string;
+                rules: {
+                    good: boolean | null;
+                    id: string;
+                }[];
                 /** @description One piece of text, keyed by language: one entry for each language in `options.language`, in that order (`{"hi": "…"}` or `{"en": "…", "hi": "…"}`). */
                 text: {
                     en?: string;
@@ -4049,6 +4354,7 @@ export interface components {
                         kendradhipati_class: string;
                         kt_relation: string;
                         lagna_eighth: string;
+                        lagna_kendra: string;
                         luminaries_maraka: boolean;
                         luminary_eighth: string;
                         mercury_alone: string;
@@ -4057,6 +4363,8 @@ export interface components {
                         node_same_kind_yk: boolean;
                         node_with_eighth: string;
                         prime_maraka: string;
+                        rao_luminary_maraka_low: boolean;
+                        rao_maraka_list: boolean;
                         second_twelfth: string;
                         trikona_eighth: string;
                         trikona_sixth: string;
@@ -4099,14 +4407,112 @@ export interface components {
                 hi?: string;
             };
             from: string;
+            monthly: {
+                areas: {
+                    area: string;
+                    good: boolean | null;
+                }[];
+                best: null | (null | {
+                    from: string;
+                    to: string;
+                });
+                care: boolean;
+                from: string;
+                hard: null | (null | {
+                    from: string;
+                    to: string;
+                });
+                level: string;
+                lord: components["schemas"]["LabelledId"];
+                lord_strength: string;
+                month: number;
+                muntha: components["schemas"]["LabelledId"];
+                reasons: {
+                    code: string;
+                    source: string;
+                }[];
+                rise: boolean;
+                text: null | {
+                    en?: string;
+                    hi?: string;
+                };
+                to: string;
+            }[];
             months: {
                 from: string;
                 level: string;
                 lord: components["schemas"]["LabelledId"];
                 to: string;
             }[];
-            summary: {
+            natal_promise: {
+                active: boolean;
+                house: number;
+                lord: components["schemas"]["LabelledId"];
+                reasons: {
+                    code: string;
+                    source: string;
+                }[];
+                text: null | {
+                    en?: string;
+                    hi?: string;
+                };
+                with: string;
+            }[];
+            periods: {
+                from: string;
                 level: string;
+                lord: components["schemas"]["LabelledId"] | string;
+                reasons: {
+                    code: string;
+                    source: string;
+                }[];
+                step: number;
+                subs: {
+                    from: string;
+                    good: boolean | null;
+                    lord: components["schemas"]["LabelledId"] | string;
+                    to: string;
+                }[];
+                to: string;
+            }[];
+            sahams: {
+                day: null | string;
+                half: null | string;
+                key: string;
+                lord: components["schemas"]["LabelledId"];
+                name: null | {
+                    en?: string;
+                    hi?: string;
+                };
+                period: null | (null | {
+                    from: components["schemas"]["LabelledId"];
+                    to: components["schemas"]["LabelledId"];
+                });
+                reasons: {
+                    code: string;
+                    source: string;
+                }[];
+                sign: components["schemas"]["LabelledId"];
+                text: null | {
+                    en?: string;
+                    hi?: string;
+                };
+                verdict: string;
+            }[];
+            summary: {
+                best: null | (null | {
+                    from: string;
+                    to: string;
+                });
+                hard: null | (null | {
+                    from: string;
+                    to: string;
+                });
+                level: string;
+                note: null | {
+                    en?: string;
+                    hi?: string;
+                };
                 /** @description One piece of text, keyed by language: one entry for each language in `options.language`, in that order (`{"hi": "…"}` or `{"en": "…", "hi": "…"}`). */
                 text: {
                     en?: string;
@@ -4179,6 +4585,7 @@ export interface components {
                     by_muntha_fallback: boolean;
                     year_lord: components["schemas"]["LabelledId"];
                 };
+                muntha: components["schemas"]["LabelledId"];
                 pravesh: string;
             }[];
             muntha: components["schemas"]["LabelledId"];
@@ -4281,7 +4688,7 @@ export interface components {
                         net: string;
                         node_proxy: null | {
                             companions: string[];
-                            follows: null | string;
+                            follows: string;
                             house: number;
                         };
                         planet: components["schemas"]["LabelledId"];
@@ -4313,6 +4720,7 @@ export interface components {
                         };
                     };
                 };
+                health_grahas: string[];
                 switches: {
                     dasha: {
                         inauspicious_light_softens: boolean;
@@ -4322,6 +4730,12 @@ export interface components {
                         mutual_dusthana_worsens: boolean;
                         raja_yoga_dasha: boolean;
                         raja_yoga_min_relation: number;
+                        rao_benefic_association: boolean;
+                        rao_debilitated_dusthana: boolean;
+                        rao_node_trikona_yk: boolean;
+                        rao_vs_own_bhukti: boolean;
+                        rao_yoga_bhukti: boolean;
+                        rao_yoga_survives_maraka: boolean;
                         s19_related_papa_in_yk: string;
                         s31_order: string;
                         s32_unrelated: string;
@@ -4339,6 +4753,7 @@ export interface components {
                         kendradhipati_class: string;
                         kt_relation: string;
                         lagna_eighth: string;
+                        lagna_kendra: string;
                         luminaries_maraka: boolean;
                         luminary_eighth: string;
                         mercury_alone: string;
@@ -4347,6 +4762,8 @@ export interface components {
                         node_same_kind_yk: boolean;
                         node_with_eighth: string;
                         prime_maraka: string;
+                        rao_luminary_maraka_low: boolean;
+                        rao_maraka_list: boolean;
                         second_twelfth: null | string;
                         trikona_eighth: string;
                         trikona_sixth: string;
@@ -4361,6 +4778,18 @@ export interface components {
             };
             periods: {
                 antardashas: {
+                    areas: {
+                        area: string;
+                        grade: number;
+                        reasons: {
+                            code: string;
+                            source: string;
+                        }[];
+                    }[];
+                    care: null | (null | {
+                        code: string;
+                        source: string;
+                    });
                     from: string;
                     grade: number;
                     lord: components["schemas"]["LabelledId"];
@@ -4379,8 +4808,9 @@ export interface components {
                 from: string;
                 level: string;
                 lord: components["schemas"]["LabelledId"];
-                /** @description One piece of text, keyed by language: one entry for each language in `options.language`, in that order (`{"hi": "…"}` or `{"en": "…", "hi": "…"}`). */
-                text: {
+                stage: string;
+                tara: null | string;
+                text: null | {
                     en?: string;
                     hi?: string;
                 };
@@ -8022,10 +8452,10 @@ export interface operations {
                      */
                     chart_style?: "north" | "south";
                     /**
-                     * @description How much the kundli prints: `basic` (the default, about 12 to 20 pages) or `professional` (every section, about 30 to 45). Both cost the same.
+                     * @description How much the kundli prints: `basic` (the default, about 12 to 27 pages), `professional` (the astrologer's edition, every technical section, about 30 to 45) or `life` (the Life Report, written for the person it is about: who they are, each area of life in depth, Manglik, Sade Sati and the dasha timeline). All three cost the same.
                      * @enum {string}
                      */
-                    edition?: "basic" | "professional";
+                    edition?: "basic" | "professional" | "life";
                     /** @description The person's name, printed on the cover and used in the file name; 1 to 120 characters. Default: none (the cover carries the title only). */
                     name?: string;
                     /**
@@ -8067,7 +8497,7 @@ export interface operations {
                         language?: ("en" | "hi") | ("en" | "hi")[];
                     };
                     /** @description The sections to print, by id, in any order (the PDF keeps its own), e.g. `["details", "charts", "kp_planets", "kp_cusps"]`. Default: the edition's. The cover always prints. */
-                    sections?: ("details" | "charts" | "vargas" | "ashtakavarga" | "maitri" | "chalit" | "kp_planets" | "kp_cusps" | "manglik" | "sade_sati" | "vimshottari" | "yogini" | "chara" | "overview" | "lagna" | "nakshatra" | "life_areas" | "house_lords" | "grahas" | "vimshottari_reading" | "yogas")[];
+                    sections?: ("details" | "charts" | "vargas" | "ashtakavarga" | "maitri" | "chalit" | "kp_planets" | "kp_cusps" | "manglik" | "sade_sati" | "vimshottari" | "yogini" | "chara" | "overview" | "lagna" | "nakshatra" | "life_areas" | "house_lords" | "grahas" | "vimshottari_reading" | "yogas" | "now_next" | "nature" | "sarvashtakavarga" | "in_depth")[];
                     /**
                      * @description The look: `classic` (serif type, a framed cover), `modern` (sans type, accent bands), `minimal` (black on white, for a monochrome printer) or `traditional` (maroon, saffron and gold, an ornamental border). Default: the one set on your Branding page, else `classic`.
                      * @enum {string}
@@ -8486,6 +8916,11 @@ export interface operations {
                      * @enum {string}
                      */
                     chart_style?: "north" | "south";
+                    /**
+                     * @description How much the Varshphal prints: `life` (the default, the year written for the person it is about) or `professional` (adds the astrologer's tables: planet strengths, Tajika yogas, every saham, the period grades with their sub-periods and the month lords). Both cost the same.
+                     * @enum {string}
+                     */
+                    edition?: "life" | "professional";
                     /** @description The person's name, printed on the cover and used in the file name; 1 to 120 characters. Default: none (the cover carries the title only). */
                     name?: string;
                     /**
@@ -8962,8 +9397,8 @@ export interface operations {
                          */
                         language?: ("en" | "hi") | ("en" | "hi")[];
                     };
-                    /** @description The parts to include, each named once, in any order (the answer keeps the report's own order): `lagna`, `nakshatra`, `life_areas`, `house_lords`, `grahas`, `yogas`, `vimshottari`, `varshphal`. Default: all eight. The report is priced per part. */
-                    parts?: ("lagna" | "nakshatra" | "life_areas" | "house_lords" | "grahas" | "yogas" | "vimshottari" | "varshphal")[];
+                    /** @description The parts to include, each named once, in any order (the answer keeps the report's own order): `lagna`, `nakshatra`, `nature`, `life_areas`, `in_depth`, `house_lords`, `grahas`, `yogas`, `vimshottari`, `varshphal`, `now_next`. Default: all eleven. The report is priced per part. */
+                    parts?: ("lagna" | "nakshatra" | "nature" | "life_areas" | "in_depth" | "house_lords" | "grahas" | "yogas" | "vimshottari" | "varshphal" | "now_next")[];
                     /** @description The Varshphal's year, e.g. `2026`: the year from that year's birthday to the next. Default: the Varshphal year running today (last year's until this year's birthday). Not before the birth year; at most 2399. */
                     year?: number;
                 };
