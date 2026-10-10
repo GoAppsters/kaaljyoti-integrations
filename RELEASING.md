@@ -58,7 +58,7 @@ Where each version lives — change all of a package's places in one commit:
 | Package                         | Set the version in                                                                              | Then                                                 |
 | ------------------------------- | ----------------------------------------------------------------------------------------------- | ---------------------------------------------------- |
 | Widgets                         | `packages/widgets/package.json`                                                                 | the build stamps it into the bundle                  |
-| WordPress                       | `kaal-jyoti.php` (the `Version:` header and `KAAL_JYOTI_VERSION`), `readme.txt` (`Stable tag:`) | add the version to `readme.txt`'s changelog          |
+| WordPress                       | `kaaljyoti.php` (the `Version:` header and `KAAL_JYOTI_VERSION`), `readme.txt` (`Stable tag:`) | add the version to `readme.txt`'s changelog          |
 | TypeScript SDK `@kaaljyoti/sdk` | `packages/sdk-ts/package.json`                                                                  | the build stamps it into the `User-Agent`            |
 | Python SDK                      | `packages/sdk-python/pyproject.toml` and `package.json`                                         | `pnpm gen`                                           |
 | PHP SDK                         | `packages/sdk-php/package.json`                                                                 | `pnpm gen` (writes `Generated/Version.php`)          |

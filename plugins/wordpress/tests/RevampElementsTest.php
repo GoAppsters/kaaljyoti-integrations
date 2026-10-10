@@ -147,7 +147,7 @@ final class RevampElementsTest extends TestCase {
 
 		Blocks::register_blocks();
 
-		$this->assertSame( 'https://example.test/wp-content/plugins/kaal-jyoti/assets/blocks-kit.js', $scripts[ Blocks::KIT_HANDLE ] );
+		$this->assertSame( 'https://example.test/wp-content/plugins/kaaljyoti/assets/blocks-kit.js', $scripts[ Blocks::KIT_HANDLE ] );
 		$markup = $registered['dasha']['render_callback']( array( 'system' => 'yogini' ) );
 		$this->assertSame( Shortcodes::render( array( 'system' => 'yogini' ), null, 'kj_dasha' ), $markup );
 		$this->assertStringContainsString( ' system="yogini"', $markup );

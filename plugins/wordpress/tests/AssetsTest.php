@@ -18,7 +18,7 @@ use PHPUnit\Framework\Attributes\CoversClass;
 final class AssetsTest extends TestCase {
 
 	/** A script tag shaped like the one WordPress builds. */
-	private const TAG = '<script src="https://example.test/wp-content/plugins/kaal-jyoti/assets/widgets/v1.js?ver=0.1.0" id="kaal-jyoti-widgets-js" defer></script>' . "\n";
+	private const TAG = '<script src="https://example.test/wp-content/plugins/kaaljyoti/assets/widgets/v1.js?ver=0.1.0" id="kaal-jyoti-widgets-js" defer></script>' . "\n";
 
 	/**
 	 * A configured site.
@@ -314,7 +314,7 @@ final class AssetsTest extends TestCase {
 		$tag = Assets::script_attributes( self::TAG, Assets::SCRIPT_HANDLE );
 
 		$this->assertStringContainsString(
-			'data-chunks="https://example.test/wp-content/plugins/kaal-jyoti/assets/widgets/"',
+			'data-chunks="https://example.test/wp-content/plugins/kaaljyoti/assets/widgets/"',
 			$tag
 		);
 		$this->assertSame( KAAL_JYOTI_URL . 'assets/widgets/', Assets::chunk_base() );

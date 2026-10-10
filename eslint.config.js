@@ -16,9 +16,9 @@ export default tseslint.config(
       'examples/**',
       // The widget bundle copied into the WordPress plugin by its build:
       // generated, gitignored, and already linted where it is written.
-      'plugins/wordpress/kaal-jyoti/assets/widgets/**',
+      'plugins/wordpress/kaaljyoti/assets/widgets/**',
       // …with its source and build, copied in beside it for WordPress.org.
-      'plugins/wordpress/kaal-jyoti/widgets-src/**',
+      'plugins/wordpress/kaaljyoti/widgets-src/**',
     ],
   },
   js.configs.recommended,
@@ -40,9 +40,9 @@ export default tseslint.config(
             // The WordPress plugin's build script, in the same place, and
             // the one small script that plugin ships to the browser.
             'plugins/*/tool/*.mjs',
-            'plugins/wordpress/kaal-jyoti/assets/*.js',
+            'plugins/wordpress/kaaljyoti/assets/*.js',
             // …and the block editor scripts, one per block directory (22).
-            'plugins/wordpress/kaal-jyoti/blocks/*/*.js',
+            'plugins/wordpress/kaaljyoti/blocks/*/*.js',
           ],
           // The default cap is eight, and the Dart generator is the ninth
           // such file; the Python generator made seventeen, and a block per
@@ -65,7 +65,7 @@ export default tseslint.config(
   {
     // The WordPress plugin ships one small script to the browser, on the
     // globals a page has rather than on anything bundled.
-    files: ['plugins/wordpress/kaal-jyoti/assets/*.js'],
+    files: ['plugins/wordpress/kaaljyoti/assets/*.js'],
     languageOptions: {
       globals: {
         document: 'readonly',
@@ -78,7 +78,7 @@ export default tseslint.config(
   {
     // The block editor scripts, on the globals the editor page has: `window`
     // and the `wp.*` namespaces hanging off it. No JSX, no build step.
-    files: ['plugins/wordpress/kaal-jyoti/blocks/**/*.js'],
+    files: ['plugins/wordpress/kaaljyoti/blocks/**/*.js'],
     languageOptions: {
       globals: { window: 'readonly', wp: 'readonly' },
     },

@@ -25,9 +25,9 @@ packages/sdk-php/.phpunit.result.cache
 plugins/wordpress/vendor/
 plugins/wordpress/composer.lock
 plugins/wordpress/.phpunit.result.cache
-plugins/wordpress/kaal-jyoti/vendor/
-plugins/wordpress/kaal-jyoti/assets/widgets/
-plugins/wordpress/kaal-jyoti/widgets-src/
+plugins/wordpress/kaaljyoti/vendor/
+plugins/wordpress/kaaljyoti/assets/widgets/
+plugins/wordpress/kaaljyoti/widgets-src/
 plugins/wordpress/dist/
 
 # Python package

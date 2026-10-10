@@ -1,4 +1,4 @@
-# Upload plugins/wordpress/kaal-jyoti to wordpress.org SVN on a wordpress-v* tag.
+# Upload plugins/wordpress/kaaljyoti to wordpress.org SVN on a wordpress-v* tag.
 #
 # Owner-gated: SVN_USERNAME and SVN_PASSWORD are the wordpress.org author
 # account's; until they exist the deploy step is skipped and the tag only
@@ -32,7 +32,7 @@ jobs:
         id: version
         run: |
           version="${GITHUB_REF_NAME#wordpress-v}"
-          header=$(sed -n 's/^ \* Version: *//p' plugins/wordpress/kaal-jyoti/kaal-jyoti.php)
+          header=$(sed -n 's/^ \* Version: *//p' plugins/wordpress/kaaljyoti/kaaljyoti.php)
           [ "$version" = "$header" ] || { echo "tag ${GITHUB_REF_NAME} != plugin Version ${header}"; exit 1; }
           echo "version=${version}" >> "$GITHUB_OUTPUT"
       - uses: 10up/action-wordpress-plugin-deploy@stable
@@ -43,5 +43,5 @@ jobs:
           SVN_USERNAME: ${{ secrets.SVN_USERNAME }}
           SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}
           SLUG: kaaljyoti
-          BUILD_DIR: plugins/wordpress/kaal-jyoti
+          BUILD_DIR: plugins/wordpress/kaaljyoti
           VERSION: ${{ steps.version.outputs.version }}

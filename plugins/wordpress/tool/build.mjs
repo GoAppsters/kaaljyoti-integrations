@@ -2,14 +2,14 @@
  * Builds the shippable plugin directory.
  *
  * wordpress.org forbids loading executable code from another server, so the
- * widget bundle and the PHP SDK are copied into `kaal-jyoti/` rather than
+ * widget bundle and the PHP SDK are copied into `kaaljyoti/` rather than
  * fetched at runtime or installed with Composer (design decision 1). Both
  * copies are build outputs: they are gitignored, and this script is the only
  * thing that writes them. The bundle is minified, so its readable source and
  * build go in too, as `widgets-src/` (WordPress.org's guideline 4).
  *
  *   node tool/build.mjs          copy the bundle, its source and the SDK in
- *   node tool/build.mjs --zip    …and write dist/kaal-jyoti.zip
+ *   node tool/build.mjs --zip    …and write dist/kaaljyoti.zip
  */
 
 import { execFileSync } from 'node:child_process';
@@ -19,12 +19,13 @@ import { fileURLToPath } from 'node:url';
 
 const pluginRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const repoRoot = path.resolve(pluginRoot, '..', '..');
-const shipped = path.join(pluginRoot, 'kaal-jyoti');
+const shipped = path.join(pluginRoot, 'kaaljyoti');
 
 const widgetDist = path.join(repoRoot, 'packages', 'widgets', 'dist');
 const widgetManifest = path.join(widgetDist, 'cdn-files.json');
 const sdkSource = path.join(repoRoot, 'packages', 'sdk-php', 'src');
 const sdkPackageJson = path.join(repoRoot, 'packages', 'sdk-php', 'package.json');
+const sdkComposerJson = path.join(repoRoot, 'packages', 'sdk-php', 'composer.json');
 
 const widgetPackage = path.join(repoRoot, 'packages', 'widgets');
 
@@ -128,10 +129,20 @@ async function copySdk() {
   await cp(sdkSource, path.join(sdkTarget, 'src'), { recursive: true });
   await writeFile(path.join(sdkTarget, 'autoload.php'), SDK_AUTOLOADER, 'utf8');
 
+  // The SDK's own composer.json, with the version bundled: what the copy is
+  // and what it needs, readable without the repository (WordPress.org asks
+  // for a composer.json beside bundled PHP dependencies).
   const { version } = JSON.parse(await readFile(sdkPackageJson, 'utf8'));
-  await writeFile(path.join(sdkTarget, 'VERSION'), `${version}\n`, 'utf8');
+  const composer = JSON.parse(await readFile(sdkComposerJson, 'utf8'));
+  await writeFile(
+    path.join(sdkTarget, 'composer.json'),
+    `${JSON.stringify({ name: composer.name, version, ...composer }, null, 2)}\n`,
+    'utf8',
+  );
 
-  console.log(`  vendor/kaaljyoti-sdk/       sdk-php ${version}, with a PSR-4 autoloader`);
+  console.log(
+    `  vendor/kaaljyoti-sdk/       sdk-php ${version}, with a PSR-4 autoloader and its composer.json`,
+  );
 }
 
 const WIDGET_SOURCE_README = `Kaal Jyoti widgets: the human-readable source of assets/widgets/
@@ -200,7 +211,7 @@ async function copyWidgetSource() {
   );
 }
 
-/** Patterns `zip` leaves out of `kaal-jyoti/`. */
+/** Patterns `zip` leaves out of `kaaljyoti/`. */
 const ZIP_EXCLUDES = [
   '*.DS_Store',
   '*/.*',
@@ -223,16 +234,16 @@ const FORBIDDEN_IN_ZIP = [
 
 async function writeZip() {
   const distDir = path.join(pluginRoot, 'dist');
-  const zipPath = path.join(distDir, 'kaal-jyoti.zip');
+  const zipPath = path.join(distDir, 'kaaljyoti.zip');
 
   await mkdir(distDir, { recursive: true });
   await rm(zipPath, { force: true });
 
-  // Only `kaal-jyoti/` goes in, so the dev tree's `vendor/` — phpunit, phpcs
+  // Only `kaaljyoti/` goes in, so the dev tree's `vendor/` — phpunit, phpcs
   // and the rest — the tests and the directory screenshots in `wporg-assets/`
   // are outside the zip by construction. The exclusions catch what an editor
   // or an install could leave inside it.
-  execFileSync('zip', ['-r', '-q', zipPath, 'kaal-jyoti', '-x', ...ZIP_EXCLUDES], {
+  execFileSync('zip', ['-r', '-q', zipPath, 'kaaljyoti', '-x', ...ZIP_EXCLUDES], {
     cwd: pluginRoot,
     stdio: 'inherit',
   });
@@ -243,10 +254,10 @@ async function writeZip() {
   const files = listing.filter((name) => !name.endsWith('/')).length;
 
   const { size } = await stat(zipPath);
-  console.log(`  dist/kaal-jyoti.zip         ${(size / 1024).toFixed(1)} kB, ${files} files`);
+  console.log(`  dist/kaaljyoti.zip         ${(size / 1024).toFixed(1)} kB, ${files} files`);
 }
 
-console.log('Kaal Jyoti for WordPress — building kaal-jyoti/');
+console.log('Kaal Jyoti for WordPress — building kaaljyoti/');
 await copyWidgetBundle();
 await copySdk();
 await copyWidgetSource();

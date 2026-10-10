@@ -292,12 +292,12 @@ final class BlocksTest extends TestCase {
 	 */
 	public function test_no_block_declares_a_style_attribute_and_scripts_copy_only_declared_ones(): void {
 		foreach ( Elements::ELEMENTS as $block ) {
-			$dir  = dirname( __DIR__ ) . "/kaal-jyoti/blocks/{$block}";
+			$dir  = dirname( __DIR__ ) . "/kaaljyoti/blocks/{$block}";
 			$json = json_decode( (string) file_get_contents( "{$dir}/block.json" ), true );
 			$this->assertArrayNotHasKey( 'style', $json['attributes'], "{$block} declares style" );
 			$script = (string) file_get_contents( "{$dir}/index.js" );
 			if ( self::is_kit_block( $block ) ) {
-				$kit = (string) file_get_contents( dirname( __DIR__ ) . '/kaal-jyoti/assets/blocks-kit.js' );
+				$kit = (string) file_get_contents( dirname( __DIR__ ) . '/kaaljyoti/assets/blocks-kit.js' );
 				$this->assertStringContainsString( 'spec.attributes.forEach', $kit );
 			} else {
 				$this->assertStringContainsString( 'ELEMENT_ATTRIBUTES.forEach', $script, "{$block} copies every attribute" );
@@ -306,7 +306,7 @@ final class BlocksTest extends TestCase {
 				$this->assertMatchesRegularExpression( '/[\'"]' . preg_quote( $name, '/' ) . '[\'"]/', $script, "{$block} script lists {$name}" );
 			}
 		}
-		$chart = json_decode( (string) file_get_contents( dirname( __DIR__ ) . '/kaal-jyoti/blocks/chart/block.json' ), true );
+		$chart = json_decode( (string) file_get_contents( dirname( __DIR__ ) . '/kaaljyoti/blocks/chart/block.json' ), true );
 		$this->assertArrayHasKey( 'chart-style', $chart['attributes'] );
 	}
 

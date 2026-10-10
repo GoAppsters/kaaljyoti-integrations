@@ -24,7 +24,7 @@ use PHPUnit\Framework\Attributes\DataProvider;
 final class SignIconsTest extends TestCase {
 
 	/** The tag WordPress prints for the bundle, before our attributes. */
-	private const TAG = '<script src="https://example.test/wp-content/plugins/kaal-jyoti/assets/widgets/v1.js?ver=0.2.0" id="kaal-jyoti-widgets-js" defer></script>' . "\n";
+	private const TAG = '<script src="https://example.test/wp-content/plugins/kaaljyoti/assets/widgets/v1.js?ver=0.2.0" id="kaal-jyoti-widgets-js" defer></script>' . "\n";
 
 	/**
 	 * A media library: these attachment ids are images, at these URLs.

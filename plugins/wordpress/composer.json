@@ -22,7 +22,7 @@
     "test": "phpunit",
     "phpcs": "phpcs --standard=phpcs.xml.dist",
     "phpcbf": "phpcbf --standard=phpcs.xml.dist",
-    "lint": "find kaal-jyoti -name '*.php' -not -path '*/vendor/*' -print0 | xargs -0 -n1 php -l > /dev/null"
+    "lint": "find kaaljyoti -name '*.php' -not -path '*/vendor/*' -print0 | xargs -0 -n1 php -l > /dev/null"
   },
   "config": {
     "allow-plugins": {

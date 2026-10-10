@@ -16,7 +16,7 @@ declare(strict_types=1);
 
 require_once dirname( __DIR__ ) . '/vendor/autoload.php';
 
-define( 'ABSPATH', dirname( __DIR__ ) . '/kaal-jyoti/' );
+define( 'ABSPATH', dirname( __DIR__ ) . '/kaaljyoti/' );
 define( 'WPINC', 'wp-includes' );
 
 if ( ! function_exists( 'plugin_dir_path' ) ) {
@@ -41,7 +41,7 @@ if ( ! function_exists( 'plugin_dir_url' ) ) {
 	function plugin_dir_url( string $file ): string {
 		unset( $file );
 
-		return 'https://example.test/wp-content/plugins/kaal-jyoti/';
+		return 'https://example.test/wp-content/plugins/kaaljyoti/';
 	}
 }
 
@@ -58,4 +58,4 @@ if ( ! defined( 'DAY_IN_SECONDS' ) ) {
 }
 
 require_once __DIR__ . '/Support/WpRest.php';
-require_once dirname( __DIR__ ) . '/kaal-jyoti/kaal-jyoti.php';
+require_once dirname( __DIR__ ) . '/kaaljyoti/kaaljyoti.php';

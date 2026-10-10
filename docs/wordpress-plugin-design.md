@@ -15,7 +15,7 @@
 ```
 plugins/wordpress/
   kaal-jyoti/                       the plugin as shipped (this directory is what the SVN deploy uploads)
-    kaal-jyoti.php                  header, constants, autoloader, bootstrap
+    kaaljyoti.php                  header, constants, autoloader, bootstrap
     readme.txt                      wordpress.org readme
     uninstall.php                   removes options and transients
     includes/
@@ -59,7 +59,7 @@ plugins/wordpress/
 
 9. **Tests.** PHPUnit with Brain Monkey (no WordPress needed): shortcode output for each element, attribute sanitisation and escaping, settings sanitisation (keys by prefix, city id, language enum; the API base constant since decision 21), renderer cache hit/miss and fallback, `WpHttpClient` request/response mapping. Manual QA on a local WordPress (native PHP + the SQLite drop-in, port 3000 so the staging publishable key's origin matches) covering the settings page, both render modes, shortcodes in a post and blocks in the editor. wordpress.org's Plugin Check runs on the same site.
 
-10. **Versioning and deploy.** `0.1.0`, tag `wordpress-v0.1.0`; `.github/workflows/deploy-wordpress.yml` uploads `plugins/wordpress/kaal-jyoti` to wordpress.org SVN with `10up/action-wordpress-plugin-deploy` on the tag, skipped until the `SVN_USERNAME`/`SVN_PASSWORD` secrets exist.
+10. **Versioning and deploy.** `0.1.0`, tag `wordpress-v0.1.0`; `.github/workflows/deploy-wordpress.yml` uploads `plugins/wordpress/kaaljyoti` to wordpress.org SVN with `10up/action-wordpress-plugin-deploy` on the tag, skipped until the `SVN_USERNAME`/`SVN_PASSWORD` secrets exist.
 
 11. **Horoscopes, readings and the disclaimer** (added 28 September 2026, with `POST /v1/horoscope` and `POST /v1/reports/{lagna,nakshatra}`).
     - `[kj_horoscope]` / `kaal-jyoti/horoscope` → `<kj-horoscope sign period date timezone …>`; `[kj_reading]` / `kaal-jyoti/reading` → `<kj-reading type sign|nakshatra | datetime+place …>`; `readings` on the kundli form (`both`/`true`/`lagna nakshatra` → the element's empty attribute, `lagna`, `nakshatra`; anything else off). A bare shortcode word is a flag (`[kj_kundli_form readings]`). Sign and nakshatra ids are whitelisted in `Elements` (the API's snake_case ids; `Purva Phalguni` and `purva-phalguni` are accepted); a reading keeps only the preset its `type` uses, and gets the default city only with a birth time.

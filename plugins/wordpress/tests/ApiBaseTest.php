@@ -25,7 +25,7 @@ use PHPUnit\Framework\Attributes\RunInSeparateProcess;
 final class ApiBaseTest extends TestCase {
 
 	/** The bundle's tag as WordPress builds it. */
-	private const TAG = '<script src="https://example.test/wp-content/plugins/kaal-jyoti/assets/widgets/kaal-jyoti-widgets.js" id="kaal-jyoti-widgets-js"></script>';
+	private const TAG = '<script src="https://example.test/wp-content/plugins/kaaljyoti/assets/widgets/kaal-jyoti-widgets.js" id="kaal-jyoti-widgets-js"></script>';
 
 	/** What a row saved by 0.1.0 on the QA site held. */
 	private const LEGACY_BASE = 'https://api-staging.kaaljyoti.com';
