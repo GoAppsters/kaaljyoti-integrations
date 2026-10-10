@@ -16,10 +16,6 @@
   },
   "servers": [
     {
-      "url": "https://api-staging.kaaljyoti.com",
-      "description": "staging"
-    },
-    {
       "url": "https://api.kaaljyoti.com",
       "description": "production"
     }
