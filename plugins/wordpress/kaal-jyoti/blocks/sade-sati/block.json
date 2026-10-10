@@ -7,7 +7,7 @@
   "icon": "backup",
   "description": "A birth form that answers whether sade sati is running, and a year's phases with Saturn's sign and dates, with a year stepper. One call per year shown.",
   "keywords": ["sade sati", "shani", "saturn", "dhaiya", "jyotish"],
-  "textdomain": "kaal-jyoti",
+  "textdomain": "kaaljyoti",
   "supports": {
     "html": false,
     "align": ["wide", "full"],

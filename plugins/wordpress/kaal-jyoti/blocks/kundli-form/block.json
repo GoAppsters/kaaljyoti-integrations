@@ -7,7 +7,7 @@
   "icon": "forms",
   "description": "A birth form that opens a tabbed report of a visitor's kundli, and optionally their readings: lagna and nakshatra, and the personal ones (house lords, grahas, yogas, Vimshottari dashas, varshphal, life areas). Always rendered in the browser, and the preview in this editor calls the Kaal Jyoti API only once a birth is submitted: three calls (7 credits) for the overview, more as each other tab is first opened, and one per reading (5 credits each).",
   "keywords": ["kundli", "birth chart", "form", "horoscope", "jyotish"],
-  "textdomain": "kaal-jyoti",
+  "textdomain": "kaaljyoti",
   "supports": {
     "html": false,
     "align": ["wide", "full"],

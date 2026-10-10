@@ -140,6 +140,18 @@ const ELEMENTS = [
   'vimshottari-reading',
 ];
 
+/**
+ * The first line of every minified file: where its readable source is. The
+ * WordPress.org guidelines (4, human-readable code) ask that the source of
+ * shipped minified code be easy to find; `/*!` survives minification.
+ */
+const SOURCE_BANNER = {
+  js:
+    `/*! Kaal Jyoti widgets ${pkg.version} (MIT, GoAppsters). Minified; the human-readable ` +
+    'source is in widgets-src/ in the WordPress plugin, and at ' +
+    'https://github.com/goappsters/kaaljyoti-integrations/tree/main/packages/widgets */',
+};
+
 // The chunks first: the loader is built with the names they came out with.
 const chunks = await esbuild.build({
   ...common,
@@ -150,6 +162,7 @@ const chunks = await esbuild.build({
   format: 'esm',
   splitting: true,
   minify: true,
+  banner: SOURCE_BANNER,
   sourcemap: false,
   entryNames: '[name]-[hash]',
   chunkNames: 'kj-core-[hash]',
@@ -175,6 +188,7 @@ await esbuild.build({
   outfile: join(dist, 'v1.js'),
   format: 'iife',
   minify: true,
+  banner: SOURCE_BANNER,
   sourcemap: false,
 });
 

@@ -7,7 +7,7 @@
   "icon": "calendar-alt",
   "description": "A date in the Hindu calendar: Vikram Samvat, the masa in both reckonings, paksha, the tithi at sunrise, vara and nakshatra. Two calls per date; the preview in this editor calls the Kaal Jyoti API, exactly as the published page will.",
   "keywords": ["calendar", "vikram samvat", "masa", "tithi", "hindu date", "jyotish"],
-  "textdomain": "kaal-jyoti",
+  "textdomain": "kaaljyoti",
   "supports": {
     "html": false,
     "align": ["wide", "full"],

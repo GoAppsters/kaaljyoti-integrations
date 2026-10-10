@@ -73,7 +73,7 @@ final class BlocksTest extends TestCase {
 			$this->assertSame( 3, $json['apiVersion'] );
 			$this->assertSame( Blocks::NAMESPACE_PREFIX . $element, $json['name'] );
 			$this->assertSame( 'widgets', $json['category'] );
-			$this->assertSame( 'kaal-jyoti', $json['textdomain'] );
+			$this->assertSame( 'kaaljyoti', $json['textdomain'] );
 			$this->assertSame( 'file:./index.js', $json['editorScript'] );
 
 			// The attributes mirror the whitelist, so a block's attributes can

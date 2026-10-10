@@ -7,7 +7,7 @@
   "icon": "networking",
   "description": "A birth form that answers with the KP cusps and planets with their sign, star, sub and sub-sub lords, the significators and the ruling planets. One call per submit.",
   "keywords": ["kp", "krishnamurti", "sub lord", "significators", "ruling planets", "jyotish"],
-  "textdomain": "kaal-jyoti",
+  "textdomain": "kaaljyoti",
   "supports": {
     "html": false,
     "align": ["wide", "full"],

@@ -7,7 +7,7 @@
   "icon": "admin-site-alt3",
   "description": "The planets at this minute: a chart and a table of each graha's sign, degree, nakshatra and pada, retrograde marked, with the lagna at the place. Two calls.",
   "keywords": ["transits", "gochar", "planets now", "grahas", "jyotish"],
-  "textdomain": "kaal-jyoti",
+  "textdomain": "kaaljyoti",
   "supports": {
     "html": false,
     "align": ["wide", "full"],

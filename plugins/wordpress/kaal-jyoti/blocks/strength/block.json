@@ -7,7 +7,7 @@
   "icon": "performance",
   "description": "A birth form that answers with the shadbala of each graha against its required minimum, and the sarvashtakavarga and each graha's ashtakavarga. One call per tab opened.",
   "keywords": ["shadbala", "ashtakavarga", "strength", "bala", "jyotish"],
-  "textdomain": "kaal-jyoti",
+  "textdomain": "kaaljyoti",
   "supports": {
     "html": false,
     "align": ["wide", "full"],

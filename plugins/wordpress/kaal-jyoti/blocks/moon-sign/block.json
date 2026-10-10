@@ -7,7 +7,7 @@
   "icon": "star-half",
   "description": "A birth form that answers with the rashi and its degree, the janma nakshatra and pada, and the nakshatra reading. Nothing is called until a visitor submits; then two calls.",
   "keywords": ["moon sign", "rashi", "nakshatra", "janma", "jyotish"],
-  "textdomain": "kaal-jyoti",
+  "textdomain": "kaaljyoti",
   "supports": {
     "html": false,
     "align": ["wide", "full"],

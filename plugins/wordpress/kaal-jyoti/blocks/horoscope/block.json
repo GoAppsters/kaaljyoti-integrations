@@ -7,7 +7,7 @@
   "icon": "star-filled",
   "description": "The day, week, month or year ahead for a sign: a summary and five life areas (work, money, relationships, health, education), each favourable, mixed or needing care, read from where the grahas actually are, with a sign picker and period tabs. One call per sign and period shown; the preview in this editor calls the Kaal Jyoti API once a sign is chosen, exactly as the published page will.",
   "keywords": ["horoscope", "rashifal", "gochar", "transit", "sign", "jyotish"],
-  "textdomain": "kaal-jyoti",
+  "textdomain": "kaaljyoti",
   "supports": {
     "html": false,
     "align": ["wide", "full"],

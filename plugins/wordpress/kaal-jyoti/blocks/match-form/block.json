@@ -7,7 +7,7 @@
   "icon": "heart",
   "description": "Two birth forms, bride and groom, that score an Ashtakoot match out of 36 with the eight kootas and mangal dosha. Always rendered in the browser; the preview in this editor calls the Kaal Jyoti API only when a match is submitted: three calls per submit, the match and one kundli per person.",
   "keywords": ["match", "ashtakoot", "guna milan", "kundli milan", "compatibility", "jyotish"],
-  "textdomain": "kaal-jyoti",
+  "textdomain": "kaaljyoti",
   "supports": {
     "html": false,
     "align": ["wide", "full"],

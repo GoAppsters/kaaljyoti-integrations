@@ -674,7 +674,7 @@ final class Renderer {
 		return '<p class="kj-notice">' . esc_html(
 			sprintf(
 				/* translators: %s: the API error code, for example invalid_key. */
-				__( 'Kaal Jyoti could not render this on the server (%s).', 'kaal-jyoti' ),
+				__( 'Kaal Jyoti could not render this on the server (%s).', 'kaaljyoti' ),
 				$code
 			)
 		) . '</p>';

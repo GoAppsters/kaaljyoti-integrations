@@ -7,7 +7,7 @@
   "icon": "editor-table",
   "description": "A month of daily planet longitudes at 00:00 UT, with sign changes, retrograde stations and the month's ingresses; sidereal or tropical. One call per month, 20 credits. With a secret key stored (Settings → Kaal Jyoti → Connection), this site caches each month. The preview in this editor calls the Kaal Jyoti API, exactly as the published page will.",
   "keywords": ["ephemeris", "panchang", "longitudes", "ingress", "retrograde", "jyotish"],
-  "textdomain": "kaal-jyoti",
+  "textdomain": "kaaljyoti",
   "supports": {
     "html": false,
     "align": ["wide", "full"],

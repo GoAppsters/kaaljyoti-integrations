@@ -7,7 +7,7 @@
   "icon": "grid-view",
   "description": "A birth form that answers with a divisional chart, D1 to D60, and each graha's sign in it beside D1, vargottama marked. Two calls per submit, and one per chart or style picked.",
   "keywords": ["varga", "divisional chart", "navamsa", "d9", "d10", "jyotish"],
-  "textdomain": "kaal-jyoti",
+  "textdomain": "kaaljyoti",
   "supports": {
     "html": false,
     "align": ["wide", "full"],

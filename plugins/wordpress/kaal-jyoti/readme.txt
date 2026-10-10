@@ -124,9 +124,13 @@ Google Privacy Policy: https://policies.google.com/privacy
 
 == Source code ==
 
-The widget scripts in `assets/widgets/` are minified. Their human-readable source — the TypeScript and CSS of the web components, and the build that turns them into those files — ships with the plugin in `widgets-src/`, MIT licensed; `widgets-src/README.txt` says how to rebuild the files. The block editor scripts (`blocks/*/index.js`, `assets/blocks-kit.js`), `assets/admin.js` and the PHP are not minified.
+The only minified files in this plugin are the widget scripts in `assets/widgets/`: `v1.js` and the `kj-*.js` chunks (including every `kj-core-*.js`). Each of them starts with a comment saying where its source is. They are built from TypeScript and CSS that ship, readable, in this plugin:
 
-The whole plugin, the widgets and their tests are developed in the open at https://github.com/goappsters/kaaljyoti-integrations.
+* `widgets-src/src/` — the source of every widget script: the web components, their shared core and their CSS.
+* `widgets-src/scripts/build.mjs` — the build (esbuild) that turns `widgets-src/src/` into the files in `assets/widgets/`.
+* `widgets-src/README.txt` — how to rebuild them: install Node.js 20 or later, then in `widgets-src/` run `npm install esbuild@0.27 typescript@6 @types/node` and `node scripts/build.mjs`; the files appear in `widgets-src/dist/` with the same names.
+
+The same source, with its tests and the history of every change, is public at https://github.com/goappsters/kaaljyoti-integrations — the widgets in `packages/widgets/` (https://github.com/goappsters/kaaljyoti-integrations/tree/main/packages/widgets) and this plugin in `plugins/wordpress/`. Everything else in the plugin — the PHP, the block editor scripts (`blocks/*/index.js`, `assets/blocks-kit.js`) and `assets/admin.js` — is not minified.
 
 == Installation ==
 

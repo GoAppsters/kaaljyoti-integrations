@@ -10,7 +10,7 @@
  * Author URI:        https://goappsters.in
  * License:           MIT
  * License URI:       https://opensource.org/license/mit
- * Text Domain:       kaal-jyoti
+ * Text Domain:       kaaljyoti
  *
  * @package KaalJyoti\WP
  */

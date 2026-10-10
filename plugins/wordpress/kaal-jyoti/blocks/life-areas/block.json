@@ -7,7 +7,7 @@
   "icon": "excerpt-view",
   "description": "A birth form that answers with the life-areas report: a summary and eleven areas of life read from the chart. One call per submit, 5 credits.",
   "keywords": ["life areas", "report", "prediction", "reading", "jyotish"],
-  "textdomain": "kaal-jyoti",
+  "textdomain": "kaaljyoti",
   "supports": {
     "html": false,
     "align": ["wide", "full"],

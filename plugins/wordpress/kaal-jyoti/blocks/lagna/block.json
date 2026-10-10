@@ -7,7 +7,7 @@
   "icon": "star-filled",
   "description": "A birth form that answers with the lagna and the ascendant's degree, the Moon sign, and the lagna reading. Nothing is called until a visitor submits; then two calls.",
   "keywords": ["lagna", "ascendant", "rising sign", "jyotish"],
-  "textdomain": "kaal-jyoti",
+  "textdomain": "kaaljyoti",
   "supports": {
     "html": false,
     "align": ["wide", "full"],

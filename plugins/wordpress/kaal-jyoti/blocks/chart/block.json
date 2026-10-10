@@ -7,7 +7,7 @@
   "icon": "grid-view",
   "description": "A drawn kundli for one birth. The preview in this editor calls the Kaal Jyoti API, exactly as the published page will.",
   "keywords": ["kundli", "chart", "horoscope", "varga", "jyotish"],
-  "textdomain": "kaal-jyoti",
+  "textdomain": "kaaljyoti",
   "supports": {
     "html": false,
     "align": ["wide", "full"],

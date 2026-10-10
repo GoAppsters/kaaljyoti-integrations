@@ -19,7 +19,7 @@
     "phaladesh",
     "jyotish"
   ],
-  "textdomain": "kaal-jyoti",
+  "textdomain": "kaaljyoti",
   "supports": {
     "html": false,
     "align": ["wide", "full"],

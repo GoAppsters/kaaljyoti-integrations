@@ -42,6 +42,6 @@ jobs:
         env:
           SVN_USERNAME: ${{ secrets.SVN_USERNAME }}
           SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}
-          SLUG: kaal-jyoti
+          SLUG: kaaljyoti
           BUILD_DIR: plugins/wordpress/kaal-jyoti
           VERSION: ${{ steps.version.outputs.version }}

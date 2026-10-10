@@ -7,7 +7,7 @@
   "icon": "update",
   "description": "A birth form that answers with the year ahead: when it begins, the varsha lagna, the muntha and its house, the year lord, the varsha kundli and the varshphal reading, with a year selector. Three calls per year, 7 credits: two calculations and the reading.",
   "keywords": ["varshphal", "solar return", "tajik", "year ahead", "muntha", "jyotish"],
-  "textdomain": "kaal-jyoti",
+  "textdomain": "kaaljyoti",
   "supports": {
     "html": false,
     "align": ["wide", "full"],

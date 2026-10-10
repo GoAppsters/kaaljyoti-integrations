@@ -7,7 +7,7 @@
   "icon": "book",
   "description": "A birth form that answers with each Vimshottari mahadasha from birth to eighty, with its dates, its level and its reading, the running one marked. One call per submit, 5 credits.",
   "keywords": ["dasha reading", "vimshottari", "mahadasha", "prediction", "jyotish"],
-  "textdomain": "kaal-jyoti",
+  "textdomain": "kaaljyoti",
   "supports": {
     "html": false,
     "align": ["wide", "full"],

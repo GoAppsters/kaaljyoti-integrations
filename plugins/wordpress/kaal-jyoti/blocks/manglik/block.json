@@ -7,7 +7,7 @@
   "icon": "shield",
   "description": "A birth form that answers whether the chart is manglik, with Mars's house and the engine's own mitigation, and the other doshas with their grahas. One call per submit.",
   "keywords": ["manglik", "mangal dosha", "kuja dosha", "dosha", "jyotish"],
-  "textdomain": "kaal-jyoti",
+  "textdomain": "kaaljyoti",
   "supports": {
     "html": false,
     "align": ["wide", "full"],

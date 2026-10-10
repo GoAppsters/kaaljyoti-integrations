@@ -7,7 +7,7 @@
   "icon": "chart-bar",
   "description": "A birth form that answers with the Vimshottari dashas as a band and a table, drilling down to pratyantardasha, the running period marked, and a Yogini switch. One call per submit; Yogini one more.",
   "keywords": ["dasha", "vimshottari", "yogini", "mahadasha", "antardasha", "jyotish"],
-  "textdomain": "kaal-jyoti",
+  "textdomain": "kaaljyoti",
   "supports": {
     "html": false,
     "align": ["wide", "full"],

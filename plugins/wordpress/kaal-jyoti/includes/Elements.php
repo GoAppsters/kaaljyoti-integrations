@@ -976,8 +976,8 @@ final class Elements {
 
 		return '<p class="kj-notice">' . sprintf(
 			/* translators: %s: a link to the plugin's settings, "Settings → Kaal Jyoti → Connection". */
-			esc_html__( 'Kaal Jyoti: add a publishable key in %s.', 'kaal-jyoti' ),
-			sprintf( '<a href="%s">%s</a>', esc_url( Settings::tab_url( 'connection' ) ), esc_html__( 'Settings → Kaal Jyoti → Connection', 'kaal-jyoti' ) )
+			esc_html__( 'Kaal Jyoti: add a publishable key in %s.', 'kaaljyoti' ),
+			sprintf( '<a href="%s">%s</a>', esc_url( Settings::tab_url( 'connection' ) ), esc_html__( 'Settings → Kaal Jyoti → Connection', 'kaaljyoti' ) )
 		) . '</p>';
 	}
 }

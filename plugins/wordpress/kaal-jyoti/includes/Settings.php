@@ -523,8 +523,8 @@ final class Settings {
 	 */
 	public static function add_page(): void {
 		add_options_page(
-			__( 'Kaal Jyoti', 'kaal-jyoti' ),
-			__( 'Kaal Jyoti', 'kaal-jyoti' ),
+			__( 'Kaal Jyoti', 'kaaljyoti' ),
+			__( 'Kaal Jyoti', 'kaaljyoti' ),
 			'manage_options',
 			self::PAGE,
 			array( self::class, 'render_page' )
@@ -578,28 +578,28 @@ final class Settings {
 	public static function tabs(): array {
 		return array(
 			'connection' => array(
-				__( 'Connection', 'kaal-jyoti' ),
-				__( 'Your Kaal Jyoti keys, this site\'s origin for the key\'s origin list, and a test that the API answers.', 'kaal-jyoti' ),
+				__( 'Connection', 'kaaljyoti' ),
+				__( 'Your Kaal Jyoti keys, this site\'s origin for the key\'s origin list, and a test that the API answers.', 'kaaljyoti' ),
 			),
 			'appearance' => array(
-				__( 'Appearance', 'kaal-jyoti' ),
-				__( 'How every widget looks: the style, light or dark, colours, type, corners, the "Powered by" line and the zodiac sign icons.', 'kaal-jyoti' ),
+				__( 'Appearance', 'kaaljyoti' ),
+				__( 'How every widget looks: the style, light or dark, colours, type, corners, the "Powered by" line and the zodiac sign icons.', 'kaaljyoti' ),
 			),
 			'forms'      => array(
-				__( 'Defaults and forms', 'kaal-jyoti' ),
-				__( 'The city and language every widget starts with, and how the birth and match forms ask for a birth and search for a place.', 'kaal-jyoti' ),
+				__( 'Defaults and forms', 'kaaljyoti' ),
+				__( 'The city and language every widget starts with, and how the birth and match forms ask for a birth and search for a place.', 'kaaljyoti' ),
 			),
 			'reports'    => array(
-				__( 'Reports and PDFs', 'kaal-jyoti' ),
-				__( 'The line every horoscope and reading ends with, and the "Download PDF" button on the kundli report and the match result.', 'kaal-jyoti' ),
+				__( 'Reports and PDFs', 'kaaljyoti' ),
+				__( 'The line every horoscope and reading ends with, and the "Download PDF" button on the kundli report and the match result.', 'kaaljyoti' ),
 			),
 			'advanced'   => array(
-				__( 'Advanced', 'kaal-jyoti' ),
-				__( 'What this site does with the secret key: the server proxy and its limits, the month cache, server rendering, and where owner notes link to.', 'kaal-jyoti' ),
+				__( 'Advanced', 'kaaljyoti' ),
+				__( 'What this site does with the secret key: the server proxy and its limits, the month cache, server rendering, and where owner notes link to.', 'kaaljyoti' ),
 			),
 			'shortcodes' => array(
-				__( 'Shortcodes', 'kaal-jyoti' ),
-				__( 'Every shortcode, ready to copy into a post. Each one has a matching block in the editor.', 'kaal-jyoti' ),
+				__( 'Shortcodes', 'kaaljyoti' ),
+				__( 'Every shortcode, ready to copy into a post. Each one has a matching block in the editor.', 'kaaljyoti' ),
 			),
 		);
 	}
@@ -612,17 +612,17 @@ final class Settings {
 	 */
 	private static function sections(): array {
 		return array(
-			'kaal_jyoti_keys'       => array( __( 'Keys', 'kaal-jyoti' ), array( self::class, 'section_keys' ), 'connection' ),
-			'kaal_jyoti_appearance' => array( __( 'Style and colours', 'kaal-jyoti' ), array( self::class, 'section_appearance' ), 'appearance' ),
-			'kaal_jyoti_signs'      => array( __( 'Zodiac sign icons', 'kaal-jyoti' ), array( self::class, 'section_signs' ), 'appearance' ),
-			'kaal_jyoti_display'    => array( __( 'Defaults', 'kaal-jyoti' ), '__return_false', 'forms' ),
-			'kaal_jyoti_forms'      => array( __( 'Birth and match forms', 'kaal-jyoti' ), '__return_false', 'forms' ),
-			'kaal_jyoti_places'     => array( __( 'Place search', 'kaal-jyoti' ), array( self::class, 'section_places' ), 'forms' ),
-			'kaal_jyoti_reports'    => array( __( 'Horoscopes and readings', 'kaal-jyoti' ), array( self::class, 'section_reports' ), 'reports' ),
-			'kaal_jyoti_pdf'        => array( __( 'PDF downloads', 'kaal-jyoti' ), array( self::class, 'section_pdf' ), 'reports' ),
-			'kaal_jyoti_server'     => array( __( 'Server connection: the proxy and the month cache', 'kaal-jyoti' ), array( self::class, 'section_server' ), 'advanced' ),
-			'kaal_jyoti_rendering'  => array( __( 'Server rendering', 'kaal-jyoti' ), '__return_false', 'advanced' ),
-			'kaal_jyoti_links'      => array( __( 'Links in the owner notes', 'kaal-jyoti' ), '__return_false', 'advanced' ),
+			'kaal_jyoti_keys'       => array( __( 'Keys', 'kaaljyoti' ), array( self::class, 'section_keys' ), 'connection' ),
+			'kaal_jyoti_appearance' => array( __( 'Style and colours', 'kaaljyoti' ), array( self::class, 'section_appearance' ), 'appearance' ),
+			'kaal_jyoti_signs'      => array( __( 'Zodiac sign icons', 'kaaljyoti' ), array( self::class, 'section_signs' ), 'appearance' ),
+			'kaal_jyoti_display'    => array( __( 'Defaults', 'kaaljyoti' ), '__return_false', 'forms' ),
+			'kaal_jyoti_forms'      => array( __( 'Birth and match forms', 'kaaljyoti' ), '__return_false', 'forms' ),
+			'kaal_jyoti_places'     => array( __( 'Place search', 'kaaljyoti' ), array( self::class, 'section_places' ), 'forms' ),
+			'kaal_jyoti_reports'    => array( __( 'Horoscopes and readings', 'kaaljyoti' ), array( self::class, 'section_reports' ), 'reports' ),
+			'kaal_jyoti_pdf'        => array( __( 'PDF downloads', 'kaaljyoti' ), array( self::class, 'section_pdf' ), 'reports' ),
+			'kaal_jyoti_server'     => array( __( 'Server connection: the proxy and the month cache', 'kaaljyoti' ), array( self::class, 'section_server' ), 'advanced' ),
+			'kaal_jyoti_rendering'  => array( __( 'Server rendering', 'kaaljyoti' ), '__return_false', 'advanced' ),
+			'kaal_jyoti_links'      => array( __( 'Links in the owner notes', 'kaaljyoti' ), '__return_false', 'advanced' ),
 		);
 	}
 
@@ -634,41 +634,41 @@ final class Settings {
 	 */
 	private static function fields(): array {
 		return array(
-			'publishable_key'   => array( __( 'Publishable key', 'kaal-jyoti' ), 'kaal_jyoti_keys' ),
-			'secret_key'        => array( __( 'Secret key', 'kaal-jyoti' ), 'kaal_jyoti_keys' ),
-			'preset'            => array( __( 'Style', 'kaal-jyoti' ), 'kaal_jyoti_appearance' ),
-			'theme'             => array( __( 'Theme', 'kaal-jyoti' ), 'kaal_jyoti_appearance' ),
-			'color_background'  => array( __( 'Background', 'kaal-jyoti' ), 'kaal_jyoti_appearance' ),
-			'color_text'        => array( __( 'Text', 'kaal-jyoti' ), 'kaal_jyoti_appearance' ),
-			'color_accent'      => array( __( 'Accent', 'kaal-jyoti' ), 'kaal_jyoti_appearance' ),
-			'color_line'        => array( __( 'Lines', 'kaal-jyoti' ), 'kaal_jyoti_appearance' ),
-			'color_muted'       => array( __( 'Muted text', 'kaal-jyoti' ), 'kaal_jyoti_appearance' ),
-			'color_good'        => array( __( 'Good windows', 'kaal-jyoti' ), 'kaal_jyoti_appearance' ),
-			'color_bad'         => array( __( 'Bad windows', 'kaal-jyoti' ), 'kaal_jyoti_appearance' ),
-			'font_mode'         => array( __( 'Type', 'kaal-jyoti' ), 'kaal_jyoti_appearance' ),
-			'font'              => array( __( 'Font', 'kaal-jyoti' ), 'kaal_jyoti_appearance' ),
-			'radius'            => array( __( 'Corner radius', 'kaal-jyoti' ), 'kaal_jyoti_appearance' ),
-			'powered_by'        => array( __( 'Powered by', 'kaal-jyoti' ), 'kaal_jyoti_appearance' ),
-			'sign_icons'        => array( __( 'Icons', 'kaal-jyoti' ), 'kaal_jyoti_signs' ),
-			'sign_images'       => array( __( 'Your own images', 'kaal-jyoti' ), 'kaal_jyoti_signs' ),
-			'default_city'      => array( __( 'Default city', 'kaal-jyoti' ), 'kaal_jyoti_display' ),
-			'language'          => array( __( 'Language', 'kaal-jyoti' ), 'kaal_jyoti_display' ),
-			'time_format'       => array( __( 'Birth time', 'kaal-jyoti' ), 'kaal_jyoti_forms' ),
-			'remember'          => array( __( 'Remember birth details', 'kaal-jyoti' ), 'kaal_jyoti_forms' ),
-			'place_provider'    => array( __( 'Search with', 'kaal-jyoti' ), 'kaal_jyoti_places' ),
-			'google_maps_key'   => array( __( 'Google Maps API key (optional)', 'kaal-jyoti' ), 'kaal_jyoti_places' ),
-			'photon_url'        => array( __( 'Photon URL (optional)', 'kaal-jyoti' ), 'kaal_jyoti_places' ),
-			'disclaimer'        => array( __( 'Disclaimer', 'kaal-jyoti' ), 'kaal_jyoti_reports' ),
-			'pdf'               => array( __( 'PDF downloads', 'kaal-jyoti' ), 'kaal_jyoti_pdf' ),
-			'proxy'             => array( __( 'Server proxy', 'kaal-jyoti' ), 'kaal_jyoti_server' ),
-			'proxy_nonce'       => array( __( 'Page check (nonce)', 'kaal-jyoti' ), 'kaal_jyoti_server' ),
-			'rate_month'        => array( __( 'Month requests per visitor', 'kaal-jyoti' ), 'kaal_jyoti_server' ),
-			'rate_pdf'          => array( __( 'PDFs per visitor', 'kaal-jyoti' ), 'kaal_jyoti_server' ),
-			'month_cache_hours' => array( __( 'Keep month answers', 'kaal-jyoti' ), 'kaal_jyoti_server' ),
-			'render_mode'       => array( __( 'Render mode', 'kaal-jyoti' ), 'kaal_jyoti_rendering' ),
-			'cache_minutes'     => array( __( 'Cache minutes', 'kaal-jyoti' ), 'kaal_jyoti_rendering' ),
-			'pricing_url'       => array( __( 'Pricing link', 'kaal-jyoti' ), 'kaal_jyoti_links' ),
-			'proxy_docs_url'    => array( __( 'Setup guide link', 'kaal-jyoti' ), 'kaal_jyoti_links' ),
+			'publishable_key'   => array( __( 'Publishable key', 'kaaljyoti' ), 'kaal_jyoti_keys' ),
+			'secret_key'        => array( __( 'Secret key', 'kaaljyoti' ), 'kaal_jyoti_keys' ),
+			'preset'            => array( __( 'Style', 'kaaljyoti' ), 'kaal_jyoti_appearance' ),
+			'theme'             => array( __( 'Theme', 'kaaljyoti' ), 'kaal_jyoti_appearance' ),
+			'color_background'  => array( __( 'Background', 'kaaljyoti' ), 'kaal_jyoti_appearance' ),
+			'color_text'        => array( __( 'Text', 'kaaljyoti' ), 'kaal_jyoti_appearance' ),
+			'color_accent'      => array( __( 'Accent', 'kaaljyoti' ), 'kaal_jyoti_appearance' ),
+			'color_line'        => array( __( 'Lines', 'kaaljyoti' ), 'kaal_jyoti_appearance' ),
+			'color_muted'       => array( __( 'Muted text', 'kaaljyoti' ), 'kaal_jyoti_appearance' ),
+			'color_good'        => array( __( 'Good windows', 'kaaljyoti' ), 'kaal_jyoti_appearance' ),
+			'color_bad'         => array( __( 'Bad windows', 'kaaljyoti' ), 'kaal_jyoti_appearance' ),
+			'font_mode'         => array( __( 'Type', 'kaaljyoti' ), 'kaal_jyoti_appearance' ),
+			'font'              => array( __( 'Font', 'kaaljyoti' ), 'kaal_jyoti_appearance' ),
+			'radius'            => array( __( 'Corner radius', 'kaaljyoti' ), 'kaal_jyoti_appearance' ),
+			'powered_by'        => array( __( 'Powered by', 'kaaljyoti' ), 'kaal_jyoti_appearance' ),
+			'sign_icons'        => array( __( 'Icons', 'kaaljyoti' ), 'kaal_jyoti_signs' ),
+			'sign_images'       => array( __( 'Your own images', 'kaaljyoti' ), 'kaal_jyoti_signs' ),
+			'default_city'      => array( __( 'Default city', 'kaaljyoti' ), 'kaal_jyoti_display' ),
+			'language'          => array( __( 'Language', 'kaaljyoti' ), 'kaal_jyoti_display' ),
+			'time_format'       => array( __( 'Birth time', 'kaaljyoti' ), 'kaal_jyoti_forms' ),
+			'remember'          => array( __( 'Remember birth details', 'kaaljyoti' ), 'kaal_jyoti_forms' ),
+			'place_provider'    => array( __( 'Search with', 'kaaljyoti' ), 'kaal_jyoti_places' ),
+			'google_maps_key'   => array( __( 'Google Maps API key (optional)', 'kaaljyoti' ), 'kaal_jyoti_places' ),
+			'photon_url'        => array( __( 'Photon URL (optional)', 'kaaljyoti' ), 'kaal_jyoti_places' ),
+			'disclaimer'        => array( __( 'Disclaimer', 'kaaljyoti' ), 'kaal_jyoti_reports' ),
+			'pdf'               => array( __( 'PDF downloads', 'kaaljyoti' ), 'kaal_jyoti_pdf' ),
+			'proxy'             => array( __( 'Server proxy', 'kaaljyoti' ), 'kaal_jyoti_server' ),
+			'proxy_nonce'       => array( __( 'Page check (nonce)', 'kaaljyoti' ), 'kaal_jyoti_server' ),
+			'rate_month'        => array( __( 'Month requests per visitor', 'kaaljyoti' ), 'kaal_jyoti_server' ),
+			'rate_pdf'          => array( __( 'PDFs per visitor', 'kaaljyoti' ), 'kaal_jyoti_server' ),
+			'month_cache_hours' => array( __( 'Keep month answers', 'kaaljyoti' ), 'kaal_jyoti_server' ),
+			'render_mode'       => array( __( 'Render mode', 'kaaljyoti' ), 'kaal_jyoti_rendering' ),
+			'cache_minutes'     => array( __( 'Cache minutes', 'kaaljyoti' ), 'kaal_jyoti_rendering' ),
+			'pricing_url'       => array( __( 'Pricing link', 'kaaljyoti' ), 'kaal_jyoti_links' ),
+			'proxy_docs_url'    => array( __( 'Setup guide link', 'kaaljyoti' ), 'kaal_jyoti_links' ),
 		);
 	}
 
@@ -809,7 +809,7 @@ final class Settings {
 				esc_html(
 					sprintf(
 						/* translators: 1: the constant's name, 2: the production API address. */
-						__( '%1$s in wp-config.php is not an https address, so it is ignored and the plugin uses %2$s.', 'kaal-jyoti' ),
+						__( '%1$s in wp-config.php is not an https address, so it is ignored and the plugin uses %2$s.', 'kaaljyoti' ),
 						self::API_BASE_CONSTANT,
 						self::PRODUCTION_BASE_URL
 					)
@@ -821,7 +821,7 @@ final class Settings {
 
 		printf(
 			'<div class="notice notice-info inline"><p>%s <code>%s</code></p></div>',
-			esc_html__( 'API address set in wp-config.php:', 'kaal-jyoti' ),
+			esc_html__( 'API address set in wp-config.php:', 'kaaljyoti' ),
 			esc_html( $base )
 		);
 	}
@@ -835,12 +835,12 @@ final class Settings {
 	public static function section_pdf(): void {
 		printf(
 			'<p>%s <a href="%s">%s</a> %s <a href="%s">%s</a>.</p>',
-			esc_html__( 'PDFs are fetched by this site, so they need the secret key on', 'kaal-jyoti' ),
+			esc_html__( 'PDFs are fetched by this site, so they need the secret key on', 'kaaljyoti' ),
 			esc_url( self::tab_url( 'connection' ) ),
-			esc_html__( 'Connection', 'kaal-jyoti' ),
-			esc_html__( 'and the server proxy on', 'kaal-jyoti' ),
+			esc_html__( 'Connection', 'kaaljyoti' ),
+			esc_html__( 'and the server proxy on', 'kaaljyoti' ),
 			esc_url( self::tab_url( 'advanced' ) ),
-			esc_html__( 'Advanced', 'kaal-jyoti' )
+			esc_html__( 'Advanced', 'kaaljyoti' )
 		);
 	}
 
@@ -854,11 +854,11 @@ final class Settings {
 			'<p>%s</p><p><code>%s</code></p><p><a href="%s" target="_blank" rel="noopener noreferrer">%s</a></p>',
 			esc_html__(
 				'A publishable key may only be used from the origins listed on it. Add this site\'s origin to the key in the dashboard, exactly as it is written here:',
-				'kaal-jyoti'
+				'kaaljyoti'
 			),
 			esc_html( self::origin() ),
 			esc_url( self::DASHBOARD_KEYS_URL ),
-			esc_html__( 'Open the dashboard keys page', 'kaal-jyoti' )
+			esc_html__( 'Open the dashboard keys page', 'kaaljyoti' )
 		);
 	}
 
@@ -870,12 +870,12 @@ final class Settings {
 	public static function section_server(): void {
 		printf(
 			'<p>%s</p><ul style="list-style:disc;margin-left:1.5em"><li>%s</li><li>%s</li><li>%s</li></ul><p>%s</p><p>%s <code>%s</code></p>',
-			esc_html__( 'The publishable key is enough for every widget: visitors\' browsers call the Kaal Jyoti API with it directly. With a secret key, this site also does a few things on its visitors\' behalf:', 'kaal-jyoti' ),
-			esc_html__( 'PDF downloads of the kundli report and the match result, when switched on under Reports and PDFs. The API never gives a PDF to a browser, so these need the secret key; they are on every paid plan (not Free), and each costs 500 or 1,000 credits and one PDF from the month\'s allowance.', 'kaal-jyoti' ),
-			esc_html__( 'A cache for the month widgets, Panchang month and Ephemeris: they ask this site, which keeps each month for hours, so a busy page costs one call (20 credits) per place and month instead of one per visitor.', 'kaal-jyoti' ),
-			esc_html__( 'Server rendering (below), which draws the daily panchang, charts and preset readings on this server.', 'kaal-jyoti' ),
-			esc_html__( 'The widgets send those requests to this site, which checks them — only these routes, only well-formed bodies, a limit per visitor per minute — and calls the API with the secret key. The key is stored in this site\'s database, is never printed in a page and never reaches a browser. Without a secret key there is no PDF button, and the month widgets call the API with the publishable key like the others.', 'kaal-jyoti' ),
-			esc_html__( 'The endpoint the widgets use:', 'kaal-jyoti' ),
+			esc_html__( 'The publishable key is enough for every widget: visitors\' browsers call the Kaal Jyoti API with it directly. With a secret key, this site also does a few things on its visitors\' behalf:', 'kaaljyoti' ),
+			esc_html__( 'PDF downloads of the kundli report and the match result, when switched on under Reports and PDFs. The API never gives a PDF to a browser, so these need the secret key; they are on every paid plan (not Free), and each costs 500 or 1,000 credits and one PDF from the month\'s allowance.', 'kaaljyoti' ),
+			esc_html__( 'A cache for the month widgets, Panchang month and Ephemeris: they ask this site, which keeps each month for hours, so a busy page costs one call (20 credits) per place and month instead of one per visitor.', 'kaaljyoti' ),
+			esc_html__( 'Server rendering (below), which draws the daily panchang, charts and preset readings on this server.', 'kaaljyoti' ),
+			esc_html__( 'The widgets send those requests to this site, which checks them — only these routes, only well-formed bodies, a limit per visitor per minute — and calls the API with the secret key. The key is stored in this site\'s database, is never printed in a page and never reaches a browser. Without a secret key there is no PDF button, and the month widgets call the API with the publishable key like the others.', 'kaaljyoti' ),
+			esc_html__( 'The endpoint the widgets use:', 'kaaljyoti' ),
 			esc_html( rest_url( Proxy::REST_NAMESPACE . Proxy::ROUTE ) )
 		);
 	}
@@ -890,7 +890,7 @@ final class Settings {
 			'<p>%s</p>',
 			esc_html__(
 				'The birth and match forms have an "Other place" choice with a place search: a visitor types three letters, picks a place, and its latitude and longitude are filled in. Choose where it searches.',
-				'kaal-jyoti'
+				'kaaljyoti'
 			)
 		);
 	}
@@ -905,7 +905,7 @@ final class Settings {
 			'<p>%s</p>',
 			esc_html__(
 				'Every horoscope and reading — and the birth form, when it shows readings — ends with a short line saying the predictions are indicative. Choose what that line says for the whole site; one shortcode or block can still choose its own.',
-				'kaal-jyoti'
+				'kaaljyoti'
 			)
 		);
 	}
@@ -920,7 +920,7 @@ final class Settings {
 			'<p>%s</p>',
 			esc_html__(
 				'The theme picks a palette; each colour below, when set, replaces that one colour in every mode. Leave a field empty to keep the theme\'s own.',
-				'kaal-jyoti'
+				'kaaljyoti'
 			)
 		);
 	}
@@ -935,7 +935,7 @@ final class Settings {
 			'<p>%s</p>',
 			esc_html__(
 				'How a zodiac sign is drawn wherever a widget shows one: the horoscope\'s sign picker, the kundli overview, the calculators, the match result and the planet tables. A block can choose its own in its Display panel.',
-				'kaal-jyoti'
+				'kaaljyoti'
 			)
 		);
 	}
@@ -960,19 +960,19 @@ final class Settings {
 				'<div class="kaal-jyoti-sign-image" data-sign="%1$s" style="border:1px solid #dcdcde;border-radius:6px;padding:8px;background:#fff;text-align:center"><div style="font-weight:600;margin-bottom:6px">%2$s</div><div class="kaal-jyoti-sign-preview" style="height:64px;display:flex;align-items:center;justify-content:center;margin-bottom:6px">%3$s</div><input type="hidden" class="kaal-jyoti-sign-id" name="%4$s" value="%5$s" /><button type="button" class="button button-small kaal-jyoti-sign-choose">%6$s</button> <button type="button" class="button-link kaal-jyoti-sign-clear"%7$s>%8$s</button></div>',
 				esc_attr( $sign ),
 				esc_html( $label ),
-				is_string( $preview ) ? sprintf( '<img src="%s" alt="" style="max-width:64px;max-height:64px" />', esc_url( $preview ) ) : '<span class="description">' . esc_html__( 'Default icon', 'kaal-jyoti' ) . '</span>',
+				is_string( $preview ) ? sprintf( '<img src="%s" alt="" style="max-width:64px;max-height:64px" />', esc_url( $preview ) ) : '<span class="description">' . esc_html__( 'Default icon', 'kaaljyoti' ) . '</span>',
 				esc_attr( $field ),
 				esc_attr( $attachment > 0 ? (string) $attachment : '' ),
-				esc_html__( 'Choose image', 'kaal-jyoti' ),
+				esc_html__( 'Choose image', 'kaaljyoti' ),
 				$attachment > 0 ? '' : ' hidden',
-				esc_html__( 'Clear', 'kaal-jyoti' )
+				esc_html__( 'Clear', 'kaaljyoti' )
 			);
 		}
 		echo '</div>';
 
 		printf(
 			'<p class="description">%s</p>',
-			esc_html__( 'Used when the icons are "Your own images". Square images look best (at least 96 by 96 pixels; SVG, PNG or WebP). Each is shown as an image with the sign\'s name as its alternative text; a sign without one keeps the default icon. Images must be served over HTTPS or from this site.', 'kaal-jyoti' )
+			esc_html__( 'Used when the icons are "Your own images". Square images look best (at least 96 by 96 pixels; SVG, PNG or WebP). Each is shown as an image with the sign\'s name as its alternative text; a sign without one keeps the default icon. Images must be served over HTTPS or from this site.', 'kaaljyoti' )
 		);
 	}
 
@@ -1010,7 +1010,7 @@ final class Settings {
 					esc_attr( $id ),
 					esc_attr( $name ),
 					esc_attr( (string) $value ),
-					esc_html__( 'Starts with kj_pub_. Safe to publish: the origin list on the key is what protects it.', 'kaal-jyoti' )
+					esc_html__( 'Starts with kj_pub_. Safe to publish: the origin list on the key is what protects it.', 'kaaljyoti' )
 				);
 				break;
 
@@ -1018,16 +1018,16 @@ final class Settings {
 				$stored = (string) $value;
 				printf(
 					'<p><code>%s</code></p><input type="password" class="regular-text code" id="%s" name="%s" value="" placeholder="%s" autocomplete="off" /><p class="description">%s</p><p><label><input type="checkbox" name="%s" value="1" /> %s</label></p>',
-					esc_html( '' === $stored ? __( 'Not set', 'kaal-jyoti' ) : self::mask( $stored ) ),
+					esc_html( '' === $stored ? __( 'Not set', 'kaaljyoti' ) : self::mask( $stored ) ),
 					esc_attr( $id ),
 					esc_attr( $name ),
-					esc_attr__( 'Leave blank to keep the stored key', 'kaal-jyoti' ),
+					esc_attr__( 'Leave blank to keep the stored key', 'kaaljyoti' ),
 					esc_html__(
 						'Needed only for PDF downloads, the month cache and server rendering (Reports and PDFs, Advanced). Starts with kj_live_ or kj_test_, is never sent to the browser, and is stored in this site\'s options table.',
-						'kaal-jyoti'
+						'kaaljyoti'
 					),
 					esc_attr( self::OPTION . '[secret_key_remove]' ),
-					esc_html__( 'Remove the stored secret key', 'kaal-jyoti' )
+					esc_html__( 'Remove the stored secret key', 'kaaljyoti' )
 				);
 				break;
 
@@ -1039,14 +1039,14 @@ final class Settings {
 					esc_attr( (string) $value ),
 					esc_html__(
 						'With a key, "Automatic" searches Google Places instead of Photon. Enable Places API (New) and Maps JavaScript API on the key, and restrict it to this site\'s address. Google bills its own usage to your Google account, with its monthly free allowance.',
-						'kaal-jyoti'
+						'kaaljyoti'
 					),
 					esc_html__(
 						'With a key set, what a visitor types into the place field is sent to Google. Mention Google Maps Platform in your privacy policy.',
-						'kaal-jyoti'
+						'kaaljyoti'
 					),
 					esc_url( self::GOOGLE_KEYS_URL ),
-					esc_html__( 'Open Google Cloud credentials', 'kaal-jyoti' )
+					esc_html__( 'Open Google Cloud credentials', 'kaaljyoti' )
 				);
 				break;
 
@@ -1056,12 +1056,12 @@ final class Settings {
 					$name,
 					(string) $value,
 					array(
-						'auto'      => __( 'Automatic: Google Places with a Google Maps key, else Photon', 'kaal-jyoti' ),
-						'photon'    => __( 'Photon (OpenStreetMap)', 'kaal-jyoti' ),
-						'google'    => __( 'Google Places (needs a Google Maps key)', 'kaal-jyoti' ),
-						'kaaljyoti' => __( 'Kaal Jyoti only (no third-party service)', 'kaal-jyoti' ),
+						'auto'      => __( 'Automatic: Google Places with a Google Maps key, else Photon', 'kaaljyoti' ),
+						'photon'    => __( 'Photon (OpenStreetMap)', 'kaaljyoti' ),
+						'google'    => __( 'Google Places (needs a Google Maps key)', 'kaaljyoti' ),
+						'kaaljyoti' => __( 'Kaal Jyoti only (no third-party service)', 'kaaljyoti' ),
 					),
-					__( 'Photon is a free OpenStreetMap search run by komoot that finds villages, and costs no Kaal Jyoti credits; the list credits OpenStreetMap. Kaal Jyoti\'s own index has every town and city of 1,000 people or more, 1 credit per search. Whatever you choose, a search that fails falls back to Kaal Jyoti\'s. With Photon or Google, what a visitor types into the place field is sent to that service: mention it in your privacy policy.', 'kaal-jyoti' )
+					__( 'Photon is a free OpenStreetMap search run by komoot that finds villages, and costs no Kaal Jyoti credits; the list credits OpenStreetMap. Kaal Jyoti\'s own index has every town and city of 1,000 people or more, 1 credit per search. Whatever you choose, a search that fails falls back to Kaal Jyoti\'s. With Photon or Google, what a visitor types into the place field is sent to that service: mention it in your privacy policy.', 'kaaljyoti' )
 				);
 				break;
 
@@ -1072,7 +1072,7 @@ final class Settings {
 					esc_attr( $name ),
 					esc_attr( (string) $value ),
 					esc_attr( self::PHOTON_URL ),
-					esc_html__( 'Leave empty for the public Photon server. Set it only if you run your own Photon (an https address).', 'kaal-jyoti' )
+					esc_html__( 'Leave empty for the public Photon server. Set it only if you run your own Photon (an https address).', 'kaaljyoti' )
 				);
 				break;
 
@@ -1082,7 +1082,7 @@ final class Settings {
 					esc_attr( $id ),
 					esc_attr( $name ),
 					esc_attr( (string) $value ),
-					esc_html__( 'How long server-rendered HTML is kept in a transient. 1 to 1440.', 'kaal-jyoti' )
+					esc_html__( 'How long server-rendered HTML is kept in a transient. 1 to 1440.', 'kaaljyoti' )
 				);
 				break;
 
@@ -1096,8 +1096,8 @@ final class Settings {
 					$name,
 					(string) $value,
 					array(
-						'en' => __( 'English', 'kaal-jyoti' ),
-						'hi' => __( 'Hindi', 'kaal-jyoti' ),
+						'en' => __( 'English', 'kaaljyoti' ),
+						'hi' => __( 'Hindi', 'kaaljyoti' ),
 					),
 					''
 				);
@@ -1109,10 +1109,10 @@ final class Settings {
 					$name,
 					(string) $value,
 					array(
-						'hidden' => __( 'Off', 'kaal-jyoti' ),
-						'shown'  => __( 'Show a "Powered by Kaal Jyoti" link', 'kaal-jyoti' ),
+						'hidden' => __( 'Off', 'kaaljyoti' ),
+						'shown'  => __( 'Show a "Powered by Kaal Jyoti" link', 'kaaljyoti' ),
 					),
-					__( 'Off unless you turn it on: a small link to kaaljyoti.com under each widget. A block or shortcode can also turn it on for itself with powered_by="shown".', 'kaal-jyoti' )
+					__( 'Off unless you turn it on: a small link to kaaljyoti.com under each widget. A block or shortcode can also turn it on for itself with powered_by="shown".', 'kaaljyoti' )
 				);
 				break;
 
@@ -1122,12 +1122,12 @@ final class Settings {
 					$name,
 					(string) $value,
 					array(
-						'classic'     => __( 'Classic (cream and maroon)', 'kaal-jyoti' ),
-						'modern'      => __( 'Modern (teal, a solid header)', 'kaal-jyoti' ),
-						'minimal'     => __( 'Minimal (ink on white)', 'kaal-jyoti' ),
-						'traditional' => __( 'Traditional (saffron and gold)', 'kaal-jyoti' ),
+						'classic'     => __( 'Classic (cream and maroon)', 'kaaljyoti' ),
+						'modern'      => __( 'Modern (teal, a solid header)', 'kaaljyoti' ),
+						'minimal'     => __( 'Minimal (ink on white)', 'kaaljyoti' ),
+						'traditional' => __( 'Traditional (saffron and gold)', 'kaaljyoti' ),
 					),
-					__( 'The same four looks as the Kaal Jyoti PDF reports, so your widgets and reports match.', 'kaal-jyoti' )
+					__( 'The same four looks as the Kaal Jyoti PDF reports, so your widgets and reports match.', 'kaaljyoti' )
 				);
 				break;
 
@@ -1137,12 +1137,12 @@ final class Settings {
 					$name,
 					self::sign_icons(),
 					array(
-						'element'    => __( 'Element tiles: the sign\'s symbol on a tile in fire, earth, air or water colours (default)', 'kaal-jyoti' ),
-						'glyph'      => __( 'Glyph: the symbol in a thin ring, in the accent colour', 'kaal-jyoti' ),
-						'devanagari' => __( 'Hindi name: मेष, वृष … in a round seal', 'kaal-jyoti' ),
-						'custom'     => __( 'Your own images (choose them below)', 'kaal-jyoti' ),
+						'element'    => __( 'Element tiles: the sign\'s symbol on a tile in fire, earth, air or water colours (default)', 'kaaljyoti' ),
+						'glyph'      => __( 'Glyph: the symbol in a thin ring, in the accent colour', 'kaaljyoti' ),
+						'devanagari' => __( 'Hindi name: मेष, वृष … in a round seal', 'kaaljyoti' ),
+						'custom'     => __( 'Your own images (choose them below)', 'kaaljyoti' ),
 					),
-					__( 'In tables the icons are small: the symbol alone, in its element\'s colour.', 'kaal-jyoti' )
+					__( 'In tables the icons are small: the symbol alone, in its element\'s colour.', 'kaaljyoti' )
 				);
 				break;
 
@@ -1156,11 +1156,11 @@ final class Settings {
 					$name,
 					(string) $value,
 					array(
-						'auto'  => __( 'Auto', 'kaal-jyoti' ),
-						'light' => __( 'Light', 'kaal-jyoti' ),
-						'dark'  => __( 'Dark', 'kaal-jyoti' ),
+						'auto'  => __( 'Auto', 'kaaljyoti' ),
+						'light' => __( 'Light', 'kaaljyoti' ),
+						'dark'  => __( 'Dark', 'kaaljyoti' ),
 					),
-					__( 'Auto follows your site\'s colours; Light and Dark use Kaal Jyoti\'s own palettes.', 'kaal-jyoti' )
+					__( 'Auto follows your site\'s colours; Light and Dark use Kaal Jyoti\'s own palettes.', 'kaaljyoti' )
 				);
 				break;
 
@@ -1186,7 +1186,7 @@ final class Settings {
 					esc_attr( $name ),
 					esc_attr( (string) $value ),
 					esc_attr( '"Noto Serif", Georgia, serif' ),
-					esc_html__( 'A CSS font family list. Empty uses the theme\'s font; the font itself must already be loaded by your site.', 'kaal-jyoti' )
+					esc_html__( 'A CSS font family list. Empty uses the theme\'s font; the font itself must already be loaded by your site.', 'kaaljyoti' )
 				);
 				break;
 
@@ -1197,7 +1197,7 @@ final class Settings {
 					esc_attr( $id ),
 					esc_attr( $name ),
 					esc_attr( (string) $value ),
-					esc_html__( 'The corners of the card, 0 to 48. Empty keeps the default.', 'kaal-jyoti' )
+					esc_html__( 'The corners of the card, 0 to 48. Empty keeps the default.', 'kaaljyoti' )
 				);
 				break;
 
@@ -1210,8 +1210,8 @@ final class Settings {
 					$id,
 					$name,
 					(bool) $value,
-					__( 'Relay PDFs and cache the month widgets\' answers, with the secret key', 'kaal-jyoti' ),
-					'' === (string) self::get( 'secret_key' ) ? __( 'Needs the secret key (Connection tab); until one is stored, nothing is relayed.', 'kaal-jyoti' ) : ''
+					__( 'Relay PDFs and cache the month widgets\' answers, with the secret key', 'kaaljyoti' ),
+					'' === (string) self::get( 'secret_key' ) ? __( 'Needs the secret key (Connection tab); until one is stored, nothing is relayed.', 'kaaljyoti' ) : ''
 				);
 				break;
 
@@ -1220,8 +1220,8 @@ final class Settings {
 					$id,
 					$name,
 					(bool) $value,
-					__( 'Accept only requests from a page this site served in the last day', 'kaal-jyoti' ),
-					__( 'Recommended. Turn it off only if a page cache keeps pages longer than a day and the PDF button or the month widgets on old cached pages stop loading.', 'kaal-jyoti' )
+					__( 'Accept only requests from a page this site served in the last day', 'kaaljyoti' ),
+					__( 'Recommended. Turn it off only if a page cache keeps pages longer than a day and the PDF button or the month widgets on old cached pages stop loading.', 'kaaljyoti' )
 				);
 				break;
 
@@ -1239,11 +1239,11 @@ final class Settings {
 					esc_attr( $id ),
 					esc_attr( $name ),
 					esc_attr( (string) $value ),
-					esc_html__( 'a minute', 'kaal-jyoti' ),
+					esc_html__( 'a minute', 'kaaljyoti' ),
 					esc_html(
 						'rate_pdf' === $key
-							? __( 'How many PDFs one visitor may ask for in a minute. Each PDF costs ten calls.', 'kaal-jyoti' )
-							: __( 'How many month requests one visitor may make in a minute. A cached month does not count.', 'kaal-jyoti' )
+							? __( 'How many PDFs one visitor may ask for in a minute. Each PDF costs ten calls.', 'kaaljyoti' )
+							: __( 'How many month requests one visitor may make in a minute. A cached month does not count.', 'kaaljyoti' )
 					)
 				);
 				break;
@@ -1255,8 +1255,8 @@ final class Settings {
 					esc_attr( $id ),
 					esc_attr( $name ),
 					esc_attr( (string) $value ),
-					esc_html__( 'hours', 'kaal-jyoti' ),
-					esc_html__( 'A month\'s panchang or ephemeris does not change, so it is kept and served without a call. 1 to 168.', 'kaal-jyoti' )
+					esc_html__( 'hours', 'kaaljyoti' ),
+					esc_html__( 'A month\'s panchang or ephemeris does not change, so it is kept and served without a call. 1 to 168.', 'kaaljyoti' )
 				);
 				break;
 
@@ -1266,10 +1266,10 @@ final class Settings {
 					$name,
 					self::time_format(),
 					array(
-						'12' => __( '12-hour, with AM and PM', 'kaal-jyoti' ),
-						'24' => __( '24-hour', 'kaal-jyoti' ),
+						'12' => __( '12-hour, with AM and PM', 'kaaljyoti' ),
+						'24' => __( '24-hour', 'kaaljyoti' ),
 					),
-					__( 'How the birth forms ask for the time of birth.', 'kaal-jyoti' )
+					__( 'How the birth forms ask for the time of birth.', 'kaaljyoti' )
 				);
 				break;
 
@@ -1278,8 +1278,8 @@ final class Settings {
 					$id,
 					$name,
 					(bool) $value,
-					__( 'Fill the birth forms in with the visitor\'s last entry', 'kaal-jyoti' ),
-					__( 'Stored in the visitor\'s own browser only, never on this site; the form has a "Clear" link. Turn it off and the forms forget what they stored.', 'kaal-jyoti' )
+					__( 'Fill the birth forms in with the visitor\'s last entry', 'kaaljyoti' ),
+					__( 'Stored in the visitor\'s own browser only, never on this site; the form has a "Clear" link. Turn it off and the forms forget what they stored.', 'kaaljyoti' )
 				);
 				break;
 
@@ -1289,10 +1289,10 @@ final class Settings {
 					$name,
 					self::font_mode(),
 					array(
-						'system'  => __( 'The widgets\' own type', 'kaal-jyoti' ),
-						'inherit' => __( 'The theme\'s font', 'kaal-jyoti' ),
+						'system'  => __( 'The widgets\' own type', 'kaaljyoti' ),
+						'inherit' => __( 'The theme\'s font', 'kaaljyoti' ),
 					),
-					__( 'The theme\'s font makes the widgets read like the rest of the page; Hindi still falls back to a Devanagari face.', 'kaal-jyoti' )
+					__( 'The theme\'s font makes the widgets read like the rest of the page; Hindi still falls back to a Devanagari face.', 'kaaljyoti' )
 				);
 				break;
 
@@ -1305,8 +1305,8 @@ final class Settings {
 					esc_attr( (string) $value ),
 					esc_html(
 						'pricing_url' === $key
-							? __( 'Where the "needs a plan" note sends you, the site owner. Empty: the note has no link.', 'kaal-jyoti' )
-							: __( 'Where the "needs a server connection" note sends you. Empty: the note has no link.', 'kaal-jyoti' )
+							? __( 'Where the "needs a plan" note sends you, the site owner. Empty: the note has no link.', 'kaaljyoti' )
+							: __( 'Where the "needs a server connection" note sends you. Empty: the note has no link.', 'kaaljyoti' )
 					)
 				);
 				break;
@@ -1317,10 +1317,10 @@ final class Settings {
 					$name,
 					(string) $value,
 					array(
-						'browser' => __( 'Browser (the widget bundle)', 'kaal-jyoti' ),
-						'server'  => __( 'Server (needs a secret key)', 'kaal-jyoti' ),
+						'browser' => __( 'Browser (the widget bundle)', 'kaaljyoti' ),
+						'server'  => __( 'Server (needs a secret key)', 'kaaljyoti' ),
 					),
-					__( 'Server rendering draws the HTML on this site and caches it; the birth form, the match form, and a horoscope or reading that lets the visitor pick are always rendered in the browser.', 'kaal-jyoti' )
+					__( 'Server rendering draws the HTML on this site and caches it; the birth form, the match form, and a horoscope or reading that lets the visitor pick are always rendered in the browser.', 'kaaljyoti' )
 				);
 				break;
 		}
@@ -1336,9 +1336,9 @@ final class Settings {
 	private static function render_disclaimer( string $id ): void {
 		$choice  = (string) self::get( 'disclaimer' );
 		$choices = array(
-			'default'    => __( 'Default line — "These predictions are indicative. For a reading of your own chart, consult an astrologer."', 'kaal-jyoti' ),
-			'astrologer' => __( 'My astrologer — the line names the astrologer below and suggests consulting them', 'kaal-jyoti' ),
-			'off'        => __( 'Off — no line at all', 'kaal-jyoti' ),
+			'default'    => __( 'Default line — "These predictions are indicative. For a reading of your own chart, consult an astrologer."', 'kaaljyoti' ),
+			'astrologer' => __( 'My astrologer — the line names the astrologer below and suggests consulting them', 'kaaljyoti' ),
+			'off'        => __( 'Off — no line at all', 'kaaljyoti' ),
 		);
 
 		echo '<fieldset>';
@@ -1358,7 +1358,7 @@ final class Settings {
 		printf(
 			'<p><label for="%1$s_name">%2$s</label><br /><input type="text" class="regular-text" id="%1$s_name" name="%3$s" value="%4$s" maxlength="%5$d" /></p>',
 			esc_attr( $id ),
-			esc_html__( 'Astrologer\'s name', 'kaal-jyoti' ),
+			esc_html__( 'Astrologer\'s name', 'kaaljyoti' ),
 			esc_attr( self::OPTION . '[disclaimer_name]' ),
 			esc_attr( (string) self::get( 'disclaimer_name' ) ),
 			(int) Elements::DISCLAIMER_NAME_MAX
@@ -1367,11 +1367,11 @@ final class Settings {
 		printf(
 			'<p><label for="%1$s_url">%2$s</label><br /><input type="url" class="regular-text code" id="%1$s_url" name="%3$s" value="%4$s" maxlength="%5$d" placeholder="https://" /></p><p class="description">%6$s</p>',
 			esc_attr( $id ),
-			esc_html__( 'Link (optional)', 'kaal-jyoti' ),
+			esc_html__( 'Link (optional)', 'kaaljyoti' ),
 			esc_attr( self::OPTION . '[disclaimer_url]' ),
 			esc_attr( (string) self::get( 'disclaimer_url' ) ),
 			(int) Elements::DISCLAIMER_URL_MAX,
-			esc_html__( 'The name and link are used only with "My astrologer". A shortcode can choose its own with disclaimer="off", disclaimer="default" or disclaimer_name="…".', 'kaal-jyoti' )
+			esc_html__( 'The name and link are used only with "My astrologer". A shortcode can choose its own with disclaimer="off", disclaimer="default" or disclaimer_name="…".', 'kaaljyoti' )
 		);
 	}
 
@@ -1443,17 +1443,17 @@ final class Settings {
 			$id,
 			$name,
 			$checked,
-			__( 'Show "Download PDF" on the kundli report and the match result', 'kaal-jyoti' ),
-			__( 'Needs the secret key and the server proxy, and a paid plan (PDFs are not on Free). A kundli PDF costs 1,000 credits and a match PDF 500, and each uses one PDF from the month\'s allowance; on the Free plan visitors see a polite "needs a plan" note instead.', 'kaal-jyoti' )
+			__( 'Show "Download PDF" on the kundli report and the match result', 'kaaljyoti' ),
+			__( 'Needs the secret key and the server proxy, and a paid plan (PDFs are not on Free). A kundli PDF costs 1,000 credits and a match PDF 500, and each uses one PDF from the month\'s allowance; on the Free plan visitors see a polite "needs a plan" note instead.', 'kaaljyoti' )
 		);
 
 		$offered = self::pdf_editions();
 		$labels  = array(
-			'basic'        => __( 'Basic: details, charts, dashas and the readings', 'kaal-jyoti' ),
-			'professional' => __( 'Professional: every section, sixteen divisional charts, KP and more', 'kaal-jyoti' ),
+			'basic'        => __( 'Basic: details, charts, dashas and the readings', 'kaaljyoti' ),
+			'professional' => __( 'Professional: every section, sixteen divisional charts, KP and more', 'kaaljyoti' ),
 		);
 
-		printf( '<fieldset style="margin-top:.5em"><legend>%s</legend>', esc_html__( 'Kundli editions to offer', 'kaal-jyoti' ) );
+		printf( '<fieldset style="margin-top:.5em"><legend>%s</legend>', esc_html__( 'Kundli editions to offer', 'kaaljyoti' ) );
 		printf( '<input type="hidden" name="%s" value="" />', esc_attr( self::OPTION . '[pdf_editions][]' ) );
 		foreach ( self::PDF_EDITIONS as $edition ) {
 			printf(
@@ -1465,7 +1465,7 @@ final class Settings {
 				esc_html( $labels[ $edition ] )
 			);
 		}
-		printf( '</fieldset><p class="description">%s</p>', esc_html__( 'With both, the visitor chooses. The match PDF has one edition. The language is the visitor\'s choice.', 'kaal-jyoti' ) );
+		printf( '</fieldset><p class="description">%s</p>', esc_html__( 'With both, the visitor chooses. The match PDF has one edition. The language is the visitor\'s choice.', 'kaaljyoti' ) );
 	}
 
 	/**
@@ -1557,19 +1557,19 @@ final class Settings {
 	 */
 	public static function render_page(): void {
 		if ( ! current_user_can( 'manage_options' ) ) {
-			wp_die( esc_html__( 'You are not allowed to change these settings.', 'kaal-jyoti' ) );
+			wp_die( esc_html__( 'You are not allowed to change these settings.', 'kaaljyoti' ) );
 		}
 
 		$active = self::current_tab();
 		$tabs   = self::tabs();
 
 		echo '<div class="wrap">';
-		printf( '<h1>%s</h1>', esc_html__( 'Kaal Jyoti', 'kaal-jyoti' ) );
+		printf( '<h1>%s</h1>', esc_html__( 'Kaal Jyoti', 'kaaljyoti' ) );
 		// No settings_errors() here: a page under Settings gets WordPress's
 		// own (wp-admin/options-head.php), and a second call printed every
 		// error twice.
 
-		printf( '<nav class="nav-tab-wrapper wp-clearfix" aria-label="%s">', esc_attr__( 'Kaal Jyoti settings', 'kaal-jyoti' ) );
+		printf( '<nav class="nav-tab-wrapper wp-clearfix" aria-label="%s">', esc_attr__( 'Kaal Jyoti settings', 'kaaljyoti' ) );
 		foreach ( $tabs as $tab => $about ) {
 			printf(
 				'<a href="%s" class="nav-tab%s"%s>%s</a>',
@@ -1596,7 +1596,7 @@ final class Settings {
 
 		printf(
 			'<p class="kaal-jyoti-search" hidden><label for="kaal-jyoti-search">%s</label> <input type="search" id="kaal-jyoti-search" class="regular-text" autocomplete="off" /></p><div id="kaal-jyoti-search-other" role="status"></div>',
-			esc_html__( 'Search settings', 'kaal-jyoti' )
+			esc_html__( 'Search settings', 'kaaljyoti' )
 		);
 
 		echo '<form action="options.php" method="post">';
@@ -1613,9 +1613,9 @@ final class Settings {
 		if ( 'connection' === $active ) {
 			printf(
 				'<h2>%s</h2><p><button type="button" class="button" id="kaal-jyoti-test">%s</button> <span id="kaal-jyoti-test-result" role="status"></span></p><p class="description">%s</p>',
-				esc_html__( 'Test connection', 'kaal-jyoti' ),
-				esc_html__( 'Test connection', 'kaal-jyoti' ),
-				esc_html__( 'Asks the API for its version, and — when a secret key is stored — for the default city\'s panchang, then says what the key\'s plan means for the month widgets and PDF downloads. Nothing from the answer is saved; save your changes before testing.', 'kaal-jyoti' )
+				esc_html__( 'Test connection', 'kaaljyoti' ),
+				esc_html__( 'Test connection', 'kaaljyoti' ),
+				esc_html__( 'Asks the API for its version, and — when a secret key is stored — for the default city\'s panchang, then says what the key\'s plan means for the month widgets and PDF downloads. Nothing from the answer is saved; save your changes before testing.', 'kaaljyoti' )
 			);
 		}
 
@@ -1635,14 +1635,14 @@ final class Settings {
 				'<tr><td><code>%s</code></td><td style="width:1%%;white-space:nowrap"><button type="button" class="button button-small kaal-jyoti-copy" data-copy="%s" hidden>%s</button></td></tr>',
 				esc_html( $shortcode ),
 				esc_attr( $shortcode ),
-				esc_html__( 'Copy', 'kaal-jyoti' )
+				esc_html__( 'Copy', 'kaaljyoti' )
 			);
 		}
 		echo '</tbody></table>';
 
 		printf(
 			'<p class="description">%s <a href="%s" target="_blank" rel="noopener">%s</a></p>',
-			esc_html__( 'Every attribute, every block setting and the server-rendering mode are documented at', 'kaal-jyoti' ),
+			esc_html__( 'Every attribute, every block setting and the server-rendering mode are documented at', 'kaaljyoti' ),
 			esc_url( self::DOCS_URL ),
 			esc_html( self::DOCS_URL )
 		);
@@ -1708,17 +1708,17 @@ final class Settings {
 			array(
 				'ajaxUrl'       => admin_url( 'admin-ajax.php' ),
 				'nonce'         => wp_create_nonce( 'kaal_jyoti_test' ),
-				'testing'       => __( 'Testing…', 'kaal-jyoti' ),
-				'failed'        => __( 'The test could not be run.', 'kaal-jyoti' ),
+				'testing'       => __( 'Testing…', 'kaaljyoti' ),
+				'failed'        => __( 'The test could not be run.', 'kaaljyoti' ),
 				/* translators: %s: a zodiac sign's name, such as Aries. */
-				'signTitle'     => __( 'An image for %s', 'kaal-jyoti' ),
-				'signButton'    => __( 'Use this image', 'kaal-jyoti' ),
-				'signDefault'   => __( 'Default icon', 'kaal-jyoti' ),
-				'copied'        => __( 'Copied', 'kaal-jyoti' ),
+				'signTitle'     => __( 'An image for %s', 'kaaljyoti' ),
+				'signButton'    => __( 'Use this image', 'kaaljyoti' ),
+				'signDefault'   => __( 'Default icon', 'kaaljyoti' ),
+				'copied'        => __( 'Copied', 'kaaljyoti' ),
 				'tab'           => $tab,
 				'fields'        => self::search_index(),
-				'searchOther'   => __( 'On other tabs:', 'kaal-jyoti' ),
-				'searchNothing' => __( 'No setting matches.', 'kaal-jyoti' ),
+				'searchOther'   => __( 'On other tabs:', 'kaaljyoti' ),
+				'searchNothing' => __( 'No setting matches.', 'kaaljyoti' ),
 			)
 		);
 	}
@@ -1838,7 +1838,7 @@ final class Settings {
 			self::error(
 				'render_mode',
 				'kaal_jyoti_render_mode',
-				__( 'Server rendering needs a secret key, so the render mode was left at browser.', 'kaal-jyoti' )
+				__( 'Server rendering needs a secret key, so the render mode was left at browser.', 'kaaljyoti' )
 			);
 			$mode = 'browser';
 		}
@@ -1873,7 +1873,7 @@ final class Settings {
 			self::error(
 				'pdf',
 				'kaal_jyoti_pdf_editions',
-				__( 'PDF downloads need at least one edition, so the basic one is offered.', 'kaal-jyoti' )
+				__( 'PDF downloads need at least one edition, so the basic one is offered.', 'kaaljyoti' )
 			);
 			$clean['pdf_editions'] = array( 'basic' );
 		}
@@ -1881,7 +1881,7 @@ final class Settings {
 			self::error(
 				array( 'pdf', 'proxy' ),
 				'kaal_jyoti_pdf',
-				__( 'PDF downloads are saved as on, but no button is shown until a secret key is stored and the server proxy is on.', 'kaal-jyoti' ),
+				__( 'PDF downloads are saved as on, but no button is shown until a secret key is stored and the server proxy is on.', 'kaaljyoti' ),
 				'warning'
 			);
 		}
@@ -1902,7 +1902,7 @@ final class Settings {
 			self::error(
 				array( 'sign_icons', 'sign_images' ),
 				'kaal_jyoti_sign_images',
-				__( 'The sign icons are set to your own images, but none is chosen, so the default icons are shown.', 'kaal-jyoti' ),
+				__( 'The sign icons are set to your own images, but none is chosen, so the default icons are shown.', 'kaaljyoti' ),
 				'warning'
 			);
 		}
@@ -2015,7 +2015,7 @@ final class Settings {
 			self::error(
 				$key,
 				'kaal_jyoti_' . $key,
-				__( 'A link must be an http or https address of at most 200 characters. The stored one was kept.', 'kaal-jyoti' )
+				__( 'A link must be an http or https address of at most 200 characters. The stored one was kept.', 'kaaljyoti' )
 			);
 
 			return $current;
@@ -2053,7 +2053,7 @@ final class Settings {
 				self::error(
 					'disclaimer_url',
 					'kaal_jyoti_disclaimer_url',
-					__( 'The astrologer\'s link must be an http or https address of at most 200 characters, so it was left out.', 'kaal-jyoti' )
+					__( 'The astrologer\'s link must be an http or https address of at most 200 characters, so it was left out.', 'kaaljyoti' )
 				);
 			}
 		}
@@ -2062,7 +2062,7 @@ final class Settings {
 			self::error(
 				array( 'disclaimer', 'disclaimer_name' ),
 				'kaal_jyoti_disclaimer',
-				__( '"My astrologer" needs the astrologer\'s name, so the disclaimer was left at the default line.', 'kaal-jyoti' )
+				__( '"My astrologer" needs the astrologer\'s name, so the disclaimer was left at the default line.', 'kaaljyoti' )
 			);
 			$choice = 'default';
 		}
@@ -2157,7 +2157,7 @@ final class Settings {
 			self::error(
 				'publishable_key',
 				'kaal_jyoti_publishable_key',
-				__( 'That is a secret key. It belongs in the secret key field; the publishable key is the one visitors\' browsers see.', 'kaal-jyoti' )
+				__( 'That is a secret key. It belongs in the secret key field; the publishable key is the one visitors\' browsers see.', 'kaaljyoti' )
 			);
 
 			return (string) $current['publishable_key'];
@@ -2167,7 +2167,7 @@ final class Settings {
 			self::error(
 				'publishable_key',
 				'kaal_jyoti_publishable_key',
-				__( 'A publishable key starts with kj_pub_. The stored key was kept.', 'kaal-jyoti' )
+				__( 'A publishable key starts with kj_pub_. The stored key was kept.', 'kaaljyoti' )
 			);
 
 			return (string) $current['publishable_key'];
@@ -2200,7 +2200,7 @@ final class Settings {
 			self::error(
 				'google_maps_key',
 				'kaal_jyoti_google_maps_key',
-				__( 'That does not look like a Google Maps API key (they start with AIza). The stored key was kept.', 'kaal-jyoti' )
+				__( 'That does not look like a Google Maps API key (they start with AIza). The stored key was kept.', 'kaaljyoti' )
 			);
 
 			return (string) $current['google_maps_key'];
@@ -2256,7 +2256,7 @@ final class Settings {
 			self::error(
 				'photon_url',
 				'kaal_jyoti_photon_url',
-				__( 'The Photon URL must be an https address, for example https://photon.example.com. The stored one was kept.', 'kaal-jyoti' )
+				__( 'The Photon URL must be an https address, for example https://photon.example.com. The stored one was kept.', 'kaaljyoti' )
 			);
 
 			return (string) $current['photon_url'];
@@ -2314,7 +2314,7 @@ final class Settings {
 			self::error(
 				'secret_key',
 				'kaal_jyoti_secret_key',
-				__( 'A secret key starts with kj_live_ or kj_test_. The stored key was kept.', 'kaal-jyoti' )
+				__( 'A secret key starts with kj_live_ or kj_test_. The stored key was kept.', 'kaaljyoti' )
 			);
 
 			return $stored;
@@ -2379,7 +2379,7 @@ final class Settings {
 		check_ajax_referer( 'kaal_jyoti_test', 'nonce' );
 
 		if ( ! current_user_can( 'manage_options' ) ) {
-			wp_send_json_error( array( 'message' => __( 'You are not allowed to test the connection.', 'kaal-jyoti' ) ), 403 );
+			wp_send_json_error( array( 'message' => __( 'You are not allowed to test the connection.', 'kaaljyoti' ) ), 403 );
 		}
 
 		$base   = self::api_base();
@@ -2398,7 +2398,7 @@ final class Settings {
 			wp_send_json_error(
 				array(
 					/* translators: %s: the error WordPress reported. */
-					'message' => sprintf( __( 'The API could not be reached: %s', 'kaal-jyoti' ), $health->get_error_message() ),
+					'message' => sprintf( __( 'The API could not be reached: %s', 'kaaljyoti' ), $health->get_error_message() ),
 				)
 			);
 		}
@@ -2411,7 +2411,7 @@ final class Settings {
 				array(
 					'message' => sprintf(
 						/* translators: 1: HTTP status, 2: the error code the API returned. */
-						__( 'The API answered %1$d (%2$s).', 'kaal-jyoti' ),
+						__( 'The API answered %1$d (%2$s).', 'kaaljyoti' ),
 						$status,
 						self::error_code( $body )
 					),
@@ -2422,7 +2422,7 @@ final class Settings {
 		$lines = array(
 			sprintf(
 				/* translators: 1: engine version, 2: ephemeris name and version, for example "kaaljyoti-ephemeris 0.1.1". */
-				__( 'Engine %1$s, ephemeris %2$s.', 'kaal-jyoti' ),
+				__( 'Engine %1$s, ephemeris %2$s.', 'kaaljyoti' ),
 				isset( $body['engine'] ) ? (string) $body['engine'] : '?',
 				isset( $body['ephemeris'] ) ? (string) $body['ephemeris'] : '?'
 			),
@@ -2430,7 +2430,7 @@ final class Settings {
 
 		$secret = (string) self::get( 'secret_key' );
 		if ( '' === $secret ) {
-			$lines[] = __( 'No secret key is stored, so only the health check ran. Browser rendering does not need one.', 'kaal-jyoti' );
+			$lines[] = __( 'No secret key is stored, so only the health check ran. Browser rendering does not need one.', 'kaaljyoti' );
 			wp_send_json_success( array( 'message' => implode( ' ', $lines ) ) );
 		}
 
@@ -2477,7 +2477,7 @@ final class Settings {
 
 		if ( is_wp_error( $answer ) ) {
 			/* translators: %s: the error WordPress reported. */
-			return array( sprintf( __( 'The panchang call failed: %s', 'kaal-jyoti' ), $answer->get_error_message() ), null );
+			return array( sprintf( __( 'The panchang call failed: %s', 'kaaljyoti' ), $answer->get_error_message() ), null );
 		}
 
 		$status = (int) wp_remote_retrieve_response_code( $answer );
@@ -2487,7 +2487,7 @@ final class Settings {
 			return array(
 				sprintf(
 					/* translators: 1: HTTP status, 2: the error code the API returned. */
-					__( 'The secret key was refused: %1$d (%2$s).', 'kaal-jyoti' ),
+					__( 'The secret key was refused: %1$d (%2$s).', 'kaaljyoti' ),
 					$status,
 					self::error_code( is_array( $body ) ? $body : null )
 				),
@@ -2500,8 +2500,8 @@ final class Settings {
 		return array(
 			sprintf(
 				/* translators: %s: the plan the key is on, for example "free". */
-				__( 'The secret key works; plan: %s.', 'kaal-jyoti' ),
-				'' === $plan ? __( 'unknown', 'kaal-jyoti' ) : $plan
+				__( 'The secret key works; plan: %s.', 'kaaljyoti' ),
+				'' === $plan ? __( 'unknown', 'kaaljyoti' ) : $plan
 			),
 			$plan,
 		);
@@ -2515,19 +2515,19 @@ final class Settings {
 	 */
 	private static function proxy_lines( string $plan ): array {
 		if ( ! self::get( 'proxy' ) ) {
-			return array( __( 'The server proxy is off, so there is no PDF button, and the month widgets call the API with the publishable key.', 'kaal-jyoti' ) );
+			return array( __( 'The server proxy is off, so there is no PDF button, and the month widgets call the API with the publishable key.', 'kaaljyoti' ) );
 		}
 
 		// Every plan can call the month routes; a month costs 20 credits.
 		$lines = array(
-			__( 'The server proxy is on: the month widgets load through it, and each month is cached here.', 'kaal-jyoti' ),
+			__( 'The server proxy is on: the month widgets load through it, and each month is cached here.', 'kaaljyoti' ),
 		);
 
 		if ( self::get( 'pdf' ) ) {
 			// The one thing a plan still decides: PDFs are not on Free.
 			$lines[] = 'free' === $plan
-				? __( 'PDF downloads are on, but PDFs are not on the Free plan; visitors will see a "needs a plan" note on the button until you move to a paid plan.', 'kaal-jyoti' )
-				: __( 'PDF downloads are on, and this plan includes PDFs: a kundli PDF costs 1,000 credits and a match PDF 500.', 'kaal-jyoti' );
+				? __( 'PDF downloads are on, but PDFs are not on the Free plan; visitors will see a "needs a plan" note on the button until you move to a paid plan.', 'kaaljyoti' )
+				: __( 'PDF downloads are on, and this plan includes PDFs: a kundli PDF costs 1,000 credits and a match PDF 500.', 'kaaljyoti' );
 		}
 
 		return $lines;
@@ -2544,6 +2544,6 @@ final class Settings {
 			return (string) $body['error']['code'];
 		}
 
-		return __( 'no error code', 'kaal-jyoti' );
+		return __( 'no error code', 'kaaljyoti' );
 	}
 }

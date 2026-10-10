@@ -7,7 +7,7 @@
   "icon": "clock",
   "description": "The day's choghadiya and windows for a place: the sixteen choghadiyas, rahu kaal, yamaganda, gulika kaal and abhijit on a timeline, with a Day / Night table. One call. The preview in this editor calls the Kaal Jyoti API, exactly as the published page will.",
   "keywords": ["muhurta", "rahu kaal", "abhijit", "panchang", "jyotish"],
-  "textdomain": "kaal-jyoti",
+  "textdomain": "kaaljyoti",
   "supports": {
     "html": false,
     "align": ["wide", "full"],
