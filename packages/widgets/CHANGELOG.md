@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.2.6
+
+- `<kj-reading type="kundli">` with no `parts` asks for the eight parts it draws by name. The API's
+  own default grew to ten parts (the new `nature` and `in_depth`), which the widget does not draw
+  yet, and a part it does not show is no longer paid for: the request stays at 40 credits.
+
 ## 0.2.5
 
 - No copy of the date range: the varshphal `year` and the month attributes are checked for shape

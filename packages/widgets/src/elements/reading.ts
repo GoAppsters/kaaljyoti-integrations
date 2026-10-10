@@ -256,7 +256,7 @@ export class KjReading extends KjElement {
     return Math.max(year, Number(born.slice(0, 4)) || year);
   }
 
-  /** `parts` for `type="kundli"`: the known ones named, in the API's order; none means all. */
+  /** `parts` for `type="kundli"`: the known ones named, in the API's order; none means all eight. */
   private get parts(): Part[] {
     const asked = (this.getAttribute('parts') ?? '')
       .toLowerCase()
@@ -317,8 +317,11 @@ export class KjReading extends KjElement {
     if (this.type === 'varshphal') body.year = this.year;
     // The kundli report works out the running year itself when none is given.
     if (this.type === 'kundli') {
+      // Always by name: the API's default grew to ten parts (engine 0.17.0),
+      // two of which this widget does not draw, and a part not drawn must
+      // not be billed.
       const parts = this.parts;
-      if (parts.length) body.parts = parts;
+      body.parts = parts.length ? parts : [...PARTS];
       const year = this.givenYear;
       if (year) body.year = year;
     }

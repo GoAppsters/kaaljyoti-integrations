@@ -513,12 +513,24 @@ describe('the personal reports', () => {
     expect(partText(element, 'section-lagna')).toContain('लग्न · कर्क');
   });
 
-  it('kundli: every part when none is named, and a year only when given', async () => {
+  it('kundli: all eight parts it draws, by name, when none is named, and a year only when given', async () => {
     const fetchMock = stubFetch();
     await mount({ type: 'kundli', year: '2027', ...BIRTH });
+    // By name: the API's own default (ten since engine 0.17.0) includes two
+    // parts this widget does not draw, and those must not be billed.
     expect(bodyOf(fetchMock)).toEqual({
       birth: BIRTH_BODY,
       options: { language: ['en', 'hi'] },
+      parts: [
+        'lagna',
+        'nakshatra',
+        'life_areas',
+        'house_lords',
+        'grahas',
+        'yogas',
+        'vimshottari',
+        'varshphal',
+      ],
       year: 2027,
     });
   });

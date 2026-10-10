@@ -1,7 +1,7 @@
 {
   "name": "@kaaljyoti/widgets",
   "author": "GoAppsters (https://goappsters.in)",
-  "version": "0.2.5",
+  "version": "0.2.6",
   "description": "Web components for the Kaal Jyoti API: panchang, muhurta, kundli chart, birth and match forms, a horoscope by sign and lagna, nakshatra, house-lords, grahas, yogas, Vimshottari, varshphal and life-areas readings, from a publishable key.",
   "license": "MIT",
   "repository": {
