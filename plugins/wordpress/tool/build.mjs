@@ -228,7 +228,10 @@ const FORBIDDEN_IN_ZIP = [
   /(^|\/)node_modules\//,
   /(^|\/)tests?\//,
   /(^|\/)wporg-assets\//,
-  /(^|\/)(composer\.(json|lock)|phpunit\.xml|phpcs\.xml(\.dist)?)$/,
+  /(^|\/)(composer\.lock|phpunit\.xml|phpcs\.xml(\.dist)?)$/,
+  // The plugin's own composer.json is the dev tree's (phpunit, phpcs); the
+  // bundled SDK's, under vendor/, ships on purpose (WordPress.org asks for it).
+  /^kaaljyoti\/composer\.json$/,
   /\.(map|log|zip)$/,
 ];
 
